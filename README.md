@@ -1,2 +1,3 @@
 # hitobito_swb
-Swiss Badmington
+
+Swiss Badminton
