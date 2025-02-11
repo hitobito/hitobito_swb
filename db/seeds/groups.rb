@@ -5,5 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-
 Group::Dachverband.seed_once(:parent_id, name: "Swiss Badminton")
+puts "waiting 10 seconds to avoid double creation of default children..."
+sleep 10

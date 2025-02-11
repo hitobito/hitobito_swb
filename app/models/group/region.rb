@@ -5,6 +5,12 @@ class Group::Region < ::Group
     RegionKontakte,
     Verein
 
+  self.default_children = [
+    RegionVorstand,
+    RegionMitglieder,
+    RegionKontakte
+  ]
+
   ### ROLES
 
   class Administrator < ::Role

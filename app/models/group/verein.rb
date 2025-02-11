@@ -4,6 +4,12 @@ class Group::Verein < ::Group
     VereinMitglieder,
     VereinKontakte
 
+  self.default_children = [
+    VereinVorstand,
+    VereinMitglieder,
+    VereinKontakte
+  ]
+
   ### ROLES
 
   class Hauptleitung < ::Role

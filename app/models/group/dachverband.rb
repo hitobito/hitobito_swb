@@ -8,6 +8,13 @@ class Group::Dachverband < ::Group
     Region,
     Center
 
+  self.default_children = [
+    DachverbandVorstand,
+    DachverbandGeschaeftsstelle,
+    DachverbandMitglieder,
+    DachverbandKontakte
+  ]
+
   ### ROLES
 
   class Administrator < ::Role
