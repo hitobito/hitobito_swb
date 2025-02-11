@@ -96,15 +96,39 @@ de:
         one: Passivmitglied
         description: Passivmitglieder
 
+      group/dachverband_mitglieder/junior_u15:
+        one: "Junior:in (bis U-15)"
+        description: "Junior:innen (bis U-15)"
+
+      group/dachverband_mitglieder/junior_u19:
+        one: "Junior:in (U17-U19)"
+        description: "Junior:innen (U17-U19)"
+
       group/dachverband_mitglieder/lizenz:
         one: Lizenz
         description: Lizenzen
 
       group/dachverband_mitglieder/vereinigungsspieler:
-        one: "Vereinigungsspieler:in"
-        description: "Vereinigungsspieler:innen"
+        one: Vereinigungsspieler:in
+        description: Vereinigungsspieler:innen
+
+      group/dachverband_mitglieder/lizenz_plus_junior:
+        one: "Lizenz Plus Junior:in (U19)"
+        description: "Lizenz Plus Junior:innen (U19)"
+
+      group/dachverband_mitglieder/lizenz_plus:
+        one: Lizenz Plus
+        description: Lizenzen Plus
 
       group/dachverband_mitglieder/shuttletime: Shuttletime
+
+      group/dachverband_mitglieder/lizenz_no_ranking:
+        one: Lizenz NO ranking
+        description: Lizenzen NO ranking
+
+      group/dachverband_mitglieder/js_coach:
+        one: "J&S Coach"
+        description: "J&S Coaches"
 
       group/dachverband_kontakte/kontakt: Kontakt
 
@@ -136,15 +160,39 @@ de:
         one: Passivmitglied
         description: Passivmitglieder
 
+      group/region_mitglieder/junior_u15:
+        one: "Junior:in (bis U-15)"
+        description: "Junior:innen (bis U-15)"
+
+      group/region_mitglieder/junior_u19:
+        one: "Junior:in (U17-U19)"
+        description: "Junior:innen (U17-U19)"
+
       group/region_mitglieder/lizenz:
         one: Lizenz
         description: Lizenzen
 
       group/region_mitglieder/vereinigungsspieler:
-        one: "Vereinigungsspieler:in"
-        description: "Vereinigungsspieler:innen"
+        one: Vereinigungsspieler:in
+        description: Vereinigungsspieler:innen
 
-      group/region_mitglieder/shuttletime: Shutteltime
+      group/region_mitglieder/lizenz_plus_junior:
+        one: "Lizenz Plus Junior:innen (U19)"
+        description: "Lizenzen Plus Junior:innen (U19)"
+
+      group/region_mitglieder/lizenz_plus:
+        one: Lizenz Plus
+        description: Lizenzen Plus
+
+      group/region_mitglieder/shuttletime: Shuttletime
+
+      group/region_mitglieder/lizenz_no_ranking:
+        one: Lizenz NO ranking
+        description: Lizenzen NO ranking
+
+      group/region_mitglieder/js_coach:
+        one: "J&S Coach"
+        description: "J&S Coaches"
 
       group/region_kontakte/adressverwaltung:
         one: "Adressverwalter:in"
@@ -196,6 +244,14 @@ de:
         one: Passivmitglied
         description: Passivmitglieder
 
+      group/verein_mitglieder/junior_u15:
+        one: "Junior:in (bis U-15)"
+        description: "Junior:innen (bis U-15)"
+
+      group/verein_mitglieder/junior_u19:
+        one: "Junior:in (U17-U19)"
+        description: "Junior:innen (U17-U19)"
+
       group/verein_mitglieder/lizenz:
         one: Lizenz
         description: Lizenzen
@@ -207,6 +263,10 @@ de:
       group/verein_mitglieder/ehrenmitglied:
         one: Ehrenmitglied
         description: Ehrenmitglieder
+
+      group/verein_mitglieder/js_experte:
+        one: "J&S Expert:in"
+        description: "J&S Expert:innen"
 
       group/verein_mitglieder/kaderspieler:
         one: "Kaderspieler:in"
@@ -225,10 +285,22 @@ de:
         description: ZV-Mitglieder
 
       group/verein_mitglieder/vereinigungsspieler:
-        one: "Vereinigungsspieler:in"
-        description: "Vereinigungsspieler:innen"
+        one: Vereinigungsspieler:in
+        description: Vereinigungsspieler:innen
+
+      group/verein_mitglieder/lizenz_plus_junior:
+        one: "Lizenz Plus Junior:innen (U19)"
+        description: "Lizenzen Plus Junior:innen (U19)"
+
+      group/verein_mitglieder/lizenz_plus:
+        one: Lizenz Plus
+        description: Lizenzen Plus
 
       group/verein_mitglieder/shuttletime: Shuttletime
+
+      group/verein_mitglieder/lizenz_no_ranking:
+        one: Lizenz NO ranking
+        description: Lizenen NO ranking
 
       group/verein_mitglieder/js_coach:
         one: "J&S Coach"
