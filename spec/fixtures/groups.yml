@@ -283,9 +283,9 @@ kontakte_37:
   rgt: 61
   name: Kontakte
   type: Group::VereinKontakte
-1001_freizeit_ag:
+tausendeins_freizeit_ag:
   parent: root
-  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:1001_freizeit_ag)%>"
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:tausendeins_freizeit_ag)%>"
   lft: 2
   rgt: 3
   name: 1001 Freizeit AG
