@@ -13,6 +13,6 @@ module Swb::Group
     # self.used_attributes += [:website, :bank_account, :description]
     # self.superior_attributes = [:bank_account]
 
-    root_types Group::Root
+    root_types Group::Dachverband
   end
 end
