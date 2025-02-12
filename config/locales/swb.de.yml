@@ -3,23 +3,317 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-
 de:
   activerecord:
     models:
 
       ### GROUPS
 
-      group/root:
-        one: Hauptgruppe
-        other: Hauptgruppen
+      group/dachverband:
+        one: Dachverband
+        other: Dachverbände
 
+      group/dachverband_vorstand:
+        one: Vorstand
+        other: Vorstände
+
+      group/dachverband_geschaeftsstelle:
+        one: Geschäftsstelle
+        other: Geschäftsstellen
+
+      group/dachverband_gremium:
+        one: Gremium/Projektgruppe
+        other: Gremien/Projektgruppen
+
+      group/dachverband_mitglieder: Mitglieder
+
+      group/dachverband_kontakte: Kontakte
+
+      group/region:
+        one: Region
+        other: Regionen
+
+      group/region_vorstand:
+        one: Vorstand
+        other: Vorstände
+
+      group/region_mitglieder: Mitglieder
+
+      group/region_kontakte: Kontakte
+
+      group/center: Center
+
+      group/verein:
+        one: Verein
+        other: Vereine
+
+      group/verein_vorstand:
+        one: Vorstand
+        other: Vorstände
+
+      group/verein_mitglieder: Mitglieder
+
+      group/verein_kontakte: Kontakte
 
       ### ROLES
 
-      group/root/leader:
-        one: Leitung
-        description: Leitungspersonen verwalten die Applikation.
-      group/root/member:
+      group/dachverband/administrator:
+        one: "Administrator:in"
+        description: "Administrator:innen"
+
+      group/dachverband_vorstand/praesident:
+        one: "Präsident:in"
+        description: "Präsident:innen"
+
+      group/dachverband_vorstand/vizepraesident:
+        one: "Vizepräsident:in"
+        description: "Vizepräsident:innen"
+
+      group/dachverband_vorstand/vorstandsmitglied:
+        one: Vorstandsmitglied
+        description: Vorstandsmitglieder
+
+      group/dachverband_geschaeftsstelle/geschaeftsfuehrer:
+        one: "Geschäftsführer:in"
+        description: "Geschäftsführer:innen"
+
+      group/dachverband_geschaeftsstelle/kassier:
+        one: "Kassier:in"
+        description: "Kassier:innen"
+
+      group/dachverband_geschaeftsstelle/mitglied:
         one: Mitglied
-        description: Mitglieder sind alle anderen.
+        description: Mitglieder
+
+      group/dachverband_gremium/leitung:
+        one: "Leiter:in"
+        description: "Leiter:innen"
+
+      group/dachverband_gremium/mitglied:
+        one: Mitglied
+        description: Mitglieder
+
+      group/dachverband_mitglieder/aktivmitglied:
+        one: Aktivmitglied
+        description: Aktivmitglieder
+
+      group/dachverband_mitglieder/passivmitglied:
+        one: Passivmitglied
+        description: Passivmitglieder
+
+      group/dachverband_mitglieder/junior_u15:
+        one: "Junior:in (bis U-15)"
+        description: "Junior:innen (bis U-15)"
+
+      group/dachverband_mitglieder/junior_u19:
+        one: "Junior:in (U17-U19)"
+        description: "Junior:innen (U17-U19)"
+
+      group/dachverband_mitglieder/lizenz:
+        one: Lizenz
+        description: Lizenzen
+
+      group/dachverband_mitglieder/vereinigungsspieler:
+        one: Vereinigungsspieler:in
+        description: Vereinigungsspieler:innen
+
+      group/dachverband_mitglieder/lizenz_plus_junior:
+        one: "Lizenz Plus Junior:in (U19)"
+        description: "Lizenz Plus Junior:innen (U19)"
+
+      group/dachverband_mitglieder/lizenz_plus:
+        one: Lizenz Plus
+        description: Lizenzen Plus
+
+      group/dachverband_mitglieder/shuttletime: Shuttletime
+
+      group/dachverband_mitglieder/lizenz_no_ranking:
+        one: Lizenz NO ranking
+        description: Lizenzen NO ranking
+
+      group/dachverband_mitglieder/js_coach:
+        one: "J&S Coach"
+        description: "J&S Coaches"
+
+      group/dachverband_kontakte/kontakt: Kontakt
+
+      group/region/administrator:
+        one: "Administrator:in"
+        description: "Administrator:innen"
+
+      group/region_vorstand/praesident:
+        one: "Präsident:in"
+        description: "Präsident:innen"
+
+      group/region_vorstand/vizepraesident:
+        one: "Vizepräsident:in"
+        description: "Vizepräsident:innen"
+
+      group/region_vorstand/kassier:
+        one: "Kassier:in"
+        description: "Kassier:innen"
+
+      group/region_vorstand/vorstandsmitglied:
+        one: Vorstandsmitglied
+        description: Vorstandsmitglieder
+
+      group/region_mitglieder/aktivmitglied:
+        one: Aktivmitglied
+        description: Aktivmitglieder
+
+      group/region_mitglieder/passivmitglied:
+        one: Passivmitglied
+        description: Passivmitglieder
+
+      group/region_mitglieder/junior_u15:
+        one: "Junior:in (bis U-15)"
+        description: "Junior:innen (bis U-15)"
+
+      group/region_mitglieder/junior_u19:
+        one: "Junior:in (U17-U19)"
+        description: "Junior:innen (U17-U19)"
+
+      group/region_mitglieder/lizenz:
+        one: Lizenz
+        description: Lizenzen
+
+      group/region_mitglieder/vereinigungsspieler:
+        one: Vereinigungsspieler:in
+        description: Vereinigungsspieler:innen
+
+      group/region_mitglieder/lizenz_plus_junior:
+        one: "Lizenz Plus Junior:innen (U19)"
+        description: "Lizenzen Plus Junior:innen (U19)"
+
+      group/region_mitglieder/lizenz_plus:
+        one: Lizenz Plus
+        description: Lizenzen Plus
+
+      group/region_mitglieder/shuttletime: Shuttletime
+
+      group/region_mitglieder/lizenz_no_ranking:
+        one: Lizenz NO ranking
+        description: Lizenzen NO ranking
+
+      group/region_mitglieder/js_coach:
+        one: "J&S Coach"
+        description: "J&S Coaches"
+
+      group/region_kontakte/adressverwaltung:
+        one: "Adressverwalter:in"
+        description: "Adressverwalter:innen"
+
+      group/region_kontakte/kontakt: Kontakt
+
+      group/center/center: Center
+
+      group/center/kontakt: Kontakt
+
+      group/verein/hauptleitung:
+        one: "Hauptleiter:in"
+        description: "Hauptleiter:innen"
+
+      group/verein/adressverwaltung:
+        one: "Adressverwalter:in"
+        description: "Adressverwalter:innen"
+
+      group/verein/leitung:
+        one: "Leiter:in"
+        description: "Leiter:innen"
+
+      group/verein/aktivmitglied:
+        one: Aktivmitglied
+        description: Aktivmitglieder
+
+      group/verein_vorstand/praesident:
+        one: "Präsident:in"
+        description: "Präsident:innen"
+
+      group/verein_vorstand/vizepraesident:
+        one: "Vizepräsident:in"
+        description: "Vizepräsident:innen"
+
+      group/verein_vorstand/kassier:
+        one: "Kassier:in"
+        description: "Kassier:innen"
+
+      group/verein_vorstand/vorstandsmitglied:
+        one: Vorstandsmitglied
+        description: Vorstandsmitglieder
+
+      group/verein_mitglieder/aktivmitglied:
+        one: Aktivmitglied
+        description: Aktivmitglieder
+
+      group/verein_mitglieder/passivmitglied:
+        one: Passivmitglied
+        description: Passivmitglieder
+
+      group/verein_mitglieder/junior_u15:
+        one: "Junior:in (bis U-15)"
+        description: "Junior:innen (bis U-15)"
+
+      group/verein_mitglieder/junior_u19:
+        one: "Junior:in (U17-U19)"
+        description: "Junior:innen (U17-U19)"
+
+      group/verein_mitglieder/lizenz:
+        one: Lizenz
+        description: Lizenzen
+
+      group/verein_mitglieder/clubtrainer:
+        one: "Clubtrainer:in"
+        description: "Clubtrainer:innen"
+
+      group/verein_mitglieder/ehrenmitglied:
+        one: Ehrenmitglied
+        description: Ehrenmitglieder
+
+      group/verein_mitglieder/js_experte:
+        one: "J&S Expert:in"
+        description: "J&S Expert:innen"
+
+      group/verein_mitglieder/kaderspieler:
+        one: "Kaderspieler:in"
+        description: "Kaderspieler:innen"
+
+      group/verein_mitglieder/turnierorganisator:
+        one: "Turnierorganisator:in"
+        description: "Turnierorganisator:innen"
+
+      group/verein_mitglieder/volunteer:
+        one: Volunteer
+        description: Volunteers
+
+      group/verein_mitglieder/zv_mitglied:
+        one: ZV-Mitglied
+        description: ZV-Mitglieder
+
+      group/verein_mitglieder/vereinigungsspieler:
+        one: Vereinigungsspieler:in
+        description: Vereinigungsspieler:innen
+
+      group/verein_mitglieder/lizenz_plus_junior:
+        one: "Lizenz Plus Junior:innen (U19)"
+        description: "Lizenzen Plus Junior:innen (U19)"
+
+      group/verein_mitglieder/lizenz_plus:
+        one: Lizenz Plus
+        description: Lizenzen Plus
+
+      group/verein_mitglieder/shuttletime: Shuttletime
+
+      group/verein_mitglieder/lizenz_no_ranking:
+        one: Lizenz NO ranking
+        description: Lizenen NO ranking
+
+      group/verein_mitglieder/js_coach:
+        one: "J&S Coach"
+        description: "J&S Coaches"
+
+      group/verein_kontakte/adressverwaltung:
+        one: "Adressverwalter:in"
+        description: "Adressverwalter:innen"
+
+      group/verein_kontakte/kontakt: Kontakt
+

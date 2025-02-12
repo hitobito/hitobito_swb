@@ -5,6 +5,16 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-Group::Dachverband.seed_once(:parent_id, name: "Swiss Badminton")
-puts "waiting 10 seconds to avoid double creation of default children..."
-sleep 10
+class Group::DachverbandGremium < ::Group
+  ### ROLES
+
+  class Leitung < ::Role
+    self.permissions = [:group_and_below_full, :contact_data]
+  end
+
+  class Mitglied < ::Role
+    self.permissions = [:group_and_below_read]
+  end
+
+  roles Leitung, Mitglied
+end

@@ -3,18 +3,304 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-
 root:
-  parent:
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
   lft: 1
-  rgt: 2
-  name: Hauptgruppe
-  type: Group::Root
-  email: root@example.net
-  address: Ophovener Str. 79a
-  zip_code: 2843
-  town: Neu Carlscheid
-  layer_group_id: <%= ActiveRecord::FixtureSet.identify(:root) %>
-
-# TODO add more groups
-# you could generate a good setup manually and dump it with rake fixtures:groups
+  rgt: 80
+  name: Swiss Badminton
+  type: Group::Dachverband
+  email: lyndon@hitobito.example.com
+  address: Schellingstr. 8
+  zip_code: 4692
+  town: Charleenhagen
+vorstand_2:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
+  lft: 78
+  rgt: 79
+  name: Vorstand
+  type: Group::DachverbandVorstand
+  email: rupert_shanahan@hitobito.example.com
+  address: Lingenfeld 96b
+  zip_code: 3819
+  town: Neu Marius
+geschaeftsstelle:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
+  lft: 70
+  rgt: 71
+  name: Geschäftsstelle
+  type: Group::DachverbandGeschaeftsstelle
+  email: noma.grant@hitobito.example.com
+  address: Forellental 89b
+  zip_code: 8086
+  town: Presslerhagen
+dachverband_mitglieder:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
+  lft: 74
+  rgt: 75
+  name: Mitglieder
+  type: Group::DachverbandMitglieder
+  email: janeth_larkin@hitobito.example.com
+  address: Im Bühl 78c
+  zip_code: 9926
+  town: Moormannscheid
+kontakte_5:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
+  lft: 72
+  rgt: 73
+  name: Kontakte
+  type: Group::DachverbandKontakte
+  email: franklin@hitobito.example.com
+  address: Lärchenweg 92a
+  zip_code: 5784
+  town: Richardfeld
+brb:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
+  lft: 6
+  rgt: 37
+  name: Badminton Regionalverband Bern
+  short_name: BRB
+  type: Group::Region
+vorstand_7:
+  parent: brb
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
+  lft: 35
+  rgt: 36
+  name: Vorstand
+  type: Group::RegionVorstand
+mitglieder_8:
+  parent: brb
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
+  lft: 33
+  rgt: 34
+  name: Mitglieder
+  type: Group::RegionMitglieder
+kontakte_9:
+  parent: brb
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
+  lft: 31
+  rgt: 32
+  name: Kontakte
+  type: Group::RegionKontakte
+bvn:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
+  lft: 38
+  rgt: 69
+  name: Badminton Verband Nordwestschweiz
+  short_name: BVN
+  type: Group::Region
+vorstand_11:
+  parent: bvn
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
+  lft: 67
+  rgt: 68
+  name: Vorstand
+  type: Group::RegionVorstand
+mitglieder_12:
+  parent: bvn
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
+  lft: 57
+  rgt: 58
+  name: Mitglieder
+  type: Group::RegionMitglieder
+kontakte_13:
+  parent: bvn
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
+  lft: 55
+  rgt: 56
+  name: Kontakte
+  type: Group::RegionKontakte
+bc_bern:
+  parent: brb
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
+  lft: 7
+  rgt: 14
+  name: BC Bern
+  type: Group::Verein
+vorstand_15:
+  parent: bc_bern
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
+  lft: 12
+  rgt: 13
+  name: Vorstand
+  type: Group::VereinVorstand
+mitglieder_16:
+  parent: bc_bern
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
+  lft: 10
+  rgt: 11
+  name: Mitglieder
+  type: Group::VereinMitglieder
+kontakte_17:
+  parent: bc_bern
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
+  lft: 8
+  rgt: 9
+  name: Kontakte
+  type: Group::VereinKontakte
+bc_thun:
+  parent: brb
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
+  lft: 23
+  rgt: 30
+  name: BC Thun
+  type: Group::Verein
+vorstand_19:
+  parent: bc_thun
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
+  lft: 28
+  rgt: 29
+  name: Vorstand
+  type: Group::VereinVorstand
+mitglieder_20:
+  parent: bc_thun
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
+  lft: 26
+  rgt: 27
+  name: Mitglieder
+  type: Group::VereinMitglieder
+kontakte_21:
+  parent: bc_thun
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
+  lft: 24
+  rgt: 25
+  name: Kontakte
+  type: Group::VereinKontakte
+bc_koeniz:
+  parent: brb
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
+  lft: 15
+  rgt: 22
+  name: BC Köniz
+  type: Group::Verein
+vorstand_23:
+  parent: bc_koeniz
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
+  lft: 20
+  rgt: 21
+  name: Vorstand
+  type: Group::VereinVorstand
+mitglieder_24:
+  parent: bc_koeniz
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
+  lft: 18
+  rgt: 19
+  name: Mitglieder
+  type: Group::VereinMitglieder
+kontakte_25:
+  parent: bc_koeniz
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
+  lft: 16
+  rgt: 17
+  name: Kontakte
+  type: Group::VereinKontakte
+bc_olten:
+  parent: bvn
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
+  lft: 39
+  rgt: 46
+  name: BC Olten
+  type: Group::Verein
+vorstand_27:
+  parent: bc_olten
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
+  lft: 44
+  rgt: 45
+  name: Vorstand
+  type: Group::VereinVorstand
+mitglieder_28:
+  parent: bc_olten
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
+  lft: 42
+  rgt: 43
+  name: Mitglieder
+  type: Group::VereinMitglieder
+kontakte_29:
+  parent: bc_olten
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
+  lft: 40
+  rgt: 41
+  name: Kontakte
+  type: Group::VereinKontakte
+bc_pratteln:
+  parent: bvn
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
+  lft: 47
+  rgt: 54
+  name: BC Pratteln
+  type: Group::Verein
+vorstand_31:
+  parent: bc_pratteln
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
+  lft: 52
+  rgt: 53
+  name: Vorstand
+  type: Group::VereinVorstand
+mitglieder_32:
+  parent: bc_pratteln
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
+  lft: 50
+  rgt: 51
+  name: Mitglieder
+  type: Group::VereinMitglieder
+kontakte_33:
+  parent: bc_pratteln
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
+  lft: 48
+  rgt: 49
+  name: Kontakte
+  type: Group::VereinKontakte
+sc_uni_basel:
+  parent: bvn
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"
+  lft: 59
+  rgt: 66
+  name: SC Uni Basel
+  type: Group::Verein
+vorstand_35:
+  parent: sc_uni_basel
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"
+  lft: 64
+  rgt: 65
+  name: Vorstand
+  type: Group::VereinVorstand
+mitglieder_36:
+  parent: sc_uni_basel
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"
+  lft: 62
+  rgt: 63
+  name: Mitglieder
+  type: Group::VereinMitglieder
+kontakte_37:
+  parent: sc_uni_basel
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"
+  lft: 60
+  rgt: 61
+  name: Kontakte
+  type: Group::VereinKontakte
+tausendeins_freizeit_ag:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:tausendeins_freizeit_ag)%>"
+  lft: 2
+  rgt: 3
+  name: 1001 Freizeit AG
+  type: Group::Center
+aarsports_gmbh:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:aarsports_gmbh)%>"
+  lft: 4
+  rgt: 5
+  name: Aarsports GmbH
+  type: Group::Center
+tivoli_sportcenter_worblaufen:
+  parent: root
+  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:tivoli_sportcenter_worblaufen)%>"
+  lft: 76
+  rgt: 77
+  name: Tivoli Sportcenter Worblaufen
+  type: Group::Center

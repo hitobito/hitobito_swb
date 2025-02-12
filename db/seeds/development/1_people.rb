@@ -20,20 +20,19 @@ class SwbPersonSeeder < PersonSeeder
 end
 
 puzzlers = [
-  'Carlo Beltrame',
   'Matthias Viehweger',
-  'Micha Lüdi',
   'Nils Rauch',
-  'Olivier Brian',
-  'Pascal Simon',
   'Thomas Ellenberger',
+  'Daniel Illi',
+  'Andreas Maierhofer',
+  'Niklas Jäggi'
 ]
 
 devs = {
   'Customer Name' => 'customer@email.com'
 }
 puzzlers.each do |puz|
-  devs[puz] = "#{puz.split.last.downcase.gsub('ü', 'ue')}@puzzle.ch"
+  devs[puz] = "#{puz.split.last.downcase.gsub('ä', 'ae')}@puzzle.ch"
 end
 
 seeder = SwbPersonSeeder.new
@@ -42,5 +41,5 @@ seeder.seed_all_roles
 
 root = Group.root
 devs.each do |name, email|
-  seeder.seed_developer(name, email, root, Group::Root::Leader)
+  seeder.seed_developer(name, email, root, Group::Dachverband::Administrator)
 end
