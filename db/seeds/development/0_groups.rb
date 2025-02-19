@@ -6,20 +6,32 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 
-require Rails.root.join("db", "seeds", "support", "group_seeder")
-
-seeder = GroupSeeder.new
-
 root = Group.roots.first
-srand(42)
 
-if root.address.blank?
-  root.update(seeder.group_attributes)
-  root.default_children.each do |child_class|
-    child_class.first.update(seeder.group_attributes)
-  end
-end
+# Regionen mit ein paar Vereinen
 
-# TODO: define more groups
+result = Group::Region.seed_once(:name,
+                              parent_id: root.id,
+                              name: "Badminton Regionalverband Bern",
+                              short_name: 'BRB')
+brb = result.first
+Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Bern")
+Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Thun")
+Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Köniz")
+
+result = Group::Region.seed_once(:name,
+                              parent_id: root.id,
+                              name: "Badminton Verband Nordwestschweiz",
+                              short_name: "BVN")
+bvn = result.first
+Group::Verein.seed_once(:name, parent_id: bvn.id, name: "BC Olten")
+Group::Verein.seed_once(:name, parent_id: bvn.id, name: "BC Pratteln")
+Group::Verein.seed_once(:name, parent_id: bvn.id, name: "SC Uni Basel")
+
+# Center
+
+Group::Center.seed_once(:name, parent_id: root.id, name: "1001 Freizeit AG")
+Group::Center.seed_once(:name, parent_id: root.id, name: "Aarsports GmbH")
+Group::Center.seed_once(:name, parent_id: root.id, name: "Tivoli Sportcenter Worblaufen")
 
 Group.rebuild!
