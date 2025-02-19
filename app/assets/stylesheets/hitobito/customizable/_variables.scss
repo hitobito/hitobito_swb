@@ -1,0 +1,120 @@
+//  Copyright (c) 2025, Swiss Badminton. This file is part of
+//  hitobito_swb and licensed under the Affero General Public License version 3
+//  or later. See the COPYING file at the top-level directory or at
+//  https://github.com/hitobito/hitobito_swb.
+
+/* Bootstrap variable definition here */
+
+// GLOBAL VALUES
+// --------------------------------------------------
+
+// design-manual colors
+$sb_red:                #931D1B;
+$sb_white:              #FFFFFF;
+$sb_black:              #000000;
+$sb_gray:               #3e3e3e;
+$sb_online_red:         #C00000;
+
+// topic colors
+$sb_bright_turquoise:   #8bbdbe;
+$sb_turquoise:          #00a2a3;
+$sb_orange:             #f89d1f;
+$sb_pink:               #f4beca;
+$sb_dark_pink:          #a67c87;
+$sb_bright_red:         #e30713;
+
+// actual online colors
+$sb_dark_beige:         #d9d8d5;
+$sb_beige:              #f1f0ed;
+$sb_blue:               #286d9a;
+
+
+// Grays
+// -------------------------
+$black:                 #474E5D !default;
+$gray-darker:           #797E89 !default;
+$gray-dark:             #8b8b8b !default;
+$gray:                  #979CA6 !default;
+$gray-light:            #E8EBF0 !default;
+$gray-lighter:          #F8F9FA !default;
+$white:                 #fff !default;
+
+// Colors
+// ----------------------------
+
+$blue:                  $sb_turquoise;
+$blue-dark:             darken($blue, 10%) !default;
+$green:                 $sb_bright_turquoise !default;
+$green-dark:            darken($green, 10%) !default;
+
+$orange:                $sb_orange;
+$orange-dark:           darken($orange, 20%);
+$purple:                $sb_dark_pink;
+$purple-dark:           darken($purple, 20%);
+
+$red:                   $sb_red !default;
+
+$text-color:            $black !default;
+$border-color:          $gray-light !default;
+
+$page-background:       $sb_dark_beige;
+$content-background:    $sb_beige;
+$footer-background:     $sb_gray;
+$body-background:       $sb_gray;
+
+// $header-text-color:     $text-color;
+$focus-color:           $sb_red;
+$shadow-color:          darken($page-background, 10%);
+$link-color:            $sb_blue !default;
+$link-color-hover:      darken($sb_blue, 20%) !default;
+
+$footer-color:          $sb_white;
+$footer-color-hover:    $sb_white;
+
+$table-color-hover:     $sb_dark_beige;
+
+// Typography
+// -------------------------
+
+$sans-font-family:      'Roboto', 'Verdana', sans-serif;
+$heading-font-family:   'Roboto', 'Verdana', sans-serif; //'Quicksand', $sans-font-family !default;
+$font-family-base:      'Roboto', 'Verdana', sans-serif; //'Varela Round', $sans-font-family !default;
+$headings-font-weight:  bold !default; // could be "normal" instead of browser default, "bold"
+
+// Decoration
+// -------------------------
+$border-radius:         6px;
+
+// Rhythm
+// -------------------------
+$v-space:               24px;
+
+
+// FLUID GRID
+// --------------------------------------------------
+
+// Default
+// -------------------------
+$fluid-grid-column-width:         6.382978723% !default;
+$fluid-grid-gutter-width:         2.127659574% !default;
+
+// Portrait tablet to default desktop
+// -------------------------
+$fluid-grid-column-width-tablet:   5.801104972% !default;
+$fluid-grid-gutter-width-tablet:   2.762430939% !default;
+
+// Large desktop and up
+// -------------------------
+$fluid-grid-column-width-large:    5.982905983% !default;
+$fluid-grid-gutter-width-large:    2.564102564% !default;
+
+
+// RESPONSIVE DESIGN
+// --------------------------------------------------
+
+// Media widths
+// -------------------------
+$media-phone:              480px !default;
+$media-tablet:             768px !default;
+$media-desktop:            980px !default;
+$media-large:              1200px !default; // and upper
