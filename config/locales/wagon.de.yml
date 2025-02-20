@@ -317,3 +317,63 @@ de:
 
       group/verein_kontakte/kontakt: Kontakt
 
+      event/role/assistant_leader:
+        one: Leiter:in
+        other: Leiter:innen
+      event/role/leader:
+        one: Hauptleiter:in
+        other: Hauptleiter:innen
+      event/role/helper:
+        one: Helfer:in
+        other: Helfer:innen
+      event/role/participant:
+        one: Teilnehmer:in
+        other: Teilnehmer:innen
+      event/role/speaker:
+        one: Referent:in
+        other: Referent:innen
+
+      salutation:
+        available:
+          lieber_vorname:
+            label: Liebe:r [Vorname]
+            value:
+              other: Liebe:r %{first_name}
+
+    attributes:
+      event/role:
+        remove_participant_role: Allfällige Teilnehmer:innen-Rolle entfernen
+      service_token:
+        mailing_lists: Abonnent:innen von Mailinglisten
+
+  event:
+    application_market:
+      index:
+        add_participant: Teilnehmer:in hinzufügen
+
+  events:
+    application_fields:
+      caption_signature: Teilnehmer:innen müssen die Anmeldung unterschreiben
+    form:
+      caption_requires_approval: "Der/Die Gruppenleiter:in wird informiert und muss die Anmeldung bestätigen."
+
+  mailing_lists:
+    form:
+      caption_anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
+
+  mailing_list_decorator:
+    anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
+    anyone_may_not_post: "Beliebige Absender:innen dürfen <strong>nicht</strong> auf die Mailingliste schreiben"
+
+  people:
+    tabs:
+      colleagues: Mitarbeiter:innen
+
+  subscriber:
+    exclude_person:
+      form:
+        exclude_subscriber: "Abonnent:in ausschliessen"
+
+  subscriber/exclude_person:
+    failure: "%{subscriber} ist nicht Abonnent:in"
+

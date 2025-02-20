@@ -1,0 +1,392 @@
+#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  hitobito_swb and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_swb.
+
+fr:
+  activerecord:
+    models:
+
+      ### GROUPS
+
+      group/dachverband:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_vorstand:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_gremium:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_mitglieder: ""
+
+      group/dachverband_kontakte: ""
+
+      group/region:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_vorstand:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_mitglieder: ""
+
+      group/region_kontakte: ""
+
+      group/center: ""
+
+      group/verein:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein_vorstand:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein_mitglieder: ""
+
+      group/verein_kontakte: ""
+
+      ### ROLES
+
+      group/dachverband/administrator:
+        one: ""
+        description: ""
+
+      group/dachverband_vorstand/praesident:
+        one: ""
+        description: ""
+
+      group/dachverband_vorstand/vizepraesident:
+        one: ""
+        description: ""
+
+      group/dachverband_vorstand/vorstandsmitglied:
+        one: ""
+        description: ""
+
+      group/dachverband_geschaeftsstelle/geschaeftsfuehrer:
+        one: ""
+        description: ""
+
+      group/dachverband_geschaeftsstelle/kassier:
+        one: ""
+        description: ""
+
+      group/dachverband_geschaeftsstelle/mitglied:
+        one: ""
+        description: ""
+
+      group/dachverband_gremium/leitung:
+        one: ""
+        description: ""
+
+      group/dachverband_gremium/mitglied:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/aktivmitglied:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/passivmitglied:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/junior_u15:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/junior_u19:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/lizenz:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/vereinigungsspieler:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/lizenz_plus_junior:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/lizenz_plus:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/shuttletime: ""
+
+      group/dachverband_mitglieder/lizenz_no_ranking:
+        one: ""
+        description: ""
+
+      group/dachverband_mitglieder/js_coach:
+        one: ""
+        description: ""
+
+      group/dachverband_kontakte/kontakt: ""
+
+      group/region/administrator:
+        one: ""
+        description: ""
+
+      group/region_vorstand/praesident:
+        one: ""
+        description: ""
+
+      group/region_vorstand/vizepraesident:
+        one: ""
+        description: ""
+
+      group/region_vorstand/kassier:
+        one: ""
+        description: ""
+
+      group/region_vorstand/vorstandsmitglied:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/aktivmitglied:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/passivmitglied:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/junior_u15:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/junior_u19:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/lizenz:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/vereinigungsspieler:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/lizenz_plus_junior:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/lizenz_plus:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/shuttletime: ""
+
+      group/region_mitglieder/lizenz_no_ranking:
+        one: ""
+        description: ""
+
+      group/region_mitglieder/js_coach:
+        one: ""
+        description: ""
+
+      group/region_kontakte/adressverwaltung:
+        one: ""
+        description: ""
+
+      group/region_kontakte/kontakt: ""
+
+      group/center/center: ""
+
+      group/center/kontakt: ""
+
+      group/verein/hauptleitung:
+        one: ""
+        description: ""
+
+      group/verein/adressverwaltung:
+        one: ""
+        description: ""
+
+      group/verein/leitung:
+        one: ""
+        description: ""
+
+      group/verein/aktivmitglied:
+        one: ""
+        description: ""
+
+      group/verein_vorstand/praesident:
+        one: ""
+        description: ""
+
+      group/verein_vorstand/vizepraesident:
+        one: ""
+        description: ""
+
+      group/verein_vorstand/kassier:
+        one: ""
+        description: ""
+
+      group/verein_vorstand/vorstandsmitglied:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/aktivmitglied:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/passivmitglied:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/junior_u15:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/junior_u19:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/lizenz:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/clubtrainer:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/ehrenmitglied:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/js_experte:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/kaderspieler:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/turnierorganisator:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/volunteer:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/zv_mitglied:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/vereinigungsspieler:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/lizenz_plus_junior:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/lizenz_plus:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/shuttletime: ""
+
+      group/verein_mitglieder/lizenz_no_ranking:
+        one: ""
+        description: ""
+
+      group/verein_mitglieder/js_coach:
+        one: ""
+        description: ""
+
+      group/verein_kontakte/adressverwaltung:
+        one: ""
+        description: ""
+
+      group/verein_kontakte/kontakt: ""
+
+      event/role/assistant_leader:
+        one: ''
+        many: ''
+        other: ''
+      event/role/leader:
+        one: ''
+        many: ''
+        other: ''
+      event/role/helper:
+        one: ''
+        many: ''
+        other: ''
+      event/role/participant:
+        one: ''
+        many: ''
+        other: ''
+      event/role/speaker:
+        one: ''
+        many: ''
+        other: ''
+
+      salutation:
+        available:
+          lieber_vorname:
+            label: ""
+            value:
+              other: ""
+
+    attributes:
+      event/role:
+        remove_participant_role: ""
+      service_token:
+        mailing_lists: ""
+
+  event:
+    application_market:
+      index:
+        add_participant: ""
+
+  events:
+    application_fields:
+      caption_signature: ""
+    form:
+      caption_requires_approval: ""
+
+  mailing_lists:
+    form:
+      caption_anyone_may_post: ""
+
+  mailing_list_decorator:
+    anyone_may_post: ""
+    anyone_may_not_post: ""
+
+  people:
+    tabs:
+      colleagues: ""
+
+  subscriber:
+    exclude_person:
+      form:
+        exclude_subscriber: ""
+
+  subscriber/exclude_person:
+    failure: ""
+
