@@ -9,6 +9,8 @@
 application:
   languages:
     de: Deutsch
+    en: English
+    fr: Français
 
   # non UI languages for assigning to person#language
   # additional_languages:
