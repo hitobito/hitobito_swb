@@ -1,0 +1,46 @@
+<!--
+Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+hitobito_swb and licensed under the Affero General Public License version 3
+or later. See the COPYING file at the top-level directory or at
+https://github.com/hitobito/hitobito_swb.
+-->
+<OrganizationGroup>
+  <Code>DF30371B-9D1A-4322-AF0F-182B40D3C4F4</Code>
+  <Number>TC1</Number>
+  <Name>Tennis Club</Name>
+  <Abbreviation></Abbreviation>
+  <DisplayName>Tennis Club</DisplayName>
+  <LocalName></LocalName>
+  <LocalAbbreviation></LocalAbbreviation>
+  <OrganizationGroupTypeName></OrganizationGroupTypeName>
+  <Contact>Peter Andersen</Contact>
+  <Address>Brendby Stadion 20</Address>
+  <Address2>86310 Street</Address2>
+  <Address3>Netherlands</Address3>
+  <PostalCode>2605</PostalCode>
+  <City>Amsterdam</City>
+  <State></State>
+  <Country>NED</Country>
+  <Phone>+45 43262165</Phone>
+  <Phone2></Phone2>
+  <Mobile>+45 20354055</Mobile>
+  <Fax>+45 43 262167</Fax>
+  <Fax2></Fax2>
+  <Email>contact@tennisclub.com</Email>
+  <Website>http://www.tennisclub.com</Website>
+  <Latitude>52.001</Latitude>
+  <Longitude>50.001</Longitude>
+  <Logo>
+    <Normal>//content.tournamentsoftware.com/images/logo_normal.jpg</Normal>
+    <Thumb>//content.tournamentsoftware.com/images/logo_thump.jpg</Thumb>
+  </Logo>
+  <OrganizationLevel>
+    <Code>DF8CF937-4CEE-40F3-AF8F-2A12802E3D5D</Code>
+    <Name>Clubs</Name>
+  </OrganizationLevel>
+  <ParentOrganizationGroup>
+    <Code>75797113-DE33-4097-A897-F318C411F17D</Code>
+    <Number>1</Number>
+    <Name>District</Name>
+  </ParentOrganizationGroup>
+</OrganizationGroup>

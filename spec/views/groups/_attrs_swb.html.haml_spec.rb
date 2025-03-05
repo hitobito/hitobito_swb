@@ -30,20 +30,20 @@ describe "groups/_attrs_swb.html.haml" do
       it "renders founded_on field" do
         group.update!(founded_on: Date.new(2020, 3, 31))
         render
-        expect(dom).to have_css ".labeled-grid:nth-of-type(1) dt", text: "Gründungsdatum"
-        expect(dom).to have_css ".labeled-grid:nth-of-type(1) dd", text: "31.03.2020"
+        expect(dom).to have_css "dt", text: "Gründungsdatum"
+        expect(dom).to have_css "dd", text: "31.03.2020"
       end
 
       it "renders yearly_budget field" do
         group.update!(yearly_budget: ..5000)
         render
-        expect(dom).to have_css ".labeled-grid:nth-of-type(2) dt", text: "Jahresbudget"
-        expect(dom).to have_css ".labeled-grid:nth-of-type(2) dd", text: "unter 5000 CHF"
+        expect(dom).to have_css "dt", text: "Jahresbudget"
+        expect(dom).to have_css "dd", text: "unter 5000 CHF"
       end
     end
   end
 
-  [:root, :geschaeftsstelle, :tausendeins_freizeit_ag].each do |key|
+  [:root, :root_geschaeftsstelle, :tausendeins_freizeit_ag].each do |key|
     context key do
       let(:group) { groups(key) }
 

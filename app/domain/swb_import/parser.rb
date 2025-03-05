@@ -53,7 +53,7 @@ module SwbImport
 
     def parse_phone_number(v) = Phonelib.parse(v).then { |n| n.sanitized if n.valid? }
 
-    def parse_country(v) = ISO3166::Country.find_country_by_ioc(COUNTRY_MAPPING.fetch(v, v))&.alpha2&.downcase
+    def parse_country(v) = ISO3166::Country.find_country_by_ioc(COUNTRY_MAPPING.fetch(v, v))&.alpha2
 
     def parse_language(v) = LANGUAGES.find { |regex, val| regex.match?(v) }&.second || :de
 

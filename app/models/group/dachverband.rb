@@ -7,6 +7,7 @@
 
 class Group::Dachverband < ::Group
   self.layer = true
+
   children DachverbandVorstand,
     DachverbandGeschaeftsstelle,
     DachverbandGremium,

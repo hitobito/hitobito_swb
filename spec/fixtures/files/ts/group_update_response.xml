@@ -1,0 +1,19 @@
+<!--
+Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+hitobito_swb and licensed under the Affero General Public License version 3
+or later. See the COPYING file at the top-level directory or at
+https://github.com/hitobito/hitobito_swb.
+-->
+<?xml version="1.0" encoding="utf-8"?>
+<Result Version="1.0">
+  <Error>
+    <Code>0</Code>
+    <Message>Success</Message>
+  </Error>
+  <OrganizationGroup>
+    <Code>B8F82FAC-7DED-4C47-B15E-D984D4AD2A1E</Code>
+    <Number>8001</Number>
+    <Name>.1001 Freizeit AG (*Member SB)</Name>
+  </OrganizationGroup>
+</Result>
+

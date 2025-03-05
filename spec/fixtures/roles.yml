@@ -11,11 +11,11 @@ admin:
 
 leader:
   person: leader
-  group: geschaeftsstelle
+  group: root_geschaeftsstelle
   type: Group::DachverbandGeschaeftsstelle::Geschaeftsfuehrer
 
 # TODO use group and type of the main base member
 member:
   person: member
-  group: dachverband_mitglieder
+  group: root_mitglieder
   type: Group::DachverbandMitglieder::Aktivmitglied

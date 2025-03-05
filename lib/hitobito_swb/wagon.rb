@@ -20,10 +20,21 @@ module HitobitoSwb
     ]
 
     config.to_prepare do
-      # extend application classes here
-      Group.include Swb::Group
+      Group.prepend TsModel
+      Role.prepend TsModel
+      Person.prepend TsModel
 
+      Group.prepend Swb::Group
+      Role.prepend Swb::Role
+      Person.prepend Swb::Person
+
+      HitobitoLogEntry.categories += %w[ts]
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
+
+      GroupsController.prepend TsModelController
+      PeopleController.prepend TsModelController
+      RolesController.prepend TsModelController
+      RolesController.prepend Swb::RolesController
     end
 
     initializer "swb.add_settings" do |_app|

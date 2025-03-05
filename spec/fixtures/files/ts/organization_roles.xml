@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Result Version="1.0">
+  <OrganizationRole>
+    <Code>A1916683-78A4-4E27-8927-B47C468373A7</Code>
+    <Name>Swiss Badminton Breitensport</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>E559A90B-F2E4-4377-A6E9-C3C47457ECE4</Code>
+    <Name>Swiss Badminton Ethik</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>7FD05DDE-3A48-4A07-8E78-7A38D9EFCB1A</Code>
+    <Name>Swiss Badminton Finanzen</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>3EBE4B1C-274F-43C2-97ED-193CD93C414C</Code>
+    <Name>Swiss Badminton Interclub</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>48DFACCF-30FA-487E-83E6-1161083452F1</Code>
+    <Name>Swiss Badminton J&amp;S-Coach</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>5BDA20A4-C4AE-45DC-A31F-E3051FC1BB06</Code>
+    <Name>Swiss Badminton Kommunikation</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>54B4D285-C355-4399-BA9A-8957CDE68DF2</Code>
+    <Name>Swiss Badminton Kontaktadresse</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>A01B867A-FFE3-442B-A9C6-930DBDEA126D</Code>
+    <Name>Swiss Badminton Marketing/Sponsoring</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>BE645BF7-845A-437A-B7A2-0DFE0EA3ED84</Code>
+    <Name>Swiss Badminton Nachwuchs</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>AC0BA1E8-3C76-4ABF-8049-DC980EEAFAFF</Code>
+    <Name>Swiss Badminton Official</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>4C0A8178-035A-415B-933B-468A4A4CEDAE</Code>
+    <Name>Swiss Badminton Präsident</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>A2A2E569-96A6-445E-AFFC-5C6C5C6DE8B0</Code>
+    <Name>Swiss Badminton Schiedsrichter</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>03CD7E1F-DE93-429C-B870-63CDFE8EA0A4</Code>
+    <Name>Swiss Badminton Sport Integrity</Name>
+    <OrganizationLevelCode>
+      C3C1A68D-740B-47CF-9C4F-82E393E41392
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>338F08EC-B8E8-4505-B265-1585BB6AA12B</Code>
+    <Name>Region Breitensport</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>3F385105-B914-4F44-91BD-5FC0858E3149</Code>
+    <Name>Region Ethik</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>B9F99E0B-39E4-4666-BB17-99E6BC851E67</Code>
+    <Name>Region Finanzen</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>D1E0E7EB-293F-455F-93D0-F5C02615A42F</Code>
+    <Name>Region Interclub</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>40216D41-2A6A-4A8A-B0F9-22ECD9A6FDCE</Code>
+    <Name>Region J&amp;S-Coach</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>86FB54C2-FDDE-4721-86BD-83519D7A5844</Code>
+    <Name>Region Kommunikation</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>F21AB6E7-1272-456F-A7D1-E0932CFEA355</Code>
+    <Name>Region Kontaktadresse</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>93F2CF0A-65D7-41EC-A7AE-BBA4034275D5</Code>
+    <Name>Region Marketing/Sponsoring</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>3C3758FF-6E56-4FC7-9517-A1A269E8ED76</Code>
+    <Name>Region Nachwuchs</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>02B32E6D-AC54-416D-A031-F77ED7161CDC</Code>
+    <Name>Region Offical</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>60C707B5-4020-44F0-8219-0349CC941342</Code>
+    <Name>Region Präsident</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>1D61DD90-8F1B-4DF1-9807-F29EC3CA88CA</Code>
+    <Name>Region Schiedsrichter</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>757E0645-2A1B-41EC-9F1F-7849AF406958</Code>
+    <Name>Region Sport Integrity</Name>
+    <OrganizationLevelCode>
+      711CC15B-84C5-4C3C-9288-1722B2A2EBB7
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>8463EDCD-EC00-4165-B153-131E4A869E41</Code>
+    <Name>Behindertensport</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>0C0B745D-2AF3-409A-B1D8-4AE0F59D4C9A</Code>
+    <Name>Center Contact</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>DD5CE304-807F-4637-B0BA-171E03BA655E</Code>
+    <Name>Club Ausbildung</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>0CEB18C7-1097-4C2C-A734-DCD784B2786D</Code>
+    <Name>Club Breitensport</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>4CF4D909-C943-4438-85AA-6AAA90B789BA</Code>
+    <Name>Club Diverse 1</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>5BA7C90C-E32B-4B24-86C1-30783E9B9196</Code>
+    <Name>Club Ethik</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>2E103842-C99D-49E9-90BE-690DBD411068</Code>
+    <Name>Club Events/Turniere</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>8DB2AD2B-62FA-4534-8777-FC7632F31A73</Code>
+    <Name>Club Finanzen</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>A6DC0AB7-4904-4C39-901A-2D327941C0FF</Code>
+    <Name>Club Interclub</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>B9A1A6E1-8A0A-4567-B4C8-A897401D00B7</Code>
+    <Name>Club J&amp;S-Coach</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>0D85785F-2DDF-4F6D-8547-81CFA3E1D22E</Code>
+    <Name>Club Kommunikation</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>AE5822F4-DAFC-494F-BCD0-5FFE88C7B9DE</Code>
+    <Name>Club Kontaktadresse</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>97058CDF-7FD5-4B9A-8C0E-570A9A36BAA0</Code>
+    <Name>Club Leistungssport</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>6A1D7297-A1B9-4446-8493-62C2C8EB8681</Code>
+    <Name>Club Marketing/Sponsoring</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>C812ACE1-5BF6-40E0-AD63-6D0591ACE9A7</Code>
+    <Name>Club Nachwuchs</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>C6FED1CB-DD61-48E1-B690-453988D93B22</Code>
+    <Name>Club Nationalliga</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>68AFCFE5-30EE-409D-B24C-39AF3303C217</Code>
+    <Name>Club Offical</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>B36EA231-DECD-47A5-B4D9-D1486EC7D964</Code>
+    <Name>Club Präsident</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>B3A4C1E3-5020-4C37-9C89-7F42409DE450</Code>
+    <Name>Club Schiedsrichter</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>E2E04F11-F1D5-4E85-A0A8-1C6ABABF9FBE</Code>
+    <Name>Club Sport Integrity</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>C090AE32-246B-49D8-8566-32ACF2075A59</Code>
+    <Name>Club Vize-Präsident</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>F2D919E4-37B7-4E56-A205-0D77AA016DB1</Code>
+    <Name>Clubtrainer</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>699DACDE-3C2D-4AA3-9E72-19408F6E632E</Code>
+    <Name>Ehrenmitglieder SB</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>B46A3E3E-F737-47C7-9507-A77E1889A11C</Code>
+    <Name>J&amp;S Experte</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>90F5B61E-584E-445B-895E-594A244BD8C4</Code>
+    <Name>Kaderspieler</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>D583452E-180D-4A2B-AAF2-E0EF5211A433</Code>
+    <Name>Nationalmannschaftstrainer</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>89425430-4C93-40A8-AC7B-57B5A87DF128</Code>
+    <Name>Schweizermeister</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>4F919DF5-A995-483C-9B75-BCD9B6436AD5</Code>
+    <Name>Shuttle Time Tutor</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>84B14141-A7C4-48ED-AA90-87009D79EEC2</Code>
+    <Name>Spieler</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>BF8F5D33-3417-4EAB-9921-125024BBEB55</Code>
+    <Name>Turnierorganisator</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>B35F3B24-3680-4BF2-9495-A622842BC16E</Code>
+    <Name>Volunteer</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+  <OrganizationRole>
+    <Code>0E7C548F-07C6-4CC1-9305-EE8D087DE7E4</Code>
+    <Name>ZV-Mitglieder</Name>
+    <OrganizationLevelCode>
+      8AF9CDC4-0F80-40BD-A5E9-344AE552CCBA
+    </OrganizationLevelCode>
+  </OrganizationRole>
+</Result>
+

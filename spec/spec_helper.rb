@@ -14,8 +14,21 @@ require File.join(ENV["APP_ROOT"], "spec", "spec_helper.rb")
 # in spec/support/ and its subdirectories.
 Dir[HitobitoSwb::Wagon.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 
+# Maybe extract to environment file
+Rails.application.config.active_job.queue_adapter = :test
+
 RSpec.configure do |config|
   config.fixture_paths = [
     File.expand_path("../fixtures", __FILE__)
   ]
+  require_relative "support/ts/api_spec_helper"
+  config.include Ts::ApiSpecHelper, :tests_ts_api
+
+  config.before do
+    allow(Ts::Config).to receive(:exist?).and_return(true)
+    allow(Ts::Config).to receive(:host).and_return("https://ts.example.com")
+    allow(Ts::Config).to receive(:username).and_return("user")
+    allow(Ts::Config).to receive(:password).and_return("s3cure")
+    allow(Ts::Config).to receive(:organization).and_return("b7755b71-068e-44e7-a061-ab26991fd6be")
+  end
 end
