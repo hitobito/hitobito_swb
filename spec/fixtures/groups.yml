@@ -10,7 +10,8 @@ root:
   name: Swiss Badminton
   type: Group::Dachverband
   email: lyndon@hitobito.example.com
-  address: Schellingstr. 8
+  street: Schellingstr.
+  housenumber: 8
   zip_code: 4692
   town: Charleenhagen
 vorstand_2:
@@ -21,7 +22,8 @@ vorstand_2:
   name: Vorstand
   type: Group::DachverbandVorstand
   email: rupert_shanahan@hitobito.example.com
-  address: Lingenfeld 96b
+  street: Lingenfeld
+  housenumber: 96b
   zip_code: 3819
   town: Neu Marius
 geschaeftsstelle:
@@ -32,7 +34,8 @@ geschaeftsstelle:
   name: Geschäftsstelle
   type: Group::DachverbandGeschaeftsstelle
   email: noma.grant@hitobito.example.com
-  address: Forellental 89b
+  street: Forellental
+  housenumber: 89b
   zip_code: 8086
   town: Presslerhagen
 dachverband_mitglieder:
@@ -43,7 +46,8 @@ dachverband_mitglieder:
   name: Mitglieder
   type: Group::DachverbandMitglieder
   email: janeth_larkin@hitobito.example.com
-  address: Im Bühl 78c
+  street: Im Bühl
+  housenumber: 78c
   zip_code: 9926
   town: Moormannscheid
 kontakte_5:
@@ -54,7 +58,8 @@ kontakte_5:
   name: Kontakte
   type: Group::DachverbandKontakte
   email: franklin@hitobito.example.com
-  address: Lärchenweg 92a
+  street: Lärchenweg
+  housenumber: 92a
   zip_code: 5784
   town: Richardfeld
 brb:

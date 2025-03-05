@@ -5,24 +5,23 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-
 root = Group.roots.first
 
 # Regionen mit ein paar Vereinen
 
 result = Group::Region.seed_once(:name,
-                              parent_id: root.id,
-                              name: "Badminton Regionalverband Bern",
-                              short_name: 'BRB')
+  parent_id: root.id,
+  name: "Badminton Regionalverband Bern",
+  short_name: "BRB")
 brb = result.first
 Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Bern")
 Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Thun")
 Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Köniz")
 
 result = Group::Region.seed_once(:name,
-                              parent_id: root.id,
-                              name: "Badminton Verband Nordwestschweiz",
-                              short_name: "BVN")
+  parent_id: root.id,
+  name: "Badminton Verband Nordwestschweiz",
+  short_name: "BVN")
 bvn = result.first
 Group::Verein.seed_once(:name, parent_id: bvn.id, name: "BC Olten")
 Group::Verein.seed_once(:name, parent_id: bvn.id, name: "BC Pratteln")
