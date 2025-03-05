@@ -18,4 +18,6 @@ class Group::Center < ::Group
   end
 
   roles Administrator, Kontakt
+
+  def parent_ts_code = Ts::CENTER_PARENT_CODE
 end

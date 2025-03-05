@@ -31,7 +31,7 @@ describe "groups/_general_fields_swb.html.haml" do
     end
   end
 
-  [:root, :geschaeftsstelle, :tausendeins_freizeit_ag].each do |key|
+  [:root, :root_geschaeftsstelle, :tausendeins_freizeit_ag].each do |key|
     context key do
       let(:group) { groups(key) }
 

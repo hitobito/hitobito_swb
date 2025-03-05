@@ -19,6 +19,7 @@ Gemfile.lock
 # reports
 spec/coverage
 spec/reports
+config/tournament_software.yml
 brakeman-output.tabs
 rubocop-results.xml
 coverage

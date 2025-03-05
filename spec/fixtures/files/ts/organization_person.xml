@@ -1,0 +1,38 @@
+<!--
+Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+hitobito_swb and licensed under the Affero General Public License version 3
+or later. See the COPYING file at the top-level directory or at
+https://github.com/hitobito/hitobito_swb.
+-->
+
+<OrganizationPerson>
+  <Code>2E62073C-AD95-40BE-8364-0A2EC054A4AC</Code>
+  <MemberID>46852</MemberID>
+  <IDNumber>25864</IDNumber>
+  <NameTypeID>0</NameTypeID>
+  <Firstname>Peter</Firstname>
+  <Middlename>van</Middlename>
+  <Lastname>Putten</Lastname>
+  <GenderID>1</GenderID>
+  <DateOfBirth>1983-09-24T00:00:00</DateOfBirth>
+  <Nationality>MYS</Nationality>
+  <Address>Brendby Stadion 20</Address>
+  <Address2>86310 Street</Address2>
+  <Address3>Netherlands</Address3>
+  <PostalCode>2605</PostalCode>
+  <City>Amsterdam</City>
+  <State></State>
+  <Country>NED</Country>
+  <Phone>+45 43262165</Phone>
+  <Phone2></Phone2>
+  <Mobile>+45 20354055</Mobile>
+  <Fax>+45 43 262167</Fax>
+  <Fax2></Fax2>
+  <Email>player@tennisclub.com</Email>
+  <Website>http://www.facebook.com</Website>
+  <Photo>
+    <Normal>//content.tournamentsoftware.com/images/photo_normal.jpg</Normal>
+    <Thumb>//content.tournamentsoftware.com/images/photo_thumb.jpg</Thumb>
+  </Photo>
+  <Active>true</Active>
+</OrganizationPerson>

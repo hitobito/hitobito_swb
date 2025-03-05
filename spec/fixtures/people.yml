@@ -11,6 +11,7 @@ admin:
   gender: m
   contact_data_visible: true
   primary_group: root
+  ts_code: 9034c579-68fe-49f9-b416-24b216a053c6
 
 leader:
   first_name: A

@@ -14,7 +14,8 @@ root:
   housenumber: 8
   zip_code: 4692
   town: Charleenhagen
-vorstand_2:
+  ts_code: 368f12eb-1eed-48a0-9381-fa7d42fdcf00
+root_vorstand:
   parent: root
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
   lft: 78
@@ -26,7 +27,7 @@ vorstand_2:
   housenumber: 96b
   zip_code: 3819
   town: Neu Marius
-geschaeftsstelle:
+root_geschaeftsstelle:
   parent: root
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
   lft: 70
@@ -38,7 +39,7 @@ geschaeftsstelle:
   housenumber: 89b
   zip_code: 8086
   town: Presslerhagen
-dachverband_mitglieder:
+root_mitglieder:
   parent: root
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
   lft: 74
@@ -50,7 +51,7 @@ dachverband_mitglieder:
   housenumber: 78c
   zip_code: 9926
   town: Moormannscheid
-kontakte_5:
+root_kontakte:
   parent: root
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
   lft: 72
@@ -70,21 +71,23 @@ brb:
   name: Badminton Regionalverband Bern
   short_name: BRB
   type: Group::Region
-vorstand_7:
+  ts_code: 89c11ebb-5266-4c0a-8d2a-1cc3a05ff06a
+brb_vorstand:
   parent: brb
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
   lft: 35
   rgt: 36
   name: Vorstand
   type: Group::RegionVorstand
-mitglieder_8:
+  ts_code: 873e858d-a75d-42fb-83ff-62f09605074e
+brb_mitglieder:
   parent: brb
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
   lft: 33
   rgt: 34
   name: Mitglieder
   type: Group::RegionMitglieder
-kontakte_9:
+brb_kontakte:
   parent: brb
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
   lft: 31
@@ -99,21 +102,21 @@ bvn:
   name: Badminton Verband Nordwestschweiz
   short_name: BVN
   type: Group::Region
-vorstand_11:
+bvn_vorstand:
   parent: bvn
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
   lft: 67
   rgt: 68
   name: Vorstand
   type: Group::RegionVorstand
-mitglieder_12:
+bvn_mitglieder:
   parent: bvn
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
   lft: 57
   rgt: 58
   name: Mitglieder
   type: Group::RegionMitglieder
-kontakte_13:
+bvn_kontakte:
   parent: bvn
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
   lft: 55
@@ -127,21 +130,21 @@ bc_bern:
   rgt: 14
   name: BC Bern
   type: Group::Verein
-vorstand_15:
+bc_bern_vorstand:
   parent: bc_bern
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
   lft: 12
   rgt: 13
   name: Vorstand
   type: Group::VereinVorstand
-mitglieder_16:
+bc_bern_mitglieder:
   parent: bc_bern
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
   lft: 10
   rgt: 11
   name: Mitglieder
   type: Group::VereinMitglieder
-kontakte_17:
+bc_bern_kontakte:
   parent: bc_bern
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
   lft: 8
@@ -155,21 +158,21 @@ bc_thun:
   rgt: 30
   name: BC Thun
   type: Group::Verein
-vorstand_19:
+bc_thun_vorstand:
   parent: bc_thun
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
   lft: 28
   rgt: 29
   name: Vorstand
   type: Group::VereinVorstand
-mitglieder_20:
+bc_thun_mitglieder:
   parent: bc_thun
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
   lft: 26
   rgt: 27
   name: Mitglieder
   type: Group::VereinMitglieder
-kontakte_21:
+bc_thun_kontakte:
   parent: bc_thun
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
   lft: 24
@@ -183,21 +186,21 @@ bc_koeniz:
   rgt: 22
   name: BC Köniz
   type: Group::Verein
-vorstand_23:
+bc_koeniz_vorstand:
   parent: bc_koeniz
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
   lft: 20
   rgt: 21
   name: Vorstand
   type: Group::VereinVorstand
-mitglieder_24:
+bc_koeniz_mitglieder:
   parent: bc_koeniz
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
   lft: 18
   rgt: 19
   name: Mitglieder
   type: Group::VereinMitglieder
-kontakte_25:
+bc_koeniz_kontakte:
   parent: bc_koeniz
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
   lft: 16
@@ -211,21 +214,21 @@ bc_olten:
   rgt: 46
   name: BC Olten
   type: Group::Verein
-vorstand_27:
+bc_olten_vorstand:
   parent: bc_olten
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
   lft: 44
   rgt: 45
   name: Vorstand
   type: Group::VereinVorstand
-mitglieder_28:
+bc_olten_mitglieder:
   parent: bc_olten
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
   lft: 42
   rgt: 43
   name: Mitglieder
   type: Group::VereinMitglieder
-kontakte_29:
+bc_olten_kontakte:
   parent: bc_olten
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
   lft: 40
@@ -239,21 +242,21 @@ bc_pratteln:
   rgt: 54
   name: BC Pratteln
   type: Group::Verein
-vorstand_31:
+bc_prattel_vorstand:
   parent: bc_pratteln
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
   lft: 52
   rgt: 53
   name: Vorstand
   type: Group::VereinVorstand
-mitglieder_32:
+bc_pratteln_mitglieder:
   parent: bc_pratteln
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
   lft: 50
   rgt: 51
   name: Mitglieder
   type: Group::VereinMitglieder
-kontakte_33:
+bc_pratteln_kontakte:
   parent: bc_pratteln
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
   lft: 48
@@ -267,21 +270,21 @@ sc_uni_basel:
   rgt: 66
   name: SC Uni Basel
   type: Group::Verein
-vorstand_35:
+sc_uni_basel_vorstand:
   parent: sc_uni_basel
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"
   lft: 64
   rgt: 65
   name: Vorstand
   type: Group::VereinVorstand
-mitglieder_36:
+sc_uni_basel_mitglieder:
   parent: sc_uni_basel
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"
   lft: 62
   rgt: 63
   name: Mitglieder
   type: Group::VereinMitglieder
-kontakte_37:
+sc_uni_basel_kontakte:
   parent: sc_uni_basel
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"
   lft: 60

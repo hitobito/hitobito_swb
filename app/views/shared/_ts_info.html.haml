@@ -1,0 +1,11 @@
+
+- #  Copyright (c) 2025, Swiss Badminton. This file is part of
+- #  hitobito_swb and licensed under the Affero General Public License version 3
+- #  or later. See the COPYING file at the top-level directory or at
+- #  https://github.com/hitobito/hitobito_swb.
+
+%h2=t(".title")
+.dl-horizontal.m-0.p-2.bord
+  = render 'shared/labeled', label: "Code", content: entry.ts_code
+  - if entry.ts_latest_log
+    = render 'shared/labeled', label: t('.last_synced_at'), content: safe_join([l(entry.ts_latest_log.created_at), badge(t(".levels.#{entry.ts_latest_log.level}"), entry.ts_latest_log.level == "info" ? :success : :warn)], " ")

@@ -8,13 +8,33 @@
 module Swb::Group
   extend ActiveSupport::Concern
 
-  included do
+  prepended do
     # Define additional used attributes
     # self.used_attributes += [:website, :bank_account, :description]
     # self.superior_attributes = [:bank_account]
 
     root_types Group::Dachverband
 
+    self.ts_entity = Ts::Entity::OrganizationGroup
+    self.ts_mapping = {
+      name: :name,
+      code: :ts_code,
+      number: :id,
+      parent_code: :parent_ts_code,
+      contact: -> { contact&.to_s || :not_defined },
+      address: :address,
+      postal_code: :zip_code,
+      city: :town,
+      email: :email,
+      country: -> { Ts::COUNTRIES[country.to_s] if country },
+      website: -> { social_accounts.index_by(&:label)["website"]&.name }
+
+    }
+
+    delegate :ts_code, to: :parent, prefix: true, allow_nil: true
+
     validates :yearly_budget, inclusion: {in: Group::Budget.list.map(&:to_s)}, allow_blank: true
   end
+
+  def ts_managed? = super && [Group::Region, Group::Verein, Group::Center].any? { |type| is_a?(type) }
 end

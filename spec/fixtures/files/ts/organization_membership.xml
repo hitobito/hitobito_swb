@@ -1,0 +1,21 @@
+<!--
+Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+hitobito_swb and licensed under the Affero General Public License version 3
+or later. See the COPYING file at the top-level directory or at
+https://github.com/hitobito/hitobito_swb.
+-->
+
+<OrganizationMembership>
+  <Code>2E62073C-AD95-40BE-8364-0A2EC054A4AC</Code>
+  <RemoteSystemCode>647373527438563</RemoteSystemCode>
+  <StartDate>2010-01-01T00:00:00</StartDate>
+  <EndDate>2010-12-31T00:00:00</EndDate>
+  <CreatedDate>2009-12-01T09:09:23</CreatedDate>
+  <UpdatedDate>2009-12-21T10:11:45</UpdatedDate>
+  <OrganizationGroupCode>E4205744-6769-4BE3-A72A-4362B225B83E</OrganizationGroupCode>
+  <OrganizationGroupName>Club 1</OrganizationGroupName>
+  <OrganizationRoleCode>3DCE5D87-F7FE-4571-B44D-2EB0D5613CCA</OrganizationRoleCode>
+  <OrganizationRoleName>Player</OrganizationRoleName>
+  <OrganizationMembershipCode>C413DED2-8715-4076-8882-0C57DB407EBB</OrganizationMembershipCode>
+  <OrganizationMembershipName>Full Membership</OrganizationMembershipName>
+</OrganizationMembership>

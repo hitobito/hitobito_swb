@@ -345,6 +345,7 @@ de:
               other: Liebe:r %{first_name}
 
     attributes:
+
       contact_account:
         predefined_labels:
           landline: Festnetz
@@ -356,6 +357,10 @@ de:
       group:
         founded_on: Gründungsdatum
         yearly_budget: Jahresbudget
+
+      person:
+        ts_code: TS Code
+        ts_last_sync: TS letzte aktualisierung
 
   event:
     application_market:

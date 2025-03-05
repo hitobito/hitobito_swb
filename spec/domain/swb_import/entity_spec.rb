@@ -35,15 +35,11 @@ describe SwbImport::Entity do
 
     subject(:group) { wrapper.model }
 
-    let(:abk_region) { Group::Region.find_by(short_name: "Abk") }
-
-    before(:all) { Group.root.children.create(type: Group::Region, name: "Abk", short_name: "Abk") }
-
     before do
       csv["Code"] = "c0de-1"
       csv["Number"] = 1
       csv["Name"] = "Dummy BK"
-      csv["Parentnumber"] = "Abk"
+      csv["Parentnumber"] = "BRB"
       csv["Contact"] = ""
       csv["Address"] = ""
       csv["Postalcode"] = ""
@@ -65,7 +61,7 @@ describe SwbImport::Entity do
     end
 
     it "defaults to a Group::Verein nested under Region" do
-      expect(group.parent).to eq abk_region
+      expect(group.parent).to eq groups(:brb)
       expect(group).to be_kind_of(Group::Verein)
     end
 
