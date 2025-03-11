@@ -54,11 +54,9 @@ module SwbImport
 
     def self.root_id = @root_id ||= Group.root.id
 
-    def parent_id = self.class.root_id
-
     def build
       super do |model|
-        model.parent = root_id
+        model.parent_id = self.class.root_id
         model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone, phone2].any?(&:present?)
         model.phone_numbers.build(label: :mobile, number: mobile) if mobile
         model.social_accounts.build(label: :website, name: website) if website
@@ -73,10 +71,6 @@ module SwbImport
     self.non_assignable_attrs = [:phone, :phone2, :mobile, :website, :contact, :parent_short_name]
     self.model_class = Group::Verein
     self.ident_keys = [:id]
-
-    def self.root_id = @root_id ||= Group.root.id
-
-    def parent_id = self.class.root_id
 
     def to_s(details: false) = ["#{status} #{model} (#{model.id})", (full_error_messages if details)].compact_blank.join(": ")
 

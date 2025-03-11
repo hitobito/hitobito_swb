@@ -30,7 +30,7 @@ module SwbImport
       import(Role, from: :mitglieder)
 
       rebuild_groups
-      import_developers
+      seed_static_people
     end
 
     def reset_db
@@ -39,8 +39,6 @@ module SwbImport
     end
 
     def rebuild_groups = Group.rebuild!
-
-    def import_developers = load(wagon_dir.join("db/seeds/development/1_people.rb"))
 
     def create_search_columns = SearchColumnBuilder.new.run
 
@@ -63,6 +61,32 @@ module SwbImport
       PhoneNumber.seed_once(:contactable_id, :contactable_type, :number, contactable_id: Group.root.id, contactable_type: "Group", number: "+41 31 359 72 55", label: :landline)
       PhoneNumber.seed_once(:contactable_id, :contactable_type, :number, contactable_id: Group.root.id, contactable_type: "Group", number: "+41 31 359 72 59", label: :fax)
       SocialAccount.seed_once(:contactable_id, :contactable_type, :name, contactable_id: Group.root.id, contactable_type: "Group", name: "http://www.swiss-badminton.ch", label: :website)
+    end
+
+    def seed_static_people
+      load(Rails.root.join("db", "seeds", "support", "person_seeder.rb"))
+
+      puzzlers = [
+        "Matthias Viehweger",
+        "Nils Rauch",
+        "Thomas Ellenberger",
+        "Daniel Illi",
+        "Andreas Maierhofer",
+        "Niklas Jäggi"
+      ]
+
+      devs = {
+        "Christophe Bächler" => "cbaechler@swiss-badminton.ch"
+      }
+      puzzlers.each do |puz|
+        devs[puz] = "#{puz.split.last.downcase.gsub("ä", "ae")}@puzzle.ch"
+      end
+
+      seeder = PersonSeeder.new
+      root = Group.root
+      devs.each do |name, email|
+        seeder.seed_developer(name, email, root, Group::Dachverband::Administrator)
+      end
     end
   end
 end
