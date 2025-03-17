@@ -19,8 +19,8 @@ class Group::Verein < ::Group
 
   ### ROLES
 
-  class Hauptleitung < ::Role
-    self.permissions = [:layer_and_below_full]
+  class Administrator < ::Role
+    self.permissions = [:layer_and_below_full, :contact_data]
   end
 
   class Adressverwaltung < ::Role
@@ -35,5 +35,5 @@ class Group::Verein < ::Group
     self.permissions = [:group_and_below_read]
   end
 
-  roles Hauptleitung, Adressverwaltung, Leitung, Aktivmitglied
+  roles Administrator, Adressverwaltung, Leitung, Aktivmitglied
 end

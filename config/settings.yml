@@ -16,6 +16,7 @@ application:
     de: Deutsch
     en: English
     fr: Français
+    it: Italiano
 
   # non UI languages for assigning to person#language
   # additional_languages:

@@ -18,8 +18,11 @@ module SwbImport
     end
 
     def run
+      disable_seed_fu_output
+
       reset_db
       configure_truemail
+      disable_zip_code_validation
 
       import(Person, from: :mitglieder)
       create_search_columns
@@ -33,6 +36,8 @@ module SwbImport
       seed_static_people
     end
 
+    private
+
     def reset_db
       truncate_tables
       import_dachverband
@@ -44,6 +49,10 @@ module SwbImport
 
     def configure_truemail = Truemail.configuration.default_validation_type = :regex
 
+    def disable_zip_code_validation = ::Person.validate_zip_code = false
+
+    def disable_seed_fu_output = SeedFu.quiet = true
+
     def import(importer_class, from:) = Importer.new(importer_class, from, lines:, log_dir:, index: @index += 1).run
 
     def build_log_dir = Pathname("#{wagon_dir}/log/#{Time.zone.now.strftime("%m-%d-%H_%M_%S")}").tap do |path|
@@ -53,7 +62,7 @@ module SwbImport
     def wagon_dir = Wagons.all[0].root
 
     def truncate_tables
-      ActiveRecord::Base.connection.truncate_tables(:groups, :roles, :people, :invoice_configs, :phone_numbers, :social_accounts)
+      ActiveRecord::Base.connection.truncate_tables(:groups, :roles, :people, :invoice_configs, :phone_numbers, :social_accounts, :additional_emails, :versions, :sessions)
     end
 
     def import_dachverband

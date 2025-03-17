@@ -10,11 +10,12 @@ class Group::Center < ::Group
 
   ### ROLES
 
-  class Center < ::Role
-  end
-
   class Kontakt < ::Role
   end
 
-  roles Center, Kontakt
+  class Administrator < ::Role
+    self.permissions = [:layer_and_below_full, :contact_data, :finance]
+  end
+
+  roles Administrator, Kontakt
 end

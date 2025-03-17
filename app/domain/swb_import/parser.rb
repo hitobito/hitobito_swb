@@ -12,6 +12,20 @@ module SwbImport
     # Matches most but most likely not all
     STREET_LAST = /(.*?)\s(\d+\w*)/
     STREET_FIRST = /(\d+\w*),?\s(.*?)/
+    COUNTRY_MAPPING = {
+      "ENG" => "GBR",
+      "UK" => "GBR",
+      "SCO" => "GBR",
+      "IMN" => "GBR", # Isle of Man?
+      "ZAI" => "COD", # Zaire now Congo?
+      "GUF" => "FRA" # French Guiana?
+    }.freeze
+
+    LANGUAGES = [
+      [:de, /Deutsch/i],
+      [:fr, /Französisch/i],
+      [:it, /Italienisch/i]
+    ].to_h.invert
 
     def initialize(attrs, mappings)
       @attrs = attrs
@@ -22,7 +36,7 @@ module SwbImport
       mappings.map do |source, target, conversion|
         value = attrs.fetch(source)
 
-        [target, convert(value, conversion)]
+        [target, convert(value, conversion).presence]
       end.to_h
     end
 
@@ -34,11 +48,14 @@ module SwbImport
       conversion.respond_to?(:call) ? conversion.call(value) : send(conversion, value)
     end
 
-    def parse_email(v) = v&.downcase
+    def parse_email(v) = Truemail.validate(v.to_s.downcase.delete(" ").gsub("(at)", "@"), with: :regex)
+      .result.then { |r| r.email if r.success }
 
-    def parse_phone_number(v) = Phonelib.parse(v).sanitized
+    def parse_phone_number(v) = Phonelib.parse(v).then { |n| n.sanitized if n.valid? }
 
-    def parse_country(v) = ISO3166::Country.find_country_by_ioc(v)&.alpha2&.downcase
+    def parse_country(v) = ISO3166::Country.find_country_by_ioc(COUNTRY_MAPPING.fetch(v, v))&.alpha2&.downcase
+
+    def parse_language(v) = LANGUAGES.find { |regex, val| regex.match?(v) }&.second || :de
 
     def parse_street_from_address(v) = v.to_s[STREET_FIRST, 2] || v.to_s[STREET_LAST, 1]
 

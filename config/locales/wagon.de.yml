@@ -209,13 +209,17 @@ de:
 
       group/center/kontakt: Kontakt
 
-      group/verein/hauptleitung:
-        one: "Hauptleiter:in"
-        description: "Hauptleiter:innen"
+      group/center/administrator:
+        one: "Administrator:in"
+        description: "Administrator:innen"
 
       group/verein/adressverwaltung:
         one: "Adressverwalter:in"
         description: "Adressverwalter:innen"
+
+      group/verein/administrator:
+        one: "Administrator:in"
+        description: "Administrator:innen"
 
       group/verein/leitung:
         one: "Leiter:in"
