@@ -39,11 +39,9 @@ namespace :swb do
     ActiveRecord::Base.connection.execute "ALTER SCHEMA public RENAME TO database"
     system("PGPASSWORD=$RAILS_DB_PASSWORD #{pg_dump} -cOx -h $RAILS_DB_HOST -U $RAILS_DB_USERNAME $RAILS_DB_NAME > #{db_dump}")
     ActiveRecord::Base.connection.execute "ALTER SCHEMA database RENAME TO public"
-    system("oc project hit-swb-int")
-    system("echo 'select current_database()' | #{cluster_psql}")
-    if Readline.readline("Continue (y/n): ") == "y"
-      puts "Updating remote database"
-      system("#{cluster_psql} < #{db_dump}")
-    end
+    project = `oc project -q`.strip
+    fail "Unexpected project: #{project}" unless project == "hit-swb-int"
+    puts "Updating remote database"
+    system("#{cluster_psql} < #{db_dump}")
   end
 end
