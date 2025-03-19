@@ -209,11 +209,15 @@ en:
 
       group/center/kontakt: ""
 
-      group/verein/hauptleitung:
+      group/center/administrator:
         one: ""
         description: ""
 
       group/verein/adressverwaltung:
+        one: ""
+        description: ""
+
+      group/verein/administrator:
         one: ""
         description: ""
 
