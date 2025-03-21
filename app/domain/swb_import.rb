@@ -1,7 +1,18 @@
+# frozen_string_literal: true
+
+#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  hitobito_swb and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_swb.
+
 module SwbImport
+  CENTER_PARENT_NUMBER = "CENT"
+  CENTER_ATTACHED_TO_SWB_PREFIX = "."
+
   REGION_MAPPINGS = [
-    [:Region_Abk, :short_name],
-    [:Region_Name, :name],
+    [:Code, :ts_code],
+    [:Number, :short_name],
+    [:Name, :name],
     [:Email, :email, :parse_email],
     [:Contact, :contact],
     [:Address, :street, :parse_street_from_address],
@@ -15,9 +26,11 @@ module SwbImport
   ]
 
   CLUB_MAPPINGS = [
-    [:Club_Nr, :id, ->(v) { Integer(v) }],
-    [:Club_Name, :name],
-    [:"Parentnumber (Region)", :parent_short_name],
+    [:Code, :ts_code],
+    [:Number, :ts_number, ->(v) { Integer(v) }],
+    [:Number, :id, ->(v) { Integer(v) }],
+    [:Name, :name],
+    [:Parentnumber, :parent_number],
     [:Contact, :contact],
     [:Address, :street, :parse_street_from_address],
     [:Address, :housenumber, :parse_housenumber_from_address],

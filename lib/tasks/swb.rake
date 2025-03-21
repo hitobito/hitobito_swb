@@ -6,16 +6,16 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 namespace :swb do
-  file "tmp/regions.csv" => ["data/Structure_SB.xlsx"] do
-    `in2csv "data/Structure_SB.xlsx" --sheet "Region" > tmp/regions.csv`
+  file "tmp/regions.csv" => ["data/exportLevel-Regions-19032025.xlsx"] do
+    sh "in2csv 'data/exportLevel-Regions-19032025.xlsx' > tmp/regions.csv"
   end
 
-  file "tmp/clubs.csv" => ["data/Structure_SB.xlsx"] do
-    `in2csv "data/Structure_SB.xlsx" --sheet "Clubs" > tmp/clubs.csv`
+  file "tmp/clubs.csv" => ["data/exportLevel-Clubs-19032025.xlsx"] do
+    sh "in2csv 'data/exportLevel-Clubs-19032025.xlsx' > tmp/clubs.csv"
   end
 
   file "tmp/mitglieder.csv" => ["data/Mtglieder_Export_Hitobito.xlsx"] do
-    `in2csv "data/Mtglieder_Export_Hitobito.xlsx" > tmp/mitglieder.csv`
+    sh "in2csv 'data/Mtglieder_Export_Hitobito.xlsx' > tmp/mitglieder.csv"
   end
 
   desc "Imports and pushes local DB to INT"

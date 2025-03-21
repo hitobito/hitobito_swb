@@ -20,7 +20,8 @@ module SwbImport
     def run
       disable_seed_fu_output
 
-      reset_db
+      truncate_tables
+      import_dachverband
       configure_truemail
       disable_zip_code_validation
 
@@ -65,12 +66,7 @@ module SwbImport
       ActiveRecord::Base.connection.truncate_tables(:groups, :roles, :people, :invoice_configs, :phone_numbers, :social_accounts, :additional_emails, :versions, :sessions)
     end
 
-    def import_dachverband
-      Group::Dachverband.seed_once(:parent_id, name: "Swiss Badminton", street: "Talgut-Zentrum", housenumber: 27, zip_code: 3063, town: "Ittigen", country: "CH", email: "info@swiss-badminton.ch")
-      PhoneNumber.seed_once(:contactable_id, :contactable_type, :number, contactable_id: Group.root.id, contactable_type: "Group", number: "+41 31 359 72 55", label: :landline)
-      PhoneNumber.seed_once(:contactable_id, :contactable_type, :number, contactable_id: Group.root.id, contactable_type: "Group", number: "+41 31 359 72 59", label: :fax)
-      SocialAccount.seed_once(:contactable_id, :contactable_type, :name, contactable_id: Group.root.id, contactable_type: "Group", name: "http://www.swiss-badminton.ch", label: :website)
-    end
+    def import_dachverband = load "db/seeds/groups.rb"
 
     def seed_static_people
       load(Rails.root.join("db", "seeds", "support", "person_seeder.rb"))

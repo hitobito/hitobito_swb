@@ -40,9 +40,10 @@ describe SwbImport::Entity do
     before(:all) { Group.root.children.create(type: Group::Region, name: "Abk", short_name: "Abk") }
 
     before do
-      csv["Club_Nr"] = 1
-      csv["Club_Name"] = "Dummy BK"
-      csv["Parentnumber (Region)"] = "Abk"
+      csv["Code"] = "c0de-1"
+      csv["Number"] = 1
+      csv["Name"] = "Dummy BK"
+      csv["Parentnumber"] = "Abk"
       csv["Contact"] = ""
       csv["Address"] = ""
       csv["Postalcode"] = ""
@@ -69,7 +70,7 @@ describe SwbImport::Entity do
     end
 
     it "uses Group::Center under Dachverband if short_name is CENT" do
-      csv["Parentnumber (Region)"] = "CENT"
+      csv["Parentnumber"] = "CENT"
       expect(group.parent).to eq groups(:root)
       expect(group).to be_kind_of(Group::Center)
     end

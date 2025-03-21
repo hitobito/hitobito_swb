@@ -39,18 +39,22 @@ module SwbImport
   end
 
   module WithContact
+    def people?
+      return @@people if defined?(@@people)
+      @@people ||= ::Person.exists?
+    end
+
     def save
-      ActiveRecord::Base.transaction do
-        super.then do |success|
-          next success unless contact
-          person = ::Person.search(contact).first
-          person ? create_contact_role_and_update_group(person) : true
-        end
+      super.then do |success|
+        next success unless people? && contact
+        person = ::Person.search(contact).first
+        person ? create_contact_role_and_update_group(person) : true
       end
     end
 
     def create_contact_role_and_update_group(person)
-      person.roles.find_or_create_by!(type: "#{model.class.name}::Administrator", group: model) && model.update!(contact: person)
+      person.roles.find_or_create_by!(type: "#{model.class.name}::Administrator", group: model) &&
+        model.update_columns(contact_id: person.id) # avoids callbacks to not trigger double creation of default children
     end
 
     def build_contact(model, person)
@@ -66,7 +70,7 @@ module SwbImport
     self.mappings = REGION_MAPPINGS
     self.non_assignable_attrs = [:phone, :phone2, :mobile, :website, :contact]
     self.model_class = Group::Region
-    self.ident_keys = [:short_name]
+    self.ident_keys = [:ts_code]
 
     def self.root_id = @root_id ||= Group.root.id
 
@@ -79,22 +83,16 @@ module SwbImport
       end
     end
 
-    def build_contact(model)
-      contact_person = ::Person.search(contact).first if contact.present?
-      if contact_person
-        model.roles.find_or_initialize_by(type: "#{model.class.name}::Administrator", person_id: contact_person.id)
-      end
-    end
-
     def to_s(details: false) = ["#{status} #{model} (#{model.short_name})", (full_error_messages if details)].compact_blank.join(": ")
   end
 
   Club = Entity.new(*CLUB_MAPPINGS.map(&:second), keyword_init: true) do
     prepend WithContact
+    delegate :type, to: :model
 
     self.mappings = CLUB_MAPPINGS
-    self.non_assignable_attrs = [:phone, :phone2, :mobile, :website, :contact, :parent_short_name]
-    self.ident_keys = [:id]
+    self.non_assignable_attrs = [:phone, :phone2, :mobile, :website, :contact, :parent_number]
+    self.ident_keys = [:ts_code]
 
     def self.root = @root ||= Group.root
 
@@ -102,14 +100,14 @@ module SwbImport
 
     def build
       super do |model|
-        model.parent = model.is_a?(Group::Center) ? self.class.root : Group::Region.find_by(short_name: parent_short_name)
+        model.parent = model.is_a?(Group::Center) ? self.class.root : Group::Region.find_by(short_name: parent_number)
         model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone, phone2].any?(&:present?)
         model.phone_numbers.build(label: :mobile, number: mobile) if mobile
         model.social_accounts.build(label: :website, name: website) if website
       end
     end
 
-    def model_class = (parent_short_name == "CENT") ? Group::Center : Group::Verein
+    def model_class = (parent_number == CENTER_PARENT_NUMBER) ? Group::Center : Group::Verein
   end
 
   Person = Entity.new(*PERSON_MAPPINGS.map(&:second), keyword_init: true) do
