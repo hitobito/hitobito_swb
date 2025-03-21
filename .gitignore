@@ -26,3 +26,7 @@ coverage
 .tool-versions
 .pry_history
 .envrc
+
+Gemfile.local
+Gemfile.local.lock
+data/*
