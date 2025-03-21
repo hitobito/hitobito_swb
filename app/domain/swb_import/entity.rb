@@ -114,7 +114,7 @@ module SwbImport
     self.mappings = PERSON_MAPPINGS
     self.non_assignable_attrs = [:phone, :mobile]
     self.model_class = ::Person
-    self.ident_keys = [:id]
+    self.ident_keys = [:ts_code]
 
     def save
       return model.save.tap { emails[email] = id } if new_email?

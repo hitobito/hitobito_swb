@@ -44,6 +44,7 @@ module SwbImport
 
   PERSON_MAPPINGS = [
     [:memberid, :id, ->(v) { Integer(v) }],
+    [:code, :ts_code],
     [:firstname, :first_name],
     [:lastname, :last_name],
     [:gender, :gender, ->(v) { {f: :w}.fetch(v.downcase.to_sym, v.downcase) }],

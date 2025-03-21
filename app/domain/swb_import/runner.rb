@@ -20,8 +20,7 @@ module SwbImport
     def run
       disable_seed_fu_output
 
-      truncate_tables
-      import_dachverband
+      reset_db
       configure_truemail
       disable_zip_code_validation
 
@@ -41,6 +40,7 @@ module SwbImport
 
     def reset_db
       truncate_tables
+      import_root_seeds
       import_dachverband
     end
 
@@ -63,10 +63,12 @@ module SwbImport
     def wagon_dir = Wagons.all[0].root
 
     def truncate_tables
-      ActiveRecord::Base.connection.truncate_tables(:groups, :roles, :people, :invoice_configs, :phone_numbers, :social_accounts, :additional_emails, :versions, :sessions)
+      ActiveRecord::Base.connection.truncate_tables(:groups, :roles, :people, :invoice_configs, :phone_numbers, :social_accounts, :additional_emails, :versions, :sessions, :delayed_jobs)
     end
 
-    def import_dachverband = load "db/seeds/groups.rb"
+    def import_root_seeds = %w[custom_contents root].each { |file| load Rails.root.join("db/seeds/#{file}.rb") }
+
+    def import_dachverband = load Wagons.all.find("swb").first.root.join("db/seeds/groups.rb")
 
     def seed_static_people
       load(Rails.root.join("db", "seeds", "support", "person_seeder.rb"))
