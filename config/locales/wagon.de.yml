@@ -353,6 +353,9 @@ de:
         remove_participant_role: Allfällige Teilnehmer:innen-Rolle entfernen
       service_token:
         mailing_lists: Abonnent:innen von Mailinglisten
+      group:
+        founded_on: Gründungsdatum
+        yearly_budget: Jahresbudget
 
   event:
     application_market:

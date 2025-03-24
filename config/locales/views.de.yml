@@ -1,0 +1,4 @@
+de:
+  global:
+    below: unter %{value}
+    above: über %{value}

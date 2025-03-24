@@ -5,18 +5,8 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Group::Center < ::Group
-  self.layer = true
-  self.used_attributes += [:yearly_budget, :founded_on]
-
-  ### ROLES
-
-  class Kontakt < ::Role
+module Swb::GroupsHelper
+  def format_yearly_budget(group)
+    Group::Budget.new(group.yearly_budget).to_fs if group.yearly_budget
   end
-
-  class Administrator < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data, :finance]
-  end
-
-  roles Administrator, Kontakt
 end
