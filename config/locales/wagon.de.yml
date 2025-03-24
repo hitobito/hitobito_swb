@@ -345,6 +345,10 @@ de:
               other: Liebe:r %{first_name}
 
     attributes:
+      contact_account:
+        predefined_labels:
+          landline: Festnetz
+          mobile: Mobil
       event/role:
         remove_participant_role: Allfällige Teilnehmer:innen-Rolle entfernen
       service_token:
