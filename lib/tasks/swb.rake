@@ -44,4 +44,20 @@ namespace :swb do
     puts "Updating remote database"
     system("#{cluster_psql} < #{db_dump}")
   end
+
+  namespace :ts do
+    desc "Person Info"
+    task :person, [:ts_code] => [:environment] do |_t, args|
+      ts_code = args.fetch(:ts_code, ENV["TS_PERSON"])
+      person = Person.find_by!(ts_code:)
+
+      puts [person, person.roles.map(&:to_s).join(", ")].join(": ")
+      ts_call("Person/#{ts_code}")
+      ts_call("Person/#{ts_code}/Membership")
+    end
+  end
+
+  def ts_call(path)
+    sh "curl -s  -u $TS_USERNAME:$TS_PASSWORD $TS_HOST/1.0/Organization/$TS_ORGANIZATION/#{path} | xmllint  --format -"
+  end
 end

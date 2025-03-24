@@ -27,7 +27,6 @@ module SwbImport
 
   CLUB_MAPPINGS = [
     [:Code, :ts_code],
-    [:Number, :ts_number, ->(v) { Integer(v) }],
     [:Number, :id, ->(v) { Integer(v) }],
     [:Name, :name],
     [:Parentnumber, :parent_number],
@@ -44,7 +43,6 @@ module SwbImport
 
   PERSON_MAPPINGS = [
     [:memberid, :id, ->(v) { Integer(v) }],
-    [:memberid, :ts_number, ->(v) { Integer(v) }],
     [:code, :ts_code],
     [:firstname, :first_name],
     [:lastname, :last_name],
