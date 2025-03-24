@@ -15,4 +15,16 @@ module Swb::Group
 
     root_types Group::Dachverband
   end
+
+  def formatted_yearly_budget_range
+    return unless yearly_budget_range
+
+    min, max = [:min, :max].map do |value|
+      yearly_budget_range.send(value)
+    rescue TypeError, RangeError # cannot extract min/max from endless range
+      ""
+    end
+
+    [min, max].join("-")
+  end
 end

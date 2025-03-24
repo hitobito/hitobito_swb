@@ -1,0 +1,2 @@
+= f.labeled_input_field :founded_on
+= f.labeled_collection_select(:formatted_yearly_budget_range, [nil] + Settings.groups.yearly_budget_ranges, :to_s, :to_s, {}, class: 'col-4 form-select form-select-sm')
