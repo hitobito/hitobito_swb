@@ -87,6 +87,7 @@ describe SwbImport::Entity do
     subject(:person) { described_class.from(csv.symbolize_keys).model }
 
     before do
+      csv["code"] = "1AC189B8-060E-4859-BDCB-099F208D3C3D"
       csv["memberid"] = "1"
       csv["firstname"] = "Jane"
       csv["lastname"] = "Doe"
@@ -104,6 +105,7 @@ describe SwbImport::Entity do
 
     it "reads default attributes" do
       expect(person.id).to eq 1
+      expect(person.ts_code).to eq "1AC189B8-060E-4859-BDCB-099F208D3C3D"
       expect(person.first_name).to eq "Jane"
       expect(person.last_name).to eq "Doe"
       expect(person.language).to eq "de"
