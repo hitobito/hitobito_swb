@@ -1,0 +1,9 @@
+- #  Copyright (c) 2025, Swiss Badminton. This file is part of
+- #  hitobito_swb and licensed under the Affero General Public License version 3
+- #  or later. See the COPYING file at the top-level directory or at
+- #  https://github.com/hitobito/hitobito_swb.
+
+- entry.used?(:founded_on) do
+  = f.labeled_input_field(:founded_on)
+- entry.used?(:yearly_budget) do
+  = f.labeled_collection_select(:yearly_budget, Group::Budget.list, :to_s, :to_fs, {prompt: true}, class: 'col-4 form-select form-select-sm')

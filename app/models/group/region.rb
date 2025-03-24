@@ -7,6 +7,7 @@
 
 class Group::Region < ::Group
   self.layer = true
+  self.used_attributes += [:yearly_budget, :founded_on]
   children RegionVorstand,
     RegionMitglieder,
     RegionKontakte,

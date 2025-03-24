@@ -7,6 +7,8 @@
 
 class Group::Verein < ::Group
   self.layer = true
+  self.used_attributes += [:yearly_budget, :founded_on]
+
   children VereinVorstand,
     VereinMitglieder,
     VereinKontakte

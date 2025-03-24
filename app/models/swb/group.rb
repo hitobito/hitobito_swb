@@ -14,5 +14,7 @@ module Swb::Group
     # self.superior_attributes = [:bank_account]
 
     root_types Group::Dachverband
+
+    validates :yearly_budget, inclusion: {in: Group::Budget.list.map(&:to_s)}, allow_blank: true
   end
 end

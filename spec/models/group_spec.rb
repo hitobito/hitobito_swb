@@ -9,4 +9,27 @@ require "spec_helper"
 
 describe Group do
   include_examples "group types"
+
+  describe "::validations" do
+    subject(:group) { Fabricate.build(Group::Dachverband.sti_name) }
+
+    it "is valid without yearly budget" do
+      group.yearly_budget = nil
+      expect(group).to be_valid
+    end
+
+    it "accepts valid yearly budget" do
+      group.yearly_budget = "..5000"
+      expect(group).to be_valid
+
+      group.yearly_budget = "5000..10000"
+      expect(group).to be_valid
+    end
+
+    it "rejects invalid yearly budget" do
+      group.yearly_budget = ".."
+      expect(group).not_to be_valid
+      expect(group).to have(1).error_on(:yearly_budget)
+    end
+  end
 end

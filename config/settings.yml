@@ -33,3 +33,10 @@ phone_number:
 # Initially, a password reset token may be mailed from the application
 # to this address to set a password.
 root_email: hitobito-swb@puzzle.ch
+
+groups:
+  yearly_budgets:
+    - ..5000
+    - 5000..10000
+    - 10000..15000
+    - 15000..
