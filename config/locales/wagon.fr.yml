@@ -358,6 +358,10 @@ fr:
               other: ""
 
     attributes:
+      contact_account:
+        predefined_labels:
+          landline: ""
+          mobile: ""
       event/role:
         remove_participant_role: ""
       service_token:
