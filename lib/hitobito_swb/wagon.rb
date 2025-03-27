@@ -22,6 +22,9 @@ module HitobitoSwb
     config.to_prepare do
       # extend application classes here
       Group.include Swb::Group
+
+      GroupsController.permitted_attrs += [:founded_on]
+      GroupsController.prepend Swb::GroupsController
     end
 
     initializer "swb.add_settings" do |_app|
