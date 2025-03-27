@@ -28,13 +28,20 @@ module HitobitoSwb
       Role.prepend Swb::Role
       Person.prepend Swb::Person
 
-      HitobitoLogEntry.categories += %w[ts]
-      GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
-
       GroupsController.prepend TsModelController
       PeopleController.prepend TsModelController
       RolesController.prepend TsModelController
       RolesController.prepend Swb::RolesController
+
+      PeopleHelper.prepend Swb::PeopleHelper
+      StandardFormBuilder.prepend Swb::StandardFormBuilder
+
+      HitobitoLogEntry.categories += %w[ts]
+
+      GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
+      PeopleController.permitted_attrs += [:nationality, :nationality_badminton]
+
+      Person::FILTER_ATTRS << [:nationality, :country_select] << [:nationality_badminton, :country_select]
     end
 
     initializer "swb.add_settings" do |_app|

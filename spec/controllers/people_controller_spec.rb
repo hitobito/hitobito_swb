@@ -10,6 +10,22 @@ require "spec_helper"
 describe PeopleController do
   before { sign_in(people(:admin)) }
 
+  context "PUT#update" do
+    let(:person) { people(:admin) }
+
+    it "can update nationality" do
+      expect do
+        put :update, params: {group_id: person.roles.first.group, id: person.id, person: {nationality: "CH"}}
+      end.to change { person.reload.nationality }.from(nil).to("CH")
+    end
+
+    it "can update nationality_badminton" do
+      expect do
+        put :update, params: {group_id: person.roles.first.group, id: person.id, person: {nationality_badminton: "CH"}}
+      end.to change { person.reload.nationality_badminton }.from(nil).to("CH")
+    end
+  end
+
   describe "ts write jobs" do
     context "PUT#update" do
       let(:group) { groups(:root_vorstand) }

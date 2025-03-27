@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_24_135430) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_28_124658) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -929,6 +929,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_24_135430) do
     t.string "address_care_of"
     t.string "postbox"
     t.uuid "ts_code"
+    t.string "nationality"
+    t.string "nationality_badminton"
     t.index ["authentication_token"], name: "index_people_on_authentication_token"
     t.index ["confirmation_token"], name: "index_people_on_confirmation_token", unique: true
     t.index ["email"], name: "index_people_on_email", unique: true
