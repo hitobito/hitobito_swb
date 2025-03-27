@@ -352,15 +352,16 @@ de:
           mobile: Mobil
       event/role:
         remove_participant_role: Allfällige Teilnehmer:innen-Rolle entfernen
-      service_token:
-        mailing_lists: Abonnent:innen von Mailinglisten
       group:
         founded_on: Gründungsdatum
         yearly_budget: Jahresbudget
-
       person:
+        nationality: Nationalität gemäss Pass / ID
+        nationality_badminton: Nationalität als Badmintonspieler:in
         ts_code: TS Code
         ts_last_sync: TS letzte aktualisierung
+      service_token:
+        mailing_lists: Abonnent:innen von Mailinglisten
 
   event:
     application_market:
