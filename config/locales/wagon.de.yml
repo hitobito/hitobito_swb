@@ -351,6 +351,9 @@ de:
           mobile: Mobil
       event/role:
         remove_participant_role: Allfällige Teilnehmer:innen-Rolle entfernen
+      person:
+        nationality: Nationalität gemäss Pass / ID
+        nationality_badminton: Nationalität als Badmintonspieler:in
       service_token:
         mailing_lists: Abonnent:innen von Mailinglisten
 

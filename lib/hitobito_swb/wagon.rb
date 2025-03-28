@@ -22,6 +22,11 @@ module HitobitoSwb
     config.to_prepare do
       # extend application classes here
       Group.include Swb::Group
+      Person.include Swb::Person
+
+      PeopleController.prepend Swb::PeopleController
+
+      PeopleHelper.prepend Swb::PeopleHelper
     end
 
     initializer "swb.add_settings" do |_app|
