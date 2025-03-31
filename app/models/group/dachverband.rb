@@ -22,6 +22,8 @@ class Group::Dachverband < ::Group
     DachverbandKontakte
   ]
 
+  self.event_types = [Event, Event::Course]
+
   ### ROLES
 
   class Administrator < ::Role
