@@ -23,7 +23,7 @@ describe "groups/_attrs_swb.html.haml" do
 
   let(:dom) { Capybara::Node::Simple.new(@rendered) }
 
-  [:brb, :bc_thun, :tausendeins_freizeit_ag].each do |key|
+  [:brb, :bc_thun].each do |key|
     context key do
       let(:group) { groups(key) }
 
@@ -43,7 +43,7 @@ describe "groups/_attrs_swb.html.haml" do
     end
   end
 
-  [:root, :geschaeftsstelle].each do |key|
+  [:root, :geschaeftsstelle, :tausendeins_freizeit_ag].each do |key|
     context key do
       let(:group) { groups(key) }
 

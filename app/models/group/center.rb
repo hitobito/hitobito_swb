@@ -7,7 +7,6 @@
 
 class Group::Center < ::Group
   self.layer = true
-  self.used_attributes += [:yearly_budget, :founded_on]
 
   ### ROLES
 

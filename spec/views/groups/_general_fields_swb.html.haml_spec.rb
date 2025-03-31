@@ -17,7 +17,7 @@ describe "groups/_general_fields_swb.html.haml" do
     allow(view).to receive(:f).and_return(form_builder)
   end
 
-  [:brb, :bc_thun, :tausendeins_freizeit_ag].each do |key|
+  [:brb, :bc_thun].each do |key|
     context key do
       let(:group) { groups(key) }
 
@@ -31,7 +31,7 @@ describe "groups/_general_fields_swb.html.haml" do
     end
   end
 
-  [:root, :geschaeftsstelle].each do |key|
+  [:root, :geschaeftsstelle, :tausendeins_freizeit_ag].each do |key|
     context key do
       let(:group) { groups(key) }
 
