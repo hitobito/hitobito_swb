@@ -353,6 +353,9 @@ en:
         remove_participant_role: ""
       service_token:
         mailing_lists: ""
+      group:
+        founded_on: ""
+        yearly_budget: ""
 
   event:
     application_market:
