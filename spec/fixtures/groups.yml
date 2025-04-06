@@ -130,6 +130,7 @@ bc_bern:
   rgt: 14
   name: BC Bern
   type: Group::Verein
+  ts_code: 2ac1e54f-2409-456e-b96b-c2eb0a98390c
 bc_bern_vorstand:
   parent: bc_bern
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"

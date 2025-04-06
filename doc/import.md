@@ -3,7 +3,6 @@
 SWB liefert XLSX files, die via rake file tasks nach CSV konvertiert und
 anschliessend einzeln importiert wurden.
 
-
 Vorausgesetzt folgenden Eingangsdaten sind  im wagon vorhanden:
 
     ❯ tree data/
@@ -44,16 +43,14 @@ Dabei werden Personen, Gruppen und Rollen angelegt, siehe auch:
 Siehe dazu `lib/task.swb.rake` und `app/domain/swb_import`
 
 
+## Gruppen Struktur
 
-## Anpassungen
+Die Gruppenstruktur in hitobito entspricht nicht 1:1 der Struktur in
+Tournamement Software. Gruppen in TS reduzieren sich auf Layer in hitobito.
+Wenn Rollen aus TS nach hitobito übernommen werden, werden diese allerdings
+zumeist an Untergruppen aus dem Layer (Vorstand, Geschäftsstelle, Mitlieder)
+gehängt.
 
-Struktur in hitobito entspricht nicht der Struktur in Tournamement Software.
-Dort hängt die Rolle direkt Verein, wir haben unter Gruppen (Mitglieder,
-Kontakte, usw) die in TS nicht existieren.
-
-
-Ist das so gewollt? Wie gehen mir damit um, dass nur manche Gruppen in TS sind.
-Was bedeutet das fürs API?  (zb Spieler Gruppe ist nicht in TS nur Verein)
 
 Weiter Punkte
 
@@ -63,6 +60,11 @@ Weiter Punkte
 - [ ] Neue Rollen in hitobito festlegen anhand von TS Rollen (liste mit ihnen fixieren)
 
 
+
+## Fragen / Anfragen an TS
+
+- mitglieder referenzieren eine groupnumber (entspricht der number aus den clubs) -> als ts_club_number importieren (used_attributes)
+- regionen scheinen keine nummer zu haben (via used_attributes)
 
 
 ## CSV STATS

@@ -145,7 +145,7 @@ module SwbImport
   Role = Entity.new(*ROLE_MAPPINGS.map(&:second), keyword_init: true) do
     self.mappings = ROLE_MAPPINGS
     self.model_class = ::Role
-    self.non_assignable_attrs = [:role, :spieler_role_type, :groupnumber]
+    self.non_assignable_attrs = [:role, :spieler_role_type, :groupcode]
     self.ident_keys = [:person_id, :group_id, :type]
 
     def build
@@ -162,25 +162,34 @@ module SwbImport
 
     def person = people[person_id] || person_id
 
-    def region_ids = @@region_ids ||= Group::Region.pluck(:short_name, :id).to_h
+    def find_group_id = group_ids.dig(groupcode.downcase, find_role_type&.sti_name)
 
     def find_role_type = SPIELER_LIZENZ_MAPPING[spieler_role_type] || ROLE_TYPE_MAPPING[role]
 
     # This builds a complex map in the form of layer_id => { role_type => group_id }
-    # We need that because roles are assigned on layer in input data
-    def group_ids = @@group_ids ||= Group.order(:id)
-      .pluck(:layer_group_id, :type, :id)
-      .group_by(&:shift).transform_values { |list| list.flat_map { |g, id| g.constantize.role_types.map(&:to_s).product([id]) }.to_h }
+    # We need that because TS only knows layers, but we move roles to groups inside the layer
+    def group_ids = @@group_ids ||= layer_groups_role_map.map do |key, values|
+      [key, values.merge(layer_child_groups_role_map[key].to_h)]
+    end.to_h
+
+    def layer_child_groups_role_map = @@layer_child_groups_role_map ||= Group.joins(:parent)
+      .where.not("groups.id = groups.layer_group_id")
+      .pluck("parents_groups.ts_code, groups.type, groups.id")
+      .then { |scope| build_role_group_id_map(scope) }
+
+    def layer_groups_role_map = @@layer_groups_role_map ||= Group
+      .where("id = layer_group_id").pluck("ts_code, type, id")
+      .then { |scope| build_role_group_id_map(scope) }
+
+    # expects arrays in the form of [ts_code, type, id]
+    def build_role_group_id_map(relation) = relation
+      .group_by(&:shift)
+      .transform_values { |list|
+        list.flat_map { |type, id| type.constantize.role_types.map(&:to_s).product([id]) }.to_h
+      }
 
     def people = @@people ||= ::Person.pluck(:id, :first_name, :last_name)
       .map { |id, first_name, last_name| [id, "#{first_name} #{last_name} (#{id})"] }
       .to_h
-
-    # cater for mixed values in groupnumber field
-    def find_group_id
-      return region_ids[groupnumber] if groupnumber[/[a-zA-Z]/]
-
-      group_ids.dig(Integer(groupnumber), find_role_type&.sti_name)
-    end
   end
 end

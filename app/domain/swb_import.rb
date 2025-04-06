@@ -27,7 +27,7 @@ module SwbImport
 
   CLUB_MAPPINGS = [
     [:Code, :ts_code],
-    [:Number, :id, ->(v) { Integer(v) }],
+    [:Number, :ts_club_number, ->(v) { Integer(v) }], # ist das wirklich
     [:Name, :name],
     [:Parentnumber, :parent_number],
     [:Contact, :contact],
@@ -63,7 +63,7 @@ module SwbImport
 
   ROLE_MAPPINGS = [
     [:memberid, :person_id, ->(v) { Integer(v) }],
-    [:groupnumber, :groupnumber],
+    [:groupcode, :groupcode],
     [:role, :role],
     [:TypeName, :spieler_role_type],
     [:startdate, :start_on, :parse_date],
@@ -72,9 +72,10 @@ module SwbImport
 
   # For mapping specific role types
   ROLE_TYPE_MAPPING = [
-    ["", ""],
-    ["Behindertensport", "Aktiv"],  # 1 auf SB
-    ["Center Contact", Group::Center::Kontakt], # 11 auf VereinsEbene ( zb. BC Thun)
+    ["", ""], # TODO - remove
+    ["Behindertensport", "Aktiv"],
+
+    # Verein
     ["Club Ausbildung", Group::VereinKontakte::Kontakt], # 111 auf Vereinsebenen ->
     ["Club Breitensport", Group::VereinKontakte::Kontakt],
     ["Club Ethik", Group::VereinKontakte::Kontakt],
@@ -82,8 +83,8 @@ module SwbImport
     ["Club Finanzen", Group::VereinVorstand::Kassier],
     ["Club Interclub", Group::VereinKontakte::Kontakt],
     ["Club J&S-Coach", Group::VereinMitglieder::JSCoach],
-    ["Club Kommunikation", Group::VereinKontakte::Adressverwaltung],
-    ["Club Kontaktadresse", Group::VereinMitglieder::JSCoach],
+    ["Club Kommunikation", Group::Verein::Adressverwaltung],
+    ["Club Kontaktadresse", Group::Verein::Adressverwaltung],
     ["Club Leistungssport", Group::VereinKontakte::Kontakt],
     ["Club Marketing/Sponsoring", Group::VereinKontakte::Kontakt],
     ["Club Nachwuchs", Group::VereinKontakte::Kontakt],
@@ -95,27 +96,35 @@ module SwbImport
 
     ["Club Vize-Präsident", Group::VereinVorstand::Vizepraesident],
     ["Clubtrainer", Group::VereinMitglieder::Clubtrainer],
-    # ["Ehemalige ZV-Mitglieder", ""],
-    # ["Ehemaliger Mitarbeiter", ""],
-    # ["Ehrenmitglieder", "Passiv"],
-    # ["Nationalmannschaftstrainer", ""],
+
+    # Region
     ["Region Breitensport", Group::RegionKontakte::Kontakt],
     ["Region Finanzen", Group::RegionVorstand::Kassier],
     ["Region Interclub", Group::RegionKontakte::Kontakt],
     ["Region J&S-Coach", Group::RegionMitglieder::JSCoach],
-    ["Region Kontaktadresse", Group::RegionKontakte::Kontakt],
-    ["Region Marketing/Sponsoring", Group::RegionKontakte::Kontakt],
-    # ["Region Nachwuchs", Group::RegionVorstand::Administration],
+    ["Region Kontaktadresse", Group::Region::Adressverwaltung],
+    ["Region Marketing/Sponsoring", Group::Region::Adressverwaltung],
+    ["Region Nachwuchs", Group::RegionKontakte::Kontakt],
     ["Region Präsident", Group::RegionVorstand::Praesident],
     ["Swiss Badminton Breitensport", Group::DachverbandKontakte::Kontakt],
     ["Swiss Badminton Interclub", Group::DachverbandKontakte::Kontakt],
     ["Swiss Badminton J&S-Coach", Group::DachverbandMitglieder::JSCoach],
-    ["Swiss Badminton Kommunikation", Group::DachverbandKontakte::Kontakt],
-    ["Swiss Badminton Kontaktadresse", Group::DachverbandKontakte::Kontakt],
+    ["Swiss Badminton Kommunikation", Group::Dachverband::Adressverwaltung],
+    ["Swiss Badminton Kontaktadresse", Group::Dachverband::Adressverwaltung],
     ["Swiss Badminton Nachwuchs", Group::DachverbandKontakte::Kontakt],
     ["Swiss Badminton Präsident", Group::DachverbandVorstand::Praesident],
+
+    # Center
+    ["Center Contact", Group::Center::Administrator], # 11 auf VereinsEbene ( zb. BC Thun)
+
     ["Turnierorganisator", Group::DachverbandKontakte::Kontakt],
-    ["ZV-Mitglieder", Group::DachverbandKontakte::Kontakt]
+
+    # Dachverband
+    ["ZV-Mitglieder", Group::DachverbandKontakte::Kontakt],
+    ["Ehemalige ZV-Mitglieder", Group::DachverbandKontakte::Kontakt],
+    ["Ehemaliger Mitarbeiter", Group::DachverbandKontakte::Kontakt],
+    ["Ehrenmitglieder", Group::DachverbandMitglieder::Passivmitglied],
+    ["Nationalmannschaftstrainer", Group::DachverbandMitglieder::Aktivmitglied]
   ].to_h
 
   SPIELER_LIZENZ_MAPPING = [

@@ -33,6 +33,7 @@ module SwbImport
       import(Role, from: :mitglieder)
 
       rebuild_groups
+      delete_empty_groups
       seed_static_people
     end
 
@@ -43,8 +44,6 @@ module SwbImport
       import_root_seeds
       import_dachverband
     end
-
-    def rebuild_groups = Group.rebuild!
 
     def create_search_columns = SearchColumnBuilder.new.run
 
@@ -69,6 +68,10 @@ module SwbImport
     def import_root_seeds = %w[custom_contents root].each { |file| load Rails.root.join("db/seeds/#{file}.rb") }
 
     def import_dachverband = load Wagons.all.find("swb").first.root.join("db/seeds/groups.rb")
+
+    def rebuild_groups = Group.rebuild!
+
+    def delete_empty_groups = Group.where.not("layer_group_id = groups.id").where.missing(:roles).delete_all
 
     def seed_static_people
       load(Rails.root.join("db", "seeds", "support", "person_seeder.rb"))
