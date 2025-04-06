@@ -10,7 +10,7 @@
 #																			#
 # It's strongly recommended that you check this file into your version control system.									# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_28_124658) do												ActiveRecord::Schema[7.1].define(version: 2025_03_28_124658) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_28_124658) do											     |	ActiveRecord::Schema[7.1].define(version: 2025_04_06_183951) do
   # These are extensions that must be enabled in order to support this database										  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"																  enable_extension "plpgsql"
 
@@ -462,6 +462,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_28_124658) do												Activ
 																		     >	    t.uuid "ts_code"
 																		     >	    t.date "founded_on"
 																		     >	    t.string "yearly_budget"
+																		     >	    t.integer "ts_club_number"
     t.index ["layer_group_id"], name: "index_groups_on_layer_group_id"											    t.index ["layer_group_id"], name: "index_groups_on_layer_group_id"
     t.index ["lft", "rgt"], name: "index_groups_on_lft_and_rgt"												    t.index ["lft", "rgt"], name: "index_groups_on_lft_and_rgt"
     t.index ["parent_id"], name: "index_groups_on_parent_id"												    t.index ["parent_id"], name: "index_groups_on_parent_id"

@@ -7,7 +7,7 @@
 
 class Group::Verein < ::Group
   self.layer = true
-  self.used_attributes += [:yearly_budget, :founded_on]
+  self.used_attributes += [:yearly_budget, :founded_on, :ts_club_number]
 
   children VereinVorstand,
     VereinMitglieder,
@@ -26,7 +26,7 @@ class Group::Verein < ::Group
   end
 
   class Adressverwaltung < ::Role
-    self.permissions = [:group_and_below_full]
+    self.permissions = [:layer_and_below_full, :contact_data]
   end
 
   class Leitung < ::Role

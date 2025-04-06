@@ -5,11 +5,10 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Group::RegionKontakte < ::Group
-  ### ROLES
-
-  class Kontakt < ::Role
+class AddTsClubNumberToGroups < ActiveRecord::Migration[7.1]
+  def change
+    change_table(:groups) do |t|
+      t.integer :ts_club_number
+    end
   end
-
-  roles Kontakt
 end

@@ -51,7 +51,7 @@ describe SwbImport::Entity do
     end
 
     it "reads default attributes" do
-      expect(group.id).to eq 1
+      expect(group.ts_club_number).to eq 1
       expect(group).to be_valid
     end
 
@@ -122,6 +122,46 @@ describe SwbImport::Entity do
     it "does infer language from country" do
       csv["Language"] = "Französisch (SUI)"
       expect(person.language).to eq "fr"
+    end
+  end
+
+  describe SwbImport::Role do
+    subject(:role) { described_class.from(csv.symbolize_keys).model }
+
+    let(:person) { people(:leader) }
+
+    before do
+      csv["groupcode"] = "2ac1e54f-2409-456e-b96b-c2eb0a98390c"
+      csv["role"] = "Spieler"
+      csv["memberid"] = person.id
+      csv["TypeName"] = "Junior (U17-U19)"
+      csv["startdate"] = "2022-01-01"
+      csv["endate"] = "9999-12-31T23:59:59"
+    end
+
+    it "reads common attributes" do
+      expect(role.person_id).to eq person.id
+      expect(role.ts_code).to be_nil
+      expect(role.start_on).to eq Date.new(2022, 1, 1)
+      expect(role.end_on).to be_nil
+      expect(role).to be_valid
+    end
+
+    it "reads player role" do
+      expect(role.group).to eq groups(:bc_bern_mitglieder)
+      expect(role.type).to eq "Group::VereinMitglieder::JuniorU19"
+    end
+
+    it "reads vorstand role" do
+      csv["role"] = "Club Präsident"
+      csv["TypeName"] = nil
+      expect(role.group).to eq groups(:bc_bern_vorstand)
+      expect(role.type).to eq "Group::VereinVorstand::Praesident"
+    end
+
+    it "reads role end_date" do
+      csv["endate"] = "2025-01-01"
+      expect(role.end_on).to eq Date.new(2025, 1, 1)
     end
   end
 end

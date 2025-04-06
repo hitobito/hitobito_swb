@@ -61,6 +61,10 @@ de:
         one: "Administrator:in"
         description: "Administrator:innen"
 
+      group/dachverband/adressverwaltung:
+        one: "Adressverwalter:in"
+        description: "Adressverwalter:innen"
+
       group/dachverband_vorstand/praesident:
         one: "Präsident:in"
         description: "Präsident:innen"
@@ -199,7 +203,7 @@ de:
         one: "J&S Coach"
         description: "J&S Coaches"
 
-      group/region_kontakte/adressverwaltung:
+      group/region/adressverwaltung:
         one: "Adressverwalter:in"
         description: "Adressverwalter:innen"
 
@@ -315,7 +319,7 @@ de:
         one: "J&S Coach"
         description: "J&S Coaches"
 
-      group/verein_kontakte/adressverwaltung:
+      group/verein/adressverwaltung:
         one: "Adressverwalter:in"
         description: "Adressverwalter:innen"
 

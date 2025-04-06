@@ -7,6 +7,7 @@
 
 class Group::Center < ::Group
   self.layer = true
+  self.used_attributes += [:ts_club_number]
 
   ### ROLES
 

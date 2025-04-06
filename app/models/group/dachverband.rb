@@ -31,5 +31,9 @@ class Group::Dachverband < ::Group
     self.permissions = [:admin, :layer_and_below_full, :impersonation]
   end
 
-  roles Administrator
+  class Adressverwaltung < ::Role
+    self.permissions = [:layer_and_below_full, :contact_data]
+  end
+
+  roles Administrator, Adressverwaltung
 end
