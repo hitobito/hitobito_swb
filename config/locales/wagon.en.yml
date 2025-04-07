@@ -345,17 +345,23 @@ en:
               other: ""
 
     attributes:
+
       contact_account:
         predefined_labels:
           landline: ""
           mobile: ""
       event/role:
         remove_participant_role: ""
-      service_token:
-        mailing_lists: ""
       group:
         founded_on: ""
         yearly_budget: ""
+      person:
+        nationality: ""
+        nationality_badminton: ""
+        ts_code: ""
+        ts_last_sync: ""
+      service_token:
+        mailing_lists: ""
 
   event:
     application_market:
