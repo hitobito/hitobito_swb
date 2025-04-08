@@ -13,4 +13,9 @@ module Swb::PeopleHelper
   def format_person_nationality_badminton(person)
     ISO3166::Country[person.nationality_badminton]&.translations&.dig(I18n.locale.to_s)
   end
+
+  def format_person_ts_code(person)
+    link_to(person.ts_code,
+      "#{Ts::Config.web_host}/organization/member.aspx?mid=#{person.ts_code}")
+  end
 end

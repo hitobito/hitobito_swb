@@ -8,7 +8,7 @@
 module Ts
   class Config
     FILE_PATH = HitobitoSwb::Wagon.root.join("config", "tournament_software.yml")
-    KEYS = %w[host username password organization].freeze
+    KEYS = %w[host web_host username password organization].freeze
 
     class << self
       def exist?

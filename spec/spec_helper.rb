@@ -27,6 +27,7 @@ RSpec.configure do |config|
   config.before do
     allow(Ts::Config).to receive(:exist?).and_return(true)
     allow(Ts::Config).to receive(:host).and_return("https://ts.example.com")
+    allow(Ts::Config).to receive(:web_host).and_return("https://web-ts.example.com")
     allow(Ts::Config).to receive(:username).and_return("user")
     allow(Ts::Config).to receive(:password).and_return("s3cure")
     allow(Ts::Config).to receive(:organization).and_return("b7755b71-068e-44e7-a061-ab26991fd6be")
