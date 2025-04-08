@@ -566,6 +566,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_28_124658) do
     t.text "invalid_recipient_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "recipient_ids"
     t.index ["creator_id"], name: "index_invoice_lists_on_creator_id"
     t.index ["group_id"], name: "index_invoice_lists_on_group_id"
     t.index ["receiver_type", "receiver_id"], name: "index_invoice_lists_on_receiver_type_and_receiver_id"
@@ -952,14 +953,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_28_124658) do
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.index ["group_id", "group_type"], name: "index_people_filters_on_group_id_and_group_type"
-  end
-
-  create_table "people_relations", id: :serial, force: :cascade do |t|
-    t.integer "head_id", null: false
-    t.integer "tail_id", null: false
-    t.string "kind", null: false
-    t.index ["head_id"], name: "index_people_relations_on_head_id"
-    t.index ["tail_id"], name: "index_people_relations_on_tail_id"
   end
 
   create_table "person_add_request_ignored_approvers", id: :serial, force: :cascade do |t|
