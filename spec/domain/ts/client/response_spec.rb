@@ -9,7 +9,10 @@ require "spec_helper"
 describe Ts::Client::Response do
   let(:entity_class) { Ts::Entity::OrganizationGroup }
 
-  subject(:response) { described_class.new(entity_class, double("http_response", body: file_fixture("ts/#{file}.xml").read, code: 200)) }
+  let(:code) { 200 }
+  let(:http_response) { double("http_response", body: file_fixture("ts/#{file}.xml").read, code:) }
+
+  subject(:response) { described_class.new(entity_class, http_response) }
 
   describe "sucessful response" do
     let(:file) { :group_update_response }
@@ -52,8 +55,31 @@ describe Ts::Client::Response do
       expect(response).not_to be_success
     end
 
-    it "it populates entity" do
+    it "populates entity" do
       expect(response.entity).to be_blank
+    end
+
+    it "populates error" do
+      expect(response.error.code).to eq 404
+      expect(response.error.message).to match "is not a parent group of a club"
+    end
+  end
+
+  describe "respond with http but to xml application error" do
+    let(:file) { :role_update_404_response }
+    let(:code) { 404 }
+
+    it "is not a success" do
+      expect(response).not_to be_success
+    end
+
+    it "populates entity" do
+      expect(response.entity).to be_blank
+    end
+
+    it "populates error" do
+      expect(response.error.code).to eq 404
+      expect(response.error.message).to match "Not Found"
     end
   end
 end

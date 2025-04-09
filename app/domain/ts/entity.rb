@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_swb.
 #
 class Ts::Entity < Data
-  SUCCESS_CODE = 0
+  APP_SUCCESS_CODE = 0
 
   class << self
     def path_name = element_name.gsub("Organization", "")
@@ -15,10 +15,14 @@ class Ts::Entity < Data
 
     def build(attrs = {}) = new(**members.product([nil]).to_h.merge(attrs))
 
-    def from_xml(xml)
+    def from_xml(xml, clear_whitespace: false)
       values = Hash.from_xml(xml).dig(name.demodulize).transform_keys(&:underscore).symbolize_keys
         .transform_values { |v| v.to_s[/^\d+$/] ? v.to_i : v }
-        .transform_values { |v| v.is_a?(String) ? v.strip : v }
+        .transform_values do |v|
+          next v unless v.is_a?(String)
+          v.strip.then { |v| clear_whitespace ? v.gsub(/\s+/, " ") : v }
+        end
+
       build(**values.slice(*members).compact_blank)
     end
   end
@@ -36,7 +40,7 @@ class Ts::Entity < Data
   def xml_options = {root: self.class.element_name, skip_types: true, skip_instruct: true}
 
   Error = Ts::Entity.define(:code, :message) do
-    def success? = code == SUCCESS_CODE
+    def success? = code == APP_SUCCESS_CODE
   end
 
   Organization = Ts::Entity.define(:code, :name, :root_group_code)
