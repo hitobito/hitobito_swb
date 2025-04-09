@@ -12,8 +12,9 @@ describe Role do
     let(:group) { groups(:brb_vorstand) }
     let(:person) { people(:admin) }
     let(:ts_code) { Faker::Internet.uuid }
+    let(:created_at) { Time.zone.local(2025, 4, 9, 10, 12) }
 
-    subject(:role) { Fabricate.build(Group::RegionVorstand::Praesident.sti_name, group:, person:, ts_code:, id: 123) }
+    subject(:role) { Fabricate.build(Group::RegionVorstand::Praesident.sti_name, group:, person:, ts_code:, id: 123, created_at:) }
 
     subject(:ts_model) { role.ts_model }
 
@@ -32,6 +33,26 @@ describe Role do
         organization_group_code: "89c11ebb-5266-4c0a-8d2a-1cc3a05ff06a",
         organization_role_code: "60c707b5-4020-44f0-8219-0349cc941342"
       )
+    end
+
+    describe "dates" do
+      it "uses created_at for start_date" do
+        expect(ts_model.start_date).to eq "2025-04-09T10:12:00+02:00"
+      end
+
+      it "uses start_on for start_date if set" do
+        role.start_on = Date.new(2025, 4, 10)
+        expect(ts_model.start_date).to eq "2025-04-10T00:00:00+02:00"
+      end
+
+      it "uses default_value for end_date" do
+        expect(ts_model.end_date).to eq "9999-12-31T23:59:59+01:00"
+      end
+
+      it "uses end_on for end_date if set" do
+        role.end_on = Date.new(2025, 5, 10)
+        expect(ts_model.end_date).to eq "2025-05-10T00:00:00+02:00"
+      end
     end
 
     describe Group::Dachverband::Administrator do

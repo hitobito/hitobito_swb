@@ -8,12 +8,14 @@
 module Swb::Role
   extend ActiveSupport::Concern
 
+  OPEN_END = Time.zone.parse("9999-12-31T23:59:59")
+
   prepended do
     self.ts_entity = Ts::Entity::OrganizationMembership
     self.ts_mapping = {
       code: :ts_code,
-      start_date: -> { (start_on || Time.zone.now)&.iso8601 },
-      end_date: -> { (end_on || 100.years.from_now)&.iso8601 },
+      start_date: -> { (start_on&.midnight || created_at).iso8601 },
+      end_date: -> { (end_on&.midnight || OPEN_END).iso8601 },
       organization_group_code: -> { group&.ts_code || group&.parent_ts_code },
       organization_role_code: -> { Ts::ROLE_MAPPINGS.index_by(&:type)[type]&.code },
       organization_membership_code: -> { Ts::MEMBERSHIP_MAPPINGS.index_by(&:type)[type]&.code }
@@ -31,7 +33,7 @@ module Swb::Role
 
   private
 
-  def ts_interface = @ts_interface ||= Ts::Interface.new(self, nesting: ts_code ? nil : person.ts_model)
+  def ts_interface = @ts_interface ||= Ts::Interface.new(self, nesting: person.ts_model)
 
   def ts_client = @ts_client ||= Ts::Client.new(ts_entity, nesting: person.ts_model)
 end

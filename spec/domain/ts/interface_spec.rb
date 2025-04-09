@@ -76,4 +76,30 @@ describe Ts::Interface, :tests_ts_api do
       expect(latest_log.payload.dig("response", "xml")).to eq error_response_body
     end
   end
+
+  describe "nesting" do
+    let(:group) { groups(:brb_vorstand) }
+    let(:person) { people(:admin) }
+    let(:ts_code) { Faker::Internet.uuid }
+
+    let(:model) { Fabricate(Group::RegionVorstand::Praesident.sti_name, group:, person:, id: 123, ts_code:) }
+
+    subject(:interface) { described_class.new(model, nesting: person.ts_model) }
+
+    it "#post uses parent entity in path" do
+      stub_api_request(:post, "/Person/#{person.ts_code}/Membership", request_body: model.ts_model.to_xml, response_body: sucessfull_response_body(model.ts_model))
+      expect do
+        operation = interface.post
+        expect(operation).to be_success
+      end.to change { model.ts_logs.count }.by(1)
+    end
+
+    it "#put uses parent entity in path and not ts_code of model" do
+      stub_api_request(:put, "/Person/#{person.ts_code}/Membership", request_body: model.ts_model.to_xml, response_body: sucessfull_response_body(model.ts_model))
+      expect do
+        operation = interface.put
+        expect(operation).to be_success
+      end.to change { model.ts_logs.count }.by(1)
+    end
+  end
 end
