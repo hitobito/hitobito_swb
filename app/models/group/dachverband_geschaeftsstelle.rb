@@ -9,16 +9,93 @@ class Group::DachverbandGeschaeftsstelle < ::Group
   ### ROLES
 
   class Geschaeftsfuehrer < ::Role
-    self.permissions = [:layer_and_below_full, :admin, :contact_data, :approve_applications, :finance]
-  end
-
-  class Kassier < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data, :finance]
+    self.permissions = [:layer_and_below_full, :admin, :contact_data, :approve_applications]
   end
 
   class Mitglied < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data, :approve_applications]
+    self.permissions = [:group_read]
   end
 
-  roles Geschaeftsfuehrer, Kassier, Mitglied
+  class JSCoach < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Interclub < ::Role
+    self.permissions = [:layer_and_below_full, :contact_data, :impersonation]
+  end
+
+  class EventTurnier < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class ChefAusbildung < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class ChefBreitensport < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class ChefLeistungssport < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class ChefNachwuchs < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class BeauftragterEthik < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class Umfeldmanager < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class VerantwortungAntidoping < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class VerantwortungClubmanagement < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class VerantwortungFinanzen < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation, :finance]
+  end
+
+  class VerantwortungKommunikation < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class VerantwortungMarketing < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class VerantwortungMedical < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  class VerantwortungPersonal < ::Role
+    self.permissions = [:layer_and_below_full, :impersonation]
+  end
+
+  roles Geschaeftsfuehrer,
+    Mitglied,
+    JSCoach,
+    Interclub,
+    EventTurnier,
+    BeauftragterEthik,
+    Umfeldmanager,
+    ChefAusbildung,
+    ChefBreitensport,
+    ChefLeistungssport,
+    ChefNachwuchs,
+    VerantwortungAntidoping,
+    VerantwortungClubmanagement,
+    VerantwortungFinanzen,
+    VerantwortungKommunikation,
+    VerantwortungMarketing,
+    VerantwortungMedical,
+    VerantwortungPersonal
 end

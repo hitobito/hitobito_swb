@@ -5,27 +5,21 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Group::RegionKontakte < ::Group
-  ### ROLES
-
-  class Kontakt < ::Role
+class Group::DachverbandSpieler < ::Group
+  class Aktivmitglied < ::Role
   end
 
-  class Medien < ::Role
+  class Passivmitglied < ::Role
   end
 
-  class Partner < ::Role
+  class JuniorU15 < ::Role
   end
 
-  class Ehrenmitglied < ::Role
+  class JuniorU19 < ::Role
   end
 
-  class Volunteer < ::Role
+  class Lizenz < ::Role
   end
 
-  roles Kontakt,
-    Medien,
-    Partner,
-    Ehrenmitglied,
-    Volunteer
+  roles Aktivmitglied, Passivmitglied, JuniorU15, JuniorU19, Lizenz
 end

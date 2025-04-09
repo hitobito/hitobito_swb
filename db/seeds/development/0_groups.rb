@@ -33,4 +33,7 @@ Group::Center.seed_once(:name, parent_id: root.id, name: "1001 Freizeit AG")
 Group::Center.seed_once(:name, parent_id: root.id, name: "Aarsports GmbH")
 Group::Center.seed_once(:name, parent_id: root.id, name: "Tivoli Sportcenter Worblaufen")
 
+Group::CenterUnaffilliated.seed_once(:name, parent_id: root.id, name: "CIS Sportcenter")
+Group::CenterUnaffilliated.seed_once(:name, parent_id: root.id, name: "Gesundheitspark Thalwil")
+
 Group.rebuild!

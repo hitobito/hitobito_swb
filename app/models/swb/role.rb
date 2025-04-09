@@ -11,14 +11,16 @@ module Swb::Role
   OPEN_END = Time.zone.parse("9999-12-31T23:59:59")
 
   prepended do
+    delegate :ts_role, :ts_membership, to: :model_name
+
     self.ts_entity = Ts::Entity::OrganizationMembership
     self.ts_mapping = {
       code: :ts_code,
       start_date: -> { (start_on&.midnight || created_at).iso8601 },
       end_date: -> { (end_on&.midnight || OPEN_END).iso8601 },
       organization_group_code: -> { group&.ts_code || group&.parent_ts_code },
-      organization_role_code: -> { Ts::ROLE_MAPPINGS.index_by(&:type)[type]&.code },
-      organization_membership_code: -> { Ts::MEMBERSHIP_MAPPINGS.index_by(&:type)[type]&.code }
+      organization_role_code: -> { ts_role&.code },
+      organization_membership_code: -> { ts_membership&.code }
     }
   end
 

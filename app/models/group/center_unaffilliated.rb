@@ -5,16 +5,16 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Group::DachverbandGremium < ::Group
+class Group::CenterUnaffilliated < ::Group
+  self.layer = true
+
   ### ROLES
 
-  class Leitung < ::Role
-    self.permissions = [:group_and_below_full, :contact_data]
+  class Direktion < ::Role
+    self.permissions = [:group_full, :contact_data]
   end
 
-  class Mitglied < ::Role
-    self.permissions = [:group_and_below_read]
-  end
+  roles Direktion
 
-  roles Leitung, Mitglied
+  def parent_ts_code = Ts::CENTER_PARENT_CODE
 end

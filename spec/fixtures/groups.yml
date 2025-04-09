@@ -15,7 +15,7 @@ root:
   zip_code: 4692
   town: Charleenhagen
   ts_code: 368f12eb-1eed-48a0-9381-fa7d42fdcf00
-root_vorstand:
+root_vs:
   parent: root
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
   lft: 78
@@ -27,7 +27,7 @@ root_vorstand:
   housenumber: 96b
   zip_code: 3819
   town: Neu Marius
-root_geschaeftsstelle:
+root_gs:
   parent: root
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
   lft: 70
@@ -39,18 +39,6 @@ root_geschaeftsstelle:
   housenumber: 89b
   zip_code: 8086
   town: Presslerhagen
-root_mitglieder:
-  parent: root
-  layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
-  lft: 74
-  rgt: 75
-  name: Mitglieder
-  type: Group::DachverbandMitglieder
-  email: janeth_larkin@hitobito.example.com
-  street: Im Bühl
-  housenumber: 78c
-  zip_code: 9926
-  town: Moormannscheid
 root_kontakte:
   parent: root
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:root)%>"
@@ -80,13 +68,13 @@ brb_vorstand:
   name: Vorstand
   type: Group::RegionVorstand
   ts_code: 873e858d-a75d-42fb-83ff-62f09605074e
-brb_mitglieder:
+brb_spieler:
   parent: brb
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
   lft: 33
   rgt: 34
-  name: Mitglieder
-  type: Group::RegionMitglieder
+  name: Spieler
+  type: Group::RegionSpieler
 brb_kontakte:
   parent: brb
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:brb)%>"
@@ -109,13 +97,13 @@ bvn_vorstand:
   rgt: 68
   name: Vorstand
   type: Group::RegionVorstand
-bvn_mitglieder:
+bvn_spieler:
   parent: bvn
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
   lft: 57
   rgt: 58
-  name: Mitglieder
-  type: Group::RegionMitglieder
+  name: Spieler
+  type: Group::RegionSpieler
 bvn_kontakte:
   parent: bvn
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bvn)%>"
@@ -138,13 +126,13 @@ bc_bern_vorstand:
   rgt: 13
   name: Vorstand
   type: Group::VereinVorstand
-bc_bern_mitglieder:
+bc_bern_spieler:
   parent: bc_bern
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
   lft: 10
   rgt: 11
-  name: Mitglieder
-  type: Group::VereinMitglieder
+  name: Spieler
+  type: Group::VereinSpieler
 bc_bern_kontakte:
   parent: bc_bern
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_bern)%>"
@@ -166,13 +154,13 @@ bc_thun_vorstand:
   rgt: 29
   name: Vorstand
   type: Group::VereinVorstand
-bc_thun_mitglieder:
+bc_thun_spieler:
   parent: bc_thun
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
   lft: 26
   rgt: 27
-  name: Mitglieder
-  type: Group::VereinMitglieder
+  name: Spieler
+  type: Group::VereinSpieler
 bc_thun_kontakte:
   parent: bc_thun
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_thun)%>"
@@ -194,13 +182,13 @@ bc_koeniz_vorstand:
   rgt: 21
   name: Vorstand
   type: Group::VereinVorstand
-bc_koeniz_mitglieder:
+bc_koeniz_spieler:
   parent: bc_koeniz
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
   lft: 18
   rgt: 19
-  name: Mitglieder
-  type: Group::VereinMitglieder
+  name: Spieler
+  type: Group::VereinSpieler
 bc_koeniz_kontakte:
   parent: bc_koeniz
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_koeniz)%>"
@@ -222,13 +210,13 @@ bc_olten_vorstand:
   rgt: 45
   name: Vorstand
   type: Group::VereinVorstand
-bc_olten_mitglieder:
+bc_olten_spieler:
   parent: bc_olten
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
   lft: 42
   rgt: 43
-  name: Mitglieder
-  type: Group::VereinMitglieder
+  name: Spieler
+  type: Group::VereinSpieler
 bc_olten_kontakte:
   parent: bc_olten
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_olten)%>"
@@ -250,13 +238,13 @@ bc_prattel_vorstand:
   rgt: 53
   name: Vorstand
   type: Group::VereinVorstand
-bc_pratteln_mitglieder:
+bc_pratteln_spieler:
   parent: bc_pratteln
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
   lft: 50
   rgt: 51
-  name: Mitglieder
-  type: Group::VereinMitglieder
+  name: Spieler
+  type: Group::VereinSpieler
 bc_pratteln_kontakte:
   parent: bc_pratteln
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:bc_pratteln)%>"
@@ -278,13 +266,13 @@ sc_uni_basel_vorstand:
   rgt: 65
   name: Vorstand
   type: Group::VereinVorstand
-sc_uni_basel_mitglieder:
+sc_uni_basel_spieler:
   parent: sc_uni_basel
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"
   lft: 62
   rgt: 63
-  name: Mitglieder
-  type: Group::VereinMitglieder
+  name: Spieler
+  type: Group::VereinSpieler
 sc_uni_basel_kontakte:
   parent: sc_uni_basel
   layer_group_id: "<%=ActiveRecord::FixtureSet.identify(:sc_uni_basel)%>"

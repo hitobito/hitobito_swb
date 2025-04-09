@@ -11,5 +11,21 @@ class Group::VereinKontakte < ::Group
   class Kontakt < ::Role
   end
 
-  roles Kontakt
+  class Medien < ::Role
+  end
+
+  class Partner < ::Role
+  end
+
+  class Ehrenmitglied < ::Role
+  end
+
+  class Volunteer < ::Role
+  end
+
+  roles Kontakt,
+    Medien,
+    Partner,
+    Ehrenmitglied,
+    Volunteer
 end

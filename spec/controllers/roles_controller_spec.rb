@@ -11,8 +11,8 @@ describe RolesController do
   before { sign_in(people(:admin)) }
 
   describe "ts write jobs" do
-    let(:vorstand) { groups(:root_vorstand) }
-    let(:mitglieder) { groups(:root_mitglieder) }
+    let(:gs) { groups(:root_gs) }
+    let(:interclub) { "Group::DachverbandGeschaeftsstelle::Interclub" }
 
     let(:person) { people(:admin) }
     let(:delayed_jobs) { Delayed::Job.where("handler ilike '%Ts::WriteJob%'") }
@@ -20,7 +20,7 @@ describe RolesController do
     context "POST#create" do
       it "enqueues if managed" do
         expect do
-          post :create, params: {group_id: vorstand.id, role: {type: "Group::DachverbandVorstand::Praesident", person_id: person.id}}
+          post :create, params: {group_id: gs.id, role: {type: interclub, person_id: person.id}}
         end.to change { Role.count }.by(1)
           .and change { delayed_jobs.count }.by(1)
       end
@@ -28,30 +28,30 @@ describe RolesController do
       it "enqueues two if managed and person not yet managed" do
         person.update!(ts_code: nil)
         expect do
-          post :create, params: {group_id: vorstand.id, role: {type: "Group::DachverbandVorstand::Praesident", person_id: person.id}}
+          post :create, params: {group_id: gs.id, role: {type: interclub, person_id: person.id}}
         end.to change { Role.count }.by(1)
           .and change { delayed_jobs.count }.by(2)
+      end
+
+      it "does not enqueue if invalid" do
+        expect do
+          post :create, params: {group_id: gs.id, role: {type: interclub, person_id: person.id, start_on: Date.tomorrow, end_on: Date.yesterday}}
+        end.to not_change { Role.count }
+          .and not_change { delayed_jobs.count }
       end
 
       it "does not enqueue if not managed" do
         person.update!(ts_code: nil)
         expect do
-          post :create, params: {group_id: mitglieder.id, role: {type: "Group::DachverbandMitglieder::Aktivmitglied", person_id: person.id}}
+          post :create, params: {group_id: gs.id, role: {type: "Group::DachverbandGeschaeftsstelle::JSCoach", person_id: person.id}}
         end.to change { Role.count }
-          .and not_change { delayed_jobs.count }
-      end
-
-      it "does not enqueue if invalid" do
-        expect do
-          post :create, params: {group_id: vorstand.id, role: {type: "Group::DachverbandVorstand::Praesident", person_id: person.id, start_on: Date.tomorrow, end_on: Date.yesterday}}
-        end.to not_change { Role.count }
           .and not_change { delayed_jobs.count }
       end
     end
 
     context "PUT#update" do
       let(:leader) { roles(:leader) }
-      let(:role) { Fabricate(Group::DachverbandVorstand::Praesident.sti_name, person: people(:leader), group: vorstand, ts_code: Faker::Internet.uuid) }
+      let(:role) { Fabricate(interclub, person: people(:leader), group: gs, ts_code: Faker::Internet.uuid) }
 
       it "enqueues one if managed and person already managed" do
         leader.person.update(ts_code: Faker::Internet.uuid)

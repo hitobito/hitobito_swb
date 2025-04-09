@@ -28,13 +28,13 @@ describe PeopleController do
 
   describe "ts write jobs" do
     context "PUT#update" do
-      let(:group) { groups(:root_vorstand) }
+      let(:group) { groups(:brb) }
 
       let(:delayed_jobs) { Delayed::Job.where("handler ilike '%Ts::WriteJob%'") }
 
       it "enqueues if managed" do
         person = Fabricate(:person, ts_code: Faker::Internet.uuid)
-        Fabricate(Group::DachverbandVorstand::Praesident.sti_name, group:, person:, ts_code: Faker::Internet.uuid)
+        Fabricate(Group::Region::Interclub.sti_name, group:, person:, ts_code: Faker::Internet.uuid)
 
         expect do
           put :update, params: {group_id: group.id, id: person.id, person: {first_name: "test"}}
@@ -44,7 +44,7 @@ describe PeopleController do
 
       it "does not enqueue if not managed" do
         person = Fabricate(:person)
-        Fabricate(Group::DachverbandVorstand::Vorstandsmitglied.sti_name, group:, person:)
+        Fabricate(Group::Region::JSCoach.sti_name, group:, person:)
         expect do
           put :update, params: {group_id: group.id, id: person.id, person: {first_name: "test"}}
         end.to change { person.reload.first_name }.to("test")
@@ -53,7 +53,7 @@ describe PeopleController do
 
       it "does not enqueue if changed params are irrelevant" do
         person = Fabricate(:person, ts_code: Faker::Internet.uuid)
-        Fabricate(Group::DachverbandVorstand::Praesident.sti_name, group:, person:, ts_code: Faker::Internet.uuid)
+        Fabricate(Group::Region::Interclub.sti_name, group:, person:, ts_code: Faker::Internet.uuid)
         expect do
           put :update, params: {group_id: group.id, id: person.id, person: {family_members_attributes: {"1" => {kind: :sibling, other_id: people(:leader)}}}}
         end.to change { person.family_members.count }

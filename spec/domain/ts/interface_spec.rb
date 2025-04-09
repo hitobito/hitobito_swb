@@ -51,6 +51,11 @@ describe Ts::Interface, :tests_ts_api do
     expect(latest_log.payload.dig("response", "xml")).to eq sucessfull_response_body(model.ts_model)
   end
 
+  it "#put raises when no ts_code is set" do
+    model.update!(ts_code: nil)
+    expect { interface.put }.to raise_error "Need ts_code"
+  end
+
   describe "errors" do
     it "logs application level error" do
       stub_api_request(:post, "/Group", request_body: model.ts_model.to_xml, status: 422, response_body: error_response_body)
@@ -100,6 +105,11 @@ describe Ts::Interface, :tests_ts_api do
         operation = interface.put
         expect(operation).to be_success
       end.to change { model.ts_logs.count }.by(1)
+    end
+
+    it "#put raises when parent entity has no code" do
+      person.update(ts_code: nil)
+      expect { interface.put }.to raise_error "Need nested model ts_code"
     end
   end
 end

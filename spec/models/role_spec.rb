@@ -9,29 +9,20 @@ require "spec_helper"
 
 describe Role do
   describe "ts_model" do
-    let(:group) { groups(:brb_vorstand) }
+    let(:group) { groups(:brb) }
     let(:person) { people(:admin) }
     let(:ts_code) { Faker::Internet.uuid }
     let(:created_at) { Time.zone.local(2025, 4, 9, 10, 12) }
 
-    subject(:role) { Fabricate.build(Group::RegionVorstand::Praesident.sti_name, group:, person:, ts_code:, id: 123, created_at:) }
+    subject(:role) { Fabricate.build(Group::Region::Interclub.sti_name, group:, person:, ts_code:, id: 123, created_at:) }
 
     subject(:ts_model) { role.ts_model }
 
     it "maps standard attributes" do
       expect(ts_model).to have_attributes(
         code: ts_code,
-        organization_group_code: "873e858d-a75d-42fb-83ff-62f09605074e",
-        organization_role_code: "60c707b5-4020-44f0-8219-0349cc941342"
-      )
-    end
-
-    it "uses parent ts_code if ts_code on group is blank" do
-      group.ts_code = nil
-      expect(ts_model).to have_attributes(
-        code: ts_code,
         organization_group_code: "89c11ebb-5266-4c0a-8d2a-1cc3a05ff06a",
-        organization_role_code: "60c707b5-4020-44f0-8219-0349cc941342"
+        organization_role_code: "d1e0e7eb-293f-455f-93d0-f5c02615a42f"
       )
     end
 
@@ -75,12 +66,15 @@ describe Role do
       end
     end
 
-    describe Group::DachverbandMitglieder::JSCoach do
+    describe Group::Region::Interclub do
       subject(:model_name) { described_class.model_name }
 
+      let(:group) { groups(:brb) }
+      let(:ts_code) { Faker::Internet.uuid }
+
       it "has ts_role" do
-        expect(model_name.ts_role.name).to eq "Swiss Badminton J&S-Coach"
-        expect(model_name.ts_role.code).to eq "48dfaccf-30fa-487e-83e6-1161083452f1"
+        expect(model_name.ts_role.name).to eq "Region Interclub"
+        expect(model_name.ts_role.code).to eq "d1e0e7eb-293f-455f-93d0-f5c02615a42f"
       end
 
       it "has no ts_membership" do
@@ -88,15 +82,15 @@ describe Role do
       end
 
       it "has ts suffix in model name" do
-        expect(model_name.human).to eq "J&S Coach (TS)"
+        expect(model_name.human).to eq "Interclub (TS)"
       end
 
       it "has ts suffix in model instance #to_s" do
-        expect(Fabricate.build(described_class.sti_name).to_s).to eq "J&S Coach (TS - wartet)"
+        expect(Fabricate.build(described_class.sti_name).to_s).to eq "Interclub (TS - wartet)"
       end
 
       it "has ts suffix in model instance #to_s" do
-        role = Fabricate(described_class.sti_name, group: groups(:root_mitglieder), ts_code: Faker::Internet.uuid)
+        role = Fabricate(described_class.sti_name, group:, ts_code:)
         HitobitoLogEntry.create!(
           category: :ts,
           level: :info,
@@ -106,11 +100,11 @@ describe Role do
         )
         expect(role.ts_latest_log).to be_present
         expect(role.ts_log).to be_present
-        expect(role.to_s).to eq "J&S Coach (TS - erfolgreich - 04.04 09:42)"
+        expect(role.to_s).to eq "Interclub (TS - erfolgreich - 04.04 09:42)"
       end
 
       it "has ts failed suffix in model instance #to_s" do
-        role = Fabricate(described_class.sti_name, group: groups(:root_mitglieder), ts_code: Faker::Internet.uuid)
+        role = Fabricate(described_class.sti_name, group:, ts_code:)
         HitobitoLogEntry.create!(
           category: :ts,
           level: :error,
@@ -120,20 +114,31 @@ describe Role do
         )
         expect(role.ts_latest_log).to be_present
         expect(role.ts_log).to be_present
-        expect(role.to_s).to eq "J&S Coach (TS - fehlgeschlagen - 04.04 09:42)"
+        expect(role.to_s).to eq "Interclub (TS - fehlgeschlagen - 04.04 09:42)"
       end
     end
 
-    describe Group::VereinMitglieder::Lizenz do
-      subject(:model_name) { described_class.model_name }
+    describe Group::VereinSpieler::Lizenz do
+      subject(:model) { Fabricate.build(described_class.sti_name, group: groups(:bc_bern_spieler), created_at: Time.zone.now) }
 
-      it "has ts_role" do
-        expect(model_name.ts_role)
+      it "uses membership code and maps group from layer" do
+        expect(model.ts_model).to have_attributes(
+          organization_group_code: groups(:bc_bern).ts_code,
+          organization_membership_code: "abcd4c8a-eafe-44d3-a009-8afbc8f34500"
+        )
       end
 
-      it "has ts_membership" do
-        expect(model_name.ts_membership.name).to eq "Lizenz"
-        expect(model_name.ts_membership.code).to eq "abcd4c8a-eafe-44d3-a009-8afbc8f34500"
+      describe "model_name" do
+        subject(:model_name) { described_class.model_name }
+
+        it "has ts_role" do
+          expect(model_name.ts_role)
+        end
+
+        it "has ts_membership" do
+          expect(model_name.ts_membership.name).to eq "Lizenz"
+          expect(model_name.ts_membership.code).to eq "abcd4c8a-eafe-44d3-a009-8afbc8f34500"
+        end
       end
     end
   end

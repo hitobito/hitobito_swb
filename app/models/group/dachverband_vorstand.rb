@@ -16,9 +16,9 @@ class Group::DachverbandVorstand < ::Group
     self.permissions = [:layer_full, :contact_data]
   end
 
-  class Vorstandsmitglied < ::Role
+  class Mitglied < ::Role
     self.permissions = [:layer_full, :contact_data]
   end
 
-  roles Praesident, Vizepraesident, Vorstandsmitglied
+  roles Praesident, Vizepraesident, Mitglied
 end

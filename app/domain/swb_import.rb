@@ -70,73 +70,66 @@ module SwbImport
     [:endate, :end_on, ->(v) { Date.parse(v) rescue nil unless v.starts_with?("9999") }] # rubocop:disable Style/RescueModifier
   ]
 
-  # For mapping specific role types
   ROLE_TYPE_MAPPING = [
-    ["", ""], # TODO - remove
-    ["Behindertensport", "Aktiv"],
-
-    # Verein
-    ["Club Ausbildung", Group::VereinKontakte::Kontakt], # 111 auf Vereinsebenen ->
-    ["Club Breitensport", Group::VereinKontakte::Kontakt],
-    ["Club Ethik", Group::VereinKontakte::Kontakt],
-    ["Club Events/Turniere", Group::VereinMitglieder::Turnierorganisator],
-    ["Club Finanzen", Group::VereinVorstand::Kassier],
-    ["Club Interclub", Group::VereinKontakte::Kontakt],
-    ["Club J&S-Coach", Group::VereinMitglieder::JSCoach],
-    ["Club Kommunikation", Group::Verein::Adressverwaltung],
-    ["Club Kontaktadresse", Group::Verein::Adressverwaltung],
-    ["Club Leistungssport", Group::VereinKontakte::Kontakt],
-    ["Club Marketing/Sponsoring", Group::VereinKontakte::Kontakt],
-    ["Club Nachwuchs", Group::VereinKontakte::Kontakt],
-    ["Club Nationalliga", Group::VereinKontakte::Kontakt],
+    ["Club Ausbildung", Group::Verein::ChefAusbildung],
+    ["Club Breitensport", Group::Verein::ChefBreitensport],
+    ["Club Ethik", Group::Verein::BeauftragterEthik],
+    ["Club Events/Turniere", Group::Verein::EventTurnier],
+    ["Club Finanzen", Group::Verein::VerantwortungFinanzen],
+    ["Club Interclub", Group::Verein::Interclub],
+    ["Club J&S-Coach", Group::Verein::JSCoach],
+    ["Club Kommunikation", Group::Verein::VerantwortungKommunikation],
+    ["Club Kontaktadresse", Group::VereinVorstand::Sekretaer],
+    ["Club Leistungssport", Group::Verein::ChefLeistungssport],
+    ["Club Marketing/Sponsoring", Group::Verein::VerantwortungMarketing],
+    ["Club Nachwuchs", Group::Verein::ChefNachwuchs],
+    ["Club Nationalliga", Group::Verein::Nationalliga],
     ["Club Offical", Group::VereinKontakte::Kontakt],
-    ["Club Präsident", Group::VereinVorstand::Praesident],
-    ["Club Schiedsrichter", Group::VereinKontakte::Kontakt],
-    ["Club Sport Integrity", Group::VereinKontakte::Kontakt],
-
+    ["Club Präsident", [Group::VereinVorstand::Praesident, Group::Center::Direktion, Group::CenterUnaffilliated::Direktion]],
+    ["Club Schiedsrichter", Group::Verein::Schiedsrichter],
+    ["Club Sport Integrity", Group::Verein::VerantwortungAntidoping],
     ["Club Vize-Präsident", Group::VereinVorstand::Vizepraesident],
-    ["Clubtrainer", Group::VereinMitglieder::Clubtrainer],
+    ["Clubtrainer", Group::Verein::Clubtrainer],
 
-    # Region
-    ["Region Breitensport", Group::RegionKontakte::Kontakt],
-    ["Region Finanzen", Group::RegionVorstand::Kassier],
-    ["Region Interclub", Group::RegionKontakte::Kontakt],
-    ["Region J&S-Coach", Group::RegionMitglieder::JSCoach],
-    ["Region Kontaktadresse", Group::Region::Adressverwaltung],
-    ["Region Marketing/Sponsoring", Group::Region::Adressverwaltung],
-    ["Region Nachwuchs", Group::RegionKontakte::Kontakt],
+    ["Region Breitensport", Group::Region::ChefBreitensport],
+    ["Region Finanzen", Group::Region::VerantwortungFinanzen],
+    ["Region Interclub", Group::Region::Interclub],
+    ["Region J&S-Coach", Group::Region::JSCoach],
+    ["Region Kontaktadresse", Group::RegionKontakte::Kontakt],
+    ["Region Marketing/Sponsoring", Group::Region::VerantwortungMarketing],
+    ["Region Nachwuchs", Group::Region::ChefNachwuchs],
     ["Region Präsident", Group::RegionVorstand::Praesident],
-    ["Swiss Badminton Breitensport", Group::DachverbandKontakte::Kontakt],
-    ["Swiss Badminton Interclub", Group::DachverbandKontakte::Kontakt],
-    ["Swiss Badminton J&S-Coach", Group::DachverbandMitglieder::JSCoach],
-    ["Swiss Badminton Kommunikation", Group::Dachverband::Adressverwaltung],
-    ["Swiss Badminton Kontaktadresse", Group::Dachverband::Adressverwaltung],
-    ["Swiss Badminton Nachwuchs", Group::DachverbandKontakte::Kontakt],
+
+    ["Center Contact", Group::Center::Direktion],
+
+    ["Swiss Badminton Breitensport", Group::DachverbandGeschaeftsstelle::ChefBreitensport],
+    ["Swiss Badminton Interclub", Group::DachverbandGeschaeftsstelle::Interclub],
+    ["Swiss Badminton J&S-Coach", Group::DachverbandGeschaeftsstelle::JSCoach],
+    ["Swiss Badminton Kommunikation", Group::DachverbandGeschaeftsstelle::VerantwortungKommunikation],
+    ["Swiss Badminton Kontaktadresse", Group::DachverbandGeschaeftsstelle::Mitglied],
+    ["Swiss Badminton Nachwuchs", Group::DachverbandGeschaeftsstelle::ChefNachwuchs],
     ["Swiss Badminton Präsident", Group::DachverbandVorstand::Praesident],
 
-    # Center
-    ["Center Contact", Group::Center::Administrator], # 11 auf VereinsEbene ( zb. BC Thun)
-
-    ["Turnierorganisator", Group::DachverbandKontakte::Kontakt],
-
-    # Dachverband
+    ["Behindertensport", Group::DachverbandGeschaeftsstelle::BeauftragterEthik],
+    ["Ehemalige ZV-Mitglieder", Group::DachverbandKontakte::EhemaligesZvmitglied],
+    ["Ehemaliger Mitarbeiter", Group::DachverbandKontakte::EhemaligerMitarbeiter],
+    ["Ehrenmitglieder", Group::DachverbandKontakte::Ehrenmitglied],
+    ["Nationalmannschaftstrainer", Group::DachverbandGeschaeftsstelle::ChefLeistungssport],
     ["ZV-Mitglieder", Group::DachverbandKontakte::Kontakt],
-    ["Ehemalige ZV-Mitglieder", Group::DachverbandKontakte::Kontakt],
-    ["Ehemaliger Mitarbeiter", Group::DachverbandKontakte::Kontakt],
-    ["Ehrenmitglieder", Group::DachverbandMitglieder::Passivmitglied],
-    ["Nationalmannschaftstrainer", Group::DachverbandMitglieder::Aktivmitglied]
+    ["Turnierorganisator", Group::Verein::EventTurnier]
   ].to_h
 
   SPIELER_LIZENZ_MAPPING = [
-    ["Junior (U17-U19)", Group::VereinMitglieder::JuniorU19],
-    ["Lizenz", Group::VereinMitglieder::Lizenz],
-    ["Passiv", Group::VereinMitglieder::Passivmitglied],
-    ["Aktiv", Group::VereinMitglieder::Aktivmitglied],
-    ["Junior (up to U15)", Group::VereinMitglieder::JuniorU15],
-    ["Lizenz NO ranking", Group::VereinMitglieder::LizenzNoRanking],
-    ["Vereinigungsspieler", Group::VereinMitglieder::Vereinigungsspieler],
-    ["Lizenz Plus", Group::VereinMitglieder::LizenzPlus],
-    ["Junior Lizenz Plus (U19)", Group::VereinMitglieder::LizenzPlusJunior]
+    ["Aktiv", [Group::DachverbandSpieler::Aktivmitglied, Group::RegionSpieler::Aktivmitglied, Group::VereinSpieler::Aktivmitglied]],
+    ["Passiv", [Group::DachverbandSpieler::Passivmitglied, Group::RegionSpieler::Passivmitglied, Group::VereinSpieler::Passivmitglied]],
+    ["Junior (U17-U19)", [Group::DachverbandSpieler::JuniorU19, Group::RegionSpieler::JuniorU19, Group::VereinSpieler::JuniorU19]],
+    ["Junior (up to U15)", [Group::DachverbandSpieler::JuniorU15, Group::RegionSpieler::JuniorU15, Group::VereinSpieler::JuniorU15]],
+
+    ["Lizenz", Group::VereinSpieler::Lizenz],
+    ["Lizenz NO ranking", Group::VereinSpieler::LizenzNoRanking],
+    ["Vereinigungsspieler", Group::VereinSpieler::Vereinigungsspieler],
+    ["Lizenz Plus", Group::VereinSpieler::LizenzPlus],
+    ["Junior Lizenz Plus (U19)", Group::VereinSpieler::LizenzPlusJunior]
   ].to_h
 
   require_relative "swb_import/entity"

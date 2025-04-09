@@ -9,13 +9,13 @@ class Group::Region < ::Group
   self.layer = true
   self.used_attributes += [:yearly_budget, :founded_on]
   children RegionVorstand,
-    RegionMitglieder,
+    RegionSpieler,
     RegionKontakte,
     Verein
 
   self.default_children = [
     RegionVorstand,
-    RegionMitglieder,
+    RegionSpieler,
     RegionKontakte
   ]
 
@@ -23,13 +23,84 @@ class Group::Region < ::Group
 
   ### ROLES
 
-  class Administrator < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data, :finance]
+  class JSCoach < ::Role
+    self.permissions = [:group_read]
   end
 
-  class Adressverwaltung < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data]
+  class Interclub < ::Role
+    self.permissions = [:layer_and_below_full]
   end
 
-  roles Administrator, Adressverwaltung
+  class EventTurnier < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class ChefAusbildung < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class ChefBreitensport < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class ChefLeistungssport < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class ChefNachwuchs < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class BeauftragterEthik < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Umfeldmanager < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungAntidoping < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungClubmanagement < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungFinanzen < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungKommunikation < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungMarketing < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungMedical < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungPersonal < ::Role
+    self.permissions = [:group_read]
+  end
+
+  roles JSCoach,
+    Interclub,
+    EventTurnier,
+    BeauftragterEthik,
+    Umfeldmanager,
+    ChefAusbildung,
+    ChefBreitensport,
+    ChefLeistungssport,
+    ChefNachwuchs,
+    VerantwortungAntidoping,
+    VerantwortungClubmanagement,
+    VerantwortungFinanzen,
+    VerantwortungKommunikation,
+    VerantwortungMarketing,
+    VerantwortungMedical,
+    VerantwortungPersonal
 end

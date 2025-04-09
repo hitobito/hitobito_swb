@@ -65,17 +65,17 @@ describe SwbImport::Entity do
       expect(group).to be_kind_of(Group::Verein)
     end
 
-    it "uses Group::Center under Dachverband if short_name is CENT" do
+    it "uses Group::Center under Dachverband if short_name is CENT and name does start with '.'" do
       csv["Parentnumber"] = "CENT"
+      csv["Name"] = ".Dummy BK"
       expect(group.parent).to eq groups(:root)
       expect(group).to be_kind_of(Group::Center)
     end
 
-    it "can save contact data" do
-      csv["Contact"] = "My Member"
-      expect(wrapper.save).to eq true
-      expect(group.reload).to be_present
-      expect(group.contact).to eq people(:member)
+    it "uses Group::CenterUnaffilliated under Dachverband if short_name is CENT and name does not start with '.'" do
+      csv["Parentnumber"] = "CENT"
+      expect(group.parent).to eq groups(:root)
+      expect(group).to be_kind_of(Group::CenterUnaffilliated)
     end
   end
 
@@ -147,11 +147,6 @@ describe SwbImport::Entity do
       expect(role).to be_valid
     end
 
-    it "reads player role" do
-      expect(role.group).to eq groups(:bc_bern_mitglieder)
-      expect(role.type).to eq "Group::VereinMitglieder::JuniorU19"
-    end
-
     it "reads vorstand role" do
       csv["role"] = "Club Präsident"
       csv["TypeName"] = nil
@@ -162,6 +157,23 @@ describe SwbImport::Entity do
     it "reads role end_date" do
       csv["endate"] = "2025-01-01"
       expect(role.end_on).to eq Date.new(2025, 1, 1)
+    end
+
+    it "reads verein player role" do
+      expect(role.group).to eq groups(:bc_bern_spieler)
+      expect(role.type).to eq "Group::VereinSpieler::JuniorU19"
+    end
+
+    it "reads region player role" do
+      csv["groupcode"] = "89c11ebb-5266-4c0a-8d2a-1cc3a05ff06a"
+      expect(role.group).to eq groups(:brb_spieler)
+      expect(role.type).to eq "Group::RegionSpieler::JuniorU19"
+    end
+
+    it "assigns nil group is not found" do
+      csv["groupcode"] = "does-not-exist"
+      expect(role.group).to be_nil
+      expect(role.type).to be_nil
     end
   end
 end

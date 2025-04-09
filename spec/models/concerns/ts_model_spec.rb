@@ -66,12 +66,12 @@ describe TsModel do
   end
 
   describe Role do
-    let(:group) { groups(:root_vorstand) }
+    let(:group) { groups(:root_gs) }
     let(:person) { people(:admin) }
     let(:now) { Time.zone.local(2025, 4, 1, 16, 10) }
     let(:nesting) { person.ts_model }
 
-    subject(:model) { Fabricate.build(Group::DachverbandVorstand::Praesident.sti_name, group:, person:, ts_code:, id: 1, created_at: now) }
+    subject(:model) { Fabricate.build(Group::DachverbandGeschaeftsstelle::Interclub.sti_name, group:, person:, ts_code:, id: 1, created_at: now) }
 
     before { travel_to(now) }
 
@@ -83,7 +83,7 @@ describe TsModel do
           start_date: "2025-04-01T16:10:00+02:00",
           end_date: "9999-12-31T23:59:59+01:00",
           organization_group_code: group.parent_ts_code,
-          organization_role_code: "4c0a8178-035a-415b-933b-468a4a4cedae"
+          organization_role_code: "3ebe4b1c-274f-43c2-97ed-193cd93c414c"
         }
       }
     end
