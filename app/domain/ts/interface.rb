@@ -15,26 +15,34 @@ class Ts::Interface
     @nesting = nesting
   end
 
-  def get
-    client.get(ts_model.code).entity
-  end
-
-  def put
-    code = ts_model.code unless nested?
-    request(:put, code, ts_model.to_xml)
-  end
-
   def post
     request(:post, ts_model.to_xml) do |response|
       model.update!(ts_code: response.entity.code) if response.success?
     end
   end
 
+  def get
+    fail "Need ts_code" unless ts_code?
+    client.get(ts_model.code).entity
+  end
+
+  def put
+    fail "Need ts_code" unless ts_code?
+    fail "Need nested model ts_code" if nested? && nesting.code.blank?
+
+    code = ts_model.code unless nested?
+    request(:put, code, ts_model.to_xml)
+  end
+
   def delete
+    fail "Need ts_code" unless ts_code?
+
     request(:delete, ts_model.code)
   end
 
   private
+
+  def ts_code? = model.ts_code.present?
 
   def nested? = @nesting.present?
 

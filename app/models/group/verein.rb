@@ -10,32 +10,109 @@ class Group::Verein < ::Group
   self.used_attributes += [:yearly_budget, :founded_on, :ts_club_number]
 
   children VereinVorstand,
-    VereinMitglieder,
+    VereinSpieler,
     VereinKontakte
 
   self.default_children = [
     VereinVorstand,
-    VereinMitglieder,
+    VereinSpieler,
     VereinKontakte
   ]
-
   ### ROLES
 
-  class Administrator < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data]
+  class JSCoach < ::Role
+    self.permissions = [:group_read]
   end
 
-  class Adressverwaltung < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data]
+  class Interclub < ::Role
+    self.permissions = [:layer_and_below_full]
   end
 
-  class Leitung < ::Role
-    self.permissions = [:group_and_below_full, :contact_data]
+  class EventTurnier < ::Role
+    self.permissions = [:group_read]
   end
 
-  class Aktivmitglied < ::Role
-    self.permissions = [:group_and_below_read]
+  class ChefAusbildung < ::Role
+    self.permissions = [:group_read]
   end
 
-  roles Administrator, Adressverwaltung, Leitung, Aktivmitglied
+  class ChefBreitensport < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class ChefLeistungssport < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class ChefNachwuchs < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class BeauftragterEthik < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Umfeldmanager < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungAntidoping < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungClubmanagement < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungFinanzen < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungKommunikation < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungMarketing < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungMedical < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class VerantwortungPersonal < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Clubtrainer < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Nationalliga < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Schiedsrichter < ::Role
+    self.permissions = [:group_read]
+  end
+
+  roles JSCoach,
+    Interclub,
+    EventTurnier,
+    BeauftragterEthik,
+    Umfeldmanager,
+    ChefAusbildung,
+    ChefBreitensport,
+    ChefLeistungssport,
+    ChefNachwuchs,
+    VerantwortungAntidoping,
+    VerantwortungClubmanagement,
+    VerantwortungFinanzen,
+    VerantwortungKommunikation,
+    VerantwortungMarketing,
+    VerantwortungMedical,
+    VerantwortungPersonal,
+    Clubtrainer,
+    Nationalliga,
+    Schiedsrichter
 end

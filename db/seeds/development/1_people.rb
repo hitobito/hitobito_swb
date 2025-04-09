@@ -12,9 +12,14 @@ class SwbPersonSeeder < PersonSeeder
 
   def amount(role_type)
     case role_type.name.demodulize
-    when 'Member' then 5
+    when /(member|lizenz|spieler)/i then (1..3).to_a.sample
+    when /junior/i then (1..5).to_a.sample
     else 1
     end
+  end
+
+  def seed_accounts(...)
+    super if [true, false, false].sample
   end
 
 end

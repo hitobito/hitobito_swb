@@ -21,11 +21,16 @@ de:
         one: Geschäftsstelle
         other: Geschäftsstellen
 
-      group/dachverband_gremium:
-        one: Gremium/Projektgruppe
-        other: Gremien/Projektgruppen
+      group/dachverband_technischoffiziell:
+        one: Technisch / Offiziell
+        other: Technisch / Offizielle
 
-      group/dachverband_mitglieder: Mitglieder
+      group/dachverband_kommission:
+        one: Kommission
+        other: Kommissionen
+
+      group/dachverband_spieler: Spieler
+      group/dachverband_kader: Kader
 
       group/dachverband_kontakte: Kontakte
 
@@ -37,11 +42,13 @@ de:
         one: Vorstand
         other: Vorstände
 
-      group/region_mitglieder: Mitglieder
+      group/region_spieler: Spieler
 
       group/region_kontakte: Kontakte
 
-      group/center: Center
+      group/center: Center (Mitglied)
+
+      group/center_unaffilliated: Center
 
       group/verein:
         one: Verein
@@ -51,7 +58,7 @@ de:
         one: Vorstand
         other: Vorstände
 
-      group/verein_mitglieder: Mitglieder
+      group/verein_spieler: Spieler
 
       group/verein_kontakte: Kontakte
 
@@ -59,179 +66,363 @@ de:
 
       group/dachverband/administrator:
         one: "Administrator:in"
-        description: "Administrator:innen"
-
-      group/dachverband/adressverwaltung:
-        one: "Adressverwalter:in"
-        description: "Adressverwalter:innen"
+        other: "Administrator:innen"
 
       group/dachverband_vorstand/praesident:
         one: "Präsident:in"
-        description: "Präsident:innen"
+        other: "Präsident:innen"
 
       group/dachverband_vorstand/vizepraesident:
         one: "Vizepräsident:in"
-        description: "Vizepräsident:innen"
+        other: "Vizepräsident:innen"
 
-      group/dachverband_vorstand/vorstandsmitglied:
+      group/dachverband_vorstand/mitglied:
         one: Vorstandsmitglied
-        description: Vorstandsmitglieder
+        other: Vorstandsmitglieder
+
+      group/dachverband_geschaeftsstelle/beauftragter_ethik:
+        one: "Beauftragte:r Ethik"
+        other: "Beauftragte Ethik"
 
       group/dachverband_geschaeftsstelle/geschaeftsfuehrer:
         one: "Geschäftsführer:in"
-        description: "Geschäftsführer:innen"
+        other: "Geschäftsführer:innen"
 
-      group/dachverband_geschaeftsstelle/kassier:
-        one: "Kassier:in"
-        description: "Kassier:innen"
+      group/dachverband_geschaeftsstelle/event_turnier:
+        one: Event/Turnier
+        other: Event/Turniere
+
+      group/dachverband_geschaeftsstelle/chef_ausbildung:
+        one: Chef:in Ausbildung
+        other: Chef:innen Ausbildung
+
+      group/dachverband_geschaeftsstelle/chef_breitensport:
+        one: Chef:in Breitensport
+        other: Chef:innen Breitensport
+
+      group/dachverband_geschaeftsstelle/chef_leistungssport:
+        one: Chef:in Leistungssport
+        other: Chef:innen Leistungssport
+
+      group/dachverband_geschaeftsstelle/chef_nachwuchs:
+        one: Chef:in Nachwuchs
+        other: Chef:innen Nachwuchs
+
+      group/dachverband_geschaeftsstelle/interclub:
+        one: Interclub
+        other: Interclub
 
       group/dachverband_geschaeftsstelle/mitglied:
         one: Mitglied
-        description: Mitglieder
+        other: Mitglieder
 
-      group/dachverband_gremium/leitung:
+      group/dachverband_geschaeftsstelle/js_coach:
+        one: "J&S Coach"
+        other: "J&S Coaches"
+
+      group/dachverband_geschaeftsstelle/umfeldmanager:
+        one: "Umfeldmanager:in"
+        other: "Umfeldmanager:innen"
+
+      group/dachverband_geschaeftsstelle/verantwortung_antidoping:
+        one: "Verantwortliche:r Antidoping"
+        other: "Verantwortliche Antidoping"
+
+      group/dachverband_geschaeftsstelle/verantwortung_clubmanagement:
+        one: "Verantwortliche:r Club Management"
+        other: "Verantwortliche Club Managemen"
+
+      group/dachverband_geschaeftsstelle/verantwortung_finanzen:
+        one: "Verantwortliche:r Finanzen"
+        other: "Verantwortliche Finanzen"
+
+      group/dachverband_geschaeftsstelle/verantwortung_kommunikation:
+        one: "Verantwortliche:r Kommunikation"
+        other: "Verantwortliche Kommunikation"
+
+      group/dachverband_geschaeftsstelle/verantwortung_marketing:
+        one: "Verantwortliche:r Marketing"
+        other: "Verantwortliche Marketing"
+
+      group/dachverband_geschaeftsstelle/verantwortung_medical:
+        one: "Verantwortliche:r Medical"
+        other: "Verantwortliche Medical"
+
+      group/dachverband_geschaeftsstelle/verantwortung_personal:
+        one: "Verantwortliche:r Personal"
+        other: "Verantwortliche Personal"
+
+      group/dachverband_technischoffiziell/schiedsrichter:
+        one: "Schiedsrichter:in"
+        other: "Schiedsrichter:innen"
+
+      group/dachverband_technischoffiziell/linienrichter:
+        one: "Linienrichter:in"
+        other: "Linienrichter:innen"
+
+      group/dachverband_technischoffiziell/referee:
+        one: "Referee"
+        other: "Referees"
+
+      group/dachverband_kommission/leitung:
         one: "Leiter:in"
         description: "Leiter:innen"
 
-      group/dachverband_gremium/mitglied:
+      group/dachverband_kommission/mitglied:
         one: Mitglied
         description: Mitglieder
 
-      group/dachverband_mitglieder/aktivmitglied:
+      group/dachverband_spieler/aktivmitglied:
         one: Aktivmitglied
-        description: Aktivmitglieder
+        other: Aktivmitglieder
 
-      group/dachverband_mitglieder/passivmitglied:
+      group/dachverband_spieler/passivmitglied:
         one: Passivmitglied
-        description: Passivmitglieder
+        other: Passivmitglieder
 
-      group/dachverband_mitglieder/junior_u15:
+      group/dachverband_spieler/junior_u15:
         one: "Junior:in (bis U-15)"
-        description: "Junior:innen (bis U-15)"
+        other: "Junior:innen (bis U-15)"
 
-      group/dachverband_mitglieder/junior_u19:
+      group/dachverband_spieler/junior_u19:
         one: "Junior:in (U17-U19)"
-        description: "Junior:innen (U17-U19)"
+        other: "Junior:innen (U17-U19)"
 
-      group/dachverband_mitglieder/lizenz:
+      group/dachverband_spieler/lizenz:
         one: Lizenz
-        description: Lizenzen
+        other: Lizenzen
 
-      group/dachverband_mitglieder/vereinigungsspieler:
-        one: Vereinigungsspieler:in
-        description: Vereinigungsspieler:innen
+      group/dachverband_kader/athlet:
+        one: "Athlet:in"
+        other: "Athlet:innen"
 
-      group/dachverband_mitglieder/lizenz_plus_junior:
-        one: "Lizenz Plus Junior:in (U19)"
-        description: "Lizenz Plus Junior:innen (U19)"
+      group/dachverband_kader/trainer:
+        one: "Trainer:in"
+        other: "Trainer:innen"
 
-      group/dachverband_mitglieder/lizenz_plus:
-        one: Lizenz Plus
-        description: Lizenzen Plus
+      group/dachverband_kontakte/kontakt:
+        one: Kontakt
+        other: Kontakte
 
-      group/dachverband_mitglieder/shuttletime: Shuttletime
+      group/dachverband_kontakte/ehemaliges_zvmitglied:
+        one: Ehemaliges ZV-Mitglied
+        other: Ehemaliges ZV-Mitglieder
 
-      group/dachverband_mitglieder/lizenz_no_ranking:
-        one: Lizenz NO ranking
-        description: Lizenzen NO ranking
+      group/dachverband_kontakte/ehemaliger_mitarbeiter:
+        one: Ehemalige:r Mitarbeiter:in
+        other: Ehemalige Mitarbeiter:innen
 
-      group/dachverband_mitglieder/js_coach:
+      group/dachverband_kontakte/ehrenmitglied:
+        one: Ehrenmitglied
+        other: Ehrenmitglieder
+
+      group/dachverband_kontakte/shuttletime_tutor:
+        one: Shuttletime-Tutor
+        other: Shuttletime-Tutoren
+
+      group/dachverband_kontakte/goenner:
+        one: Gönner:in
+        other: Gönner:innen
+
+      group/dachverband_kontakte/medien: Medien
+
+      group/dachverband_kontakte/partner: Partner
+
+      group/dachverband_kontakte/js_experte:
+        one: J&S Expert:in
+        other: J&S Expert:innen
+
+      group/region/beauftragter_ethik:
+        one: "Beauftragte:r Ethik"
+        other: "Beauftragte Ethik"
+
+      group/region/event_turnier:
+        one: Event/Turnier
+        description: Event/Turnier
+
+      group/region/chef_ausbildung:
+        one: Chef:in Ausbildung
+        other: Chef:innen Ausbildung
+
+      group/region/chef_breitensport:
+        one: Chef:in Breitensport
+        other: Chef:innen Breitensport
+
+      group/region/chef_leistungssport:
+        one: Chef:in Leistungssport
+        other: Chef:innen Leistungssport
+
+      group/region/chef_nachwuchs:
+        one: Chef:in Nachwuchs
+        other: Chef:innen Nachwuchs
+
+      group/region/interclub:
+        one: Interclub
+        other: Interclub
+
+      group/region/js_coach:
         one: "J&S Coach"
-        description: "J&S Coaches"
+        other: "J&S Coaches"
 
-      group/dachverband_kontakte/kontakt: Kontakt
+      group/region/umfeldmanager:
+        one: "Umfeldmanager:in"
+        other: "Umfeldmanager:innen"
 
-      group/region/administrator:
-        one: "Administrator:in"
-        description: "Administrator:innen"
+      group/region/verantwortung_antidoping:
+        one: "Verantwortliche:r Antidoping"
+        other: "Verantwortliche Antidoping"
+
+      group/region/verantwortung_clubmanagement:
+        one: "Verantwortliche:r Club Management"
+        other: "Verantwortliche Club Managemen"
+
+      group/region/verantwortung_finanzen:
+        one: "Verantwortliche:r Finanzen"
+        other: "Verantwortliche Finanzen"
+
+      group/region/verantwortung_kommunikation:
+        one: "Verantwortliche:r Kommunikation"
+        other: "Verantwortliche Kommunikation"
+
+      group/region/verantwortung_marketing:
+        one: "Verantwortliche:r Marketing"
+        other: "Verantwortliche Marketing"
+
+      group/region/verantwortung_medical:
+        one: "Verantwortliche:r Medical"
+        other: "Verantwortliche Medical"
+
+      group/region/verantwortung_personal:
+        one: "Verantwortliche:r Personal"
+        other: "Verantwortliche Personal"
 
       group/region_vorstand/praesident:
         one: "Präsident:in"
-        description: "Präsident:innen"
+        other: "Präsident:innen"
 
       group/region_vorstand/vizepraesident:
         one: "Vizepräsident:in"
-        description: "Vizepräsident:innen"
+        other: "Vizepräsident:innen"
+
+      group/region_vorstand/mitglied:
+        one: "Vorstandsmitglied"
+        other: "Vorstandsmitglieder"
 
       group/region_vorstand/kassier:
         one: "Kassier:in"
-        description: "Kassier:innen"
+        other: "Kassier:innen"
 
-      group/region_vorstand/vorstandsmitglied:
-        one: Vorstandsmitglied
-        description: Vorstandsmitglieder
+      group/region_vorstand/sekretaer:
+        one: Sekretär:in
+        other: Sekretär:innen
 
-      group/region_mitglieder/aktivmitglied:
+      group/region_spieler/aktivmitglied:
         one: Aktivmitglied
-        description: Aktivmitglieder
+        other: Aktivmitglieder
 
-      group/region_mitglieder/passivmitglied:
+      group/region_spieler/passivmitglied:
         one: Passivmitglied
-        description: Passivmitglieder
+        other: Passivmitglieder
 
-      group/region_mitglieder/junior_u15:
+      group/region_spieler/junior_u15:
         one: "Junior:in (bis U-15)"
-        description: "Junior:innen (bis U-15)"
+        other: "Junior:innen (bis U-15)"
 
-      group/region_mitglieder/junior_u19:
+      group/region_spieler/junior_u19:
         one: "Junior:in (U17-U19)"
-        description: "Junior:innen (U17-U19)"
+        other: "Junior:innen (U17-U19)"
 
-      group/region_mitglieder/lizenz:
+      group/region_spieler/lizenz:
         one: Lizenz
-        description: Lizenzen
+        other: Lizenzen
 
-      group/region_mitglieder/vereinigungsspieler:
-        one: Vereinigungsspieler:in
-        description: Vereinigungsspieler:innen
+      group/region_kontakte/kontakt:
+        one: Kontakt
+        other: Kontakte
 
-      group/region_mitglieder/lizenz_plus_junior:
-        one: "Lizenz Plus Junior:innen (U19)"
-        description: "Lizenzen Plus Junior:innen (U19)"
+      group/region_kontakte/ehrenmitglied:
+        one: Ehrenmitglied
+        other: Ehrenmitglieder
 
-      group/region_mitglieder/lizenz_plus:
-        one: Lizenz Plus
-        description: Lizenzen Plus
+      group/region_kontakte/medien: Medien
 
-      group/region_mitglieder/shuttletime: Shuttletime
+      group/region_kontakte/partner: Partner
 
-      group/region_mitglieder/lizenz_no_ranking:
-        one: Lizenz NO ranking
-        description: Lizenzen NO ranking
+      group/region_kontakte/volunteer: Partner
 
-      group/region_mitglieder/js_coach:
+      group/verein/beauftragter_ethik:
+        one: "Beauftragte:r Ethik"
+        other: "Beauftragte Ethik"
+
+      group/verein/event_turnier:
+        one: Event/Turnier
+        description: Event/Turnier
+
+      group/verein/chef_ausbildung:
+        one: Chef:in Ausbildung
+        other: Chef:innen Ausbildung
+
+      group/verein/chef_breitensport:
+        one: Chef:in Breitensport
+        other: Chef:innen Breitensport
+
+      group/verein/chef_leistungssport:
+        one: Chef:in Leistungssport
+        other: Chef:innen Leistungssport
+
+      group/verein/chef_nachwuchs:
+        one: Chef:in Nachwuchs
+        other: Chef:innen Nachwuchs
+
+      group/verein/interclub:
+        one: Interclub
+        other: Interclub
+
+      group/verein/js_coach:
         one: "J&S Coach"
-        description: "J&S Coaches"
+        other: "J&S Coaches"
 
-      group/region/adressverwaltung:
-        one: "Adressverwalter:in"
-        description: "Adressverwalter:innen"
+      group/verein/umfeldmanager:
+        one: "Umfeldmanager:in"
+        other: "Umfeldmanager:innen"
 
-      group/region_kontakte/kontakt: Kontakt
+      group/verein/verantwortung_antidoping:
+        one: "Verantwortliche:r Antidoping"
+        other: "Verantwortliche Antidoping"
 
-      group/center/center: Center
+      group/verein/verantwortung_clubmanagement:
+        one: "Verantwortliche:r Club Management"
+        other: "Verantwortliche Club Managemen"
 
-      group/center/kontakt: Kontakt
+      group/verein/verantwortung_finanzen:
+        one: "Verantwortliche:r Finanzen"
+        other: "Verantwortliche Finanzen"
 
-      group/center/administrator:
-        one: "Administrator:in"
-        description: "Administrator:innen"
+      group/verein/verantwortung_kommunikation:
+        one: "Verantwortliche:r Kommunikation"
+        other: "Verantwortliche Kommunikation"
 
-      group/verein/adressverwaltung:
-        one: "Adressverwalter:in"
-        description: "Adressverwalter:innen"
+      group/verein/verantwortung_marketing:
+        one: "Verantwortliche:r Marketing"
+        other: "Verantwortliche Marketing"
 
-      group/verein/administrator:
-        one: "Administrator:in"
-        description: "Administrator:innen"
+      group/verein/verantwortung_medical:
+        one: "Verantwortliche:r Medical"
+        other: "Verantwortliche Medical"
 
-      group/verein/leitung:
-        one: "Leiter:in"
-        description: "Leiter:innen"
+      group/verein/verantwortung_personal:
+        one: "Verantwortliche:r Personal"
+        other: "Verantwortliche Personal"
 
-      group/verein/aktivmitglied:
-        one: Aktivmitglied
-        description: Aktivmitglieder
+      group/verein/clubtrainer:
+        one: "Clubtrainer:in"
+        other: "Clubtrainer:innen"
+
+      group/verein/nationalliga: "Nationalliga"
+
+      group/verein/schiedsrichter:
+        one: "Schiedsrichter:in"
+        other: "Schiedsrichter:innen"
 
       group/verein_vorstand/praesident:
         one: "Präsident:in"
@@ -241,89 +432,71 @@ de:
         one: "Vizepräsident:in"
         description: "Vizepräsident:innen"
 
+      group/verein_vorstand/sekretaer:
+        one: Sekretär:in
+        other: Sekretär:innen
+
       group/verein_vorstand/kassier:
         one: "Kassier:in"
         description: "Kassier:innen"
 
-      group/verein_vorstand/vorstandsmitglied:
+      group/verein_vorstand/mitglied:
         one: Vorstandsmitglied
         description: Vorstandsmitglieder
 
-      group/verein_mitglieder/aktivmitglied:
+      group/verein_spieler/aktivmitglied:
         one: Aktivmitglied
         description: Aktivmitglieder
 
-      group/verein_mitglieder/passivmitglied:
+      group/verein_spieler/passivmitglied:
         one: Passivmitglied
         description: Passivmitglieder
 
-      group/verein_mitglieder/junior_u15:
+      group/verein_spieler/junior_u15:
         one: "Junior:in (bis U-15)"
         description: "Junior:innen (bis U-15)"
 
-      group/verein_mitglieder/junior_u19:
+      group/verein_spieler/junior_u19:
         one: "Junior:in (U17-U19)"
         description: "Junior:innen (U17-U19)"
 
-      group/verein_mitglieder/lizenz:
+      group/verein_spieler/lizenz:
         one: Lizenz
         description: Lizenzen
 
-      group/verein_mitglieder/clubtrainer:
-        one: "Clubtrainer:in"
-        description: "Clubtrainer:innen"
-
-      group/verein_mitglieder/ehrenmitglied:
-        one: Ehrenmitglied
-        description: Ehrenmitglieder
-
-      group/verein_mitglieder/js_experte:
-        one: "J&S Expert:in"
-        description: "J&S Expert:innen"
-
-      group/verein_mitglieder/kaderspieler:
-        one: "Kaderspieler:in"
-        description: "Kaderspieler:innen"
-
-      group/verein_mitglieder/turnierorganisator:
-        one: "Turnierorganisator:in"
-        description: "Turnierorganisator:innen"
-
-      group/verein_mitglieder/volunteer:
-        one: Volunteer
-        description: Volunteers
-
-      group/verein_mitglieder/zv_mitglied:
-        one: ZV-Mitglied
-        description: ZV-Mitglieder
-
-      group/verein_mitglieder/vereinigungsspieler:
+      group/verein_spieler/vereinigungsspieler:
         one: Vereinigungsspieler:in
         description: Vereinigungsspieler:innen
 
-      group/verein_mitglieder/lizenz_plus_junior:
+      group/verein_spieler/lizenz_plus_junior:
         one: "Lizenz Plus Junior:innen (U19)"
         description: "Lizenzen Plus Junior:innen (U19)"
 
-      group/verein_mitglieder/lizenz_plus:
+      group/verein_spieler/lizenz_plus:
         one: Lizenz Plus
         description: Lizenzen Plus
 
-      group/verein_mitglieder/shuttletime: Shuttletime
-
-      group/verein_mitglieder/lizenz_no_ranking:
+      group/verein_spieler/lizenz_no_ranking:
         one: Lizenz NO ranking
         description: Lizenen NO ranking
 
-      group/verein_mitglieder/js_coach:
-        one: "J&S Coach"
-        description: "J&S Coaches"
+      group/verein_kontakte/kontakt:
+        one: Kontakt
+        other: Kontakte
 
-      group/verein/adressverwaltung:
-        one: "Adressverwalter:in"
-        description: "Adressverwalter:innen"
+      group/verein_kontakte/ehrenmitglied:
+        one: Ehrenmitglied
+        other: Ehrenmitglieder
 
-      group/verein_kontakte/kontakt: Kontakt
+      group/verein_kontakte/medien: Medien
+
+      group/verein_kontakte/partner: Partner
+
+      group/verein_kontakte/volunteer: Partner
+
+      group/center/direktion: Direktion
+
+      group/center_unaffilliated/direktion: Direktion
 
       event/role/assistant_leader:
         one: Leiter:in

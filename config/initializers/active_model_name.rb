@@ -16,8 +16,8 @@ module ActiveModel
         super
         return unless @klass <= Role
 
-        @ts_role = Ts::ROLE_MAPPINGS.index_by(&:type)[@klass.to_s]
-        @ts_membership = Ts::MEMBERSHIP_MAPPINGS.index_by(&:type)[@klass.to_s]
+        @ts_role = Ts::ROLE_MAPPINGS.index_by(&:type)[@klass]
+        @ts_membership = Ts::MEMBERSHIP_MAPPINGS.index_by(&:type)[@klass]
       end
 
       def human(...)

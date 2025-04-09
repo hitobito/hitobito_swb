@@ -10,17 +10,21 @@ class Group::Dachverband < ::Group
 
   children DachverbandVorstand,
     DachverbandGeschaeftsstelle,
-    DachverbandGremium,
-    DachverbandMitglieder,
+    DachverbandKommission,
+    DachverbandKader,
+    DachverbandSpieler,
+    DachverbandTechnischoffiziell,
     DachverbandKontakte,
     Region,
-    Center
+    Center,
+    CenterUnaffilliated
 
   self.default_children = [
     DachverbandVorstand,
     DachverbandGeschaeftsstelle,
-    DachverbandMitglieder,
-    DachverbandKontakte
+    DachverbandSpieler,
+    DachverbandKontakte,
+    DachverbandTechnischoffiziell
   ]
 
   self.event_types = [Event, Event::Course]
@@ -31,9 +35,5 @@ class Group::Dachverband < ::Group
     self.permissions = [:admin, :layer_and_below_full, :impersonation]
   end
 
-  class Adressverwaltung < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data]
-  end
-
-  roles Administrator, Adressverwaltung
+  roles Administrator
 end

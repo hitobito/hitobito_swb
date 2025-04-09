@@ -11,5 +11,37 @@ class Group::DachverbandKontakte < ::Group
   class Kontakt < ::Role
   end
 
-  roles Kontakt
+  class EhemaligesZvmitglied < ::Role
+  end
+
+  class EhemaligerMitarbeiter < ::Role
+  end
+
+  class Ehrenmitglied < ::Role
+  end
+
+  class ShuttletimeTutor < ::Role
+  end
+
+  class Goenner < ::Role
+  end
+
+  class Medien < ::Role
+  end
+
+  class Partner < ::Role
+  end
+
+  class JSExperte < ::Role
+  end
+
+  roles Kontakt,
+    EhemaligesZvmitglied,
+    EhemaligerMitarbeiter,
+    Ehrenmitglied,
+    ShuttletimeTutor,
+    Goenner,
+    Medien,
+    Partner,
+    JSExperte
 end

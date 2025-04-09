@@ -38,35 +38,7 @@ module SwbImport
     end
   end
 
-  module WithContact
-    def people?
-      return @@people if defined?(@@people)
-      @@people ||= ::Person.exists?
-    end
-
-    def save
-      super.then do |success|
-        next success unless people? && contact
-        person = ::Person.search(contact).first
-        person ? create_contact_role_and_update_group(person) : true
-      end
-    end
-
-    def create_contact_role_and_update_group(person)
-      person.roles.find_or_create_by!(type: "#{model.class.name}::Administrator", group: model) &&
-        model.update_columns(contact_id: person.id) # avoids callbacks to not trigger double creation of default children
-    end
-
-    def build_contact(model, person)
-      return unless person
-
-      model.contact = person
-      model.roles.find_or_initialize_by(type: "#{model.class.name}::Administrator", person:)
-    end
-  end
-
   Region = Entity.new(*REGION_MAPPINGS.map(&:second), keyword_init: true) do
-    prepend WithContact
     self.mappings = REGION_MAPPINGS
     self.non_assignable_attrs = [:phone, :phone2, :mobile, :website, :contact]
     self.model_class = Group::Region
@@ -87,7 +59,6 @@ module SwbImport
   end
 
   Club = Entity.new(*CLUB_MAPPINGS.map(&:second), keyword_init: true) do
-    prepend WithContact
     delegate :type, to: :model
 
     self.mappings = CLUB_MAPPINGS
@@ -100,14 +71,19 @@ module SwbImport
 
     def build
       super do |model|
-        model.parent = model.is_a?(Group::Center) ? self.class.root : Group::Region.find_by(short_name: parent_number)
+        model.parent = model.is_a?(Group::Verein) ? Group::Region.find_by(short_name: parent_number) : self.class.root
         model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone, phone2].any?(&:present?)
         model.phone_numbers.build(label: :mobile, number: mobile) if mobile
         model.social_accounts.build(label: :website, name: website) if website
       end
     end
 
-    def model_class = (parent_number == CENTER_PARENT_NUMBER) ? Group::Center : Group::Verein
+    def model_class
+      return Group::Verein unless parent_number == CENTER_PARENT_NUMBER
+      return Group::Center if name.starts_with?(".")
+
+      Group::CenterUnaffilliated
+    end
   end
 
   Person = Entity.new(*PERSON_MAPPINGS.map(&:second), keyword_init: true) do
@@ -150,14 +126,21 @@ module SwbImport
 
     def build
       super do |role|
-        role.group_id = find_group_id
-        role.type = find_role_type
+        type, group_id = group_ids.fetch(groupcode.downcase, {}).find { |type, _| role_types.include?(type) }
+
+        role.group_id = group_id
+        role.type = type
       end
     end
 
     def to_s(details: false)
       values = to_h.slice(*non_assignable_attrs).values.join(",")
+      values += ",#{group_types[groupcode]}" if details
       ["#{status} #{person} #{model} (#{details ? [values].join(",") : role})", (full_error_messages if details)].compact_blank.join(": ")
+    end
+
+    def role_types
+      (Array(ROLE_TYPE_MAPPING[role]) + Array(SPIELER_LIZENZ_MAPPING[spieler_role_type])).compact_blank.map(&:to_s)
     end
 
     def person = people[person_id] || person_id
@@ -165,6 +148,8 @@ module SwbImport
     def find_group_id = group_ids.dig(groupcode.downcase, find_role_type&.sti_name)
 
     def find_role_type = SPIELER_LIZENZ_MAPPING[spieler_role_type] || ROLE_TYPE_MAPPING[role]
+
+    def group_types = @@group_types ||= Group.pluck(:ts_code, :type).to_h
 
     # This builds a complex map in the form of layer_id => { role_type => group_id }
     # We need that because TS only knows layers, but we move roles to groups inside the layer

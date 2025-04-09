@@ -5,42 +5,44 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Group::RegionMitglieder < ::Group
+class Group::VereinSpieler < ::Group
   ### ROLES
 
   class Aktivmitglied < ::Role
-  end
-
-  class Passivmitglied < ::Role
-  end
-
-  class JuniorU15 < ::Role
-  end
-
-  class JuniorU19 < ::Role
-  end
-
-  class Lizenz < ::Role
-  end
-
-  class Vereinigungsspieler < ::Role
-  end
-
-  class LizenzPlusJunior < ::Role
-  end
-
-  class LizenzPlus < ::Role
-  end
-
-  class Shuttletime < ::Role
-  end
-
-  class LizenzNoRanking < ::Role
-  end
-
-  class JSCoach < ::Role
     self.permissions = [:group_read]
   end
 
-  roles Aktivmitglied, Passivmitglied, JuniorU15, JuniorU19, Lizenz, Vereinigungsspieler, LizenzPlusJunior, LizenzPlus, Shuttletime, LizenzNoRanking, JSCoach
+  class Passivmitglied < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class JuniorU15 < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class JuniorU19 < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Lizenz < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class LizenzPlusJunior < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class LizenzPlus < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class LizenzNoRanking < ::Role
+    self.permissions = [:group_read]
+  end
+
+  class Vereinigungsspieler < ::Role
+    self.permissions = [:group_read]
+  end
+
+  roles Aktivmitglied, Passivmitglied, JuniorU15, JuniorU19, Lizenz, Vereinigungsspieler, LizenzPlusJunior, LizenzPlus, LizenzNoRanking
 end

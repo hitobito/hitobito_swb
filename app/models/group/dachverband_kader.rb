@@ -5,27 +5,14 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Group::RegionKontakte < ::Group
-  ### ROLES
-
-  class Kontakt < ::Role
+class Group::DachverbandKader < ::Group
+  class Athlet < ::Role
+    self.permissions = [:group_read]
   end
 
-  class Medien < ::Role
+  class Trainer < ::Role
+    self.permissions = [:group_read]
   end
 
-  class Partner < ::Role
-  end
-
-  class Ehrenmitglied < ::Role
-  end
-
-  class Volunteer < ::Role
-  end
-
-  roles Kontakt,
-    Medien,
-    Partner,
-    Ehrenmitglied,
-    Volunteer
+  roles Trainer, Athlet
 end

@@ -11,14 +11,11 @@ class Group::Center < ::Group
 
   ### ROLES
 
-  class Kontakt < ::Role
+  class Direktion < ::Role
+    self.permissions = [:group_full, :contact_data]
   end
 
-  class Administrator < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data, :finance]
-  end
-
-  roles Administrator, Kontakt
+  roles Direktion
 
   def parent_ts_code = Ts::CENTER_PARENT_CODE
 end

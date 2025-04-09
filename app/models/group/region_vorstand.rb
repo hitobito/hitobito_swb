@@ -9,20 +9,24 @@ class Group::RegionVorstand < ::Group
   ### ROLES
 
   class Praesident < ::Role
-    self.permissions = [:layer_full, :contact_data]
+    self.permissions = [:layer_and_below_read]
   end
 
   class Vizepraesident < ::Role
-    self.permissions = [:layer_full, :contact_data]
+    self.permissions = [:layer_and_below_read]
+  end
+
+  class Sekretaer < ::Role
+    self.permissions = [:layer_and_below_full]
   end
 
   class Kassier < ::Role
-    self.permissions = [:layer_read, :contact_data, :finance]
+    self.permissions = [:layer_and_below_read, :finance]
   end
 
-  class Vorstandsmitglied < ::Role
-    self.permissions = [:layer_full, :contact_data]
+  class Mitglied < ::Role
+    self.permissions = [:layer_and_below_read]
   end
 
-  roles Praesident, Vizepraesident, Kassier, Vorstandsmitglied
+  roles Praesident, Vizepraesident, Sekretaer, Kassier, Mitglied
 end

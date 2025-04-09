@@ -37,7 +37,7 @@ module SwbImport
       seed_static_people
     end
 
-    private
+    # private
 
     def reset_db
       truncate_tables
