@@ -71,7 +71,7 @@ describe TsModel do
     let(:now) { Time.zone.local(2025, 4, 1, 16, 10) }
     let(:nesting) { person.ts_model }
 
-    subject(:model) { Fabricate.build(Group::DachverbandVorstand::Praesident.sti_name, group:, person:, ts_code:, id: 1) }
+    subject(:model) { Fabricate.build(Group::DachverbandVorstand::Praesident.sti_name, group:, person:, ts_code:, id: 1, created_at: now) }
 
     before { travel_to(now) }
 
@@ -81,7 +81,7 @@ describe TsModel do
         {
           code: ts_code,
           start_date: "2025-04-01T16:10:00+02:00",
-          end_date: "2125-04-01T16:10:00+02:00",
+          end_date: "9999-12-31T23:59:59+01:00",
           organization_group_code: group.parent_ts_code,
           organization_role_code: "4c0a8178-035a-415b-933b-468a4a4cedae"
         }

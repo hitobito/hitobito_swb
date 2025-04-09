@@ -20,7 +20,8 @@ class Ts::Interface
   end
 
   def put
-    request(:put, ts_model.code, ts_model.to_xml)
+    code = ts_model.code unless nested?
+    request(:put, code, ts_model.to_xml)
   end
 
   def post
@@ -34,6 +35,8 @@ class Ts::Interface
   end
 
   private
+
+  def nested? = @nesting.present?
 
   def request(method, *args)
     operation = client.send(method, *args)
