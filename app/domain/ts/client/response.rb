@@ -8,6 +8,8 @@
 class Ts::Client::Response
   attr_reader :entity_class, :code, :xml
 
+  HTTP_STATUS_CODES = Rack::Utils::HTTP_STATUS_CODES
+
   def initialize(entity_class, http_response)
     @entity_class = entity_class
     @xml = Nokogiri::XML(http_response.body)
@@ -18,9 +20,9 @@ class Ts::Client::Response
 
   def entity = entities.first
 
-  def success? = error.nil? || error.success?
+  def error = build_error
 
-  def error = from_xml(xml, Ts::Entity::Error)[0]
+  def success? = error.nil? || error.success?
 
   def to_h
     {code:, xml: xml.to_s, message: error&.message}.compact_blank
@@ -28,9 +30,17 @@ class Ts::Client::Response
 
   private
 
-  def from_xml(xml, entity_class)
+  def from_xml(xml, entity_class, clear_whitespace: false)
     xml.xpath("//#{entity_class.element_name}").map do |element|
-      entity_class.from_xml(element.to_s)
+      entity_class.from_xml(element.to_s, clear_whitespace:)
     end
   end
+
+  def build_error
+    return Ts::Entity::Error.new(code, HTTP_STATUS_CODES[code]) unless http_success?
+
+    from_xml(xml, Ts::Entity::Error, clear_whitespace: true)[0]
+  end
+
+  def http_success? = code == 200
 end
