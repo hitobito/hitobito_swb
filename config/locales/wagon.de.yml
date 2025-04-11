@@ -80,37 +80,37 @@ de:
         one: Vorstandsmitglied
         other: Vorstandsmitglieder
 
-      group/dachverband_geschaeftsstelle/beauftragter_ethik:
-        one: "Beauftragte:r Ethik"
-        other: "Beauftragte Ethik"
+      group/dachverband_geschaeftsstelle/ethik:
+        one: "Verantwortliche:r Ethik"
+        other: "Verantwortliche Ethik"
 
       group/dachverband_geschaeftsstelle/geschaeftsfuehrer:
         one: "Geschäftsführer:in"
         other: "Geschäftsführer:innen"
 
       group/dachverband_geschaeftsstelle/event_turnier:
-        one: Event/Turnier
-        other: Event/Turniere
+        one: "Verantwortliche:r Event/Turnier"
+        other: "Verantwortlicher Event/Turnier"
 
-      group/dachverband_geschaeftsstelle/chef_ausbildung:
-        one: Chef:in Ausbildung
-        other: Chef:innen Ausbildung
+      group/dachverband_geschaeftsstelle/ausbildung:
+        one: Verantwortliche:r Ausbildung
+        other: Verantwortliche Ausbildung
 
-      group/dachverband_geschaeftsstelle/chef_breitensport:
-        one: Chef:in Breitensport
-        other: Chef:innen Breitensport
+      group/dachverband_geschaeftsstelle/breitensport:
+        one: Verantwortliche:r Breitensport
+        other: Verantwortliche Breitensport
 
-      group/dachverband_geschaeftsstelle/chef_leistungssport:
-        one: Chef:in Leistungssport
-        other: Chef:innen Leistungssport
+      group/dachverband_geschaeftsstelle/leistungssport:
+        one: Verantwortliche:r Leistungssport
+        other: Verantwortliche Leistungssport
 
-      group/dachverband_geschaeftsstelle/chef_nachwuchs:
-        one: Chef:in Nachwuchs
-        other: Chef:innen Nachwuchs
+      group/dachverband_geschaeftsstelle/nachwuchs:
+        one: Verantwortliche:r Nachwuchs
+        other: Verantwortliche Nachwuchs
 
       group/dachverband_geschaeftsstelle/interclub:
-        one: Interclub
-        other: Interclub
+        one: "Verantwortliche:r Interclub"
+        other: "Verantwortliche Interclub"
 
       group/dachverband_geschaeftsstelle/mitglied:
         one: Mitglied
@@ -120,35 +120,35 @@ de:
         one: "J&S Coach"
         other: "J&S Coaches"
 
-      group/dachverband_geschaeftsstelle/umfeldmanager:
-        one: "Umfeldmanager:in"
-        other: "Umfeldmanager:innen"
+      group/dachverband_geschaeftsstelle/umfeld:
+        one: "Verantwortliche:r Umfeld"
+        other: "Verantwortliche Umfeld"
 
-      group/dachverband_geschaeftsstelle/verantwortung_antidoping:
+      group/dachverband_geschaeftsstelle/antidoping:
         one: "Verantwortliche:r Antidoping"
         other: "Verantwortliche Antidoping"
 
-      group/dachverband_geschaeftsstelle/verantwortung_clubmanagement:
+      group/dachverband_geschaeftsstelle/clubmanagement:
         one: "Verantwortliche:r Club Management"
         other: "Verantwortliche Club Managemen"
 
-      group/dachverband_geschaeftsstelle/verantwortung_finanzen:
+      group/dachverband_geschaeftsstelle/finanzen:
         one: "Verantwortliche:r Finanzen"
         other: "Verantwortliche Finanzen"
 
-      group/dachverband_geschaeftsstelle/verantwortung_kommunikation:
+      group/dachverband_geschaeftsstelle/kommunikation:
         one: "Verantwortliche:r Kommunikation"
         other: "Verantwortliche Kommunikation"
 
-      group/dachverband_geschaeftsstelle/verantwortung_marketing:
+      group/dachverband_geschaeftsstelle/marketing:
         one: "Verantwortliche:r Marketing"
         other: "Verantwortliche Marketing"
 
-      group/dachverband_geschaeftsstelle/verantwortung_medical:
+      group/dachverband_geschaeftsstelle/medical:
         one: "Verantwortliche:r Medical"
         other: "Verantwortliche Medical"
 
-      group/dachverband_geschaeftsstelle/verantwortung_personal:
+      group/dachverband_geschaeftsstelle/personal:
         one: "Verantwortliche:r Personal"
         other: "Verantwortliche Personal"
 
@@ -232,67 +232,67 @@ de:
         one: J&S Expert:in
         other: J&S Expert:innen
 
-      group/region/beauftragter_ethik:
-        one: "Beauftragte:r Ethik"
-        other: "Beauftragte Ethik"
+      group/region/ethik:
+        one: "Verantwortliche:r Ethik"
+        other: "Verantwortliche Ethik"
 
       group/region/event_turnier:
-        one: Event/Turnier
-        description: Event/Turnier
+        one: "Verantwortliche:r Event/Turnier"
+        other: "Verantwortlicher Event/Turnier"
 
-      group/region/chef_ausbildung:
-        one: Chef:in Ausbildung
-        other: Chef:innen Ausbildung
+      group/region/ausbildung:
+        one: Verantwortliche:r Ausbildung
+        other: Verantwortliche Ausbildung
 
-      group/region/chef_breitensport:
-        one: Chef:in Breitensport
-        other: Chef:innen Breitensport
+      group/region/breitensport:
+        one: Verantwortliche:r Breitensport
+        other: Verantwortliche Breitensport
 
-      group/region/chef_leistungssport:
-        one: Chef:in Leistungssport
-        other: Chef:innen Leistungssport
+      group/region/leistungssport:
+        one: Verantwortliche:r Leistungssport
+        other: Verantwortliche Leistungssport
 
-      group/region/chef_nachwuchs:
-        one: Chef:in Nachwuchs
-        other: Chef:innen Nachwuchs
+      group/region/nachwuchs:
+        one: Verantwortliche:r Nachwuchs
+        other: Verantwortliche Nachwuchs
 
       group/region/interclub:
-        one: Interclub
-        other: Interclub
+        one: "Verantwortliche:r Interclub"
+        other: "Verantwortliche Interclub"
 
       group/region/js_coach:
         one: "J&S Coach"
         other: "J&S Coaches"
 
-      group/region/umfeldmanager:
-        one: "Umfeldmanager:in"
-        other: "Umfeldmanager:innen"
+      group/region/umfeld:
+        one: "Verantwortliche:r Umfeld"
+        other: "Verantwortliche Umfeld"
 
-      group/region/verantwortung_antidoping:
+      group/region/antidoping:
         one: "Verantwortliche:r Antidoping"
         other: "Verantwortliche Antidoping"
 
-      group/region/verantwortung_clubmanagement:
+      group/region/clubmanagement:
         one: "Verantwortliche:r Club Management"
         other: "Verantwortliche Club Managemen"
 
-      group/region/verantwortung_finanzen:
+      group/region/finanzen:
         one: "Verantwortliche:r Finanzen"
         other: "Verantwortliche Finanzen"
 
-      group/region/verantwortung_kommunikation:
+      group/region/kommunikation:
         one: "Verantwortliche:r Kommunikation"
         other: "Verantwortliche Kommunikation"
 
-      group/region/verantwortung_marketing:
+      group/region/marketing:
         one: "Verantwortliche:r Marketing"
         other: "Verantwortliche Marketing"
 
-      group/region/verantwortung_medical:
+      group/region/medical:
         one: "Verantwortliche:r Medical"
         other: "Verantwortliche Medical"
 
-      group/region/verantwortung_personal:
+      group/region/personal:
         one: "Verantwortliche:r Personal"
         other: "Verantwortliche Personal"
 
@@ -312,9 +312,9 @@ de:
         one: "Kassier:in"
         other: "Kassier:innen"
 
-      group/region_vorstand/sekretaer:
-        one: Sekretär:in
-        other: Sekretär:innen
+      group/region_vorstand/administrator:
+        one: Administrator:in
+        other: Administrator:innen
 
       group/region_spieler/aktivmitglied:
         one: Aktivmitglied
@@ -350,67 +350,67 @@ de:
 
       group/region_kontakte/volunteer: Partner
 
-      group/verein/beauftragter_ethik:
-        one: "Beauftragte:r Ethik"
-        other: "Beauftragte Ethik"
+      group/verein/ethik:
+        one: "Verantwortliche:r Ethik"
+        other: "Verantwortliche Ethik"
 
       group/verein/event_turnier:
-        one: Event/Turnier
-        description: Event/Turnier
+        one: "Verantwortliche:r Event/Turnier"
+        other: "Verantwortlicher Event/Turnier"
 
-      group/verein/chef_ausbildung:
-        one: Chef:in Ausbildung
-        other: Chef:innen Ausbildung
+      group/verein/ausbildung:
+        one: Verantwortliche:r Ausbildung
+        other: Verantwortliche Ausbildung
 
-      group/verein/chef_breitensport:
-        one: Chef:in Breitensport
-        other: Chef:innen Breitensport
+      group/verein/breitensport:
+        one: Verantwortliche:r Breitensport
+        other: Verantwortliche Breitensport
 
-      group/verein/chef_leistungssport:
-        one: Chef:in Leistungssport
-        other: Chef:innen Leistungssport
+      group/verein/leistungssport:
+        one: Verantwortliche:r Leistungssport
+        other: Verantwortliche Leistungssport
 
-      group/verein/chef_nachwuchs:
-        one: Chef:in Nachwuchs
-        other: Chef:innen Nachwuchs
+      group/verein/nachwuchs:
+        one: Verantwortliche:r Nachwuchs
+        other: Verantwortliche Nachwuchs
 
       group/verein/interclub:
-        one: Interclub
-        other: Interclub
+        one: "Verantwortliche:r Interclub"
+        other: "Verantwortliche Interclub"
 
       group/verein/js_coach:
         one: "J&S Coach"
         other: "J&S Coaches"
 
-      group/verein/umfeldmanager:
-        one: "Umfeldmanager:in"
-        other: "Umfeldmanager:innen"
+      group/verein/umfeld:
+        one: "Verantwortliche:r Umfeld"
+        other: "Verantwortliche Umfeld"
 
-      group/verein/verantwortung_antidoping:
+      group/verein/antidoping:
         one: "Verantwortliche:r Antidoping"
         other: "Verantwortliche Antidoping"
 
-      group/verein/verantwortung_clubmanagement:
+      group/verein/clubmanagement:
         one: "Verantwortliche:r Club Management"
         other: "Verantwortliche Club Managemen"
 
-      group/verein/verantwortung_finanzen:
+      group/verein/finanzen:
         one: "Verantwortliche:r Finanzen"
         other: "Verantwortliche Finanzen"
 
-      group/verein/verantwortung_kommunikation:
+      group/verein/kommunikation:
         one: "Verantwortliche:r Kommunikation"
         other: "Verantwortliche Kommunikation"
 
-      group/verein/verantwortung_marketing:
+      group/verein/marketing:
         one: "Verantwortliche:r Marketing"
         other: "Verantwortliche Marketing"
 
-      group/verein/verantwortung_medical:
+      group/verein/medical:
         one: "Verantwortliche:r Medical"
         other: "Verantwortliche Medical"
 
-      group/verein/verantwortung_personal:
+      group/verein/personal:
         one: "Verantwortliche:r Personal"
         other: "Verantwortliche Personal"
 
@@ -432,9 +432,9 @@ de:
         one: "Vizepräsident:in"
         description: "Vizepräsident:innen"
 
-      group/verein_vorstand/sekretaer:
-        one: Sekretär:in
-        other: Sekretär:innen
+      group/verein_vorstand/administrator:
+        one: Administrator:in
+        other: Administrator:innen
 
       group/verein_vorstand/kassier:
         one: "Kassier:in"

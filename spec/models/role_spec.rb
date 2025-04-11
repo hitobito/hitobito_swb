@@ -14,7 +14,7 @@ describe Role do
     let(:ts_code) { Faker::Internet.uuid }
     let(:created_at) { Time.zone.local(2025, 4, 9, 10, 12) }
 
-    subject(:role) { Fabricate.build(Group::Region::Interclub.sti_name, group:, person:, ts_code:, id: 123, created_at:) }
+    subject(:role) { Fabricate.build(Group::Region::Interclub.sti_name, group:, person:, ts_code:, id: 123, created_at:, start_on: nil) }
 
     subject(:ts_model) { role.ts_model }
 
@@ -82,11 +82,11 @@ describe Role do
       end
 
       it "has ts suffix in model name" do
-        expect(model_name.human).to eq "Interclub (TS)"
+        expect(model_name.human).to eq "Verantwortliche:r Interclub (TS)"
       end
 
       it "has ts suffix in model instance #to_s" do
-        expect(Fabricate.build(described_class.sti_name).to_s).to eq "Interclub (TS - wartet)"
+        expect(Fabricate.build(described_class.sti_name).to_s).to eq "Verantwortliche:r Interclub (TS - wartet)"
       end
 
       it "has ts suffix in model instance #to_s" do
@@ -100,7 +100,7 @@ describe Role do
         )
         expect(role.ts_latest_log).to be_present
         expect(role.ts_log).to be_present
-        expect(role.to_s).to eq "Interclub (TS - erfolgreich - 04.04 09:42)"
+        expect(role.to_s).to eq "Verantwortliche:r Interclub (TS - erfolgreich - 04.04 09:42)"
       end
 
       it "has ts failed suffix in model instance #to_s" do
@@ -114,7 +114,7 @@ describe Role do
         )
         expect(role.ts_latest_log).to be_present
         expect(role.ts_log).to be_present
-        expect(role.to_s).to eq "Interclub (TS - fehlgeschlagen - 04.04 09:42)"
+        expect(role.to_s).to eq "Verantwortliche:r Interclub (TS - fehlgeschlagen - 04.04 09:42)"
       end
     end
 

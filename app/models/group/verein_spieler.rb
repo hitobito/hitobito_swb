@@ -44,5 +44,13 @@ class Group::VereinSpieler < ::Group
     self.permissions = [:group_read]
   end
 
-  roles Aktivmitglied, Passivmitglied, JuniorU15, JuniorU19, Lizenz, Vereinigungsspieler, LizenzPlusJunior, LizenzPlus, LizenzNoRanking
+  roles Aktivmitglied,
+    Passivmitglied,
+    JuniorU15,
+    JuniorU19,
+    Lizenz,
+    LizenzPlusJunior,
+    LizenzPlus,
+    LizenzNoRanking,
+    Vereinigungsspieler
 end
