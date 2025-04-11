@@ -28,74 +28,73 @@ class Group::DachverbandGeschaeftsstelle < ::Group
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class ChefAusbildung < ::Role
+  class Ausbildung < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class ChefBreitensport < ::Role
+  class Breitensport < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class ChefLeistungssport < ::Role
+  class Leistungssport < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class ChefNachwuchs < ::Role
+  class Nachwuchs < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class BeauftragterEthik < ::Role
+  class Ethik < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class Umfeldmanager < ::Role
+  class Umfeld < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class VerantwortungAntidoping < ::Role
+  class Antidoping < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class VerantwortungClubmanagement < ::Role
+  class Clubmanagement < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class VerantwortungFinanzen < ::Role
+  class Finanzen < ::Role
     self.permissions = [:layer_and_below_full, :impersonation, :finance]
   end
 
-  class VerantwortungKommunikation < ::Role
+  class Kommunikation < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class VerantwortungMarketing < ::Role
+  class Marketing < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class VerantwortungMedical < ::Role
+  class Medical < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  class VerantwortungPersonal < ::Role
+  class Personal < ::Role
     self.permissions = [:layer_and_below_full, :impersonation]
   end
 
-  roles Geschaeftsfuehrer,
-    Mitglied,
+  roles Geschaeftsfuehrer, Mitglied,
     JSCoach,
-    Interclub,
+    Antidoping,
+    Ausbildung,
+    Breitensport,
+    Clubmanagement,
+    Ethik,
     EventTurnier,
-    BeauftragterEthik,
-    Umfeldmanager,
-    ChefAusbildung,
-    ChefBreitensport,
-    ChefLeistungssport,
-    ChefNachwuchs,
-    VerantwortungAntidoping,
-    VerantwortungClubmanagement,
-    VerantwortungFinanzen,
-    VerantwortungKommunikation,
-    VerantwortungMarketing,
-    VerantwortungMedical,
-    VerantwortungPersonal
+    Finanzen,
+    Interclub,
+    Kommunikation,
+    Leistungssport,
+    Marketing,
+    Medical,
+    Nachwuchs,
+    Personal,
+    Umfeld
 end

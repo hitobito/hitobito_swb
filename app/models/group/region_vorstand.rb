@@ -16,7 +16,7 @@ class Group::RegionVorstand < ::Group
     self.permissions = [:layer_and_below_read]
   end
 
-  class Sekretaer < ::Role
+  class Administrator < ::Role
     self.permissions = [:layer_and_below_full]
   end
 
@@ -28,5 +28,5 @@ class Group::RegionVorstand < ::Group
     self.permissions = [:layer_and_below_read]
   end
 
-  roles Praesident, Vizepraesident, Sekretaer, Kassier, Mitglied
+  roles Praesident, Vizepraesident, Administrator, Kassier, Mitglied
 end

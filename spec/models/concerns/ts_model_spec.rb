@@ -71,7 +71,7 @@ describe TsModel do
     let(:now) { Time.zone.local(2025, 4, 1, 16, 10) }
     let(:nesting) { person.ts_model }
 
-    subject(:model) { Fabricate.build(Group::DachverbandGeschaeftsstelle::Interclub.sti_name, group:, person:, ts_code:, id: 1, created_at: now) }
+    subject(:model) { Fabricate.build(Group::DachverbandGeschaeftsstelle::Interclub.sti_name, group:, person:, ts_code:, id: 1, created_at: now, start_on: nil) }
 
     before { travel_to(now) }
 

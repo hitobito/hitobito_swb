@@ -35,72 +35,72 @@ class Group::Region < ::Group
     self.permissions = [:group_read]
   end
 
-  class ChefAusbildung < ::Role
+  class Ausbildung < ::Role
     self.permissions = [:group_read]
   end
 
-  class ChefBreitensport < ::Role
+  class Breitensport < ::Role
     self.permissions = [:group_read]
   end
 
-  class ChefLeistungssport < ::Role
+  class Leistungssport < ::Role
     self.permissions = [:group_read]
   end
 
-  class ChefNachwuchs < ::Role
+  class Nachwuchs < ::Role
     self.permissions = [:group_read]
   end
 
-  class BeauftragterEthik < ::Role
+  class Ethik < ::Role
     self.permissions = [:group_read]
   end
 
-  class Umfeldmanager < ::Role
+  class Umfeld < ::Role
     self.permissions = [:group_read]
   end
 
-  class VerantwortungAntidoping < ::Role
+  class Antidoping < ::Role
     self.permissions = [:group_read]
   end
 
-  class VerantwortungClubmanagement < ::Role
+  class Clubmanagement < ::Role
     self.permissions = [:group_read]
   end
 
-  class VerantwortungFinanzen < ::Role
+  class Finanzen < ::Role
     self.permissions = [:group_read]
   end
 
-  class VerantwortungKommunikation < ::Role
+  class Kommunikation < ::Role
     self.permissions = [:group_read]
   end
 
-  class VerantwortungMarketing < ::Role
+  class Marketing < ::Role
     self.permissions = [:group_read]
   end
 
-  class VerantwortungMedical < ::Role
+  class Medical < ::Role
     self.permissions = [:group_read]
   end
 
-  class VerantwortungPersonal < ::Role
+  class Personal < ::Role
     self.permissions = [:group_read]
   end
 
   roles JSCoach,
-    Interclub,
+    Antidoping,
+    Ausbildung,
+    Breitensport,
+    Clubmanagement,
+    Ethik,
     EventTurnier,
-    BeauftragterEthik,
-    Umfeldmanager,
-    ChefAusbildung,
-    ChefBreitensport,
-    ChefLeistungssport,
-    ChefNachwuchs,
-    VerantwortungAntidoping,
-    VerantwortungClubmanagement,
-    VerantwortungFinanzen,
-    VerantwortungKommunikation,
-    VerantwortungMarketing,
-    VerantwortungMedical,
-    VerantwortungPersonal
+    Finanzen,
+    Interclub,
+    Kommunikation,
+    Leistungssport,
+    Marketing,
+    Medical,
+    Nachwuchs,
+    Personal,
+    Umfeld
 end

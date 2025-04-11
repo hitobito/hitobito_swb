@@ -20,7 +20,7 @@ class Group::VereinVorstand < ::Group
     self.permissions = [:layer_read, :contact_data, :finance]
   end
 
-  class Sekretaer < ::Role
+  class Administrator < ::Role
     self.permissions = [:layer_and_below_full, :contact_data, :finance]
   end
 
@@ -28,5 +28,5 @@ class Group::VereinVorstand < ::Group
     self.permissions = [:layer_full, :contact_data]
   end
 
-  roles Praesident, Vizepraesident, Kassier, Mitglied, Sekretaer
+  roles Praesident, Vizepraesident, Kassier, Mitglied, Administrator
 end
