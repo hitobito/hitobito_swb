@@ -19,12 +19,12 @@ describe PeopleController, js: true do
       click_link "Felder"
     end
 
-    xit "is possible to filter nationality" do
+    it "is possible to filter nationality" do
       find("#attribute_filter option", text: "Nationalität gemäss Pass / ID").click
       expect(page).to have_css ".country_select_field"
     end
 
-    xit "is possible to filter nationality_badminton" do
+    it "is possible to filter nationality_badminton" do
       find("#attribute_filter option", text: "Nationalität als Badmintonspieler:in").click
       expect(page).to have_css ".country_select_field"
     end
