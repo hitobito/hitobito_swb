@@ -6,7 +6,7 @@
 require "spec_helper"
 
 describe PeopleController, js: true do
-  let(:group) { groups(:root_mitglieder) }
+  let(:group) { groups(:root_gs) }
 
   context "attributes" do
     before do
