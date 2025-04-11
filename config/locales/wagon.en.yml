@@ -21,11 +21,16 @@ en:
         one: ''
         other: ''
 
-      group/dachverband_gremium:
+      group/dachverband_technischoffiziell:
         one: ''
         other: ''
 
-      group/dachverband_mitglieder: ""
+      group/dachverband_kommission:
+        one: ''
+        other: ''
+
+      group/dachverband_spieler: ""
+      group/dachverband_kader: ""
 
       group/dachverband_kontakte: ""
 
@@ -37,11 +42,13 @@ en:
         one: ''
         other: ''
 
-      group/region_mitglieder: ""
+      group/region_spieler: ""
 
       group/region_kontakte: ""
 
       group/center: ""
+
+      group/center_unaffilliated: ""
 
       group/verein:
         one: ''
@@ -51,7 +58,7 @@ en:
         one: ''
         other: ''
 
-      group/verein_mitglieder: ""
+      group/verein_spieler: ""
 
       group/verein_kontakte: ""
 
@@ -59,175 +66,363 @@ en:
 
       group/dachverband/administrator:
         one: ""
-        description: ""
+        other: ""
 
       group/dachverband_vorstand/praesident:
         one: ""
-        description: ""
+        other: ""
 
       group/dachverband_vorstand/vizepraesident:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_vorstand/vorstandsmitglied:
+      group/dachverband_vorstand/mitglied:
+        one: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/beauftragter_ethik:
         one: ""
-        description: ""
+        other: ""
 
       group/dachverband_geschaeftsstelle/geschaeftsfuehrer:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_geschaeftsstelle/kassier:
-        one: ""
-        description: ""
+      group/dachverband_geschaeftsstelle/event_turnier:
+        one: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/chef_ausbildung:
+        one: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/chef_breitensport:
+        one: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/chef_leistungssport:
+        one: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/chef_nachwuchs:
+        one: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/interclub:
+        one: ''
+        other: ''
 
       group/dachverband_geschaeftsstelle/mitglied:
+        one: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/js_coach:
+        one: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/umfeldmanager:
+        one: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/verantwortung_antidoping:
+        one: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/verantwortung_clubmanagement:
+        one: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/verantwortung_finanzen:
+        one: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/verantwortung_kommunikation:
+        one: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/verantwortung_marketing:
+        one: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/verantwortung_medical:
+        one: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/verantwortung_personal:
+        one: ""
+        other: ""
+
+      group/dachverband_technischoffiziell/schiedsrichter:
+        one: ""
+        other: ""
+
+      group/dachverband_technischoffiziell/linienrichter:
+        one: ""
+        other: ""
+
+      group/dachverband_technischoffiziell/referee:
+        one: ""
+        other: ""
+
+      group/dachverband_kommission/leitung:
         one: ""
         description: ""
 
-      group/dachverband_gremium/leitung:
+      group/dachverband_kommission/mitglied:
         one: ""
         description: ""
 
-      group/dachverband_gremium/mitglied:
+      group/dachverband_spieler/aktivmitglied:
+        one: ''
+        other: ''
+
+      group/dachverband_spieler/passivmitglied:
+        one: ''
+        other: ''
+
+      group/dachverband_spieler/junior_u15:
+        one: ""
+        other: ""
+
+      group/dachverband_spieler/junior_u19:
+        one: ""
+        other: ""
+
+      group/dachverband_spieler/lizenz:
+        one: ''
+        other: ''
+
+      group/dachverband_kader/athlet:
+        one: ""
+        other: ""
+
+      group/dachverband_kader/trainer:
+        one: ""
+        other: ""
+
+      group/dachverband_kontakte/kontakt:
+        one: ''
+        other: ''
+
+      group/dachverband_kontakte/ehemaliges_zvmitglied:
+        one: ''
+        other: ''
+
+      group/dachverband_kontakte/ehemaliger_mitarbeiter:
+        one: ''
+        other: ''
+
+      group/dachverband_kontakte/ehrenmitglied:
+        one: ''
+        other: ''
+
+      group/dachverband_kontakte/shuttletime_tutor:
+        one: ''
+        other: ''
+
+      group/dachverband_kontakte/goenner:
+        one: ''
+        other: ''
+
+      group/dachverband_kontakte/medien: ""
+
+      group/dachverband_kontakte/partner: ""
+
+      group/dachverband_kontakte/js_experte:
+        one: ''
+        other: ''
+
+      group/region/beauftragter_ethik:
+        one: ""
+        other: ""
+
+      group/region/event_turnier:
         one: ""
         description: ""
 
-      group/dachverband_mitglieder/aktivmitglied:
+      group/region/chef_ausbildung:
+        one: ''
+        other: ''
+
+      group/region/chef_breitensport:
+        one: ''
+        other: ''
+
+      group/region/chef_leistungssport:
+        one: ''
+        other: ''
+
+      group/region/chef_nachwuchs:
+        one: ''
+        other: ''
+
+      group/region/interclub:
+        one: ''
+        other: ''
+
+      group/region/js_coach:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_mitglieder/passivmitglied:
+      group/region/umfeldmanager:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_mitglieder/junior_u15:
+      group/region/verantwortung_antidoping:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_mitglieder/junior_u19:
+      group/region/verantwortung_clubmanagement:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_mitglieder/lizenz:
+      group/region/verantwortung_finanzen:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_mitglieder/vereinigungsspieler:
+      group/region/verantwortung_kommunikation:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_mitglieder/lizenz_plus_junior:
+      group/region/verantwortung_marketing:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_mitglieder/lizenz_plus:
+      group/region/verantwortung_medical:
         one: ""
-        description: ""
+        other: ""
 
-      group/dachverband_mitglieder/shuttletime: ""
-
-      group/dachverband_mitglieder/lizenz_no_ranking:
+      group/region/verantwortung_personal:
         one: ""
-        description: ""
-
-      group/dachverband_mitglieder/js_coach:
-        one: ""
-        description: ""
-
-      group/dachverband_kontakte/kontakt: ""
-
-      group/region/administrator:
-        one: ""
-        description: ""
+        other: ""
 
       group/region_vorstand/praesident:
         one: ""
-        description: ""
+        other: ""
 
       group/region_vorstand/vizepraesident:
         one: ""
-        description: ""
+        other: ""
+
+      group/region_vorstand/mitglied:
+        one: ""
+        other: ""
 
       group/region_vorstand/kassier:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_vorstand/vorstandsmitglied:
+      group/region_vorstand/sekretaer:
+        one: ''
+        other: ''
+
+      group/region_spieler/aktivmitglied:
+        one: ''
+        other: ''
+
+      group/region_spieler/passivmitglied:
+        one: ''
+        other: ''
+
+      group/region_spieler/junior_u15:
+        one: ""
+        other: ""
+
+      group/region_spieler/junior_u19:
+        one: ""
+        other: ""
+
+      group/region_spieler/lizenz:
+        one: ''
+        other: ''
+
+      group/region_kontakte/kontakt:
+        one: ''
+        other: ''
+
+      group/region_kontakte/ehrenmitglied:
+        one: ''
+        other: ''
+
+      group/region_kontakte/medien: ""
+
+      group/region_kontakte/partner: ""
+
+      group/region_kontakte/volunteer: ""
+
+      group/verein/beauftragter_ethik:
+        one: ""
+        other: ""
+
+      group/verein/event_turnier:
         one: ""
         description: ""
 
-      group/region_mitglieder/aktivmitglied:
+      group/verein/chef_ausbildung:
+        one: ''
+        other: ''
+
+      group/verein/chef_breitensport:
+        one: ''
+        other: ''
+
+      group/verein/chef_leistungssport:
+        one: ''
+        other: ''
+
+      group/verein/chef_nachwuchs:
+        one: ''
+        other: ''
+
+      group/verein/interclub:
+        one: ''
+        other: ''
+
+      group/verein/js_coach:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/passivmitglied:
+      group/verein/umfeldmanager:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/junior_u15:
+      group/verein/verantwortung_antidoping:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/junior_u19:
+      group/verein/verantwortung_clubmanagement:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/lizenz:
+      group/verein/verantwortung_finanzen:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/vereinigungsspieler:
+      group/verein/verantwortung_kommunikation:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/lizenz_plus_junior:
+      group/verein/verantwortung_marketing:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/lizenz_plus:
+      group/verein/verantwortung_medical:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/shuttletime: ""
-
-      group/region_mitglieder/lizenz_no_ranking:
+      group/verein/verantwortung_personal:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_mitglieder/js_coach:
+      group/verein/clubtrainer:
         one: ""
-        description: ""
+        other: ""
 
-      group/region_kontakte/adressverwaltung:
+      group/verein/nationalliga: ""
+
+      group/verein/schiedsrichter:
         one: ""
-        description: ""
-
-      group/region_kontakte/kontakt: ""
-
-      group/center/center: ""
-
-      group/center/kontakt: ""
-
-      group/center/administrator:
-        one: ""
-        description: ""
-
-      group/verein/adressverwaltung:
-        one: ""
-        description: ""
-
-      group/verein/administrator:
-        one: ""
-        description: ""
-
-      group/verein/leitung:
-        one: ""
-        description: ""
-
-      group/verein/aktivmitglied:
-        one: ""
-        description: ""
+        other: ""
 
       group/verein_vorstand/praesident:
         one: ""
@@ -237,89 +432,71 @@ en:
         one: ""
         description: ""
 
+      group/verein_vorstand/sekretaer:
+        one: ''
+        other: ''
+
       group/verein_vorstand/kassier:
         one: ""
         description: ""
 
-      group/verein_vorstand/vorstandsmitglied:
+      group/verein_vorstand/mitglied:
         one: ""
         description: ""
 
-      group/verein_mitglieder/aktivmitglied:
+      group/verein_spieler/aktivmitglied:
         one: ""
         description: ""
 
-      group/verein_mitglieder/passivmitglied:
+      group/verein_spieler/passivmitglied:
         one: ""
         description: ""
 
-      group/verein_mitglieder/junior_u15:
+      group/verein_spieler/junior_u15:
         one: ""
         description: ""
 
-      group/verein_mitglieder/junior_u19:
+      group/verein_spieler/junior_u19:
         one: ""
         description: ""
 
-      group/verein_mitglieder/lizenz:
+      group/verein_spieler/lizenz:
         one: ""
         description: ""
 
-      group/verein_mitglieder/clubtrainer:
+      group/verein_spieler/vereinigungsspieler:
         one: ""
         description: ""
 
-      group/verein_mitglieder/ehrenmitglied:
+      group/verein_spieler/lizenz_plus_junior:
         one: ""
         description: ""
 
-      group/verein_mitglieder/js_experte:
+      group/verein_spieler/lizenz_plus:
         one: ""
         description: ""
 
-      group/verein_mitglieder/kaderspieler:
+      group/verein_spieler/lizenz_no_ranking:
         one: ""
         description: ""
 
-      group/verein_mitglieder/turnierorganisator:
-        one: ""
-        description: ""
+      group/verein_kontakte/kontakt:
+        one: ''
+        other: ''
 
-      group/verein_mitglieder/volunteer:
-        one: ""
-        description: ""
+      group/verein_kontakte/ehrenmitglied:
+        one: ''
+        other: ''
 
-      group/verein_mitglieder/zv_mitglied:
-        one: ""
-        description: ""
+      group/verein_kontakte/medien: ""
 
-      group/verein_mitglieder/vereinigungsspieler:
-        one: ""
-        description: ""
+      group/verein_kontakte/partner: ""
 
-      group/verein_mitglieder/lizenz_plus_junior:
-        one: ""
-        description: ""
+      group/verein_kontakte/volunteer: ""
 
-      group/verein_mitglieder/lizenz_plus:
-        one: ""
-        description: ""
+      group/center/direktion: ""
 
-      group/verein_mitglieder/shuttletime: ""
-
-      group/verein_mitglieder/lizenz_no_ranking:
-        one: ""
-        description: ""
-
-      group/verein_mitglieder/js_coach:
-        one: ""
-        description: ""
-
-      group/verein_kontakte/adressverwaltung:
-        one: ""
-        description: ""
-
-      group/verein_kontakte/kontakt: ""
+      group/center_unaffilliated/direktion: ""
 
       event/role/assistant_leader:
         one: ''
