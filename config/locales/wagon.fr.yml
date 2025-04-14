@@ -93,7 +93,7 @@ fr:
         many: ''
         other: ''
 
-      group/dachverband_geschaeftsstelle/beauftragter_ethik:
+      group/dachverband_geschaeftsstelle/ethik:
         one: ""
         many: ""
         other: ""
@@ -104,34 +104,34 @@ fr:
         other: ""
 
       group/dachverband_geschaeftsstelle/event_turnier:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/ausbildung:
         one: ''
         many: ''
         other: ''
 
-      group/dachverband_geschaeftsstelle/chef_ausbildung:
+      group/dachverband_geschaeftsstelle/breitensport:
         one: ''
         many: ''
         other: ''
 
-      group/dachverband_geschaeftsstelle/chef_breitensport:
+      group/dachverband_geschaeftsstelle/leistungssport:
         one: ''
         many: ''
         other: ''
 
-      group/dachverband_geschaeftsstelle/chef_leistungssport:
-        one: ''
-        many: ''
-        other: ''
-
-      group/dachverband_geschaeftsstelle/chef_nachwuchs:
+      group/dachverband_geschaeftsstelle/nachwuchs:
         one: ''
         many: ''
         other: ''
 
       group/dachverband_geschaeftsstelle/interclub:
-        one: ''
-        many: ''
-        other: ''
+        one: ""
+        many: ""
+        other: ""
 
       group/dachverband_geschaeftsstelle/mitglied:
         one: ''
@@ -143,42 +143,42 @@ fr:
         many: ""
         other: ""
 
-      group/dachverband_geschaeftsstelle/umfeldmanager:
+      group/dachverband_geschaeftsstelle/umfeld:
         one: ""
         many: ""
         other: ""
 
-      group/dachverband_geschaeftsstelle/verantwortung_antidoping:
+      group/dachverband_geschaeftsstelle/antidoping:
         one: ""
         many: ""
         other: ""
 
-      group/dachverband_geschaeftsstelle/verantwortung_clubmanagement:
+      group/dachverband_geschaeftsstelle/clubmanagement:
         one: ""
         many: ""
         other: ""
 
-      group/dachverband_geschaeftsstelle/verantwortung_finanzen:
+      group/dachverband_geschaeftsstelle/finanzen:
         one: ""
         many: ""
         other: ""
 
-      group/dachverband_geschaeftsstelle/verantwortung_kommunikation:
+      group/dachverband_geschaeftsstelle/kommunikation:
         one: ""
         many: ""
         other: ""
 
-      group/dachverband_geschaeftsstelle/verantwortung_marketing:
+      group/dachverband_geschaeftsstelle/marketing:
         one: ""
         many: ""
         other: ""
 
-      group/dachverband_geschaeftsstelle/verantwortung_medical:
+      group/dachverband_geschaeftsstelle/medical:
         one: ""
         many: ""
         other: ""
 
-      group/dachverband_geschaeftsstelle/verantwortung_personal:
+      group/dachverband_geschaeftsstelle/personal:
         one: ""
         many: ""
         other: ""
@@ -280,81 +280,82 @@ fr:
         many: ''
         other: ''
 
-      group/region/beauftragter_ethik:
+      group/region/ethik:
         one: ""
         many: ""
         other: ""
 
       group/region/event_turnier:
         one: ""
-        description: ""
+        many: ""
+        other: ""
 
-      group/region/chef_ausbildung:
+      group/region/ausbildung:
         one: ''
         many: ''
         other: ''
 
-      group/region/chef_breitensport:
+      group/region/breitensport:
         one: ''
         many: ''
         other: ''
 
-      group/region/chef_leistungssport:
+      group/region/leistungssport:
         one: ''
         many: ''
         other: ''
 
-      group/region/chef_nachwuchs:
+      group/region/nachwuchs:
         one: ''
         many: ''
         other: ''
 
       group/region/interclub:
-        one: ''
-        many: ''
-        other: ''
+        one: ""
+        many: ""
+        other: ""
 
       group/region/js_coach:
         one: ""
         many: ""
         other: ""
 
-      group/region/umfeldmanager:
+      group/region/umfeld:
         one: ""
         many: ""
         other: ""
 
-      group/region/verantwortung_antidoping:
+      group/region/antidoping:
         one: ""
         many: ""
         other: ""
 
-      group/region/verantwortung_clubmanagement:
+      group/region/clubmanagement:
         one: ""
         many: ""
         other: ""
 
-      group/region/verantwortung_finanzen:
+      group/region/finanzen:
         one: ""
         many: ""
         other: ""
 
-      group/region/verantwortung_kommunikation:
+      group/region/kommunikation:
         one: ""
         many: ""
         other: ""
 
-      group/region/verantwortung_marketing:
+      group/region/marketing:
         one: ""
         many: ""
         other: ""
 
-      group/region/verantwortung_medical:
+      group/region/medical:
         one: ""
         many: ""
         other: ""
 
-      group/region/verantwortung_personal:
+      group/region/personal:
         one: ""
         many: ""
         other: ""
@@ -379,7 +380,7 @@ fr:
         many: ""
         other: ""
 
-      group/region_vorstand/sekretaer:
+      group/region_vorstand/administrator:
         one: ''
         many: ''
         other: ''
@@ -425,81 +426,82 @@ fr:
 
       group/region_kontakte/volunteer: ""
 
-      group/verein/beauftragter_ethik:
+      group/verein/ethik:
         one: ""
         many: ""
         other: ""
 
       group/verein/event_turnier:
         one: ""
-        description: ""
+        many: ""
+        other: ""
 
-      group/verein/chef_ausbildung:
+      group/verein/ausbildung:
         one: ''
         many: ''
         other: ''
 
-      group/verein/chef_breitensport:
+      group/verein/breitensport:
         one: ''
         many: ''
         other: ''
 
-      group/verein/chef_leistungssport:
+      group/verein/leistungssport:
         one: ''
         many: ''
         other: ''
 
-      group/verein/chef_nachwuchs:
+      group/verein/nachwuchs:
         one: ''
         many: ''
         other: ''
 
       group/verein/interclub:
-        one: ''
-        many: ''
-        other: ''
+        one: ""
+        many: ""
+        other: ""
 
       group/verein/js_coach:
         one: ""
         many: ""
         other: ""
 
-      group/verein/umfeldmanager:
+      group/verein/umfeld:
         one: ""
         many: ""
         other: ""
 
-      group/verein/verantwortung_antidoping:
+      group/verein/antidoping:
         one: ""
         many: ""
         other: ""
 
-      group/verein/verantwortung_clubmanagement:
+      group/verein/clubmanagement:
         one: ""
         many: ""
         other: ""
 
-      group/verein/verantwortung_finanzen:
+      group/verein/finanzen:
         one: ""
         many: ""
         other: ""
 
-      group/verein/verantwortung_kommunikation:
+      group/verein/kommunikation:
         one: ""
         many: ""
         other: ""
 
-      group/verein/verantwortung_marketing:
+      group/verein/marketing:
         one: ""
         many: ""
         other: ""
 
-      group/verein/verantwortung_medical:
+      group/verein/medical:
         one: ""
         many: ""
         other: ""
 
-      group/verein/verantwortung_personal:
+      group/verein/personal:
         one: ""
         many: ""
         other: ""
@@ -524,7 +526,7 @@ fr:
         one: ""
         description: ""
 
-      group/verein_vorstand/sekretaer:
+      group/verein_vorstand/administrator:
         one: ''
         many: ''
         other: ''
