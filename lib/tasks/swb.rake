@@ -32,17 +32,7 @@ namespace :swb do
 
   desc "Updates Integration with locally imported db"
   task push: :environment do
-    cluster_psql = "$HOME/dev/hitobito/hitobito-ops/bin/postgresql"
-    pg_dump = "/usr/lib/postgresql/16/bin/pg_dump"
-    db_dump = "tmp/dump.sql"
-    puts "Dumping local schema"
-    ActiveRecord::Base.connection.execute "ALTER SCHEMA public RENAME TO database"
-    system("PGPASSWORD=$RAILS_DB_PASSWORD #{pg_dump} -cOx -h $RAILS_DB_HOST -U $RAILS_DB_USERNAME $RAILS_DB_NAME > #{db_dump}")
-    ActiveRecord::Base.connection.execute "ALTER SCHEMA database RENAME TO public"
-    project = `oc project -q`.strip
-    fail "Unexpected project: #{project}" unless project == "hit-swb-int"
-    puts "Updating remote database"
-    system("#{cluster_psql} < #{db_dump}")
+    SwbImport::Pusher.new.push
   end
 
   namespace :ts do

@@ -73,6 +73,31 @@ module SwbImport
 
     def delete_empty_groups = Group.where.not("layer_group_id = groups.id").where.missing(:roles).delete_all
 
+    def sequence_reset_statements
+      sql = <<~SQL
+        SELECT 'SELECT SETVAL(' ||
+        quote_literal(quote_ident(PGT.schemaname) || '.' || quote_ident(S.relname)) ||
+        ', COALESCE(MAX(' ||quote_ident(C.attname)|| '), 1) + #{sequence_offset}) FROM ' ||
+        quote_ident(PGT.schemaname)|| '.'||quote_ident(T.relname)|| ';' as query
+        FROM pg_class AS S,
+        pg_depend AS D,
+        pg_class AS T,
+        pg_attribute AS C,
+        pg_tables AS PGT
+        WHERE S.relkind = 'S'
+        AND T.relname IN ('groups', 'roles')
+        AND S.oid = D.objid
+        AND D.refobjid = T.oid
+        AND D.refobjid = C.attrelid
+        AND D.refobjsubid = C.attnum
+        AND T.relname = PGT.tablename
+        ORDER BY S.relname;
+      SQL
+      ActiveRecord::Base.connection.execute(sql).map do |query|
+        ActiveRecord::Base.connection.execute(query["query"])
+      end
+    end
+
     def seed_static_people
       load(Rails.root.join("db", "seeds", "support", "person_seeder.rb"))
 
