@@ -11,6 +11,8 @@ class Ts::Entity < Data
   class << self
     def list = Ts::Client.new(self).list.response.entities
 
+    def search(q) = Ts::Client.new(self).search(q).response.entities
+
     def path_name = element_name.gsub("Organization", "")
 
     def element_name = name.demodulize

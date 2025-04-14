@@ -39,6 +39,10 @@ class Ts::Client
     request(:get, build_url)
   end
 
+  def search(q)
+    request(:get, build_url("?q=#{q}"))
+  end
+
   def post(payload)
     request(:post, build_url, payload)
   end
