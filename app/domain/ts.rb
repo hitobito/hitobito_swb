@@ -10,8 +10,6 @@ module Ts
 
   CENTER_PARENT_CODE = "140D8B65-3AEC-4CF9-A869-EFD008D5AF1B" # centers are not imported
 
-  SPIELER_CODE = "84B14141-A7C4-48ED-AA90-87009D79EEC"
-
   COUNTRIES = ISO3166::Country.all.map { |c| [c.alpha2, c.ioc] if c.ioc }.compact_blank.to_h
 
   RoleMapping = Data.define(:type, :name, :code)
@@ -38,7 +36,7 @@ module Ts
   ROLE_MAPPINGS = ROLE_CODE_MAPPING.flat_map do |name, code|
     if name == "Spieler"
       next SwbImport::SPIELER_LIZENZ_MAPPING.map(&:second).flatten.map do |type|
-        RoleMapping.new(type:, name:, code: SPIELER_CODE.downcase)
+        RoleMapping.new(type:, name:, code:)
       end
     end
 
