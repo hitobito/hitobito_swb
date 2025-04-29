@@ -14,8 +14,19 @@ module Swb::PeopleHelper
     ISO3166::Country[person.nationality_badminton]&.translations&.dig(I18n.locale.to_s)
   end
 
+  def format_person_public_profile(person)
+    path = format(Settings.people.public_profile % person.id)
+    link_to(path, path)
+  end
+
   def format_person_ts_code(person)
     link_to(person.ts_code,
       "#{Ts::Config.web_host}/organization/member.aspx?mid=#{person.ts_code}")
   end
+
+  def format_person_newsletter(person) = yes_no_badge(person.newsletter)
+
+  def format_person_advertising(person) = yes_no_badge(person.advertising)
+
+  def format_person_emergency_contact(person) = simple_format(person.emergency_contact)
 end

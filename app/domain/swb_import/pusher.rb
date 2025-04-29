@@ -12,13 +12,12 @@ module SwbImport
       cluster_psql = "$HOME/dev/hitobito/hitobito-ops/bin/postgresql"
       pg_dump = "/usr/lib/postgresql/16/bin/pg_dump"
       db_dump = "tmp/dump.sql"
-      puts "Setting offseting sequences by #{sequence_offset}"
       puts "Dumping local schema"
       ActiveRecord::Base.connection.execute "ALTER SCHEMA public RENAME TO database"
       system("PGPASSWORD=$RAILS_DB_PASSWORD #{pg_dump} -cOx -h $RAILS_DB_HOST -U $RAILS_DB_USERNAME $RAILS_DB_NAME > #{db_dump}")
       ActiveRecord::Base.connection.execute "ALTER SCHEMA database RENAME TO public"
       project = `oc project -q`.strip
-      fail "Unexpected project: #{project}" unless project == "hit-swb-int"
+      fail "Unexpected project: #{project}" unless project.starts_with?("hit-swb")
       puts "Updating remote database"
       system("#{cluster_psql} < #{db_dump}")
     end

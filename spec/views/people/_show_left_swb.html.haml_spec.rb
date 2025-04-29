@@ -1,0 +1,42 @@
+#  Copyright (c) 2012-2024, Schweizer Alpen-Club. This file is part of
+#  hitobito_sac_cas and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_sac_cas.
+
+require "spec_helper"
+
+describe "people/_show_left_swb.html.haml" do
+  let(:dom) {
+    render
+    Capybara::Node::Simple.new(@rendered)
+  }
+  let(:person) { people(:admin) }
+
+  before do
+    allow(view).to receive(:entry).and_return(person.decorate)
+  end
+
+  describe "ts info" do
+    it "is shown when ts_code is set on person" do
+      expect(dom).to have_css("h2", text: "Tournament Software")
+    end
+
+    it "is not shown when ts_code is missing on person" do
+      person.update!(ts_code: nil)
+      expect(dom).not_to have_css("h2", text: "Tournament Software")
+    end
+  end
+
+  it "renders emergency_contact as formatted string" do
+    person.update!(emergency_contact: "Foo\nBar")
+    expect(dom).to have_css "dt", text: "Notfallkontakt"
+    expect(dom).to have_css "dd", text: "Foo\nBar"
+  end
+
+  describe "public profile" do
+    it "renders public profile link" do
+      expect(dom).to have_css "dt", text: "öffentliches Profil"
+      expect(dom).to have_css "dd a", text: "https://www.example.com/player/#{person.id}"
+    end
+  end
+end

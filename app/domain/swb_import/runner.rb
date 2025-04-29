@@ -113,8 +113,10 @@ module SwbImport
       devs = {
         "Christophe Bächler" => "cbaechler@swiss-badminton.ch",
         "Simone Ramsauer" => "sramsauer@swiss-badminton.ch",
-        "Thomas Heiniger" => "theiniger@swiss-badminton.ch"
+        "Thomas Heiniger" => "theiniger@swiss-badminton.ch",
+        "Nicole Schneiter" => "nicole.schneiter@swiss-badminton.ch"
       }
+
       puzzlers.each do |puz|
         devs[puz] = "#{puz.split.last.downcase.gsub("ä", "ae")}@puzzle.ch"
       end
