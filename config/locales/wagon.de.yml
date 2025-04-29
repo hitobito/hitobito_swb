@@ -533,8 +533,14 @@ de:
         founded_on: Gründungsdatum
         yearly_budget: Jahresbudget
       person:
+        advertising: Werbung
+        emergency_contact: Notfallkontakt
+        international_player_id: Internationale Spieler-ID
+        member_id: Member-ID
         nationality: Nationalität gemäss Pass / ID
         nationality_badminton: Nationalität als Badmintonspieler:in
+        newsletter: Newsletter
+        public_profile: öffentliches Profil
         ts_code: TS Code
         ts_last_sync: TS letzte aktualisierung
       service_token:

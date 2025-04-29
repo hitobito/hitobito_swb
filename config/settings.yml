@@ -26,6 +26,8 @@ phone_number:
     - --
     - mobile
     - landline
+people:
+  public_profile: https://www.example.com/player/%d
 
 # The person with this email has root access to everything
 # This person should only be used by the operators of the application,

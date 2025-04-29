@@ -28,6 +28,8 @@ module Swb::Person
       mobile: -> { phone_numbers.index_by(&:label)["mobile"]&.number },
       website: -> { social_accounts.index_by(&:label)["website"]&.name }
     }
+
+    alias_method :member_id, :id
   end
 
   def ts_managed? = super && roles.any?(&:ts_managed?)

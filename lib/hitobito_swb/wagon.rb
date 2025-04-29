@@ -34,14 +34,21 @@ module HitobitoSwb
       RolesController.prepend Swb::RolesController
 
       PeopleHelper.prepend Swb::PeopleHelper
+      LayoutHelper.prepend Swb::LayoutHelper
       StandardFormBuilder.prepend Swb::StandardFormBuilder
+
+      Export::Tabular::People::PeopleAddress.prepend Swb::Export::Tabular::People::PeopleAddress
 
       HitobitoLogEntry.categories += %w[ts]
 
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
-      PeopleController.permitted_attrs += [:nationality, :nationality_badminton]
+      PeopleController.permitted_attrs += [
+        :nationality, :nationality_badminton,
+        :international_player_id, :emergency_contact,
+        :advertising, :newsletter
+      ]
 
-      Person::FILTER_ATTRS << [:nationality, :country_select] << [:nationality_badminton, :country_select]
+      Person::FILTER_ATTRS << [:nationality, :country_select] << [:nationality_badminton, :country_select] << [:newsletter] << [:advertising]
     end
 
     initializer "swb.add_settings" do |_app|

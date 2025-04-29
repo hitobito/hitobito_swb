@@ -5,3 +5,8 @@
 
 = f.labeled_country_select(:nationality)
 = f.labeled_country_select(:nationality_badminton)
+= f.labeled_input_field(:international_player_id)
+= f.labeled_input_field(:emergency_contact)
+= f.labeled(t('.label_email_settings')) do
+  = f.input_field(:advertising, caption: t('.caption_advertising'))
+  = f.input_field(:newsletter, caption: t('.caption_newsletter'))

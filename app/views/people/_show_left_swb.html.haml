@@ -5,3 +5,4 @@
 - #  https://github.com/hitobito/hitobito_swb.
 
 = render "shared/ts_info", entry: entry if entry.ts_code
+= render_attrs(entry, :emergency_contact, :public_profile)

@@ -8,10 +8,10 @@
 require "spec_helper"
 
 describe Person do
+  subject(:person) { people(:admin) }
+
   describe "ts_model" do
     let(:ts_code) { Faker::Internet.uuid }
-
-    subject(:person) { people(:admin) }
 
     subject(:ts_model) { person.ts_model }
 
@@ -49,5 +49,10 @@ describe Person do
         nationality: "SUI"
       )
     end
+  end
+
+  it "#member_id is aliased to #id and correctly translated" do
+    expect(person.member_id).to eq person.id
+    expect(Person.human_attribute_name(:member_id)).to eq "Member-ID"
   end
 end

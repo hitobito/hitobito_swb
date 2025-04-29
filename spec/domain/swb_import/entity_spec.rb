@@ -97,6 +97,7 @@ describe SwbImport::Entity do
       csv["phone"] = "0791234567"
       csv["mobile"] = "0791234567"
       csv["Language"] = "Deutsch (SUI)"
+      csv["Mitteilungen"] = "True"
     end
 
     it "reads default attributes" do
@@ -111,6 +112,7 @@ describe SwbImport::Entity do
       expect(person.housenumber).to eq "13a"
       expect(person.country).to eq "CH"
       expect(person.phone_numbers).to have(2).items
+      expect(person.newsletter).to eq true
       expect(person).to be_valid
     end
 
@@ -122,6 +124,11 @@ describe SwbImport::Entity do
     it "does infer language from country" do
       csv["Language"] = "Französisch (SUI)"
       expect(person.language).to eq "fr"
+    end
+
+    it "sets newsletter to false according to Mitteilungen" do
+      csv["Mitteilungen"] = "False"
+      expect(person.newsletter).to eq false
     end
   end
 
