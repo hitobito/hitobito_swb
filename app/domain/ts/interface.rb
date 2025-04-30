@@ -34,12 +34,6 @@ class Ts::Interface
     request(:put, code, ts_model.to_xml)
   end
 
-  def delete
-    fail "Need ts_code" unless ts_code?
-
-    request(:delete, ts_model.code)
-  end
-
   private
 
   def ts_code? = model.ts_code.present?

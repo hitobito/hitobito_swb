@@ -58,4 +58,12 @@ describe Person do
     expect(person.member_id).to eq person.id
     expect(Person.human_attribute_name(:member_id)).to eq "Member-ID"
   end
+
+  describe "#destroy" do
+    it "may not be destroyed if ts managed roles exist" do
+      Fabricate(Group::Region::Interclub.sti_name, group: groups(:brb), person:, ts_code: Faker::Internet.uuid)
+      expect(person.destroy).to eq(false)
+      expect(person.errors.full_messages).to eq ["Kann nicht gelöscht werden solange TS Rollen existieren."]
+    end
+  end
 end

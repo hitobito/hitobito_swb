@@ -15,14 +15,18 @@ describe RolesController do
     let(:interclub) { "Group::DachverbandGeschaeftsstelle::Interclub" }
 
     let(:person) { people(:admin) }
-    let(:delayed_jobs) { Delayed::Job.where("handler ilike '%Ts::WriteJob%'") }
+    let(:leader) { roles(:leader) }
+    let(:managed_role) { Fabricate(interclub, person: people(:leader), group: gs, ts_code: Faker::Internet.uuid) }
+
+    let(:write_jobs) { Delayed::Job.where("handler ilike '%Ts::WriteJob%'") }
+    let(:delete_jobs) { Delayed::Job.where("handler ilike '%Ts::RoleDestroyJob%'") }
 
     context "POST#create" do
       it "enqueues if managed" do
         expect do
           post :create, params: {group_id: gs.id, role: {type: interclub, person_id: person.id}}
         end.to change { Role.count }.by(1)
-          .and change { delayed_jobs.count }.by(1)
+          .and change { write_jobs.count }.by(1)
       end
 
       it "enqueues two if managed and person not yet managed" do
@@ -30,14 +34,14 @@ describe RolesController do
         expect do
           post :create, params: {group_id: gs.id, role: {type: interclub, person_id: person.id}}
         end.to change { Role.count }.by(1)
-          .and change { delayed_jobs.count }.by(2)
+          .and change { write_jobs.count }.by(2)
       end
 
       it "does not enqueue if invalid" do
         expect do
           post :create, params: {group_id: gs.id, role: {type: interclub, person_id: person.id, start_on: Date.tomorrow, end_on: Date.yesterday}}
         end.to not_change { Role.count }
-          .and not_change { delayed_jobs.count }
+          .and not_change { write_jobs.count }
       end
 
       it "does not enqueue if not managed" do
@@ -45,41 +49,110 @@ describe RolesController do
         expect do
           post :create, params: {group_id: gs.id, role: {type: "Group::DachverbandGeschaeftsstelle::JSCoach", person_id: person.id}}
         end.to change { Role.count }
-          .and not_change { delayed_jobs.count }
+          .and not_change { write_jobs.count }
       end
     end
 
     context "PUT#update" do
-      let(:leader) { roles(:leader) }
-      let(:role) { Fabricate(interclub, person: people(:leader), group: gs, ts_code: Faker::Internet.uuid) }
-
       it "enqueues one if managed and person already managed" do
         leader.person.update(ts_code: Faker::Internet.uuid)
         expect do
-          put :update, params: {group_id: role.group_id, id: role.id, role: {end_on: Date.tomorrow}}
-        end.to change { role.reload.end_on }.to(Date.tomorrow)
-          .and change { delayed_jobs.count }.by(1)
+          put :update, params: {group_id: managed_role.group_id, id: managed_role.id, role: {end_on: Date.tomorrow}}
+        end.to change { managed_role.reload.end_on }.to(Date.tomorrow)
+          .and change { write_jobs.count }.by(1)
       end
 
       it "enqueues two if managed and person not yet managed" do
         expect do
-          put :update, params: {group_id: role.group_id, id: role.id, role: {end_on: Date.tomorrow}}
-        end.to change { role.reload.end_on }.to(Date.tomorrow)
-          .and change { delayed_jobs.count }.by(2)
+          put :update, params: {group_id: managed_role.group_id, id: managed_role.id, role: {end_on: Date.tomorrow}}
+        end.to change { managed_role.reload.end_on }.to(Date.tomorrow)
+          .and change { write_jobs.count }.by(2)
       end
 
       it "does not enqueue if not managed" do
         expect do
           put :update, params: {group_id: leader.group_id, id: leader.id, role: {end_on: Date.tomorrow}}
         end.to change { leader.reload.end_on }.to(Date.tomorrow)
-          .and not_change { delayed_jobs.count }
+          .and not_change { write_jobs.count }
       end
 
       it "does not enqueue if changed params are irrelevant" do
         expect do
-          put :update, params: {group_id: role.group_id, id: role.id, role: {label: "test"}}
-        end.to change { role.reload.label }.to("test")
-          .and not_change { delayed_jobs.count }
+          put :update, params: {group_id: managed_role.group_id, id: managed_role.id, role: {label: "test"}}
+        end.to change { managed_role.reload.label }.to("test")
+          .and not_change { write_jobs.count }
+      end
+
+      describe "changing type" do
+        it "does not enqueue anything if no role type is managed" do
+          expect do
+            put :update, params: {group_id: leader.group_id, id: leader.id, role: {type: "Group::DachverbandGeschaeftsstelle::Mitglied", group_id: leader.group_id}}
+          end.to not_change { Role.count }
+            .and not_change { write_jobs.count }
+            .and not_change { delete_jobs.count }
+          expect(leader.person.reload.roles.pluck(:type)).to eq ["Group::DachverbandGeschaeftsstelle::Mitglied"]
+        end
+
+        it "enqueues two write jobs when changing to managed role and person not yet managed" do
+          expect do
+            put :update, params: {group_id: leader.group_id, id: leader.id, role: {type: "Group::DachverbandGeschaeftsstelle::Interclub", group_id: leader.group_id}}
+          end.to not_change { Role.count }
+            .and not_change { delete_jobs.count }
+            .and change { write_jobs.count }.by(2)
+        end
+
+        it "enqueues single write and delete job when changing to managed role and person and deleted role are managed" do
+          other = Fabricate(Group::Region::Interclub.sti_name, person: people(:leader), group: groups(:brb), ts_code: Faker::Internet.uuid)
+
+          expect do
+            put :update, params: {group_id: other.group_id, id: other.id, role: {type: "Group::DachverbandGeschaeftsstelle::Interclub", group_id: leader.group_id}}
+          end.to not_change { Role.count }
+            .and change { delete_jobs.count }.by(1)
+            .and change { write_jobs.count }.by(2)
+        end
+
+        it "enqueues single delete job when changing from managed to non managed role" do
+          managed_role # initialize
+
+          expect do
+            put :update, params: {group_id: managed_role.group_id, id: managed_role.id, role: {type: "Group::Region::EventTurnier", group_id: groups(:brb).id}}
+          end.to not_change { Role.count }
+            .and change { delete_jobs.count }.by(1)
+            .and not_change { write_jobs.count }
+        end
+      end
+    end
+
+    context "DELETE#destroy" do
+      it "does enqueue job" do
+        expect do
+          delete :destroy, params: {group_id: managed_role.group_id, id: managed_role.id}
+        end.to change { Role.where(id: managed_role.id).count }.by(-1)
+          .and change { delete_jobs.count }
+          .and not_change { write_jobs.count }
+
+        delete_job = delete_jobs.first.payload_object
+        [:id, :ts_code, :person_id, :group_id, :start_on].each do |attr|
+          expect(delete_job.attrs[attr]).to eq managed_role.send(attr)
+        end
+        expect(delete_job.attrs[:end_on]).to eq Time.zone.yesterday
+      end
+
+      it "does not enqueue if not managed" do
+        expect do
+          delete :destroy, params: {group_id: leader.group_id, id: leader.id}
+        end.to change { Role.where(id: leader.id).count }.by(-1)
+          .and not_change { delete_jobs.count }
+          .and not_change { write_jobs.count }
+      end
+
+      it "does not enqueue if managed but not yet synced" do
+        managed_role.update!(ts_code: nil)
+        expect do
+          delete :destroy, params: {group_id: managed_role.group_id, id: managed_role.id}
+        end.to change { Role.where(id: managed_role.id).count }.by(-1)
+          .and not_change { delete_jobs.count }
+          .and not_change { write_jobs.count }
       end
     end
   end

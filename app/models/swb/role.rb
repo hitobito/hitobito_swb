@@ -31,6 +31,13 @@ module Swb::Role
     super.gsub(suffix, "#{suffix} - #{ts_log}")
   end
 
+  def ts_destroy_values
+    attributes
+      .symbolize_keys
+      .slice(*%i[id ts_code group_id person_id start_on end_on])
+      .merge(end_on: Time.zone.yesterday)
+  end
+
   def ts_managed? = super && self.class.model_name.ts_role
 
   private
