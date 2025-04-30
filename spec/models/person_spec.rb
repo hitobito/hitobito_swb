@@ -26,16 +26,18 @@ describe Person do
     end
 
     it "maps additional attributes if present" do
+      person.language = "fr"
       person.gender = "w"
       person.birthday = Date.new(1999, 12, 31)
       person.housenumber = "1a"
       person.street = "Langestrasse"
       person.zip_code = 8000
       person.town = "Zürich"
-      person.country = "CH"
-      person.social_accounts.build(label: "website", name: "www.example.com")
-      person.phone_numbers.build(number: "+41 79 123 45 67", label: :mobile)
-      person.phone_numbers.build(number: "+41 79 123 45 68", label: :landline)
+      person.country = "ch"
+      person.nationality = "de"
+      person.social_accounts.build(name: "www.example.com", label: "Webseite")
+      person.phone_numbers.build(number: "+41 79 123 45 67", label: "Mobil")
+      person.phone_numbers.build(number: "+41 79 123 45 68", label: "Festnetz")
 
       expect(ts_model).to have_attributes(
         gender_id: 2,
@@ -44,9 +46,10 @@ describe Person do
         postal_code: "8000",
         city: "Zürich",
         country: "SUI",
+        nationality: "GER",
         mobile: "+41 79 123 45 67",
         phone: "+41 79 123 45 68",
-        nationality: "SUI"
+        website: "www.example.com"
       )
     end
   end

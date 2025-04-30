@@ -22,15 +22,19 @@ module Swb::Person
       city: :town,
       gender_id: -> { Ts::GENDERS[gender] if gender },
       date_of_birth: -> { "#{birthday}T00:00:00" if birthday },
-      nationality: -> { Ts::COUNTRIES[country.to_s] if country },
-      country: -> { Ts::COUNTRIES[country.to_s] if country },
-      phone: -> { phone_numbers.index_by(&:label)["landline"]&.number },
-      mobile: -> { phone_numbers.index_by(&:label)["mobile"]&.number },
-      website: -> { social_accounts.index_by(&:label)["website"]&.name }
+      nationality: -> { Ts::COUNTRIES[nationality.to_s.upcase] if nationality },
+      country: -> { Ts::COUNTRIES[country.to_s.upcase] if country },
+      phone: -> { contactable_value(:phone_numbers, :landline) },
+      mobile: -> { contactable_value(:phone_numbers, :mobile) },
+      website: -> { contactable_value(:social_accounts, :webseite) }
     }
 
     alias_method :member_id, :id
   end
 
   def ts_managed? = super && roles.any?(&:ts_managed?)
+
+  private
+
+  def contactable_value(rel, label) = send(rel).find { |c| send(rel).model.translate_label(label) == c.label }&.value
 end
