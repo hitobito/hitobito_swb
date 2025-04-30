@@ -522,7 +522,6 @@ de:
               other: Liebe:r %{first_name}
 
     attributes:
-
       contact_account:
         predefined_labels:
           landline: Festnetz
