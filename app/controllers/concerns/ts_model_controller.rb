@@ -17,7 +17,7 @@ module TsModelController
 
   private
 
-  def enqueue_ts_post = Ts::WriteJob.new(entry.to_global_id, :post).enqueue!
+  def enqueue_ts_post(model = entry) = Ts::WriteJob.new(model.to_global_id, :post).enqueue!
 
   def enqueue_ts_put = Ts::WriteJob.new(entry.to_global_id, :put).enqueue!
 end

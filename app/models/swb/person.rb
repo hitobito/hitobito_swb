@@ -34,7 +34,19 @@ module Swb::Person
 
   def ts_managed? = super && roles.any?(&:ts_managed?)
 
+  # NOTE: override as dependent: :destroy callbacks fire before anything registered here
+  def destroy
+    assert_no_ts_managed_roles
+    errors.none? ? super : false
+  end
+
   private
 
   def contactable_value(rel, label) = send(rel).find { |c| send(rel).model.translate_label(label) == c.label }&.value
+
+  def assert_no_ts_managed_roles
+    if roles.any?(&:ts_managed?)
+      errors.add(:base, :cannot_be_destroyed_if_ts_roles_exist)
+    end
+  end
 end
