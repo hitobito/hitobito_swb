@@ -42,6 +42,14 @@ module Swb::Person
 
   private
 
+  # NOTE enqueue ts_put in case we are managed to sync updated email
+  # https://github.com/heartcombo/devise/blob/fec67f98f26fcd9a79072e4581b1bd40d0c7fa1d/lib/devise/models/confirmable.rb#L308
+  def after_confirmation
+    super.then do
+      Ts::WriteJob.new(to_global_id, :put).enqueue! if ts_managed?
+    end
+  end
+
   def contactable_value(rel, label) = send(rel).find { |c| send(rel).model.translate_label(label) == c.label }&.value
 
   def assert_no_ts_managed_roles
