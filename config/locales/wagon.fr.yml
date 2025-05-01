@@ -4,4 +4,678 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 fr:
+  activerecord:
+    models:
+
+      ### GROUPS
+
+      group/dachverband:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_vorstand:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_technischoffiziell:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_kommission:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_spieler: ""
+      group/dachverband_kader: ""
+
+      group/dachverband_kontakte: ""
+
+      group/region:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_vorstand:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_spieler: ""
+
+      group/region_kontakte: ""
+
+      group/center: ""
+
+      group/center_unaffilliated: ""
+
+      group/verein:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein_vorstand:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein_spieler: ""
+
+      group/verein_kontakte: ""
+
+      ### ROLES
+
+      group/dachverband/administrator:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_vorstand/praesident:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_vorstand/vizepraesident:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_vorstand/mitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/ethik:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/geschaeftsfuehrer:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/event_turnier:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/ausbildung:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/breitensport:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/leistungssport:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/nachwuchs:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/interclub:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/mitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_geschaeftsstelle/js_coach:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/umfeld:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/antidoping:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/clubmanagement:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/finanzen:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/kommunikation:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/marketing:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/medical:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_geschaeftsstelle/personal:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_technischoffiziell/schiedsrichter:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_technischoffiziell/linienrichter:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_technischoffiziell/referee:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_kommission/leitung:
+        one: ""
+        description: ""
+
+      group/dachverband_kommission/mitglied:
+        one: ""
+        description: ""
+
+      group/dachverband_spieler/aktivmitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_spieler/passivmitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_spieler/junior_u15:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_spieler/junior_u19:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_spieler/lizenz:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_kader/athlet:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_kader/trainer:
+        one: ""
+        many: ""
+        other: ""
+
+      group/dachverband_kontakte/kontakt:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_kontakte/ehemaliges_zvmitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_kontakte/ehemaliger_mitarbeiter:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_kontakte/ehrenmitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_kontakte/shuttletime_tutor:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_kontakte/goenner:
+        one: ''
+        many: ''
+        other: ''
+
+      group/dachverband_kontakte/medien: ""
+
+      group/dachverband_kontakte/partner: ""
+
+      group/dachverband_kontakte/js_experte:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region/ethik:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/event_turnier:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/ausbildung:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region/breitensport:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region/leistungssport:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region/nachwuchs:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region/interclub:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/js_coach:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/umfeld:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/antidoping:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/clubmanagement:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/finanzen:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/kommunikation:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/marketing:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/medical:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region/personal:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region_vorstand/praesident:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region_vorstand/vizepraesident:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region_vorstand/mitglied:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region_vorstand/kassier:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region_vorstand/administrator:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_spieler/aktivmitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_spieler/passivmitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_spieler/junior_u15:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region_spieler/junior_u19:
+        one: ""
+        many: ""
+        other: ""
+
+      group/region_spieler/lizenz:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_kontakte/kontakt:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_kontakte/ehrenmitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/region_kontakte/medien: ""
+
+      group/region_kontakte/partner: ""
+
+      group/region_kontakte/volunteer: ""
+
+      group/verein/ethik:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/event_turnier:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/ausbildung:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein/breitensport:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein/leistungssport:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein/nachwuchs:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein/interclub:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/js_coach:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/umfeld:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/antidoping:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/clubmanagement:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/finanzen:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/kommunikation:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/marketing:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/medical:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/personal:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/clubtrainer:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein/nationalliga: ""
+
+      group/verein/schiedsrichter:
+        one: ""
+        many: ""
+        other: ""
+
+      group/verein_vorstand/praesident:
+        one: ""
+        description: ""
+
+      group/verein_vorstand/vizepraesident:
+        one: ""
+        description: ""
+
+      group/verein_vorstand/administrator:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein_vorstand/kassier:
+        one: ""
+        description: ""
+
+      group/verein_vorstand/mitglied:
+        one: ""
+        description: ""
+
+      group/verein_spieler/aktivmitglied:
+        one: ""
+        description: ""
+
+      group/verein_spieler/passivmitglied:
+        one: ""
+        description: ""
+
+      group/verein_spieler/junior_u15:
+        one: ""
+        description: ""
+
+      group/verein_spieler/junior_u19:
+        one: ""
+        description: ""
+
+      group/verein_spieler/lizenz:
+        one: ""
+        description: ""
+
+      group/verein_spieler/vereinigungsspieler:
+        one: ""
+        description: ""
+
+      group/verein_spieler/lizenz_plus_junior:
+        one: ""
+        description: ""
+
+      group/verein_spieler/lizenz_plus:
+        one: ""
+        description: ""
+
+      group/verein_spieler/lizenz_no_ranking:
+        one: ""
+        description: ""
+
+      group/verein_kontakte/kontakt:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein_kontakte/ehrenmitglied:
+        one: ''
+        many: ''
+        other: ''
+
+      group/verein_kontakte/medien: ""
+
+      group/verein_kontakte/partner: ""
+
+      group/verein_kontakte/volunteer: ""
+
+      group/center/direktion: ""
+
+      group/center_unaffilliated/direktion: ""
+
+      event/role/assistant_leader:
+        one: ''
+        many: ''
+        other: ''
+      event/role/leader:
+        one: ''
+        many: ''
+        other: ''
+      event/role/helper:
+        one: ''
+        many: ''
+        other: ''
+      event/role/participant:
+        one: ''
+        many: ''
+        other: ''
+      event/role/speaker:
+        one: ''
+        many: ''
+        other: ''
+
+      salutation:
+        available:
+          lieber_vorname:
+            label: ""
+            value:
+              other: ""
+
+    attributes:
+
+      contact_account:
+        predefined_labels:
+          landline: ""
+          mobile: ""
+      event/role:
+        remove_participant_role: ""
+      group:
+        founded_on: ""
+        yearly_budget: ""
+      person:
+        advertising: ""
+        emergency_contact: ""
+        international_player_id: ""
+        member_id: ""
+        nationality: ""
+        nationality_badminton: ""
+        newsletter: ""
+        public_profile: ""
+        ts_code: ""
+        ts_last_sync: ""
+      service_token:
+        mailing_lists: ""
+
+  event:
+    application_market:
+      index:
+        add_participant: ""
+
+  events:
+    application_fields:
+      caption_signature: ""
+    form:
+      caption_requires_approval: ""
+
+  mailing_lists:
+    form:
+      caption_anyone_may_post: ""
+
+  mailing_list_decorator:
+    anyone_may_post: ""
+    anyone_may_not_post: ""
+
+  people:
+    tabs:
+      colleagues: ""
+
+  subscriber:
+    exclude_person:
+      form:
+        exclude_subscriber: ""
+
+  subscriber/exclude_person:
+    failure: ""
 
