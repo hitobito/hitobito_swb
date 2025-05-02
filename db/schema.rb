@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_10_192742) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_05_105459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,26 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_10_192742) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "additional_addresses", force: :cascade do |t|
+    t.string "contactable_type"
+    t.bigint "contactable_id"
+    t.string "name", null: false
+    t.string "label", null: false
+    t.string "street", null: false
+    t.string "housenumber", limit: 20
+    t.string "zip_code", null: false
+    t.string "town", null: false
+    t.string "country", null: false
+    t.string "address_care_of"
+    t.string "postbox"
+    t.boolean "invoices", default: false, null: false
+    t.boolean "uses_contactable_name", default: true, null: false
+    t.boolean "public", default: false, null: false
+    t.index ["contactable_id", "contactable_type", "invoices"], name: "idx_on_contactable_id_contactable_type_invoices_45d4363dd7", unique: true, where: "(invoices = true)"
+    t.index ["contactable_id", "contactable_type", "label"], name: "idx_on_contactable_id_contactable_type_label_53043e4f10", unique: true
+    t.index ["contactable_type", "contactable_id"], name: "index_additional_addresses_on_contactable"
+  end
+
   create_table "additional_emails", id: :serial, force: :cascade do |t|
     t.string "contactable_type", null: false
     t.integer "contactable_id", null: false
@@ -59,7 +79,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_10_192742) do
     t.string "label"
     t.boolean "public", default: true, null: false
     t.boolean "mailings", default: true, null: false
+    t.boolean "invoices", default: false
     t.index ["contactable_id", "contactable_type"], name: "index_additional_emails_on_contactable_id_and_contactable_type"
+    t.index ["invoices", "contactable_id", "contactable_type"], name: "idx_on_invoices_contactable_id_contactable_type_9f308c8a16", where: "(((contactable_type)::text = 'AdditionalEmail'::text) AND (invoices = true))"
   end
 
   create_table "addresses", force: :cascade do |t|
@@ -383,6 +405,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_10_192742) do
     t.decimal "training_days", precision: 5, scale: 2
     t.integer "minimum_participants"
     t.boolean "automatic_assignment", default: false, null: false
+    t.string "external_link"
     t.index ["kind_id"], name: "index_events_on_kind_id"
     t.index ["shared_access_token"], name: "index_events_on_shared_access_token"
   end

@@ -5,16 +5,13 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Group::DachverbandKader < ::Group
-  self.event_types = []
+module Swb::GroupAbility
+  extend ActiveSupport::Concern
 
-  class Athlet < ::Role
-    self.permissions = [:group_read]
+  prepended do
+    on(Group) do
+      permission(:any).may(:"index_event/tournaments").all
+      permission(:any).may(:"index_event/external_trainings").all
+    end
   end
-
-  class Trainer < ::Role
-    self.permissions = [:group_read]
-  end
-
-  roles Trainer, Athlet
 end

@@ -33,5 +33,7 @@ class Group::Dachverband < ::Group
     self.permissions = [:admin, :layer_and_below_full, :impersonation]
   end
 
+  self.event_types = [Event, Event::Tournament, Event::ExternalTraining]
+
   roles Administrator
 end

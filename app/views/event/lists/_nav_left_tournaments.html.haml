@@ -1,0 +1,11 @@
+- # Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+- # hitobito_swb and licensed under the Affero General Public License version 3
+- # or later. See the COPYING file at the top-level directory or at
+- # https://github.com/hitobito/hitobito_swb.
+
+%ul.nav-left-list
+  - @tournaments.keys.collect(&:split).group_by(&:last).each do |year, months|
+    %li.divider= year
+    - months.each do |month, year|
+      %li= link_to(month, "##{"#{month} #{year}".parameterize}", data: { turbo: false })
+

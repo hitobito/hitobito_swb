@@ -1,0 +1,26 @@
+# frozen_string_literal: true
+
+#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  hitobito_swb and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_swb.
+
+class Event::ExternalTraining < Event
+  VALID_STATUS_CODES = (200..399)
+
+  self.role_types = []
+  self.used_attributes = [:name, :description, :external_link]
+
+  validates :external_link, presence: true
+  validate :assert_external_link, if: -> { external_link_changed? && external_link.present? }
+
+  private
+
+  def assert_external_link
+    unless VALID_STATUS_CODES.include?(RestClient.get(external_link).code)
+      errors.add(:external_link, :invalid)
+    end
+  rescue SocketError
+    errors.add(:external_link, :invalid)
+  end
+end

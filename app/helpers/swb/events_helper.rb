@@ -5,16 +5,14 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Group::DachverbandKader < ::Group
-  self.event_types = []
-
-  class Athlet < ::Role
-    self.permissions = [:group_read]
+module Swb::EventsHelper
+  def format_event_external_link(e)
+    link_to(e.external_link, e.external_link)
   end
 
-  class Trainer < ::Role
-    self.permissions = [:group_read]
-  end
+  def button_action_event_apply(e, group = nil)
+    return super unless e.is_a?(Event::ExternalTraining)
 
-  roles Trainer, Athlet
+    action_button(I18n.t("event_decorator.apply"), e.external_link, :check)
+  end
 end
