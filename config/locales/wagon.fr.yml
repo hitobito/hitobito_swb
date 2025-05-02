@@ -5,6 +5,10 @@
 
 fr:
   activerecord:
+    errors:
+      models:
+        person:
+          cannot_be_destroyed_if_ts_roles_exist: ""
     models:
 
       ### GROUPS
@@ -624,7 +628,6 @@ fr:
               other: ""
 
     attributes:
-
       contact_account:
         predefined_labels:
           landline: ""
