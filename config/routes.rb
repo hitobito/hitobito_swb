@@ -10,6 +10,16 @@ Rails.application.routes.draw do
   extend LanguageRouteScope
 
   language_scope do
-    # Define wagon routes here
+    resources :groups, only: [] do
+      resources :events, only: [] do
+        collection do
+          get "tournament" => "events#index", type: "Event::Tournament"
+          get "external_training" => "events#index", type: "Event::ExternalTraining"
+        end
+      end
+    end
+
+    get "list_tournaments" => "event/lists#tournaments", as: :list_tournaments
+    get "list_external_trainings" => "event/lists#external_trainings", as: :list_external_trainings
   end
 end

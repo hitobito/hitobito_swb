@@ -6,15 +6,24 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 
-require Rails.root.join("db", "seeds", "support", "event_seeder")
+require_relative "support/swb_event_seeder.rb"
 
 srand(42)
 
-seeder = EventSeeder.new
+seeder = SwbEventSeeder.new
 
 layer_types = Group.all_types.select(&:layer).collect(&:sti_name)
 Group.where(type: layer_types).pluck(:id).each do |group_id|
-  5.times do
+  (0..3).rand.times do
     seeder.seed_event(group_id, :base)
+  end
+end
+
+Group.root.tap do |group|
+  10.times.each do
+    seeder.seed_event(group.id, :tournament)
+  end
+  10.times.each do
+    seeder.seed_event(group.id, :external_training)
   end
 end

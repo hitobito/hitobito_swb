@@ -39,6 +39,17 @@ module HitobitoSwb
 
       Export::Tabular::People::PeopleAddress.prepend Swb::Export::Tabular::People::PeopleAddress
 
+      # Tournaments with questions
+      EventAbility.prepend Swb::EventAbility
+      GroupAbility.prepend Swb::GroupAbility
+      Sheet::Group.prepend Swb::Sheet::Group
+      Sheet::Base.prepend Swb::Sheet::Base
+      EventsHelper.prepend Swb::EventsHelper
+      EventResource.prepend Swb::EventResource
+      Dropdown::Event::ParticipantAdd.prepend Swb::Dropdown::Event::ParticipantAdd
+      Event::ListsController.prepend Swb::Event::ListsController
+      EventDecorator.icons["Event::Tournament"] = :trophy
+
       HitobitoLogEntry.categories += %w[ts]
 
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
@@ -47,6 +58,26 @@ module HitobitoSwb
         :international_player_id, :emergency_contact,
         :advertising, :newsletter
       ]
+
+      # Navigation
+      events_index = NavigationHelper::MAIN.index { |opts| opts[:label] == :events }
+      NavigationHelper::MAIN.insert(
+        events_index + 1,
+        label: :tournaments,
+        icon_name: :trophy,
+        url: :list_tournaments_path,
+        active_for: %w[list_tournaments],
+        if: ->(_) { can?(:list_available, Event::Tournament) }
+      )
+
+      NavigationHelper::MAIN.insert(
+        events_index + 2,
+        label: :external_trainings,
+        icon_name: :book,
+        url: :list_external_trainings_path,
+        active_for: %w[list_external_trainings_path],
+        if: ->(_) { can?(:list_available, Event::ExternalTraining) }
+      )
 
       Person::FILTER_ATTRS << [:nationality, :country_select] << [:nationality_badminton, :country_select] << [:newsletter] << [:advertising]
     end

@@ -8,6 +8,8 @@
 class Group::DachverbandGeschaeftsstelle < ::Group
   ### ROLES
 
+  self.event_types = []
+
   class Geschaeftsfuehrer < ::Role
     self.permissions = [:layer_and_below_full, :admin, :contact_data, :approve_applications]
   end
