@@ -19,8 +19,6 @@ class Group::Region < ::Group
     RegionKontakte
   ]
 
-  self.event_types = [Event, Event::Course]
-
   ### ROLES
 
   class JSCoach < ::Role
