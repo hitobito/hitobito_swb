@@ -5,6 +5,8 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
+require Rails.root.join("db", "seeds", "support", "event_seeder")
+
 class SwbEventSeeder < EventSeeder
   def seed_event(group_id, type)
     values = event_values(group_id)
