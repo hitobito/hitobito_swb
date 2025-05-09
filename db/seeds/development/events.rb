@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 
-require_relative "support/swb_event_seeder.rb"
+require HitobitoSwb::Wagon.root.join("db", "seeds", "development", "support", "swb_event_seeder")
 
 srand(42)
 
