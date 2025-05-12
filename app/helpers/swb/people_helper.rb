@@ -6,6 +6,11 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 module Swb::PeopleHelper
+
+  def format_person_ts_gender(person)
+    Person.gender_labels.stringify_keys.fetch(person.ts_gender)
+  end
+
   def format_person_nationality(person)
     ISO3166::Country[person.nationality]&.translations&.dig(I18n.locale.to_s)
   end

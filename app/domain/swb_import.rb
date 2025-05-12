@@ -47,6 +47,7 @@ module SwbImport
     [:firstname, :first_name],
     [:lastname, :last_name],
     [:gender, :gender, ->(v) { {f: :w}.fetch(v.downcase.to_sym, v.downcase) }],
+    [:gender, :ts_gender, ->(v) { {f: :w}.fetch(v.downcase.to_sym, v.downcase) }],
     [:email, :email, :parse_email],
     [:dob, :birthday, :parse_date],
     [:address, :street, :parse_street_from_address],

@@ -557,6 +557,7 @@ de:
         nationality_badminton: Nationalität als Badmintonspieler:in
         newsletter: Newsletter
         public_profile: öffentliches Profil
+        ts_gender: Geschlecht Spielbetrieb
         ts_code: TS Code
         ts_last_sync: TS letzte aktualisierung
       service_token:

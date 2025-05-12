@@ -20,7 +20,7 @@ module Swb::Person
       address: :address,
       postal_code: :zip_code,
       city: :town,
-      gender_id: -> { Ts::GENDERS[gender] if gender },
+      gender_id: -> { Ts::GENDERS[ts_gender] },
       date_of_birth: -> { "#{birthday}T00:00:00" if birthday },
       nationality: -> { Ts::COUNTRIES[nationality.to_s.upcase] if nationality },
       country: -> { Ts::COUNTRIES[country.to_s.upcase] if country },
@@ -30,6 +30,8 @@ module Swb::Person
     }
 
     alias_method :member_id, :id
+
+    before_validation :reset_ts_gender, unless: -> { gender.blank? }
   end
 
   def ts_managed? = super && roles.any?(&:ts_managed?)
@@ -51,6 +53,8 @@ module Swb::Person
   end
 
   def contactable_value(rel, label) = send(rel).find { |c| send(rel).model.translate_label(label) == c.label }&.value
+
+  def reset_ts_gender = self.ts_gender = gender
 
   def assert_no_ts_managed_roles
     if roles.any?(&:ts_managed?)
