@@ -7,7 +7,7 @@
 
 require "spec_helper"
 
-describe "people/_gender_field.html.haml" do
+describe "people/_fields.html.haml" do
   let(:dom) {
     render
     Capybara::Node::Simple.new(@rendered)
@@ -18,6 +18,7 @@ describe "people/_gender_field.html.haml" do
   before do
     allow(view).to receive(:entry).and_return(person.decorate)
     allow(controller).to receive(:current_user).and_return(person)
+    allow(view).to receive(:fields).and_return(form_builder)
     allow(view).to receive(:f).and_return(form_builder)
   end
 

@@ -1,0 +1,14 @@
+- # Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+- # hitobito_swb and licensed under the Affero General Public License version 3
+- # or later. See the COPYING file at the top-level directory or at
+- # https://github.com/hitobito/hitobito_swb.
+
+= render 'contactable/address_fields', f: fields
+= fields.labeled(:gender) do
+  - (Person::GENDERS + ['']).each do |key|
+    = fields.inline_radio_button(:gender, key, Person.new(gender: key).gender_label)
+= fields.labeled_string_field(:birthday,
+                         help_inline: t('people.fields.format_birthday'),
+                         class: 'col-2 form-control form-control-sm d-inline')
+= field_set_tag do
+  = render 'contactable/phone_numbers_fields', f: fields

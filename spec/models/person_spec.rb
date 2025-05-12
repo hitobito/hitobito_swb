@@ -55,6 +55,16 @@ describe Person do
     end
   end
 
+  describe "::validations" do
+    let(:person) { Fabricate.build(:person) }
+
+    it "is invalid when phone_numbers are empty" do
+      person.phone_numbers = []
+      expect(person).not_to be_valid
+      expect(person.errors.full_messages).to eq ["Es muss eine Telefonnummer hinterlegt werden."]
+    end
+  end
+
   it "#member_id is aliased to #id and correctly translated" do
     expect(person.member_id).to eq person.id
     expect(Person.human_attribute_name(:member_id)).to eq "Member-ID"

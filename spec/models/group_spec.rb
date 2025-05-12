@@ -64,9 +64,9 @@ describe Group do
       expect(ts_model).to have_attributes(
         number: 1,
         contact: "A Leader",
-        address: "Langestrasse 1a",
-        postal_code: 8000,
-        city: "Zürich",
+        address: "Auf der Donnen 36",
+        postal_code: "3318",
+        city: "Judydorf",
         country: "SUI",
         email: "group@example.com",
         website: "www.example.com"

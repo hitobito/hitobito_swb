@@ -13,6 +13,14 @@ admin:
   primary_group: root
   ts_gender: m
   ts_code: 9034c579-68fe-49f9-b416-24b216a053c6
+  street: Voigtslach
+  housenumber: 57c
+  zip_code: 50621
+  town: Baderfeld
+  country: FR
+  birthday: 1916-08-09
+  gender: m
+
 
 leader:
   first_name: A
@@ -22,11 +30,24 @@ leader:
   primary_group: geschaeftsstelle
   gender: m
   ts_gender: m
+  street: Auf der Donnen
+  housenumber: 36
+  zip_code: 3318
+  town: Judydorf
+  country: CH
+  birthday: 1954-03-26
+  gender: w
 
 member:
   first_name: My
   last_name: Member
   email: member0@hitobito.example.com
   primary_group: dachverband_mitglieder
+  street: Alter Grenzweg
+  housenumber: 9
+  zip_code: 64787
+  town: Groß Laurinhagen
+  country: DE
+  birthday: 1951-10-11
   gender: m
   ts_gender: m

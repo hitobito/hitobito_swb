@@ -1,0 +1,17 @@
+admin:
+  contactable: admin (Person)
+  number: "+41 77 734 76 27"
+  label: landline
+  public: true
+
+leader:
+  contactable: leader (Person)
+  number: "+41 77 416 02 22"
+  label: mobile
+  public: true
+
+member:
+  contactable: member (Person)
+  number: "+41 77 597 31 65"
+  label: mobile
+  public: true
