@@ -8,6 +8,8 @@
 class Event::ExternalTraining < Event
   VALID_STATUS_CODES = (200..399)
 
+  VALID_PROTOLS = %w[http https]
+
   self.role_types = []
   self.used_attributes = [:name, :description, :external_link]
 
@@ -17,7 +19,11 @@ class Event::ExternalTraining < Event
   private
 
   def assert_external_link
-    unless VALID_STATUS_CODES.include?(RestClient.get(external_link).code)
+    if VALID_PROTOLS.exclude?(URI::DEFAULT_PARSER.make_regexp.match(external_link).to_a[1])
+      errors.add(:external_link, :invalid_protocol)
+    elsif URI.parse(external_link).query.present?
+      errors.add(:external_link, :may_not_contain_query)
+    elsif VALID_STATUS_CODES.exclude?(RestClient.get(external_link).code)
       errors.add(:external_link, :invalid)
     end
   rescue SocketError

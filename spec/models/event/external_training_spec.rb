@@ -44,5 +44,19 @@ describe Event::ExternalTraining do
       training.external_link = "http://example.com/test"
       expect(training).to be_valid
     end
+
+    it "is invalid if protocol is missing" do
+      expect(RestClient).not_to receive(:get)
+      training.external_link = "www.example.com/test"
+      expect(training).not_to be_valid
+      expect(training.errors.full_messages).to eq ["Externer Link muss mit http:// oder https:// beginnen"]
+    end
+
+    it "is invalid if contains query string is missing" do
+      expect(RestClient).not_to receive(:get)
+      training.external_link = "https://www.example.com/test?foo=bar"
+      expect(training).not_to be_valid
+      expect(training.errors.full_messages).to eq ["Externer Link darf kein Fragezeichen enthalten"]
+    end
   end
 end

@@ -12,6 +12,8 @@ de:
       link:
         add_event/tournament: Turnier hinzufügen
         add_event/external_training: Externe Ausbildung hinzufügen
+    fields_swb:
+      caption_external_link: Externer Anmeldelink mit Protokol (z.b. http://www.example.com/kurs123)
   global:
     below: unter %{value}
     above: über %{value}

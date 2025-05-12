@@ -9,6 +9,11 @@ de:
       models:
         person:
           cannot_be_destroyed_if_ts_roles_exist: Kann nicht gelöscht werden solange TS Rollen existieren.
+        event/external_training:
+          attributes:
+            external_link:
+              invalid_protocol: muss mit http:// oder https:// beginnen
+              may_not_contain_query: darf kein Fragezeichen enthalten
     models:
       event/external_training:
         one: Externe Ausbildung
