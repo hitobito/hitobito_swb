@@ -9,12 +9,16 @@ module Swb::RolesController
   extend ActiveSupport::Concern
 
   prepended do
+    before_render_new :populate_person_phone_numbers
     after_destroy :enqueue_ts_delete, if: -> { entry.ts_code }
   end
 
   private
 
-  # braucht viele tests, wann das wirklich wie enqueued werden soll
+  def populate_person_phone_numbers
+    entry.person.phone_numbers.build(label: :mobile) if entry.person.phone_numbers.none?
+  end
+
   def create_new_role_and_destroy_old_role
     super.tap do |success|
       next unless success

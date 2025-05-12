@@ -51,6 +51,31 @@ describe RolesController do
         end.to change { Role.count }
           .and not_change { write_jobs.count }
       end
+
+      it "accepts all person attributes" do
+        expect do
+          post :create, params: {
+            group_id: gs.id, role: {
+              type: "Group::DachverbandGeschaeftsstelle::JSCoach", group_id: gs.id, person_id: nil,
+              new_person: {
+                first_name: "Dario",
+                last_name: "Ahlke",
+                email: "dario.ahlke2@hitobito.example.com",
+                birthday: "03.02.1983",
+                street: "Bahnhof Str.",
+                housenumber: "2",
+                zip_code: 6414,
+                town: "Ivanstadt",
+                country: "CH",
+                gender: "m",
+                phone_numbers_attributes: {"0" => {translated_label: "Mobil", number: "0781234567", public: false}}
+              }
+            }
+          }
+        end.to change { Role.count }.by(1)
+          .and change { Person.count }.by(1)
+          .and change { PhoneNumber.count }.by(1)
+      end
     end
 
     context "PUT#update" do

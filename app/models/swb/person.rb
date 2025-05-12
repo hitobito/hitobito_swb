@@ -32,6 +32,9 @@ module Swb::Person
     alias_method :member_id, :id
 
     before_validation :reset_ts_gender, unless: -> { gender.blank? }
+    validates :first_name, :last_name, :email, :street, :zip_code, :town, :country, :birthday, presence: true
+
+    validate :assert_phone_number
   end
 
   def ts_managed? = super && roles.any?(&:ts_managed?)
@@ -59,6 +62,12 @@ module Swb::Person
   def assert_no_ts_managed_roles
     if roles.any?(&:ts_managed?)
       errors.add(:base, :cannot_be_destroyed_if_ts_roles_exist)
+    end
+  end
+
+  def assert_phone_number
+    if phone_numbers.select(&:valid?).empty?
+      errors.add(:base, :requires_phone_number)
     end
   end
 end
