@@ -10,6 +10,14 @@ fr:
         person:
           cannot_be_destroyed_if_ts_roles_exist: ""
     models:
+      event/external_training:
+        one: ''
+        many: ''
+        other: ''
+      event/tournament:
+        one: ''
+        many: ''
+        other: ''
 
       ### GROUPS
 
@@ -628,6 +636,8 @@ fr:
               other: ""
 
     attributes:
+      event:
+        external_link: ""
       contact_account:
         predefined_labels:
           landline: ""
