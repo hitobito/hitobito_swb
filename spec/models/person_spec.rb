@@ -74,6 +74,7 @@ describe Person do
     end
 
     it "is invalid when gender is set to nil and ts_gender is not set" do
+      person.ts_gender = nil
       person.gender = nil
       expect(person).not_to be_valid
       expect(person.errors.full_messages).to eq ["Geschlecht Spielbetrieb muss ausgefüllt werden"]

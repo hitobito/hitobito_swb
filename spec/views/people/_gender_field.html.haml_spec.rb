@@ -7,7 +7,7 @@
 
 require "spec_helper"
 
-describe "people/_fields.html.haml" do
+describe "people/_gender_field.html.haml" do
   let(:dom) {
     render
     Capybara::Node::Simple.new(@rendered)

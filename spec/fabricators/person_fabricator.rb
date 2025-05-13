@@ -9,6 +9,5 @@ Fabrication.manager.schematics[:core_person] =
   Fabrication.manager.schematics.delete(:person)
 
 Fabricator(:person, from: :core_person) do
-  gender { (Person::GENDERS + [""]).sample }
-  ts_gender { |attrs| attrs[:gender].blank? ? Person::GENDERS.sample : attrs[:gender] }
+  ts_gender { |attrs| attrs[:gender].presence || Person::GENDERS.sample }
 end
