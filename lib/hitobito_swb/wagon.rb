@@ -27,6 +27,7 @@ module HitobitoSwb
       Group.prepend Swb::Group
       Role.prepend Swb::Role
       Person.prepend Swb::Person
+      Event::ParticipationContactData.prepend Swb::Event::ParticipationContactData
 
       GroupsController.prepend TsModelController
       PeopleController.prepend TsModelController
