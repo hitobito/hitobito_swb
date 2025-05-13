@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 module Swb::PeopleHelper
-
   def format_person_ts_gender(person)
     Person.gender_labels.stringify_keys.fetch(person.ts_gender)
   end

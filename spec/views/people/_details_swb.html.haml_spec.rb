@@ -29,7 +29,6 @@ describe "people/_details_swb.html.haml" do
     expect(dom).to have_css "dl:nth-of-type(1) div:nth-child(1) dd", text: "weiblich"
   end
 
-
   it "renders member_id and international member-id" do
     current_user.update!(id: 123, international_player_id: 321)
     render
