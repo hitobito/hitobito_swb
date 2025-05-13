@@ -11,6 +11,7 @@ admin:
   gender: m
   contact_data_visible: true
   primary_group: root
+  ts_gender: m
   ts_code: 9034c579-68fe-49f9-b416-24b216a053c6
 
 leader:
@@ -19,9 +20,13 @@ leader:
   email: a.leader@hitobito.example.com
   contact_data_visible: true
   primary_group: geschaeftsstelle
+  gender: m
+  ts_gender: m
 
 member:
   first_name: My
   last_name: Member
   email: member0@hitobito.example.com
   primary_group: dachverband_mitglieder
+  gender: m
+  ts_gender: m

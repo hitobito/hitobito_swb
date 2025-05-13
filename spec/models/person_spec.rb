@@ -27,7 +27,8 @@ describe Person do
 
     it "maps additional attributes if present" do
       person.language = "fr"
-      person.gender = "w"
+      person.gender = "nil"
+      person.ts_gender = "w"
       person.birthday = Date.new(1999, 12, 31)
       person.housenumber = "1a"
       person.street = "Langestrasse"
@@ -57,6 +58,27 @@ describe Person do
   it "#member_id is aliased to #id and correctly translated" do
     expect(person.member_id).to eq person.id
     expect(Person.human_attribute_name(:member_id)).to eq "Member-ID"
+  end
+
+  describe "ts_gender" do
+    let(:person) { Fabricate.build(:person) }
+
+    it "is infered from actual gender" do
+      person.gender = "m"
+      expect(person).to be_valid
+      expect(person.ts_gender).to eq "m"
+
+      person.gender = "w"
+      expect(person).to be_valid
+      expect(person.ts_gender).to eq "w"
+    end
+
+    it "is invalid when gender is set to nil and ts_gender is not set" do
+      person.ts_gender = nil
+      person.gender = nil
+      expect(person).not_to be_valid
+      expect(person.errors.full_messages).to eq ["Geschlecht Spielbetrieb muss ausgefüllt werden"]
+    end
   end
 
   describe "#destroy" do

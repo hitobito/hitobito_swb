@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_05_105459) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_12_094010) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -183,6 +183,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_05_105459) do
     t.string "key", null: false
     t.string "placeholders_required"
     t.string "placeholders_optional"
+    t.string "context_type"
+    t.bigint "context_id"
+    t.index ["context_type", "context_id"], name: "index_custom_contents_on_context"
   end
 
   create_table "delayed_jobs", id: :serial, force: :cascade do |t|
@@ -406,6 +409,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_05_105459) do
     t.integer "minimum_participants"
     t.boolean "automatic_assignment", default: false, null: false
     t.string "external_link"
+    t.string "visible_contact_attributes"
     t.index ["kind_id"], name: "index_events_on_kind_id"
     t.index ["shared_access_token"], name: "index_events_on_shared_access_token"
   end
@@ -960,6 +964,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_05_105459) do
     t.text "emergency_contact"
     t.boolean "newsletter", default: true, null: false
     t.boolean "advertising", default: false, null: false
+    t.string "ts_gender", limit: 1, null: false
     t.index ["authentication_token"], name: "index_people_on_authentication_token"
     t.index ["confirmation_token"], name: "index_people_on_confirmation_token", unique: true
     t.index ["email"], name: "index_people_on_email", unique: true
