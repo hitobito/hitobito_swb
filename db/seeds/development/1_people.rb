@@ -22,6 +22,11 @@ class SwbPersonSeeder < PersonSeeder
     super if [true, false, false].sample
   end
 
+  def person_attributes(...)
+    super.tap do |attrs|
+      attrs[:ts_gender] = attrs[:gender]
+    end
+  end
 end
 
 puzzlers = [

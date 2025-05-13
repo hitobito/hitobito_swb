@@ -15,5 +15,6 @@ class AddTsGenderToPeople < ActiveRecord::Migration[7.1]
       end
     end
     change_column_null(:people, :ts_gender, false)
+    Person.reset_column_information
   end
 end
