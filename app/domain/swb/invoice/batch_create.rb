@@ -5,12 +5,15 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module Invoice::BatchCreate
+module Swb::Invoice::BatchCreate
   extend ActiveSupport::Concern
 
   def invoice_items_attributes(recipient)
     invoice.invoice_items.collect do |item|
-      binding.pry
+      item.calculate_amount(recipient:)
+      attrs = item.attributes
+      # Do not try to save invalid item since that would abort the whole invoice create transaction
+      attrs if InvoiceItem.new(attrs).recalculate.valid?
     end.compact
   end
 end

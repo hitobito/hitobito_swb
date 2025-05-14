@@ -52,6 +52,7 @@ module HitobitoSwb
       EventDecorator.icons["Event::Tournament"] = :trophy
 
       Invoice::BatchCreate.prepend Swb::Invoice::BatchCreate
+      InvoiceList.prepend Swb::InvoiceList
       InvoiceListsController.prepend Swb::InvoiceListsController
 
       HitobitoLogEntry.categories += %w[ts]

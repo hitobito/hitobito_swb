@@ -8,11 +8,7 @@
 class InvoiceItem::MembershipFee < InvoiceItem
   # NOTE: Needed to persist model, should be translated, not sure where this is done in SBV
   attribute :name, :string, default: "MembershipFee"
-  attribute :unit_cost, :integer, default: 10
-
-  self.dynamic = true
-
-  AMOUNT = 10
+  attribute :unit_cost, :decimal, default: -> { BigDecimal(10) }
 
   ROLE_TYPES = %w[
     Group::VereinSpieler::Aktivmitglied
@@ -26,18 +22,17 @@ class InvoiceItem::MembershipFee < InvoiceItem
     Group::VereinSpieler::Vereinigungsspieler
   ]
 
-  def recalculate
-    self.count = roles_count.values.sum
-    self[:cost] = (unit_cost && count) ? unit_cost * count : 0 unless destroyed?
+  # TODO: maybe this does get called somewhere else as well
+  def calculate_amount(recipient: nil)
+    layer_group_id = recipient.roles.find_by(type: Group::Verein::Finanzen.sti_name).group.layer_group_id if recipient
+    self.count = roles_count(layer_group_id:).count.values.sum
   end
 
-  def dynamic_cost = fail "Try to avoid"
-
+  # TODO maybe cache but do that later
   def roles_count(layer_group_id: nil, role_types: ROLE_TYPES)
-    @roles_count ||= Role.where(type: role_types)
+    Role.where(type: role_types)
       .joins(:group)
       .then { |scope| layer_group_id ? scope.where(groups: {layer_group_id:}) : scope }
       .group("groups.layer_group_id")
-      .count
   end
 end
