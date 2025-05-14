@@ -51,6 +51,9 @@ module HitobitoSwb
       Event::ListsController.prepend Swb::Event::ListsController
       EventDecorator.icons["Event::Tournament"] = :trophy
 
+      Invoice::BatchCreate.prepend Swb::Invoice::BatchCreate
+      InvoiceListsController.prepend Swb::InvoiceListsController
+
       HitobitoLogEntry.categories += %w[ts]
 
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
