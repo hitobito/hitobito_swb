@@ -7,8 +7,8 @@
 
 class InvoiceItem::MembershipFee < InvoiceItem
   # NOTE: Needed to persist model, should be translated, not sure where this is done in SBV
-  attribute :name, :string, default: "MembershipFee"
-  attribute :unit_cost, :decimal, default: -> { BigDecimal(10) }
+
+  class_attribute :role_types, :unit_cost
 
   ROLE_TYPES = %w[
     Group::VereinSpieler::Aktivmitglied
@@ -22,14 +22,34 @@ class InvoiceItem::MembershipFee < InvoiceItem
     Group::VereinSpieler::Vereinigungsspieler
   ]
 
-  # TODO: maybe this does get called somewhere else as well
+  ROLE_GROUPING = {
+    junior: ROLE_TYPES.grep(/Junior/),
+    senior: ROLE_TYPES - ROLE_TYPES.grep(/Junior/)
+  }
+
+  def initialize(...)
+    super
+    self[:unit_cost] = self.class.unit_cost
+    self[:name] = self.class.name.demodulize
+  end
+
+  class Senior < InvoiceItem::MembershipFee
+    self.unit_cost = 100
+    self.role_types = ROLE_TYPES - ROLE_TYPES.grep(/Junior/)
+  end
+
+  class Junior < InvoiceItem::MembershipFee
+    self.unit_cost = 50
+    self.role_types = ROLE_TYPES.grep(/Junior/)
+  end
+
   def calculate_amount(recipient: nil)
     layer_group_id = recipient.roles.find_by(type: Group::Verein::Finanzen.sti_name).group.layer_group_id if recipient
     self.count = roles_count(layer_group_id:).count.values.sum
   end
 
   # TODO maybe cache but do that later
-  def roles_count(layer_group_id: nil, role_types: ROLE_TYPES)
+  def roles_count(layer_group_id: nil)
     Role.where(type: role_types)
       .joins(:group)
       .then { |scope| layer_group_id ? scope.where(groups: {layer_group_id:}) : scope }
