@@ -8,6 +8,9 @@
 class InvoiceItem::MembershipFee < InvoiceItem
   # NOTE: Needed to persist model, should be translated, not sure where this is done in SBV
   attribute :name, :string, default: "MembershipFee"
+  attribute :unit_cost, :integer, default: 10
+
+  self.dynamic = true
 
   AMOUNT = 10
 
@@ -23,8 +26,12 @@ class InvoiceItem::MembershipFee < InvoiceItem
     Group::VereinSpieler::Vereinigungsspieler
   ]
 
-  def dynamic_cost
+  def recalculate
+    self.count = roles_count.values.sum
+    self[:cost] = (unit_cost && count) ? unit_cost * count : 0 unless destroyed?
   end
+
+  def dynamic_cost = fail "Try to avoid"
 
   def roles_count(layer_group_id: nil, role_types: ROLE_TYPES)
     @roles_count ||= Role.where(type: role_types)
