@@ -9,13 +9,28 @@ class InvoiceItem::MembershipFee < InvoiceItem
   # NOTE: Needed to persist model, should be translated, not sure where this is done in SBV
   attribute :name, :string, default: "MembershipFee"
 
-  # Would be much better than recipient_id in order to identify roles for dynamic cost
-  attr_accessor :verein_id
-
   AMOUNT = 10
 
+  ROLE_TYPES = %w[
+    Group::VereinSpieler::Aktivmitglied
+    Group::VereinSpieler::Passivmitglied
+    Group::VereinSpieler::JuniorU15
+    Group::VereinSpieler::JuniorU19
+    Group::VereinSpieler::Lizenz
+    Group::VereinSpieler::LizenzPlusJunior
+    Group::VereinSpieler::LizenzPlus
+    Group::VereinSpieler::LizenzNoRanking
+    Group::VereinSpieler::Vereinigungsspieler
+  ]
+
   def dynamic_cost
-    return 10
-    Group::VereinSpieler.where(layer_group_id: verein_id).people.count * AMOUNT if verein_id
+  end
+
+  def roles_count(layer_group_id: nil, role_types: ROLE_TYPES)
+    @roles_count ||= Role.where(type: role_types)
+      .joins(:group)
+      .then { |scope| layer_group_id ? scope.where(groups: {layer_group_id:}) : scope }
+      .group("groups.layer_group_id")
+      .count
   end
 end
