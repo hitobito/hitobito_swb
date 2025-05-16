@@ -42,3 +42,29 @@ groups:
     - 5000..10000
     - 10000..15000
     - 15000..
+
+invoices:
+  membership:
+    enabled: true
+    recipient:
+      layer: Group::Verein
+      roles:
+        - Group::Verein::Finanzen
+        - Group::VereinVorstand::Kassier
+        - Group::VereinVorstand::Praesident
+    fees:
+      - name: senior
+        unit_cost: 100
+        roles:
+          - Group::VereinSpieler::Aktivmitglied
+          - Group::VereinSpieler::Passivmitglied
+          - Group::VereinSpieler::Lizenz
+          - Group::VereinSpieler::LizenzPlus
+          - Group::VereinSpieler::LizenzNoRanking
+          - Group::VereinSpieler::Vereinigungsspieler
+      - name: junior
+        unit_cost: 50
+        roles:
+          - Group::VereinSpieler::LizenzPlusJunior
+          - Group::VereinSpieler::JuniorU15
+          - Group::VereinSpieler::JuniorU19
