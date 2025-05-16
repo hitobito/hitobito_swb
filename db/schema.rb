@@ -965,7 +965,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_12_094010) do
     t.text "emergency_contact"
     t.boolean "newsletter", default: true, null: false
     t.boolean "advertising", default: false, null: false
-    t.string "ts_gender", limit: 1, null: false
+    t.string "ts_gender", limit: 1, default: "m", null: false
     t.index ["authentication_token"], name: "index_people_on_authentication_token"
     t.index ["confirmation_token"], name: "index_people_on_confirmation_token", unique: true
     t.index ["email"], name: "index_people_on_email", unique: true

@@ -55,7 +55,7 @@ module HitobitoSwb
 
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
       PeopleController.permitted_attrs += [
-        :nationality, :nationality_badminton,
+        :ts_gender, :nationality, :nationality_badminton,
         :international_player_id, :emergency_contact,
         :advertising, :newsletter
       ]

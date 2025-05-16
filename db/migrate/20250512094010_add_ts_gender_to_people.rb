@@ -7,14 +7,13 @@
 
 class AddTsGenderToPeople < ActiveRecord::Migration[7.1]
   def change
-    add_column(:people, :ts_gender, :string, limit: 1)
+    add_column(:people, :ts_gender, :string, limit: 1, null: false, default: :m)
     reversible do |dir|
       dir.up do
         execute "UPDATE people SET ts_gender = gender"
         execute "UPDATE people SET ts_gender = 'm' WHERE ts_gender IS NULL OR ts_gender = ''"
       end
     end
-    change_column_null(:people, :ts_gender, false)
     Person.reset_column_information
   end
 end
