@@ -45,13 +45,13 @@ groups:
 
 invoices:
   membership:
+    enabled: true
     recipient:
       layer: Group::Verein
       roles:
         - Group::Verein::Finanzen
         - Group::VereinVorstand::Kassier
         - Group::VereinVorstand::Praesident
-
     fees:
       - name: senior
         unit_cost: 100

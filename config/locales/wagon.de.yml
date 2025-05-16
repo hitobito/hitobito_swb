@@ -595,3 +595,6 @@ de:
   subscriber/exclude_person:
     failure: "%{subscriber} ist nicht Abonnent:in"
 
+  invoice_item/membership:
+    senior: Seniorenmitgliedschaft
+    junior: Juniorenmitgliedschaft
