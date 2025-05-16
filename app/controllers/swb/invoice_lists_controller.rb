@@ -28,9 +28,9 @@ module Swb::InvoiceListsController
   def assign_attributes
     super
     entry.recipient_ids = Group::Verein::Finanzen.distinct_on("group_id").pluck(:person_id)
-    entry.invoice.invoice_items = [
-      InvoiceItem::MembershipFee::Senior.new,
-      InvoiceItem::MembershipFee::Junior.new
-    ]
+    # entry.invoice.invoice_items = [
+    #   InvoiceItem::MembershipFee::Senior.new,
+    #   InvoiceItem::MembershipFee::Junior.new
+    # ]
   end
 end
