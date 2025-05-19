@@ -34,6 +34,8 @@ module HitobitoSwb
       RolesController.prepend TsModelController
       RolesController.prepend Swb::RolesController
 
+      PersonDecorator.prepend Swb::PersonDecorator
+
       PeopleHelper.prepend Swb::PeopleHelper
       LayoutHelper.prepend Swb::LayoutHelper
       StandardFormBuilder.prepend Swb::StandardFormBuilder
