@@ -462,39 +462,39 @@ de:
 
       group/verein_spieler/aktivmitglied:
         one: Aktivmitglied
-        description: Aktivmitglieder
+        other: Aktivmitglieder
 
       group/verein_spieler/passivmitglied:
         one: Passivmitglied
-        description: Passivmitglieder
+        other: Passivmitglieder
 
       group/verein_spieler/junior_u15:
         one: "Junior:in (bis U-15)"
-        description: "Junior:innen (bis U-15)"
+        other: "Junior:innen (bis U-15)"
 
       group/verein_spieler/junior_u19:
         one: "Junior:in (U17-U19)"
-        description: "Junior:innen (U17-U19)"
+        other: "Junior:innen (U17-U19)"
 
       group/verein_spieler/lizenz:
         one: Lizenz
-        description: Lizenzen
+        other: Lizenzen
 
       group/verein_spieler/vereinigungsspieler:
         one: Vereinigungsspieler:in
-        description: Vereinigungsspieler:innen
+        other: Vereinigungsspieler:innen
 
       group/verein_spieler/lizenz_plus_junior:
         one: "Lizenz Plus Junior:innen (U19)"
-        description: "Lizenzen Plus Junior:innen (U19)"
+        other: "Lizenzen Plus Junior:innen (U19)"
 
       group/verein_spieler/lizenz_plus:
         one: Lizenz Plus
-        description: Lizenzen Plus
+        other: Lizenzen Plus
 
       group/verein_spieler/lizenz_no_ranking:
         one: Lizenz NO ranking
-        description: Lizenen NO ranking
+        other: Lizenen NO ranking
 
       group/verein_kontakte/kontakt:
         one: Kontakt
@@ -595,3 +595,13 @@ de:
   subscriber/exclude_person:
     failure: "%{subscriber} ist nicht Abonnent:in"
 
+  invoice_item/membership:
+    aktiv: Aktivmitglieder
+    passiv: Passivmitglieder
+    junior_u15: Junior:innen (bis U-15)
+    junior_u19: Junior:innen (U17-U19)
+    lizenz: Lizenzen
+    lizenz_plus: Lizenzen Plus
+    lizenz_no_raking: Lizenen NO ranking
+    lizenz_plus_junior: Lizenzen Plus Junior:innen (U19)
+    vereinigung: Vereinigungsspieler:innen
