@@ -8,694 +8,590 @@ fr:
     errors:
       models:
         person:
-          cannot_be_destroyed_if_ts_roles_exist: ""
-          requires_phone_number: ""
+          cannot_be_destroyed_if_ts_roles_exist: Kann nicht gelöscht werden solange TS Rollen existieren.
+          requires_phone_number: Es muss eine Telefonnummer hinterlegt werden.
         event/external_training:
           attributes:
             external_link:
-              invalid_protocol: ""
-              may_not_contain_query: ""
+              invalid_protocol: "muss mit http:// oder https:// beginnen"
+              may_not_contain_query: darf kein Fragezeichen enthalten
     models:
       event/external_training:
-        one: ''
-        many: ''
-        other: ''
+        one: Externe Ausbildung
+        other: Externe Ausbildungen
       event/tournament:
-        one: ''
-        many: ''
-        other: ''
+        one: Turnier
+        other: Turniere
 
       ### GROUPS
 
       group/dachverband:
-        one: ''
-        many: ''
-        other: ''
+        one: Dachverband
+        other: Dachverbände
 
       group/dachverband_vorstand:
-        one: ''
-        many: ''
-        other: ''
+        one: Vorstand
+        other: Vorstände
 
       group/dachverband_geschaeftsstelle:
-        one: ''
-        many: ''
-        other: ''
+        one: Geschäftsstelle
+        other: Geschäftsstellen
 
       group/dachverband_technischoffiziell:
-        one: ''
-        many: ''
-        other: ''
+        one: Technisch / Offiziell
+        other: Technisch / Offizielle
 
       group/dachverband_kommission:
-        one: ''
-        many: ''
-        other: ''
+        one: Kommission
+        other: Kommissionen
 
-      group/dachverband_spieler: ""
-      group/dachverband_kader: ""
+      group/dachverband_spieler: Spieler
+      group/dachverband_kader: Kader
 
-      group/dachverband_kontakte: ""
+      group/dachverband_kontakte: Kontakte
 
       group/region:
-        one: ''
-        many: ''
-        other: ''
+        one: Region
+        other: Regionen
 
       group/region_vorstand:
-        one: ''
-        many: ''
-        other: ''
+        one: Vorstand
+        other: Vorstände
 
-      group/region_spieler: ""
+      group/region_spieler: Spieler
 
-      group/region_kontakte: ""
+      group/region_kontakte: Kontakte
 
-      group/center: ""
+      group/center: Center (Mitglied)
 
-      group/center_unaffilliated: ""
+      group/center_unaffilliated: Center
 
       group/verein:
-        one: ''
-        many: ''
-        other: ''
+        one: Verein
+        other: Vereine
 
       group/verein_vorstand:
-        one: ''
-        many: ''
-        other: ''
+        one: Vorstand
+        other: Vorstände
 
-      group/verein_spieler: ""
+      group/verein_spieler: Spieler
 
-      group/verein_kontakte: ""
+      group/verein_kontakte: Kontakte
 
       ### ROLES
 
       group/dachverband/administrator:
-        one: ""
-        many: ""
-        other: ""
+        one: "Administrator:in"
+        other: "Administrator:innen"
 
       group/dachverband_vorstand/praesident:
-        one: ""
-        many: ""
-        other: ""
+        one: "Präsident:in"
+        other: "Präsident:innen"
 
       group/dachverband_vorstand/vizepraesident:
-        one: ""
-        many: ""
-        other: ""
+        one: "Vizepräsident:in"
+        other: "Vizepräsident:innen"
 
       group/dachverband_vorstand/mitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Vorstandsmitglied
+        other: Vorstandsmitglieder
 
       group/dachverband_geschaeftsstelle/ethik:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Ethik"
+        other: "Verantwortliche Ethik"
 
       group/dachverband_geschaeftsstelle/geschaeftsfuehrer:
-        one: ""
-        many: ""
-        other: ""
+        one: "Geschäftsführer:in"
+        other: "Geschäftsführer:innen"
 
       group/dachverband_geschaeftsstelle/event_turnier:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Event/Turnier"
+        other: "Verantwortlicher Event/Turnier"
 
       group/dachverband_geschaeftsstelle/ausbildung:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Ausbildung
+        other: Verantwortliche Ausbildung
 
       group/dachverband_geschaeftsstelle/breitensport:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Breitensport
+        other: Verantwortliche Breitensport
 
       group/dachverband_geschaeftsstelle/leistungssport:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Leistungssport
+        other: Verantwortliche Leistungssport
 
       group/dachverband_geschaeftsstelle/nachwuchs:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Nachwuchs
+        other: Verantwortliche Nachwuchs
 
       group/dachverband_geschaeftsstelle/interclub:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Interclub"
+        other: "Verantwortliche Interclub"
 
       group/dachverband_geschaeftsstelle/mitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Mitglied
+        other: Mitglieder
 
       group/dachverband_geschaeftsstelle/js_coach:
-        one: ""
-        many: ""
-        other: ""
+        one: "J&S Coach"
+        other: "J&S Coaches"
 
       group/dachverband_geschaeftsstelle/umfeld:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Umfeld"
+        other: "Verantwortliche Umfeld"
 
       group/dachverband_geschaeftsstelle/antidoping:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Antidoping"
+        other: "Verantwortliche Antidoping"
 
       group/dachverband_geschaeftsstelle/clubmanagement:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Club Management"
+        other: "Verantwortliche Club Managemen"
 
       group/dachverband_geschaeftsstelle/finanzen:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Finanzen"
+        other: "Verantwortliche Finanzen"
 
       group/dachverband_geschaeftsstelle/kommunikation:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Kommunikation"
+        other: "Verantwortliche Kommunikation"
 
       group/dachverband_geschaeftsstelle/marketing:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Marketing"
+        other: "Verantwortliche Marketing"
 
       group/dachverband_geschaeftsstelle/medical:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Medical"
+        other: "Verantwortliche Medical"
 
       group/dachverband_geschaeftsstelle/personal:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Personal"
+        other: "Verantwortliche Personal"
 
       group/dachverband_technischoffiziell/schiedsrichter:
-        one: ""
-        many: ""
-        other: ""
+        one: "Schiedsrichter:in"
+        other: "Schiedsrichter:innen"
 
       group/dachverband_technischoffiziell/linienrichter:
-        one: ""
-        many: ""
-        other: ""
+        one: "Linienrichter:in"
+        other: "Linienrichter:innen"
 
       group/dachverband_technischoffiziell/referee:
-        one: ""
-        many: ""
-        other: ""
+        one: "Referee"
+        other: "Referees"
 
       group/dachverband_kommission/leitung:
-        one: ""
-        description: ""
+        one: "Leiter:in"
+        description: "Leiter:innen"
 
       group/dachverband_kommission/mitglied:
-        one: ""
-        description: ""
+        one: Mitglied
+        description: Mitglieder
 
       group/dachverband_spieler/aktivmitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Aktivmitglied
+        other: Aktivmitglieder
 
       group/dachverband_spieler/passivmitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Passivmitglied
+        other: Passivmitglieder
 
       group/dachverband_spieler/junior_u15:
-        one: ""
-        many: ""
-        other: ""
+        one: "Junior:in (bis U-15)"
+        other: "Junior:innen (bis U-15)"
 
       group/dachverband_spieler/junior_u19:
-        one: ""
-        many: ""
-        other: ""
+        one: "Junior:in (U17-U19)"
+        other: "Junior:innen (U17-U19)"
 
       group/dachverband_spieler/lizenz:
-        one: ''
-        many: ''
-        other: ''
+        one: Lizenz
+        other: Lizenzen
 
       group/dachverband_kader/athlet:
-        one: ""
-        many: ""
-        other: ""
+        one: "Athlet:in"
+        other: "Athlet:innen"
 
       group/dachverband_kader/trainer:
-        one: ""
-        many: ""
-        other: ""
+        one: "Trainer:in"
+        other: "Trainer:innen"
 
       group/dachverband_kontakte/kontakt:
-        one: ''
-        many: ''
-        other: ''
+        one: Kontakt
+        other: Kontakte
 
       group/dachverband_kontakte/ehemaliges_zvmitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Ehemaliges ZV-Mitglied
+        other: Ehemaliges ZV-Mitglieder
 
       group/dachverband_kontakte/ehemaliger_mitarbeiter:
-        one: ''
-        many: ''
-        other: ''
+        one: Ehemalige:r Mitarbeiter:in
+        other: Ehemalige Mitarbeiter:innen
 
       group/dachverband_kontakte/ehrenmitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Ehrenmitglied
+        other: Ehrenmitglieder
 
       group/dachverband_kontakte/shuttletime_tutor:
-        one: ''
-        many: ''
-        other: ''
+        one: Shuttletime-Tutor
+        other: Shuttletime-Tutoren
 
       group/dachverband_kontakte/goenner:
-        one: ''
-        many: ''
-        other: ''
+        one: Gönner:in
+        other: Gönner:innen
 
-      group/dachverband_kontakte/medien: ""
+      group/dachverband_kontakte/medien: Medien
 
-      group/dachverband_kontakte/partner: ""
+      group/dachverband_kontakte/partner: Partner
 
       group/dachverband_kontakte/js_experte:
-        one: ''
-        many: ''
-        other: ''
+        one: J&S Expert:in
+        other: J&S Expert:innen
 
       group/region/ethik:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Ethik"
+        other: "Verantwortliche Ethik"
 
       group/region/event_turnier:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Event/Turnier"
+        other: "Verantwortlicher Event/Turnier"
 
       group/region/ausbildung:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Ausbildung
+        other: Verantwortliche Ausbildung
 
       group/region/breitensport:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Breitensport
+        other: Verantwortliche Breitensport
 
       group/region/leistungssport:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Leistungssport
+        other: Verantwortliche Leistungssport
 
       group/region/nachwuchs:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Nachwuchs
+        other: Verantwortliche Nachwuchs
 
       group/region/interclub:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Interclub"
+        other: "Verantwortliche Interclub"
 
       group/region/js_coach:
-        one: ""
-        many: ""
-        other: ""
+        one: "J&S Coach"
+        other: "J&S Coaches"
 
       group/region/umfeld:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Umfeld"
+        other: "Verantwortliche Umfeld"
 
       group/region/antidoping:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Antidoping"
+        other: "Verantwortliche Antidoping"
 
       group/region/clubmanagement:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Club Management"
+        other: "Verantwortliche Club Managemen"
 
       group/region/finanzen:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Finanzen"
+        other: "Verantwortliche Finanzen"
 
       group/region/kommunikation:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Kommunikation"
+        other: "Verantwortliche Kommunikation"
 
       group/region/marketing:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Marketing"
+        other: "Verantwortliche Marketing"
 
       group/region/medical:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Medical"
+        other: "Verantwortliche Medical"
 
       group/region/personal:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Personal"
+        other: "Verantwortliche Personal"
 
       group/region_vorstand/praesident:
-        one: ""
-        many: ""
-        other: ""
+        one: "Präsident:in"
+        other: "Präsident:innen"
 
       group/region_vorstand/vizepraesident:
-        one: ""
-        many: ""
-        other: ""
+        one: "Vizepräsident:in"
+        other: "Vizepräsident:innen"
 
       group/region_vorstand/mitglied:
-        one: ""
-        many: ""
-        other: ""
+        one: "Vorstandsmitglied"
+        other: "Vorstandsmitglieder"
 
       group/region_vorstand/kassier:
-        one: ""
-        many: ""
-        other: ""
+        one: "Kassier:in"
+        other: "Kassier:innen"
 
       group/region_vorstand/administrator:
-        one: ''
-        many: ''
-        other: ''
+        one: Administrator:in
+        other: Administrator:innen
 
       group/region_spieler/aktivmitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Aktivmitglied
+        other: Aktivmitglieder
 
       group/region_spieler/passivmitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Passivmitglied
+        other: Passivmitglieder
 
       group/region_spieler/junior_u15:
-        one: ""
-        many: ""
-        other: ""
+        one: "Junior:in (bis U-15)"
+        other: "Junior:innen (bis U-15)"
 
       group/region_spieler/junior_u19:
-        one: ""
-        many: ""
-        other: ""
+        one: "Junior:in (U17-U19)"
+        other: "Junior:innen (U17-U19)"
 
       group/region_spieler/lizenz:
-        one: ''
-        many: ''
-        other: ''
+        one: Lizenz
+        other: Lizenzen
 
       group/region_kontakte/kontakt:
-        one: ''
-        many: ''
-        other: ''
+        one: Kontakt
+        other: Kontakte
 
       group/region_kontakte/ehrenmitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Ehrenmitglied
+        other: Ehrenmitglieder
 
-      group/region_kontakte/medien: ""
+      group/region_kontakte/medien: Medien
 
-      group/region_kontakte/partner: ""
+      group/region_kontakte/partner: Partner
 
-      group/region_kontakte/volunteer: ""
+      group/region_kontakte/volunteer: Partner
 
       group/verein/ethik:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Ethik"
+        other: "Verantwortliche Ethik"
 
       group/verein/event_turnier:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Event/Turnier"
+        other: "Verantwortlicher Event/Turnier"
 
       group/verein/ausbildung:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Ausbildung
+        other: Verantwortliche Ausbildung
 
       group/verein/breitensport:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Breitensport
+        other: Verantwortliche Breitensport
 
       group/verein/leistungssport:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Leistungssport
+        other: Verantwortliche Leistungssport
 
       group/verein/nachwuchs:
-        one: ''
-        many: ''
-        other: ''
+        one: Verantwortliche:r Nachwuchs
+        other: Verantwortliche Nachwuchs
 
       group/verein/interclub:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Interclub"
+        other: "Verantwortliche Interclub"
 
       group/verein/js_coach:
-        one: ""
-        many: ""
-        other: ""
+        one: "J&S Coach"
+        other: "J&S Coaches"
 
       group/verein/umfeld:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Umfeld"
+        other: "Verantwortliche Umfeld"
 
       group/verein/antidoping:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Antidoping"
+        other: "Verantwortliche Antidoping"
 
       group/verein/clubmanagement:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Club Management"
+        other: "Verantwortliche Club Managemen"
 
       group/verein/finanzen:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Finanzen"
+        other: "Verantwortliche Finanzen"
 
       group/verein/kommunikation:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Kommunikation"
+        other: "Verantwortliche Kommunikation"
 
       group/verein/marketing:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Marketing"
+        other: "Verantwortliche Marketing"
 
       group/verein/medical:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Medical"
+        other: "Verantwortliche Medical"
 
       group/verein/personal:
-        one: ""
-        many: ""
-        other: ""
+        one: "Verantwortliche:r Personal"
+        other: "Verantwortliche Personal"
 
       group/verein/clubtrainer:
-        one: ""
-        many: ""
-        other: ""
+        one: "Clubtrainer:in"
+        other: "Clubtrainer:innen"
 
-      group/verein/nationalliga: ""
+      group/verein/nationalliga: "Nationalliga"
 
       group/verein/schiedsrichter:
-        one: ""
-        many: ""
-        other: ""
+        one: "Schiedsrichter:in"
+        other: "Schiedsrichter:innen"
 
       group/verein_vorstand/praesident:
-        one: ""
-        description: ""
+        one: "Präsident:in"
+        description: "Präsident:innen"
 
       group/verein_vorstand/vizepraesident:
-        one: ""
-        description: ""
+        one: "Vizepräsident:in"
+        description: "Vizepräsident:innen"
 
       group/verein_vorstand/administrator:
-        one: ''
-        many: ''
-        other: ''
+        one: Administrator:in
+        other: Administrator:innen
 
       group/verein_vorstand/kassier:
-        one: ""
-        description: ""
+        one: "Kassier:in"
+        description: "Kassier:innen"
 
       group/verein_vorstand/mitglied:
-        one: ""
-        description: ""
+        one: Vorstandsmitglied
+        description: Vorstandsmitglieder
 
       group/verein_spieler/aktivmitglied:
-        one: ""
-        description: ""
+        one: Aktivmitglied
+        description: Aktivmitglieder
 
       group/verein_spieler/passivmitglied:
-        one: ""
-        description: ""
+        one: Passivmitglied
+        description: Passivmitglieder
 
       group/verein_spieler/junior_u15:
-        one: ""
-        description: ""
+        one: "Junior:in (bis U-15)"
+        description: "Junior:innen (bis U-15)"
 
       group/verein_spieler/junior_u19:
-        one: ""
-        description: ""
+        one: "Junior:in (U17-U19)"
+        description: "Junior:innen (U17-U19)"
 
       group/verein_spieler/lizenz:
-        one: ""
-        description: ""
+        one: Lizenz
+        description: Lizenzen
 
       group/verein_spieler/vereinigungsspieler:
-        one: ""
-        description: ""
+        one: "Vereinigungsspieler:in"
+        description: "Vereinigungsspieler:innen"
 
       group/verein_spieler/lizenz_plus_junior:
-        one: ""
-        description: ""
+        one: "Lizenz Plus Junior:innen (U19)"
+        description: "Lizenzen Plus Junior:innen (U19)"
 
       group/verein_spieler/lizenz_plus:
-        one: ""
-        description: ""
+        one: Lizenz Plus
+        description: Lizenzen Plus
 
       group/verein_spieler/lizenz_no_ranking:
-        one: ""
-        description: ""
+        one: Lizenz NO ranking
+        description: Lizenen NO ranking
 
       group/verein_kontakte/kontakt:
-        one: ''
-        many: ''
-        other: ''
+        one: Kontakt
+        other: Kontakte
 
       group/verein_kontakte/ehrenmitglied:
-        one: ''
-        many: ''
-        other: ''
+        one: Ehrenmitglied
+        other: Ehrenmitglieder
 
-      group/verein_kontakte/medien: ""
+      group/verein_kontakte/medien: Medien
 
-      group/verein_kontakte/partner: ""
+      group/verein_kontakte/partner: Partner
 
-      group/verein_kontakte/volunteer: ""
+      group/verein_kontakte/volunteer: Partner
 
-      group/center/direktion: ""
+      group/center/direktion: Direktion
 
-      group/center_unaffilliated/direktion: ""
+      group/center_unaffilliated/direktion: Direktion
 
       event/role/assistant_leader:
-        one: ''
-        many: ''
-        other: ''
+        one: Leiter:in
+        other: Leiter:innen
       event/role/leader:
-        one: ''
-        many: ''
-        other: ''
+        one: Hauptleiter:in
+        other: Hauptleiter:innen
       event/role/helper:
-        one: ''
-        many: ''
-        other: ''
+        one: Helfer:in
+        other: Helfer:innen
       event/role/participant:
-        one: ''
-        many: ''
-        other: ''
+        one: Teilnehmer:in
+        other: Teilnehmer:innen
       event/role/speaker:
-        one: ''
-        many: ''
-        other: ''
+        one: Referent:in
+        other: Referent:innen
 
       salutation:
         available:
           lieber_vorname:
-            label: ""
+            label: "Liebe:r [Vorname]"
             value:
-              other: ""
+              other: "Liebe:r %{first_name}"
 
     attributes:
       event:
-        external_link: ""
+        external_link: Externer Link
       contact_account:
         predefined_labels:
-          landline: ""
-          mobile: ""
+          landline: Festnetz
+          mobile: Mobil
       event/role:
-        remove_participant_role: ""
+        remove_participant_role: "Allfällige Teilnehmer:innen-Rolle entfernen"
       group:
-        founded_on: ""
-        yearly_budget: ""
+        founded_on: Gründungsdatum
+        yearly_budget: Jahresbudget
       person:
-        advertising: ""
-        emergency_contact: ""
-        international_player_id: ""
-        member_id: ""
-        nationality: ""
-        nationality_badminton: ""
-        newsletter: ""
-        public_profile: ""
-        ts_gender: ""
-        ts_code: ""
-        ts_last_sync: ""
+        advertising: Werbung
+        emergency_contact: Notfallkontakt
+        international_player_id: Internationale Spieler-ID
+        member_id: Member-ID
+        nationality: Nationalität gemäss Pass / ID
+        nationality_badminton: "Nationalität als Badmintonspieler:in"
+        newsletter: Newsletter
+        public_profile: öffentliches Profil
+        ts_gender: Geschlecht Spielbetrieb
+        ts_code: TS Code
+        ts_last_sync: TS letzte aktualisierung
       service_token:
-        mailing_lists: ""
+        mailing_lists: "Abonnent:innen von Mailinglisten"
 
   event:
     application_market:
       index:
-        add_participant: ""
+        add_participant: "Teilnehmer:in hinzufügen"
 
   events:
     application_fields:
-      caption_signature: ""
+      caption_signature: "Teilnehmer:innen müssen die Anmeldung unterschreiben"
     form:
-      caption_requires_approval: ""
+      caption_requires_approval: "Der/Die Gruppenleiter:in wird informiert und muss die Anmeldung bestätigen."
 
   mailing_lists:
     form:
-      caption_anyone_may_post: ""
+      caption_anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
 
   mailing_list_decorator:
-    anyone_may_post: ""
-    anyone_may_not_post: ""
+    anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
+    anyone_may_not_post: "Beliebige Absender:innen dürfen <strong>nicht</strong> auf die Mailingliste schreiben"
 
   people:
     tabs:
-      colleagues: ""
+      colleagues: "Mitarbeiter:innen"
 
   subscriber:
     exclude_person:
       form:
-        exclude_subscriber: ""
+        exclude_subscriber: "Abonnent:in ausschliessen"
 
   subscriber/exclude_person:
-    failure: ""
+    failure: "%{subscriber} ist nicht Abonnent:in"
 
