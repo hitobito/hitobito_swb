@@ -86,6 +86,21 @@ module SwbImport
     end
   end
 
+  Team = Entity.new(*TEAM_MAPPING.map(&:second), keyword_init: true) do
+    self.mappings = TEAM_MAPPING
+    self.ident_keys = [:name, :year]
+    self.model_class = Team
+
+    def to_h
+      super.merge(year: Time.zone.today.year)
+    end
+
+    def to_s(details: false)
+      values = to_h.except(:name).values.join(",")
+      ["#{status} #{model} (#{details ? [name, values].join(",") : name})", (full_error_messages if details)].compact_blank.join(": ")
+    end
+  end
+
   Person = Entity.new(*PERSON_MAPPINGS.map(&:second), keyword_init: true) do
     self.mappings = PERSON_MAPPINGS
     self.non_assignable_attrs = [:phone, :mobile]

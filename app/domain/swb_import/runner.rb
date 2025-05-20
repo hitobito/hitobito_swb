@@ -29,6 +29,9 @@ module SwbImport
 
       import(Region, from: :regions)
       import(Club, from: :clubs)
+      import(Team, from: :team_eli)
+      import(Team, from: :team_jun)
+      import(Team, from: :team_son)
 
       import(Role, from: :mitglieder)
 

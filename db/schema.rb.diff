@@ -10,7 +10,7 @@
 #																			#
 # It's strongly recommended that you check this file into your version control system.									# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_30_125739) do											     |	ActiveRecord::Schema[7.1].define(version: 2025_05_12_094010) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_19_090627) do											     |	ActiveRecord::Schema[7.1].define(version: 2025_05_20_143345) do
   # These are extensions that must be enabled in order to support this database										  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"																  enable_extension "plpgsql"
 
@@ -1187,6 +1187,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_30_125739) do											     |
     t.string "name"																	    t.string "name"
     t.integer "taggings_count", default: 0														    t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true												    t.index ["name"], name: "index_tags_on_name", unique: true
+																		     >	  end
+																		     >
+																		     >	  create_table "teams", force: :cascade do |t|
+																		     >	    t.bigint "group_id"
+																		     >	    t.string "league", null: false
+																		     >	    t.string "name", null: false
+																		     >	    t.integer "year", null: false
+																		     >	    t.datetime "created_at", null: false
+																		     >	    t.datetime "updated_at", null: false
+																		     >	    t.index ["group_id", "name", "year"], name: "index_teams_on_group_id_and_name_and_year", unique: true
+																		     >	    t.index ["group_id"], name: "index_teams_on_group_id"
   end																			  end
 
   create_table "versions", id: :serial, force: :cascade do |t|												  create_table "versions", id: :serial, force: :cascade do |t|

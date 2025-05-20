@@ -62,5 +62,10 @@ module SwbImport
     def parse_housenumber_from_address(v) = v.to_s[STREET_FIRST, 1] || v.to_s[STREET_LAST, 2]
 
     def parse_date(v) = Date.parse(v) rescue nil # rubocop:disable Style/RescueModifier
+
+    def parse_ts_club_number(v)
+      @@club_numbers ||= Group.where.not(ts_club_number: nil).pluck(:ts_club_number, :id).to_h.stringify_keys
+      @@club_numbers[v]
+    end
   end
 end

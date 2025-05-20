@@ -18,6 +18,14 @@ namespace :swb do
     sh "in2csv 'data/Mtglieder_Export_Hitobito.xlsx' > tmp/mitglieder.csv"
   end
 
+  file "tmp/teams.csv" => ["data/Mtglieder_Export_Hitobito.xlsx"] do
+    sh "in2csv --sheet Teams_Eli   data/Export_Manschaften.xlsx  > tmp/teams_eli.csv"
+    sh "in2csv --sheet Teams_Jun   data/Export_Manschaften.xlsx  > tmp/teams_jun.csv"
+    sh "in2csv --sheet Teams_Sen   data/Export_Manschaften.xlsx  > tmp/teams_sen.csv"
+
+    sh "in2csv 'data/Mtglieder_Export_Hitobito.xlsx' > tmp/mitglieder.csv"
+  end
+
   desc "Imports and pushes local DB to INT"
   task import_and_push: :environment do
     system "rm -rf log"
@@ -26,13 +34,20 @@ namespace :swb do
   end
 
   desc "Imports Groups, People and Roles"
-  task import: ["tmp/mitglieder.csv", "tmp/regions.csv", "tmp/clubs.csv", :environment] do
+  task import: ["tmp/mitglieder.csv", "tmp/regions.csv", "tmp/clubs.csv", "tmp/teams_eli.csv", "tmp/teams_jun.csv", "tmp/teams_sen.csv", :environment] do
     SwbImport::Runner.new.run
   end
 
   desc "Updates Integration with locally imported db"
   task push: :environment do
     SwbImport::Pusher.new.push
+  end
+
+  desc "Imports Teams for current year"
+  task import_teams: ["tmp/teams_eli.csv", "tmp/teams_jun.csv", "tmp/teams_sen.csv", :environment] do
+    SwbImport::Importer.new(SwbImport::Team, :teams_eli).run
+    SwbImport::Importer.new(SwbImport::Team, :teams_jun).run
+    SwbImport::Importer.new(SwbImport::Team, :teams_sen).run
   end
 
   namespace :ts do
