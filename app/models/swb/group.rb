@@ -33,6 +33,8 @@ module Swb::Group
 
     delegate :ts_code, to: :parent, prefix: true, allow_nil: true
 
+    has_many :teams, dependent: :destroy
+
     validates :yearly_budget, inclusion: {in: Group::Budget.list.map(&:to_s)}, allow_blank: true
   end
 

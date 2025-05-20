@@ -41,6 +41,12 @@ module SwbImport
     [:Website, :website]
   ]
 
+  TEAM_MAPPING = [
+    [:Clubnumber, :group_id, :parse_ts_club_number],
+    [:Teamname, :name],
+    [:Eventname, :league]
+  ]
+
   PERSON_MAPPINGS = [
     [:memberid, :id, ->(v) { Integer(v) }],
     [:code, :ts_code],
