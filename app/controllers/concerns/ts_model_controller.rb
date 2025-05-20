@@ -12,10 +12,16 @@ module TsModelController
     delegate :ts_managed?, :ts_params_changed?, to: :entry
 
     after_create :enqueue_ts_post, if: :ts_managed?
-    after_update :enqueue_ts_put, if: :ts_params_changed?
+    around_action :track_ts_model_changes, only: [:update]  # rubocop:disable Rails/LexicallyScopedActionFilter
   end
 
   private
+
+  def track_ts_model_changes
+    ts_model_before = entry.ts_model
+    yield
+    enqueue_ts_put if entry.ts_managed? && (entry.ts_model != ts_model_before)
+  end
 
   def enqueue_ts_post(model = entry) = Ts::WriteJob.new(model.to_global_id, :post).enqueue!
 
