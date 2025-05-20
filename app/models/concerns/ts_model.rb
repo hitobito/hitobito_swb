@@ -20,8 +20,6 @@ module TsModel
       has_many :ts_logs
       has_one :ts_latest_log, -> { order(created_at: :desc) }
     end
-
-    after_find :populate_ts_params, if: :responds_to_ts_code?
   end
 
   def ts_model = ts_entity.build(ts_params)
@@ -29,8 +27,6 @@ module TsModel
   def ts_log = Ts::Log.new(ts_latest_log)
 
   def ts_managed? = Ts::Config.exist?
-
-  def ts_params_changed? = (@ts_params_from_db != ts_params) && ts_managed?
 
   private
 
@@ -47,6 +43,4 @@ module TsModel
   def read_ts_value(from) = from.is_a?(Proc) ? instance_exec(&from) : send(from)
 
   def ts_interface = @ts_interface ||= Ts::Interface.new(self)
-
-  def populate_ts_params = @ts_params_from_db = ts_params
 end

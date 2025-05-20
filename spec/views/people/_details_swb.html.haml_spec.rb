@@ -12,7 +12,7 @@ describe "people/_details_swb.html.haml" do
     render
     Capybara::Node::Simple.new(@rendered)
   }
-  let(:current_user) { people(:admin) }
+  let(:current_user) { people(:admin).tap(&:valid?) }
 
   before do
     allow(view).to receive(:entry).and_return(current_user.decorate)

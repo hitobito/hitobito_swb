@@ -22,6 +22,7 @@ module Swb::RolesController
   def create_new_role_and_destroy_old_role
     super.tap do |success|
       next unless success
+      @role_change = true
 
       enqueue_ts_post(@new_role) if @new_role.ts_managed?
       enqueue_ts_delete(entry) if entry.ts_managed?
@@ -29,6 +30,7 @@ module Swb::RolesController
   end
 
   def enqueue_ts_put
+    return if @role_change
     return super if entry.person.ts_code.present?
 
     Ts::WriteJob.new(entry.person.to_global_id, :post).enqueue!
