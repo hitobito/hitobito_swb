@@ -8,13 +8,13 @@ fr:
     errors:
       models:
         person:
-          cannot_be_destroyed_if_ts_roles_exist: Kann nicht gelöscht werden solange TS Rollen existieren.
-          requires_phone_number: Es muss eine Telefonnummer hinterlegt werden.
+          cannot_be_destroyed_if_ts_roles_exist: Impossible de supprimer tant que des rôles TS existent.
+          requires_phone_number: Un numéro de téléphone doit être enregistré.
         event/external_training:
           attributes:
             external_link:
-              invalid_protocol: "muss mit http:// oder https:// beginnen"
-              may_not_contain_query: darf kein Fragezeichen enthalten
+              invalid_protocol: "Doit commencer par http:// ou https://"
+              may_not_contain_query: Ne doit pas contenir de point d'interrogation
     models:
       event/external_training:
         one: Externe Ausbildung
@@ -45,10 +45,10 @@ fr:
         one: Kommission
         other: Kommissionen
 
-      group/dachverband_spieler: Spieler
-      group/dachverband_kader: Kader
+      group/dachverband_spieler: Joueur
+      group/dachverband_kader: Cadre
 
-      group/dachverband_kontakte: Kontakte
+      group/dachverband_kontakte: Contacts
 
       group/region:
         one: Region
@@ -58,13 +58,13 @@ fr:
         one: Vorstand
         other: Vorstände
 
-      group/region_spieler: Spieler
+      group/region_spieler: Joueur
 
-      group/region_kontakte: Kontakte
+      group/region_kontakte: Contacts
 
-      group/center: Center (Mitglied)
+      group/center: Centre (Membre)
 
-      group/center_unaffilliated: Center
+      group/center_unaffilliated: Centre
 
       group/verein:
         one: Verein
@@ -74,9 +74,9 @@ fr:
         one: Vorstand
         other: Vorstände
 
-      group/verein_spieler: Spieler
+      group/verein_spieler: Joueur
 
-      group/verein_kontakte: Kontakte
+      group/verein_kontakte: Contacts
 
       ### ROLES
 
