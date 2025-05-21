@@ -6,19 +6,19 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class Group::DachverbandSpieler < ::Group
-  class Aktivmitglied < ::Role
+  class Aktivmitglied < ::Role::PlayerRole
   end
 
-  class Passivmitglied < ::Role
+  class Passivmitglied < ::Role::PlayerRole
   end
 
-  class JuniorU15 < ::Role
+  class JuniorU15 < ::Role::PlayerRole
   end
 
-  class JuniorU19 < ::Role
+  class JuniorU19 < ::Role::PlayerRole
   end
 
-  class Lizenz < ::Role
+  class Lizenz < ::Role::PlayerRole
   end
 
   roles Aktivmitglied, Passivmitglied, JuniorU15, JuniorU19, Lizenz

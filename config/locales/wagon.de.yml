@@ -15,6 +15,8 @@ de:
             external_link:
               invalid_protocol: muss mit http:// oder https:// beginnen
               may_not_contain_query: darf kein Fragezeichen enthalten
+        role:
+          already_player_in_group: hat bereits eine Spielerrolle in dieser Gruppe
     models:
       event/external_training:
         one: Externe Ausbildung
