@@ -35,6 +35,10 @@ de:
         error: fehlgeschlagen
         pending: wartet
 
+  groups:
+    aside_swb:
+      title_teams: Teams
+
   people:
     fields_swb:
       label_email_settings: Mailversand
