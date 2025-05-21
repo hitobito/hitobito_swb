@@ -15,8 +15,6 @@ class Role::PlayerRole < ::Role
   end
 
   def player_roles_in_group
-    person.roles.where(group: group).select do |role|
-      role.class < Role::PlayerRole
-    end
+    person.roles.where(group: group)
   end
 end

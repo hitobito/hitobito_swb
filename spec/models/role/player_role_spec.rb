@@ -14,9 +14,6 @@ describe Role::PlayerRole do
   class Group::RegionSpieler::U6Player < ::Role::PlayerRole # rubocop:disable Lint/ConstantDefinitionInBlock
   end
 
-  class Group::RegionSpieler::NonPlayerRole < ::Role # rubocop:disable Lint/ConstantDefinitionInBlock
-  end
-
   before do
     Group::RegionSpieler.roles << Group::RegionSpieler::U6Player << Group::RegionSpieler::NonPlayerRole
   end
@@ -31,11 +28,6 @@ describe Role::PlayerRole do
 
   it "is valid if player role exists in different group" do
     Fabricate(Group::RegionSpieler::Lizenz.sti_name, group: groups(:bvn_spieler), person:)
-    expect(role).to be_valid
-  end
-
-  it "is valid if other exisiting roles are not player roles" do
-    Group::RegionSpieler::NonPlayerRole.create!(group:, person:)
     expect(role).to be_valid
   end
 end
