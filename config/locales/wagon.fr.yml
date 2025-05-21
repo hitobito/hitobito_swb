@@ -17,33 +17,40 @@ fr:
               may_not_contain_query: Ne doit pas contenir de point d'interrogation
     models:
       event/external_training:
-        one: Externe Ausbildung
-        other: Externe Ausbildungen
+        one: Formation externe
+        many: Formations externes
+        other: Formations externes
       event/tournament:
-        one: Turnier
-        other: Turniere
+        one: Tournoi
+        many: Tournois
+        other: Tournois
 
       ### GROUPS
 
       group/dachverband:
-        one: Dachverband
-        other: Dachverbände
+        one: Fédération faîtière
+        many: Fédérations faîtières
+        other: Fédérations faîtières
 
       group/dachverband_vorstand:
-        one: Vorstand
-        other: Vorstände
+        one: Comité
+        many: Comités
+        other: Comités
 
       group/dachverband_geschaeftsstelle:
-        one: Geschäftsstelle
-        other: Geschäftsstellen
+        one: Secrétariat
+        many: Secrétariats
+        other: Secrétariats
 
       group/dachverband_technischoffiziell:
-        one: Technisch / Offiziell
-        other: Technisch / Offizielle
+        one: Technique / Officiel
+        many: Technique / Officiels
+        other: Technique / Officiels
 
       group/dachverband_kommission:
-        one: Kommission
-        other: Kommissionen
+        one: Commission
+        many: Comissions
+        other: Commissions
 
       group/dachverband_spieler: Joueur
       group/dachverband_kader: Cadre
@@ -51,12 +58,14 @@ fr:
       group/dachverband_kontakte: Contacts
 
       group/region:
-        one: Region
-        other: Regionen
+        one: Région
+        many: Régions
+        other: Régions
 
       group/region_vorstand:
-        one: Vorstand
-        other: Vorstände
+        one: Comité
+        many: Comités
+        other: Comités
 
       group/region_spieler: Joueur
 
@@ -67,12 +76,14 @@ fr:
       group/center_unaffilliated: Centre
 
       group/verein:
-        one: Verein
-        other: Vereine
+        one: Club
+        many: Clubs
+        other: Clubs
 
       group/verein_vorstand:
-        one: Vorstand
-        other: Vorstände
+        one: Comité
+        many: Comités
+        other: Comités
 
       group/verein_spieler: Joueur
 
@@ -81,517 +92,610 @@ fr:
       ### ROLES
 
       group/dachverband/administrator:
-        one: "Administrator:in"
-        other: "Administrator:innen"
+        one: "Administrateur.trice"
+        many: "Administrateur.trice.s"
+        other: "Administrateur.trice.s"
 
       group/dachverband_vorstand/praesident:
-        one: "Präsident:in"
-        other: "Präsident:innen"
+        one: "Président.e"
+        many: "Président.e.s"
+        other: "Président.e.s"
 
       group/dachverband_vorstand/vizepraesident:
-        one: "Vizepräsident:in"
-        other: "Vizepräsident:innen"
+        one: "Vice-président.e"
+        many: "Vice-président.e.s"
+        other: "Vice-président.e.s"
 
       group/dachverband_vorstand/mitglied:
-        one: Vorstandsmitglied
-        other: Vorstandsmitglieder
+        one: Membre du conseil d'administration
+        many: Membres du comité
+        other: Membres du comité
 
       group/dachverband_geschaeftsstelle/ethik:
-        one: "Verantwortliche:r Ethik"
-        other: "Verantwortliche Ethik"
+        one: "Responsable éthique"
+        many: "Responsables éthique"
+        other: "Responsables éthique"
 
       group/dachverband_geschaeftsstelle/geschaeftsfuehrer:
-        one: "Geschäftsführer:in"
-        other: "Geschäftsführer:innen"
+        one: "Directeur.trice"
+        many: "Directeur.trice.s"
+        other: "Directeur.trice.s"
 
       group/dachverband_geschaeftsstelle/event_turnier:
-        one: "Verantwortliche:r Event/Turnier"
-        other: "Verantwortlicher Event/Turnier"
+        one: "Responsable évènement et tournoi"
+        many: "Responsables évènement et tournoi"
+        other: "Responsables évènement et tournoi"
 
       group/dachverband_geschaeftsstelle/ausbildung:
-        one: Verantwortliche:r Ausbildung
-        other: Verantwortliche Ausbildung
+        one: Responsable formation
+        many: Responsables formation
+        other: Responsables formation
 
       group/dachverband_geschaeftsstelle/breitensport:
-        one: Verantwortliche:r Breitensport
-        other: Verantwortliche Breitensport
+        one: Responsable sport de masse
+        many: Responsables sport de masse
+        other: Responsables sport de masse
 
       group/dachverband_geschaeftsstelle/leistungssport:
-        one: Verantwortliche:r Leistungssport
-        other: Verantwortliche Leistungssport
+        one: Responsable sport de performance
+        many: Responsables sport de performance
+        other: Responsables sport de performance
 
       group/dachverband_geschaeftsstelle/nachwuchs:
-        one: Verantwortliche:r Nachwuchs
-        other: Verantwortliche Nachwuchs
+        one: Responsable de la relève
+        many: Responsables de la relève
+        other: Responsables de la relève
 
       group/dachverband_geschaeftsstelle/interclub:
-        one: "Verantwortliche:r Interclub"
-        other: "Verantwortliche Interclub"
+        one: "Responsable interclub"
+        many: "Responsables interclub"
+        other: "Responsables interclub"
 
       group/dachverband_geschaeftsstelle/mitglied:
-        one: Mitglied
-        other: Mitglieder
+        one: Membre
+        many: Membres
+        other: Membres
 
       group/dachverband_geschaeftsstelle/js_coach:
-        one: "J&S Coach"
-        other: "J&S Coaches"
+        one: "Coach J&S"
+        many: "Coachs J&S"
+        other: "Coachs J&S"
 
       group/dachverband_geschaeftsstelle/umfeld:
-        one: "Verantwortliche:r Umfeld"
-        other: "Verantwortliche Umfeld"
+        one: "Responsable de l’environnement de performance"
+        many: "Responsables de l’environnement de performance"
+        other: "Responsables de l’environnement de performance"
 
       group/dachverband_geschaeftsstelle/antidoping:
-        one: "Verantwortliche:r Antidoping"
-        other: "Verantwortliche Antidoping"
+        one: "Responsable antidopage"
+        many: "Responsables antidopage"
+        other: "Responsables antidopage"
 
       group/dachverband_geschaeftsstelle/clubmanagement:
-        one: "Verantwortliche:r Club Management"
-        other: "Verantwortliche Club Managemen"
+        one: "Responsable Club Management"
+        many: "Responsables Club Management"
+        other: "Responsables Club Management"
 
       group/dachverband_geschaeftsstelle/finanzen:
-        one: "Verantwortliche:r Finanzen"
-        other: "Verantwortliche Finanzen"
+        one: "Responsable des finances"
+        many: "Responsables des finances"
+        other: "Responsables des finances"
 
       group/dachverband_geschaeftsstelle/kommunikation:
-        one: "Verantwortliche:r Kommunikation"
-        other: "Verantwortliche Kommunikation"
+        one: "Responsable communication"
+        many: "Responsables communication"
+        other: "Responsables communication"
 
       group/dachverband_geschaeftsstelle/marketing:
-        one: "Verantwortliche:r Marketing"
-        other: "Verantwortliche Marketing"
+        one: "Responsable marketing"
+        many: "Responsables marketing"
+        other: "Responsables marketing"
 
       group/dachverband_geschaeftsstelle/medical:
-        one: "Verantwortliche:r Medical"
-        other: "Verantwortliche Medical"
+        one: "Responsable médical"
+        many: "Responsables médical"
+        other: "Responsables médical"
 
       group/dachverband_geschaeftsstelle/personal:
-        one: "Verantwortliche:r Personal"
-        other: "Verantwortliche Personal"
+        one: "Responsable du personnel"
+        many: "Responsables du personnel"
+        other: "Responsables du personnel"
 
       group/dachverband_technischoffiziell/schiedsrichter:
-        one: "Schiedsrichter:in"
-        other: "Schiedsrichter:innen"
+        one: "Arbitre"
+        many: "Arbitres"
+        other: "Arbitres"
 
       group/dachverband_technischoffiziell/linienrichter:
-        one: "Linienrichter:in"
-        other: "Linienrichter:innen"
+        one: "Juge de lignes"
+        many: "Juges de lignes"
+        other: "Juges de lignes"
 
       group/dachverband_technischoffiziell/referee:
         one: "Referee"
+        many: "Referees"
         other: "Referees"
 
       group/dachverband_kommission/leitung:
-        one: "Leiter:in"
-        description: "Leiter:innen"
+        one: "Chef.fe"
+        description: "Chef.fe.s"
 
       group/dachverband_kommission/mitglied:
-        one: Mitglied
-        description: Mitglieder
+        one: Membre
+        description: Membres
 
       group/dachverband_spieler/aktivmitglied:
-        one: Aktivmitglied
-        other: Aktivmitglieder
+        one: Membre actif
+        many: Membres actifs
+        other: Membres actifs
 
       group/dachverband_spieler/passivmitglied:
-        one: Passivmitglied
-        other: Passivmitglieder
+        one: Membre passif
+        many: Membres passifs
+        other: Membres passifs
 
       group/dachverband_spieler/junior_u15:
-        one: "Junior:in (bis U-15)"
-        other: "Junior:innen (bis U-15)"
+        one: "Junior (jusqu'à M15)"
+        many: "Juniors (jusqu'à M15)"
+        other: "Juniors (jusqu'à M15)"
 
       group/dachverband_spieler/junior_u19:
-        one: "Junior:in (U17-U19)"
-        other: "Junior:innen (U17-U19)"
+        one: "Junior (M17-M19)"
+        many: "Juniors (M17-M19)"
+        other: "Juniors (M17-M19)"
 
       group/dachverband_spieler/lizenz:
-        one: Lizenz
-        other: Lizenzen
+        one: Licence
+        many: Licences
+        other: Licences
 
       group/dachverband_kader/athlet:
-        one: "Athlet:in"
-        other: "Athlet:innen"
+        one: "Athlète"
+        many: "Athlètes"
+        other: "Athlètes"
 
       group/dachverband_kader/trainer:
-        one: "Trainer:in"
-        other: "Trainer:innen"
+        one: "Entraîneur.se"
+        many: "Entraîneur.se.s"
+        other: "Entraîneur.se.s"
 
       group/dachverband_kontakte/kontakt:
-        one: Kontakt
-        other: Kontakte
+        one: Contact
+        many: Contacts
+        other: Contacts
 
       group/dachverband_kontakte/ehemaliges_zvmitglied:
-        one: Ehemaliges ZV-Mitglied
-        other: Ehemaliges ZV-Mitglieder
+        one: Ancien.ne membre du comité central
+        many: Ancien.ne.s membre du comité central
+        other: Ancien.ne.s membre du comité central
 
       group/dachverband_kontakte/ehemaliger_mitarbeiter:
-        one: Ehemalige:r Mitarbeiter:in
-        other: Ehemalige Mitarbeiter:innen
+        one: Ancien.ne collaborateur.trice
+        many: Ancien.ne.s collaborateur.trice.s
+        other: Ancien.ne.s collaborateur.trice.s
 
       group/dachverband_kontakte/ehrenmitglied:
-        one: Ehrenmitglied
-        other: Ehrenmitglieder
+        one: Membre d'honneur
+        many: Membres d'honneur
+        other: Membres d'honneur
 
       group/dachverband_kontakte/shuttletime_tutor:
-        one: Shuttletime-Tutor
-        other: Shuttletime-Tutoren
+        one: Tuteur Shuttle Time
+        many: Tuteurs Shuttle Time
+        other: Tuteurs Shuttle Time
 
       group/dachverband_kontakte/goenner:
-        one: Gönner:in
-        other: Gönner:innen
+        one: Donateur.trice
+        many: Donateur.trice.s
+        other: Donateur.trice.s
 
-      group/dachverband_kontakte/medien: Medien
+      group/dachverband_kontakte/medien: Médias
 
-      group/dachverband_kontakte/partner: Partner
+      group/dachverband_kontakte/partner: Partenaire
 
       group/dachverband_kontakte/js_experte:
-        one: J&S Expert:in
-        other: J&S Expert:innen
+        one: Expert.e J&S
+        many: Expert.e.s J&S
+        other: Expert.e.s J&S
 
       group/region/ethik:
-        one: "Verantwortliche:r Ethik"
-        other: "Verantwortliche Ethik"
+        one: "Responsable de l'éthique"
+        many: "Responsables de l'éthique"
+        other: "Responsables de l'éthique"
 
       group/region/event_turnier:
-        one: "Verantwortliche:r Event/Turnier"
-        other: "Verantwortlicher Event/Turnier"
+        one: "Responsable évènement et tournoi"
+        many: "Responsables évènement et tournoi"
+        other: "Responsables évènement et tournoi"
 
       group/region/ausbildung:
-        one: Verantwortliche:r Ausbildung
-        other: Verantwortliche Ausbildung
+        one: Responsable formation
+        many: Responsables formation
+        other: Responsables formation
 
       group/region/breitensport:
-        one: Verantwortliche:r Breitensport
-        other: Verantwortliche Breitensport
+        one: Responsable sport de masse
+        many: Responsables sport de masse
+        other: Responsables sport de masse
 
       group/region/leistungssport:
-        one: Verantwortliche:r Leistungssport
-        other: Verantwortliche Leistungssport
+        one: Responsable sport de performance
+        many: Responsables sport de performance
+        other: Responsables sport de performance
 
       group/region/nachwuchs:
-        one: Verantwortliche:r Nachwuchs
-        other: Verantwortliche Nachwuchs
+        one: Responsable de la relève
+        many: Responsables de la relève
+        other: Responsables de la relève
 
       group/region/interclub:
-        one: "Verantwortliche:r Interclub"
-        other: "Verantwortliche Interclub"
+        one: "Responsable interclub"
+        many: "Responsables interclub"
+        other: "Responsables interclub"
 
       group/region/js_coach:
-        one: "J&S Coach"
-        other: "J&S Coaches"
+        one: "Coach J&S"
+        many: "Coachs J&S"
+        other: "Coachs J&S"
 
       group/region/umfeld:
-        one: "Verantwortliche:r Umfeld"
-        other: "Verantwortliche Umfeld"
+        one: "Responsable de l’environnement de performance"
+        many: "Responsables de l’environnement de performance"
+        other: "Responsables de l’environnement de performance"
 
       group/region/antidoping:
-        one: "Verantwortliche:r Antidoping"
-        other: "Verantwortliche Antidoping"
+        one: "Responsable antidopage"
+        many: "Responsables antidopage"
+        other: "Responsables antidopage"
 
       group/region/clubmanagement:
-        one: "Verantwortliche:r Club Management"
-        other: "Verantwortliche Club Managemen"
+        one: "Responsable Club Management"
+        many: "Responsables Club Management"
+        other: "Responsables Club Management"
 
       group/region/finanzen:
-        one: "Verantwortliche:r Finanzen"
-        other: "Verantwortliche Finanzen"
+        one: "Responsable des finances"
+        many: "Responsables des finances"
+        other: "Responsables des finances"
 
       group/region/kommunikation:
-        one: "Verantwortliche:r Kommunikation"
-        other: "Verantwortliche Kommunikation"
+        one: "Responsable communication"
+        many: "Responsables communication"
+        other: "Responsables communication"
 
       group/region/marketing:
-        one: "Verantwortliche:r Marketing"
-        other: "Verantwortliche Marketing"
+        one: "Responsable marketing"
+        many: "Responsables marketing"
+        other: "Responsables marketing"
 
       group/region/medical:
-        one: "Verantwortliche:r Medical"
-        other: "Verantwortliche Medical"
+        one: "Responsable médical"
+        many: "Responsables médical"
+        other: "Responsables médical"
 
       group/region/personal:
-        one: "Verantwortliche:r Personal"
-        other: "Verantwortliche Personal"
+        one: "Responsable du personnel"
+        many: "Responsables du personnel"
+        other: "Responsables du personnel"
 
       group/region_vorstand/praesident:
-        one: "Präsident:in"
-        other: "Präsident:innen"
+        one: "Président.e"
+        many: "Président.e.s"
+        other: "Président.e.s"
 
       group/region_vorstand/vizepraesident:
-        one: "Vizepräsident:in"
-        other: "Vizepräsident:innen"
+        one: "Vice-président.e"
+        many: "Vice-président.e.s"
+        other: "Vice-président.e.s"
 
       group/region_vorstand/mitglied:
-        one: "Vorstandsmitglied"
-        other: "Vorstandsmitglieder"
+        one: "Membre du conseil d'administration"
+        many: "Membres du comité"
+        other: "Membres du comité"
 
       group/region_vorstand/kassier:
-        one: "Kassier:in"
-        other: "Kassier:innen"
+        one: "Trésorier.ère"
+        many: "Trésorier.ère.s"
+        other: "Trésorier.ère.s"
 
       group/region_vorstand/administrator:
-        one: Administrator:in
-        other: Administrator:innen
+        one: Administrateur.trice
+        many: Administrateur.trice.s
+        other: Administrateur.trice.s
 
       group/region_spieler/aktivmitglied:
-        one: Aktivmitglied
-        other: Aktivmitglieder
+        one: Membre actif
+        many: Membres actifs
+        other: Membres actifs
 
       group/region_spieler/passivmitglied:
-        one: Passivmitglied
-        other: Passivmitglieder
+        one: Membre passif
+        many: Membres passifs
+        other: Membres passifs
 
       group/region_spieler/junior_u15:
-        one: "Junior:in (bis U-15)"
-        other: "Junior:innen (bis U-15)"
+        one: "Junior (jusqu'à M15)"
+        many: "Juniors (jusqu'à M15)"
+        other: "Juniors (jusqu'à M15)"
 
       group/region_spieler/junior_u19:
-        one: "Junior:in (U17-U19)"
-        other: "Junior:innen (U17-U19)"
+        one: "Junior (M17-M19)"
+        many: "Juniors (M17-M19)"
+        other: "Juniors (M17-M19)"
 
       group/region_spieler/lizenz:
-        one: Lizenz
-        other: Lizenzen
+        one: Licence
+        many: Licences
+        other: Licences
 
       group/region_kontakte/kontakt:
-        one: Kontakt
-        other: Kontakte
+        one: Contact
+        many: Contacts
+        other: Contacts
 
       group/region_kontakte/ehrenmitglied:
-        one: Ehrenmitglied
-        other: Ehrenmitglieder
+        one: Membre d'honneur
+        many: Membres d'honneur
+        other: Membres d'honneur
 
-      group/region_kontakte/medien: Medien
+      group/region_kontakte/medien: Médias
 
-      group/region_kontakte/partner: Partner
+      group/region_kontakte/partner: Partenaire
 
-      group/region_kontakte/volunteer: Partner
+      group/region_kontakte/volunteer: Partenaire
 
       group/verein/ethik:
-        one: "Verantwortliche:r Ethik"
-        other: "Verantwortliche Ethik"
+        one: "Responsable de l'éthique"
+        many: "Responsables de l'éthique"
+        other: "Responsables de l'éthique"
 
       group/verein/event_turnier:
-        one: "Verantwortliche:r Event/Turnier"
-        other: "Verantwortlicher Event/Turnier"
+        one: "Responsable évènement et tournoi"
+        many: "Responsables évènement et tournoi"
+        other: "Responsables évènement et tournoi"
 
       group/verein/ausbildung:
-        one: Verantwortliche:r Ausbildung
-        other: Verantwortliche Ausbildung
+        one: Responsable formation
+        many: Responsables formation
+        other: Responsables formation
 
       group/verein/breitensport:
-        one: Verantwortliche:r Breitensport
-        other: Verantwortliche Breitensport
+        one: Responsable sport de masse
+        many: Responsables sport de masse
+        other: Responsables sport de masse
 
       group/verein/leistungssport:
-        one: Verantwortliche:r Leistungssport
-        other: Verantwortliche Leistungssport
+        one: Responsable sport de performance
+        many: Responsables sport de performance
+        other: Responsables sport de performance
 
       group/verein/nachwuchs:
-        one: Verantwortliche:r Nachwuchs
-        other: Verantwortliche Nachwuchs
+        one: Responsable de la relève
+        many: Responsables de la relève
+        other: Responsables de la relève
 
       group/verein/interclub:
-        one: "Verantwortliche:r Interclub"
-        other: "Verantwortliche Interclub"
+        one: "Responsable interclub"
+        many: "Responsables interclub"
+        other: "Responsables interclub"
 
       group/verein/js_coach:
-        one: "J&S Coach"
-        other: "J&S Coaches"
+        one: "Coach J&S"
+        many: "Coachs J&S"
+        other: "Coachs J&S"
 
       group/verein/umfeld:
-        one: "Verantwortliche:r Umfeld"
-        other: "Verantwortliche Umfeld"
+        one: "Responsable de l’environnement de performance"
+        many: "Responsables de l’environnement de performance"
+        other: "Responsables de l’environnement de performance"
 
       group/verein/antidoping:
-        one: "Verantwortliche:r Antidoping"
-        other: "Verantwortliche Antidoping"
+        one: "Responsable antidopage"
+        many: "Responsables antidopage"
+        other: "Responsables antidopage"
 
       group/verein/clubmanagement:
-        one: "Verantwortliche:r Club Management"
-        other: "Verantwortliche Club Managemen"
+        one: "Responsable Club Management"
+        many: "Responsables Club Management"
+        other: "Responsables Club Management"
 
       group/verein/finanzen:
-        one: "Verantwortliche:r Finanzen"
-        other: "Verantwortliche Finanzen"
+        one: "Responsable des finances"
+        many: "Responsables des finances"
+        other: "Responsables des finances"
 
       group/verein/kommunikation:
-        one: "Verantwortliche:r Kommunikation"
-        other: "Verantwortliche Kommunikation"
+        one: "Responsable communication"
+        many: "Responsables communication"
+        other: "Responsables communication"
 
       group/verein/marketing:
-        one: "Verantwortliche:r Marketing"
-        other: "Verantwortliche Marketing"
+        one: "Responsable marketing"
+        many: "Responsables marketing"
+        other: "Responsables marketing"
 
       group/verein/medical:
-        one: "Verantwortliche:r Medical"
-        other: "Verantwortliche Medical"
+        one: "Responsable médical"
+        many: "Responsables médical"
+        other: "Responsables médical"
 
       group/verein/personal:
-        one: "Verantwortliche:r Personal"
-        other: "Verantwortliche Personal"
+        one: "Responsable du personnel"
+        many: "Responsables du personnel"
+        other: "Responsables du personnel"
 
       group/verein/clubtrainer:
-        one: "Clubtrainer:in"
-        other: "Clubtrainer:innen"
+        one: "Entraîneur.se de club"
+        many: "Entraîneur.se.s de club"
+        other: "Entraîneur.se.s de club"
 
-      group/verein/nationalliga: "Nationalliga"
+      group/verein/nationalliga: "Ligue Nationale A"
 
       group/verein/schiedsrichter:
-        one: "Schiedsrichter:in"
-        other: "Schiedsrichter:innen"
+        one: "Arbitre"
+        many: "Arbitres"
+        other: "Arbitres"
 
       group/verein_vorstand/praesident:
-        one: "Präsident:in"
-        description: "Präsident:innen"
+        one: "Président.e"
+        description: "Président.e.s"
 
       group/verein_vorstand/vizepraesident:
-        one: "Vizepräsident:in"
-        description: "Vizepräsident:innen"
+        one: "Vice-président.e"
+        description: "Vice-président.e.s"
 
       group/verein_vorstand/administrator:
-        one: Administrator:in
-        other: Administrator:innen
+        one: Administrateur.trice
+        many: Administrateur.trice.s
+        other: Administrateur.trice.s
 
       group/verein_vorstand/kassier:
-        one: "Kassier:in"
-        description: "Kassier:innen"
+        one: "Trésorier.ère"
+        description: "Trésorier.ère.s"
 
       group/verein_vorstand/mitglied:
-        one: Vorstandsmitglied
-        description: Vorstandsmitglieder
+        one: Membre du comité
+        description: Membres du comité
 
       group/verein_spieler/aktivmitglied:
-        one: Aktivmitglied
-        description: Aktivmitglieder
+        one: Membre actif
+        description: Membres actifs
 
       group/verein_spieler/passivmitglied:
-        one: Passivmitglied
-        description: Passivmitglieder
+        one: Membre passif
+        description: Membres passifs
 
       group/verein_spieler/junior_u15:
-        one: "Junior:in (bis U-15)"
-        description: "Junior:innen (bis U-15)"
+        one: "Junior (jusqu'à M15)"
+        description: "Juniors (jusqu'à M15)"
 
       group/verein_spieler/junior_u19:
-        one: "Junior:in (U17-U19)"
-        description: "Junior:innen (U17-U19)"
+        one: "Junior (M17-M19)"
+        description: "Juniors (M17-M19)"
 
       group/verein_spieler/lizenz:
-        one: Lizenz
-        description: Lizenzen
+        one: Licence
+        description: Licences
 
       group/verein_spieler/vereinigungsspieler:
-        one: "Vereinigungsspieler:in"
-        description: "Vereinigungsspieler:innen"
+        one: Joueur.se de club
+        description: Joueur.se.s de club
 
       group/verein_spieler/lizenz_plus_junior:
-        one: "Lizenz Plus Junior:innen (U19)"
-        description: "Lizenzen Plus Junior:innen (U19)"
+        one: "Licence plus junior (M19)"
+        description: "Licences plus juniors (M19)"
 
       group/verein_spieler/lizenz_plus:
-        one: Lizenz Plus
-        description: Lizenzen Plus
+        one: Licence plus
+        description: Licences plus
 
       group/verein_spieler/lizenz_no_ranking:
-        one: Lizenz NO ranking
-        description: Lizenen NO ranking
+        one: Licence NO ranking
+        description: Licences NO ranking
 
       group/verein_kontakte/kontakt:
-        one: Kontakt
-        other: Kontakte
+        one: Contact
+        many: Contacts
+        other: Contacts
 
       group/verein_kontakte/ehrenmitglied:
-        one: Ehrenmitglied
-        other: Ehrenmitglieder
+        one: Membre d'honneur
+        many: Membres d'honneur
+        other: Membres d'honneur
 
-      group/verein_kontakte/medien: Medien
+      group/verein_kontakte/medien: Médias
 
-      group/verein_kontakte/partner: Partner
+      group/verein_kontakte/partner: Partenaire
 
-      group/verein_kontakte/volunteer: Partner
+      group/verein_kontakte/volunteer: Partenaire
 
-      group/center/direktion: Direktion
+      group/center/direktion: Direction
 
-      group/center_unaffilliated/direktion: Direktion
+      group/center_unaffilliated/direktion: Direction
 
       event/role/assistant_leader:
-        one: Leiter:in
-        other: Leiter:innen
+        one: Chef.fe
+        many: Chef.fe.s
+        other: Chef.fe.s
       event/role/leader:
-        one: Hauptleiter:in
-        other: Hauptleiter:innen
+        one: Responsable principal.e
+        many: Responsables principal.e.s
+        other: Responsables principal.e.s
       event/role/helper:
-        one: Helfer:in
-        other: Helfer:innen
+        one: Bénévole
+        many: Bénévole.s
+        other: Bénévole.s
       event/role/participant:
-        one: Teilnehmer:in
-        other: Teilnehmer:innen
+        one: Participant.e
+        many: Participant.e.s
+        other: Participant.e.s
       event/role/speaker:
-        one: Referent:in
-        other: Referent:innen
+        one: Intervenant.e
+        many: Intervenant.e.s
+        other: Intervenant.e.s
 
       salutation:
         available:
           lieber_vorname:
-            label: "Liebe:r [Vorname]"
+            label: "Cher.ère [Prénom]"
             value:
-              other: "Liebe:r %{first_name}"
+              other: "Cher.ère %{first_name}"
 
     attributes:
       event:
-        external_link: Externer Link
+        external_link: Lien externe
       contact_account:
         predefined_labels:
-          landline: Festnetz
-          mobile: Mobil
+          landline: Téléphone fixe
+          mobile: Téléphone portable
       event/role:
-        remove_participant_role: "Allfällige Teilnehmer:innen-Rolle entfernen"
+        remove_participant_role: Supprimer le rôle de participant.e
       group:
-        founded_on: Gründungsdatum
-        yearly_budget: Jahresbudget
+        founded_on: Date de création
+        yearly_budget: Budget annuel
       person:
-        advertising: Werbung
-        emergency_contact: Notfallkontakt
-        international_player_id: Internationale Spieler-ID
-        member_id: Member-ID
-        nationality: Nationalität gemäss Pass / ID
-        nationality_badminton: "Nationalität als Badmintonspieler:in"
+        advertising: Publicité
+        emergency_contact: Contact d'urgence
+        international_player_id: Numéro joueur internationale
+        member_id: Numéro membre
+        nationality: Nationalité selon le passeport / carte d'identité
+        nationality_badminton: Nationalité du/de la joueur.se de badminton
         newsletter: Newsletter
-        public_profile: öffentliches Profil
-        ts_gender: Geschlecht Spielbetrieb
-        ts_code: TS Code
-        ts_last_sync: TS letzte aktualisierung
+        public_profile: Profil public
+        ts_gender: Catégorie de la compétition
+        ts_code: Code TS
+        ts_last_sync: Dernière actualisation TS
       service_token:
-        mailing_lists: "Abonnent:innen von Mailinglisten"
+        mailing_lists: Abonné.e.s aux listes de diffusions
 
   event:
     application_market:
       index:
-        add_participant: "Teilnehmer:in hinzufügen"
+        add_participant: Ajouter un.e participant.e
 
   events:
     application_fields:
-      caption_signature: "Teilnehmer:innen müssen die Anmeldung unterschreiben"
+      caption_signature: Les participant.e.s doivent signer l'inscription
     form:
-      caption_requires_approval: "Der/Die Gruppenleiter:in wird informiert und muss die Anmeldung bestätigen."
+      caption_requires_approval: "Le/la responsable de groupe est informé.e et doit confirmer l'inscription"
 
   mailing_lists:
     form:
-      caption_anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
+      caption_anyone_may_post: "N’importe quel/quelle expéditeur.trice peut écrire sur la liste de diffusion"
 
   mailing_list_decorator:
-    anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
-    anyone_may_not_post: "Beliebige Absender:innen dürfen <strong>nicht</strong> auf die Mailingliste schreiben"
+    anyone_may_post: "Tout/Toute expéditeur.trice peut écrire à la liste de diffusion."
+    anyone_may_not_post: "Seules les personnes autorisées peuvent écrire à la liste de diffusion."
 
   people:
     tabs:
-      colleagues: "Mitarbeiter:innen"
+      colleagues: Collaborateur.trice.s
 
   subscriber:
     exclude_person:
       form:
-        exclude_subscriber: "Abonnent:in ausschliessen"
+        exclude_subscriber: "Exclure un/une abonné.e"
 
   subscriber/exclude_person:
-    failure: "%{subscriber} ist nicht Abonnent:in"
+    failure: "%{subscriber} n'est pas abonné.e"
 
