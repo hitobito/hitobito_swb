@@ -107,7 +107,7 @@ fr:
         other: "Vice-président.e.s"
 
       group/dachverband_vorstand/mitglied:
-        one: Membre du conseil d'administration
+        one: Membre du comité
         many: Membres du comité
         other: Membres du comité
 
@@ -235,14 +235,14 @@ fr:
         other: Membres passifs
 
       group/dachverband_spieler/junior_u15:
-        one: "Junior (jusqu'à M15)"
-        many: "Juniors (jusqu'à M15)"
-        other: "Juniors (jusqu'à M15)"
+        one: "Junior.e (jusqu'à U15)"
+        many: "Junior.e.s (jusqu'à U15)"
+        other: "Junior.e.s (jusqu'à U15)"
 
       group/dachverband_spieler/junior_u19:
-        one: "Junior (M17-M19)"
-        many: "Juniors (M17-M19)"
-        other: "Juniors (M17-M19)"
+        one: "Junior.e (U17-U19)"
+        many: "Junior.e.s (U17-U19)"
+        other: "Junior.e.s (U17-U19)"
 
       group/dachverband_spieler/lizenz:
         one: Licence
@@ -280,9 +280,9 @@ fr:
         other: Membres d'honneur
 
       group/dachverband_kontakte/shuttletime_tutor:
-        one: Tuteur Shuttle Time
-        many: Tuteurs Shuttle Time
-        other: Tuteurs Shuttle Time
+        one: Tuteur Shuttletime
+        many: Tuteurs Shuttletime
+        other: Tuteurs Shuttletime
 
       group/dachverband_kontakte/goenner:
         one: Donateur.trice
@@ -396,7 +396,7 @@ fr:
       group/region_vorstand/kassier:
         one: "Trésorier.ère"
         many: "Trésorier.ère.s"
-        other: "Trésorier.ère.s"
+        other: "Caissier.ère.s"
 
       group/region_vorstand/administrator:
         one: Administrateur.trice
@@ -414,14 +414,14 @@ fr:
         other: Membres passifs
 
       group/region_spieler/junior_u15:
-        one: "Junior (jusqu'à M15)"
-        many: "Juniors (jusqu'à M15)"
-        other: "Juniors (jusqu'à M15)"
+        one: "Junior.e (jusqu'à U15)"
+        many: "Junior.e.s (jusqu'à U15)"
+        other: "Junior.e.s (jusqu'à U15)"
 
       group/region_spieler/junior_u19:
-        one: "Junior (M17-M19)"
-        many: "Juniors (M17-M19)"
-        other: "Juniors (M17-M19)"
+        one: "Junior.e (U17-U19)"
+        many: "Junior.e.s (U17-U19)"
+        other: "Junior.e.s (U17-U19)"
 
       group/region_spieler/lizenz:
         one: Licence
@@ -529,7 +529,7 @@ fr:
         many: "Entraîneur.se.s de club"
         other: "Entraîneur.se.s de club"
 
-      group/verein/nationalliga: "Ligue Nationale A"
+      group/verein/nationalliga: "Ligue nationale"
 
       group/verein/schiedsrichter:
         one: "Arbitre"
@@ -550,8 +550,8 @@ fr:
         other: Administrateur.trice.s
 
       group/verein_vorstand/kassier:
-        one: "Trésorier.ère"
-        description: "Trésorier.ère.s"
+        one: "Caissier.ère"
+        description: "Caissier.ère.s"
 
       group/verein_vorstand/mitglied:
         one: Membre du comité
@@ -566,12 +566,12 @@ fr:
         description: Membres passifs
 
       group/verein_spieler/junior_u15:
-        one: "Junior (jusqu'à M15)"
-        description: "Juniors (jusqu'à M15)"
+        one: "Junior.e (jusqu'à U15)"
+        description: "Junior.e.s (jusqu'à U15)"
 
       group/verein_spieler/junior_u19:
-        one: "Junior (M17-M19)"
-        description: "Juniors (M17-M19)"
+        one: "Junior.e (U17-U19)"
+        description: "Junior.e.s (U17-U19)"
 
       group/verein_spieler/lizenz:
         one: Licence
@@ -582,8 +582,8 @@ fr:
         description: Joueur.se.s de club
 
       group/verein_spieler/lizenz_plus_junior:
-        one: "Licence plus junior (M19)"
-        description: "Licences plus juniors (M19)"
+        one: "Licence plus junior.e (U19)"
+        description: "Licences plus junior.e.s (U19)"
 
       group/verein_spieler/lizenz_plus:
         one: Licence plus
@@ -656,7 +656,7 @@ fr:
       person:
         advertising: Publicité
         emergency_contact: Contact d'urgence
-        international_player_id: Numéro joueur internationale
+        international_player_id: Numéro international du joueur
         member_id: Numéro membre
         nationality: Nationalité selon le passeport / carte d'identité
         nationality_badminton: Nationalité du/de la joueur.se de badminton
@@ -675,16 +675,16 @@ fr:
 
   events:
     application_fields:
-      caption_signature: Les participant.e.s doivent signer l'inscription
+      caption_signature: Les participant.e.s doivent signer l'inscription.
     form:
-      caption_requires_approval: "Le/la responsable de groupe est informé.e et doit confirmer l'inscription"
+      caption_requires_approval: "Le/la responsable de groupe est informé.e et doit confirmer l'inscription."
 
   mailing_lists:
     form:
-      caption_anyone_may_post: "N’importe quel/quelle expéditeur.trice peut écrire sur la liste de diffusion"
+      caption_anyone_may_post: "N’importe quel.le expéditeur.trice peut écrire sur la liste de diffusion."
 
   mailing_list_decorator:
-    anyone_may_post: "Tout/Toute expéditeur.trice peut écrire à la liste de diffusion."
+    anyone_may_post: "Tout.e expéditeur.trice peut écrire à la liste de diffusion."
     anyone_may_not_post: "Seules les personnes autorisées peuvent écrire à la liste de diffusion."
 
   people:
@@ -694,7 +694,7 @@ fr:
   subscriber:
     exclude_person:
       form:
-        exclude_subscriber: "Exclure un/une abonné.e"
+        exclude_subscriber: "Exclure un.e abonné.e"
 
   subscriber/exclude_person:
     failure: "%{subscriber} n'est pas abonné.e"
