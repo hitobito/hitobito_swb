@@ -14,8 +14,9 @@ namespace :swb do
     sh "in2csv 'data/exportLevel-Clubs-19032025.xlsx' > tmp/clubs.csv"
   end
 
-  file "tmp/mitglieder.csv" => ["data/Mtglieder_Export_Hitobito.xlsx"] do
-    sh "in2csv 'data/Mtglieder_Export_Hitobito.xlsx' > tmp/mitglieder.csv"
+  file "tmp/mitglieder.csv" => ["data/Mitglieder_Export_Hitobito_mit_code.xlsx"] do
+    # has bad lines with memberid AA9991
+    sh "in2csv 'data/Mitglieder_Export_Hitobito_mit_code.xlsx' | grep -v AA9991 > tmp/mitglieder.csv"
   end
 
   file "tmp/teams.csv" => ["data/Mtglieder_Export_Hitobito.xlsx"] do

@@ -29,10 +29,10 @@ module SwbImport
 
       import(Region, from: :regions)
       import(Club, from: :clubs)
-      import(Team, from: :team_eli)
-      import(Team, from: :team_ver)
-      import(TeamJun, from: :team_jun)
-      import(TeamSen, from: :team_sen)
+      import(Team, from: :teams_eli)
+      import(Team, from: :teams_ver)
+      import(TeamJun, from: :teams_jun)
+      import(TeamSen, from: :teams_sen)
 
       import(Role, from: :mitglieder)
 
@@ -46,7 +46,7 @@ module SwbImport
     def reset_db
       truncate_tables
       import_root_seeds
-      import_dachverband
+      import_wagon_seeds(:groups, :event_questions)
     end
 
     def create_search_columns = SearchColumnBuilder.new.run
@@ -71,7 +71,11 @@ module SwbImport
 
     def import_root_seeds = %w[custom_contents root].each { |file| load Rails.root.join("db/seeds/#{file}.rb") }
 
-    def import_dachverband = load Wagons.all.find("swb").first.root.join("db/seeds/groups.rb")
+    def import_wagon_seeds(*files)
+      files.each do |file|
+        load Wagons.all.find("swb").first.root.join("db/seeds/#{file}.rb")
+      end
+    end
 
     def rebuild_groups = Group.rebuild!
 

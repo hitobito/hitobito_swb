@@ -27,7 +27,7 @@ module SwbImport
 
   CLUB_MAPPINGS = [
     [:Code, :ts_code],
-    [:Number, :ts_club_number, ->(v) { Integer(v) }], # ist das wirklich
+    [:Number, :ts_club_number, ->(v) { Integer(v) }],
     [:Name, :name],
     [:Parentnumber, :parent_number],
     [:Contact, :contact],
@@ -86,6 +86,7 @@ module SwbImport
   ROLE_MAPPINGS = [
     [:memberid, :person_id, ->(v) { Integer(v) }],
     [:groupcode, :groupcode],
+    [:membershipcode, :ts_code],
     [:role, :role],
     [:TypeName, :spieler_role_type],
     [:startdate, :start_on, :parse_date],

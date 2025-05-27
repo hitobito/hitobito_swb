@@ -11,7 +11,16 @@ module SwbImport
     delegate :save, :errors, :persisted?, to: :model
 
     def self.from(csv_row)
+      reset!
       new(**Parser.new(csv_row.to_h.symbolize_keys, mappings).parse)
+    end
+
+    # noop
+    def self.reset!
+    end
+
+    def save
+      model.save(context: :import)
     end
 
     def valid? = model.valid?(:import)
@@ -115,23 +124,28 @@ module SwbImport
     self.model_class = ::Person
     self.ident_keys = [:ts_code]
 
+    @@emails = {}
+
+    def self.reset!
+      @@emails = ::Person.where.not(email: nil).pluck(:email, :id).to_h
+    end
+
     def save
-      return model.save.tap { emails[email] = id } if new_email?
+      return super.tap { emails[email] = id } if new_email?
 
       model.additional_emails.build(email: email, label: "Andere")
       model.email = nil
-      model.save
+      super
     end
 
-    def new_email?
-      @@emails ||= {}
-      @@emails.key?(email)
-    end
+    def emails = @@emails
+
+    def new_email? = !emails.key?(email)
 
     def build
       super do |model|
-        model.phone_numbers.build(label: :mobile, number: mobile) if mobile
-        model.phone_numbers.build(label: :landline, number: phone) if phone
+        model.phone_numbers.find_or_initialize_by(label: :mobile, number: mobile) if mobile
+        model.phone_numbers.find_or_initialize_by(label: :landline, number: phone) if phone
       end
     end
 

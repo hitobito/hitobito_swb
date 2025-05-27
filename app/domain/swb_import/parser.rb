@@ -51,7 +51,7 @@ module SwbImport
     def parse_email(v) = Truemail.validate(v.to_s.downcase.delete(" ").gsub("(at)", "@"), with: :regex)
       .result.then { |r| r.email if r.success }
 
-    def parse_phone_number(v) = Phonelib.parse(v).then { |n| n.sanitized if n.valid? }
+    def parse_phone_number(v) = Phonelib.parse(v).then { |n| n.international if n.valid? }
 
     def parse_country(v) = ISO3166::Country.find_country_by_ioc(COUNTRY_MAPPING.fetch(v, v))&.alpha2
 
