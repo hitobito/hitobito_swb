@@ -147,3 +147,48 @@ invoice_lists:
           unit_cost: 0
           roles:
             - Group::VereinSpieler::Vereinigungsspieler
+roles:
+  phases:
+    enabled: true
+    open: 15 Jun - 15 Aug
+    reduced: 16 Aug - 31 Jan
+    restricted: 1 Jan - 14 Jun
+    upgrades:
+      Aktivmitglied:
+      - Lizenz
+      - LizenzPlusJunior
+      - LizenzPlus
+      - LizenzNoRanking
+      - Vereinigungsspieler
+      Passivmitglied:
+      - Aktivmitglied
+      - Lizenz
+      - JuniorU15
+      - JuniorU19
+      - LizenzPlusJunior
+      - LizenzPlus
+      - LizenzNoRanking
+      - Vereinigungsspieler
+      JuniorU15:
+      - Aktivmitglied
+      - Lizenz
+      - JuniorU19
+      - LizenzPlusJunior
+      - LizenzPlus
+      - LizenzNoRanking
+      - Vereinigungsspieler
+      JuniorU19:
+      - Aktivmitglied
+      - Lizenz
+      - LizenzPlusJunior
+      - LizenzPlus
+      - LizenzNoRanking
+      - Vereinigungsspieler
+      Lizenz:
+      - Vereinigungsspieler
+      LizenzPlusJunior:
+      - Vereinigungsspieler
+      LizenzPlus:
+      - Vereinigungsspieler
+      LizenzNoRanking:
+      - Vereinigungsspieler

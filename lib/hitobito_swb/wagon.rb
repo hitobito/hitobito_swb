@@ -46,6 +46,7 @@ module HitobitoSwb
       # Tournaments with questions
       EventAbility.prepend Swb::EventAbility
       GroupAbility.prepend Swb::GroupAbility
+      RoleAbility.prepend Swb::RoleAbility if FeatureGate.enabled?("roles.phases")
       Sheet::Group.prepend Swb::Sheet::Group
       Sheet::Base.prepend Swb::Sheet::Base
       EventsHelper.prepend Swb::EventsHelper
