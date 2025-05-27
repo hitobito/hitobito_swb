@@ -5,27 +5,44 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
+require Wagons.all.first.root.join("db", "seeds", "development", "support", "verein_seeder")
+
 root = Group.roots.first
 
 # Regionen mit ein paar Vereinen
-
+#
 result = Group::Region.seed_once(:name,
   parent_id: root.id,
   name: "Badminton Regionalverband Bern",
   short_name: "BRB")
 brb = result.first
-Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Bern")
-Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Thun")
-Group::Verein.seed_once(:name, parent_id: brb.id, name: "BC Köniz")
+
+[
+  "BC Thun",
+  "BC Köniz",
+  "BC STB-Worb",
+  "BC Zollikofen",
+  "BC Uni Bern"
+].each do |name|
+  VereinSeeder.new(parent_id: brb.id, name:).seed
+end
 
 result = Group::Region.seed_once(:name,
   parent_id: root.id,
   name: "Badminton Verband Nordwestschweiz",
   short_name: "BVN")
 bvn = result.first
-Group::Verein.seed_once(:name, parent_id: bvn.id, name: "BC Olten")
-Group::Verein.seed_once(:name, parent_id: bvn.id, name: "BC Pratteln")
-Group::Verein.seed_once(:name, parent_id: bvn.id, name: "SC Uni Basel")
+
+[
+  "BC Olten",
+  "BC Pratteln",
+  "SC Uni Basel",
+  "BC Kaiseraugst",
+  "BC Liestal",
+  "BC Oensingen"
+].each do |name|
+  VereinSeeder.new(parent_id: bvn.id, name:).seed
+end
 
 # Center
 

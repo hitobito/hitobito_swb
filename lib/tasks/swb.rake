@@ -22,8 +22,7 @@ namespace :swb do
     sh "in2csv --sheet Teams_Eli   data/Export_Manschaften.xlsx  > tmp/teams_eli.csv"
     sh "in2csv --sheet Teams_Jun   data/Export_Manschaften.xlsx  > tmp/teams_jun.csv"
     sh "in2csv --sheet Teams_Sen   data/Export_Manschaften.xlsx  > tmp/teams_sen.csv"
-
-    sh "in2csv 'data/Mtglieder_Export_Hitobito.xlsx' > tmp/mitglieder.csv"
+    sh "in2csv --sheet Vereinigung data/Export_Manschaften.xlsx  > tmp/teams_ver.csv"
   end
 
   desc "Imports and pushes local DB to INT"
@@ -33,8 +32,18 @@ namespace :swb do
     Rake::Task["swb:push"].invoke
   end
 
+  required_csv = [
+    "tmp/mitglieder.csv",
+    "tmp/regions.csv",
+    "tmp/clubs.csv",
+    "tmp/teams_eli.csv",
+    "tmp/teams_jun.csv",
+    "tmp/teams_sen.csv",
+    "tmp/teams_ver.csv"
+  ]
+
   desc "Imports Groups, People and Roles"
-  task import: ["tmp/mitglieder.csv", "tmp/regions.csv", "tmp/clubs.csv", "tmp/teams_eli.csv", "tmp/teams_jun.csv", "tmp/teams_sen.csv", :environment] do
+  task import: required_csv + [:environment] do
     SwbImport::Runner.new.run
   end
 
@@ -44,10 +53,11 @@ namespace :swb do
   end
 
   desc "Imports Teams for current year"
-  task import_teams: ["tmp/teams_eli.csv", "tmp/teams_jun.csv", "tmp/teams_sen.csv", :environment] do
+  task import_teams: ["tmp/teams_eli.csv", "tmp/teams_jun.csv", "tmp/teams_sen.csv", "tmp/teams_ver.csv", :environment] do
     SwbImport::Importer.new(SwbImport::Team, :teams_eli).run
-    SwbImport::Importer.new(SwbImport::Team, :teams_jun).run
-    SwbImport::Importer.new(SwbImport::Team, :teams_sen).run
+    SwbImport::Importer.new(SwbImport::TeamJun, :teams_jun).run
+    SwbImport::Importer.new(SwbImport::TeamSen, :teams_sen).run
+    SwbImport::Importer.new(SwbImport::Team, :teams_ver).run
   end
 
   namespace :ts do
