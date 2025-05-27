@@ -8,13 +8,20 @@
 module SwbImport
   class Csv
     attr_reader :target, :lines, :filter
+
+    EMPTY_LINE_REGEX = /^(?:,\s*)+$/
+
     def initialize(file, lines: nil, filter: nil)
       @target = Wagons.all[0].root.join("tmp/#{file}.csv")
       @lines = lines
       @filter = filter
     end
 
-    def csv = @csv ||= filtered(CSV.parse(lines ? target.readlines.take(lines).join : target.read, headers: true))
+    def csv = @csv ||= filtered(parse_csv)
+
+    def parse_csv = CSV.parse(readlines, headers: true, skip_blanks: true, skip_lines: EMPTY_LINE_REGEX)
+
+    def readlines = lines ? target.readlines.take(lines).join : target.read
 
     def filtered(csv) = filter ? csv.select { |row| filter.call(row) } : csv
   end

@@ -41,10 +41,24 @@ module SwbImport
     [:Website, :website]
   ]
 
-  TEAM_MAPPING = [
+  TEAM_MAPPING_COMMON = [
     [:Clubnumber, :group_id, :parse_ts_club_number],
-    [:Teamname, :name],
+    [:Teamname, :name]
+  ]
+
+  TEAM_MAPPING = [
+    *TEAM_MAPPING_COMMON,
     [:Eventname, :league]
+  ]
+
+  TEAM_MAPPING_JUN = [
+    *TEAM_MAPPING_COMMON,
+    [:Eventname, :league, ->(v) { "Junioren" }]
+  ]
+
+  TEAM_MAPPING_SEN = [
+    *TEAM_MAPPING_COMMON,
+    [:Eventname, :league, ->(v) { "Senioren" }]
   ]
 
   PERSON_MAPPINGS = [

@@ -101,6 +101,14 @@ module SwbImport
     end
   end
 
+  TeamJun = Class.new(Team) do
+    self.mappings = TEAM_MAPPING_JUN
+  end
+
+  TeamSen = Class.new(Team) do
+    self.mappings = TEAM_MAPPING_SEN
+  end
+
   Person = Entity.new(*PERSON_MAPPINGS.map(&:second), keyword_init: true) do
     self.mappings = PERSON_MAPPINGS
     self.non_assignable_attrs = [:phone, :mobile]
