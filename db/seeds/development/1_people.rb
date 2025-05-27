@@ -5,11 +5,9 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-
-require Rails.root.join('db', 'seeds', 'support', 'person_seeder')
+require Rails.root.join("db", "seeds", "support", "person_seeder")
 
 class SwbPersonSeeder < PersonSeeder
-
   def amount(role_type)
     case role_type.name.demodulize
     when /(member|lizenz|spieler)/i then (1..3).to_a.sample
@@ -30,19 +28,19 @@ class SwbPersonSeeder < PersonSeeder
 end
 
 puzzlers = [
-  'Matthias Viehweger',
-  'Nils Rauch',
-  'Thomas Ellenberger',
-  'Daniel Illi',
-  'Andreas Maierhofer',
-  'Niklas Jäggi'
+  "Matthias Viehweger",
+  "Nils Rauch",
+  "Thomas Ellenberger",
+  "Daniel Illi",
+  "Andreas Maierhofer",
+  "Niklas Jäggi"
 ]
 
 devs = {
-  'Customer Name' => 'customer@email.com'
+  "Customer Name" => "customer@email.com"
 }
 puzzlers.each do |puz|
-  devs[puz] = "#{puz.split.last.downcase.gsub('ä', 'ae')}@puzzle.ch"
+  devs[puz] = "#{puz.split.last.downcase.gsub("ä", "ae")}@puzzle.ch"
 end
 
 seeder = SwbPersonSeeder.new

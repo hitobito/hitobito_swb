@@ -1,0 +1,3 @@
+
+- if can?(:index, BillingPeriod)
+  = nav BillingPeriod.model_name.human(count: 2), billing_periods_path, %w(billing_periods)

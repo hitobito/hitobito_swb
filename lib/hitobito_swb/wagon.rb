@@ -62,6 +62,11 @@ module HitobitoSwb
         :advertising, :newsletter
       ]
 
+      Invoice.prepend Swb::Invoice
+      InvoiceLists::FixedFee.prepend Swb::InvoiceLists::FixedFees
+      InvoiceLists::RoleItem.prepend Swb::InvoiceLists::RoleItem
+      InvoiceListsController.prepend Swb::InvoiceListsController
+
       # Navigation
       events_index = NavigationHelper::MAIN.index { |opts| opts[:label] == :events }
       NavigationHelper::MAIN.insert(
@@ -82,7 +87,12 @@ module HitobitoSwb
         if: ->(_) { can?(:list_available, Event::ExternalTraining) }
       )
 
+      admin_item = NavigationHelper::MAIN.find { |item| item[:label] == :admin }
+      admin_item[:active_for] += %w[billing_periods]
+
       Person::FILTER_ATTRS << [:nationality, :country_select] << [:nationality_badminton, :country_select] << [:newsletter] << [:advertising]
+
+      Ability.store.register BillingPeriodAbility
     end
 
     initializer "swb.add_settings" do |_app|
