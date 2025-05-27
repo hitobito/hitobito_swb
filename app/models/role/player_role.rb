@@ -11,10 +11,6 @@ class Role::PlayerRole < ::Role
   private
 
   def only_one_player_role_per_group
-    errors.add(:person, I18n.t("activerecord.errors.models.role.already_player_in_group")) if player_roles_in_group.any?
-  end
-
-  def player_roles_in_group
-    person.roles.where(group: group)
+    errors.add(:person, :already_player_in_group) if (person.roles.where(group:) - [self]).any?
   end
 end

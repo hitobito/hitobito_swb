@@ -11,23 +11,25 @@ describe Role::PlayerRole do
   let(:group) { groups(:brb_spieler) }
   let(:person) { people(:admin) }
 
-  class Group::RegionSpieler::U6Player < ::Role::PlayerRole # rubocop:disable Lint/ConstantDefinitionInBlock
-  end
+  subject(:role) { Group::RegionSpieler::Aktivmitglied.build(group:, person:) }
 
-  before do
-    Group::RegionSpieler.roles << Group::RegionSpieler::U6Player << Group::RegionSpieler::NonPlayerRole
-  end
+  describe "::validations" do
+    describe "asserting single player role" do
+      it "is invalid if person has any other role in that group" do
+        Fabricate(Group::RegionSpieler::Lizenz.sti_name, group:, person:)
+        expect(role).not_to be_valid
+        expect(role.errors.full_messages).to eq ["Person hat bereits eine Spielerrolle in dieser Gruppe"]
+      end
 
-  subject(:role) { Group::RegionSpieler::U6Player.build(group:, person:) }
+      it "is valid if player role exists in a different group" do
+        Fabricate(Group::RegionSpieler::Lizenz.sti_name, group: groups(:bvn_spieler), person:)
+        expect(role).to be_valid
+      end
 
-  it "is invalid when player role already exists in group" do
-    Fabricate(Group::RegionSpieler::Lizenz.sti_name, group:, person:)
-    expect(role).not_to be_valid
-    expect(role.errors.full_messages).to eq ["Person hat bereits eine Spielerrolle in dieser Gruppe"]
-  end
-
-  it "is valid if player role exists in different group" do
-    Fabricate(Group::RegionSpieler::Lizenz.sti_name, group: groups(:bvn_spieler), person:)
-    expect(role).to be_valid
+      it "can still update that single player role" do
+        role.save!
+        expect(role.update!(end_on: 3.days.from_now)).to eq true
+      end
+    end
   end
 end
