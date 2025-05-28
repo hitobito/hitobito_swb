@@ -42,3 +42,9 @@ groups:
     - 5000..10000
     - 10000..15000
     - 15000..
+
+roles:
+  phases:
+    open: 15 Jun - 15 Aug
+    reduced: 16 Aug - 31 Jan
+    restricted: 1 Jan - 14 Jun
