@@ -26,6 +26,9 @@ de:
         heading_event/tournament: Anmeldung Turnier
         heading_event/external_training: Anmeldung Externe Ausbildung
 
+  invoice_lists/fixed_fee:
+    active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
+
   shared:
     ts_info:
       title: Tournament Software
@@ -38,6 +41,11 @@ de:
   groups:
     aside_swb:
       title_teams: Teams
+    actions_show_swb:
+      invoice_button_dropdown: Verbandsrechnungen
+      invoice_button_regions: Regionen
+      invoice_button_teams: Teams
+      invoice_button_roles: Spieler
 
   people:
     fields_swb:

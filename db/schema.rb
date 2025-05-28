@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_20_143345) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_27_090212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -133,6 +133,25 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_20_143345) do
     t.index ["job_id", "attempt"], name: "index_background_job_log_entries_on_job_id_and_attempt", unique: true
     t.index ["job_id"], name: "index_background_job_log_entries_on_job_id"
     t.index ["job_name"], name: "index_background_job_log_entries_on_job_name"
+  end
+
+  create_table "billed_models", force: :cascade do |t|
+    t.bigint "billing_period_id"
+    t.string "model_type"
+    t.bigint "model_id"
+    t.bigint "invoice_item_id"
+    t.index ["billing_period_id"], name: "index_billed_models_on_billing_period_id"
+    t.index ["invoice_item_id"], name: "index_billed_models_on_invoice_item_id"
+    t.index ["model_id", "model_type", "billing_period_id"], name: "idx_on_model_id_model_type_billing_period_id_cf6c18435e", unique: true
+    t.index ["model_type", "model_id"], name: "index_billed_models_on_model"
+  end
+
+  create_table "billing_periods", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "active", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_billing_periods_on_active", unique: true, where: "(active = true)"
   end
 
   create_table "calendar_groups", force: :cascade do |t|
@@ -410,7 +429,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_20_143345) do
     t.boolean "automatic_assignment", default: false, null: false
     t.string "visible_contact_attributes", default: "[\"name\", \"address\", \"phone_number\", \"email\", \"social_account\"]"
     t.string "external_link"
-    t.string "visible_contact_attributes"
     t.index ["kind_id"], name: "index_events_on_kind_id"
     t.index ["shared_access_token"], name: "index_events_on_shared_access_token"
   end
@@ -595,7 +613,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_20_143345) do
     t.text "invalid_recipient_ids"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "recipient_ids"
+    t.text "receivers"
     t.index ["creator_id"], name: "index_invoice_lists_on_creator_id"
     t.index ["group_id"], name: "index_invoice_lists_on_group_id"
     t.index ["receiver_type", "receiver_id"], name: "index_invoice_lists_on_receiver_type_and_receiver_id"

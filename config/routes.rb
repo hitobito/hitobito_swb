@@ -5,7 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-
 Rails.application.routes.draw do
   extend LanguageRouteScope
 
@@ -13,13 +12,14 @@ Rails.application.routes.draw do
     resources :groups, only: [] do
       resources :events, only: [] do
         collection do
-          get "tournament" => "events#index", type: "Event::Tournament"
-          get "external_training" => "events#index", type: "Event::ExternalTraining"
+          get "tournament" => "events#index", :type => "Event::Tournament"
+          get "external_training" => "events#index", :type => "Event::ExternalTraining"
         end
       end
     end
 
-    get "list_tournaments" => "event/lists#tournaments", as: :list_tournaments
-    get "list_external_trainings" => "event/lists#external_trainings", as: :list_external_trainings
+    get "list_tournaments" => "event/lists#tournaments", :as => :list_tournaments
+    get "list_external_trainings" => "event/lists#external_trainings", :as => :list_external_trainings
+    resources :billing_periods, except: :show
   end
 end

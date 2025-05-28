@@ -42,3 +42,105 @@ groups:
     - 5000..10000
     - 10000..15000
     - 15000..
+
+invoice_lists:
+  fixed_fees:
+    regions:
+      receivers:
+        layer: Group::Region
+        roles:
+          - Group::Region::Finanzen
+          - Group::RegionVorstand::Kassier
+          - Group::RegionVorstand::Praesident
+      items:
+        - key: fee
+          unit_cost: 500
+          groups:
+            - Group::Region
+    teams:
+      receivers:
+        layer: Group::Verein
+        roles:
+          - Group::Verein::Finanzen
+          - Group::VereinVorstand::Kassier
+          - Group::VereinVorstand::Praesident
+      items:
+        - key: grundbeitrag_elite
+          unit_cost: 300
+        - key: grundbeitrag_andere
+          unit_cost: 30
+        - key: team_nla
+          unit_cost: 1000
+          leagues:
+            - NLA
+        - key: team_nlb
+          unit_cost: 800
+          leagues:
+            - NLB
+        - key: team_liga_1
+          unit_cost: 800
+          leagues:
+            - 1. Liga
+        - key: team_liga_2
+          unit_cost: 600
+          leagues:
+            - 2. Liga
+        - key: team_liga_3_4
+          unit_cost: 250
+          leagues:
+            - 3. Liga
+            - 4. Liga
+        - key: team_andere
+          unit_cost: 20
+          leagues:
+            - Junioren
+            - Senioren
+            - NL - 5. Liga
+        - key: team_vereinigung
+          unit_cost: 300
+          leagues:
+            - Vereinigung
+    roles:
+      receivers:
+        layer: Group::Verein
+        roles:
+          - Group::Verein::Finanzen
+          - Group::VereinVorstand::Kassier
+          - Group::VereinVorstand::Praesident
+      items:
+        - key: aktiv
+          unit_cost: 30
+          roles:
+            - Group::VereinSpieler::Aktivmitglied
+        - key: passiv
+          unit_cost: 0
+          roles:
+            - Group::VereinSpieler::Passivmitglied
+        - key: junior_u15
+          unit_cost: 20
+          roles:
+            - Group::VereinSpieler::JuniorU15
+        - key: junior_u19
+          unit_cost: 40
+          roles:
+            - Group::VereinSpieler::JuniorU19
+        - key: lizenz
+          unit_cost: 120
+          roles:
+            - Group::VereinSpieler::Lizenz
+        - key: lizenz_plus
+          unit_cost: 50
+          roles:
+            - Group::VereinSpieler::LizenzPlus
+        - key: lizenz_no_raking
+          unit_cost: 50
+          roles:
+            - Group::VereinSpieler::LizenzNoRanking
+        - key: lizenz_plus_junior
+          unit_cost: 20
+          roles:
+            - Group::VereinSpieler::LizenzPlusJunior
+        - key: vereinigung
+          unit_cost: 0
+          roles:
+            - Group::VereinSpieler::Vereinigungsspieler
