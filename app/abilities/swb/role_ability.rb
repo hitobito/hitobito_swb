@@ -30,7 +30,7 @@ module Swb::RoleAbility
 
   private
 
-  def player? = subject.is_a?(Role::PlayerRole)
+  def player? = subject.is_a?(Role::Player)
 
   def active_phase
     @active_phase ||= Roles::Players::Phases.active(subject)

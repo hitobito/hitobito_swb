@@ -7,7 +7,7 @@
 
 require "spec_helper"
 
-describe Role::PlayerRole do
+describe Role::Player do
   let(:group) { groups(:brb_spieler) }
   let(:person) { people(:admin) }
 
@@ -30,6 +30,13 @@ describe Role::PlayerRole do
         role.save!
         expect(role.update!(end_on: 3.days.from_now)).to eq true
       end
+    end
+  end
+
+  it "all spieler group roles are players" do
+    all_types = [Group::DachverbandSpieler, Group::RegionSpieler, Group::VereinSpieler].flat_map(&:role_types)
+    all_types.each do |type|
+      expect(type.new).to be_kind_of(Role::Player)
     end
   end
 end
