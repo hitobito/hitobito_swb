@@ -42,17 +42,18 @@ describe Event::Tournament do
     end
 
     let(:tournament) { Fabricate.build(:tournament).tap(&:init_questions) }
-    let(:question) { tournament.admin_questions.first }
+    let(:question) { tournament.application_questions.first }
 
-    it "builds single admin question" do
-      expect(tournament.admin_questions).to have(1).item
+    it "builds single application question" do
+      expect(tournament.application_questions).to have(1).item
     end
 
+    answers = ["HE / SM", "DE / SD", "HD / DM", "DD / DD", "MX / DX"].join(", ")
     [
-      ["de", "In welchen Disziplinen tritts du an?", ["HE / SM", "DE / SD", "HD / DM", "DD / DD", "MX / DX"]],
-      ["fr", "Dans quelles disciplines concourrez-vous?", ["HE / SM", "DE / SD", "HD / DM", "DD / DD", "MX / DX"]],
-      ["it", "In quali discipline gareggia?", ["HE / SM", "DE / SD", "HD / DM", "DD / DD", "MX / DX"]],
-      ["en", "In which disciplines do you compete?", ["HE / SM", "DE / SD", "HD / DM", "DD / DD", "MX / DX"]]
+      ["de", "In welchen Disziplinen tritts du an?", answers],
+      ["fr", "Dans quelles disciplines concourrez-vous?", answers],
+      ["it", "In quali discipline gareggia?", answers],
+      ["en", "In which disciplines do you compete?", answers]
     ].each do |locale, text, answers|
       it "has expected question and answer for #{locale}" do
         expect(I18n.with_locale(locale) { question.question }).to eq text
