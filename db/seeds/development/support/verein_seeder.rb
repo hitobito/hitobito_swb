@@ -1,3 +1,10 @@
+# frozen_string_literal: true
+
+#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  hitobito_swb and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_swb.
+
 class VereinSeeder
   attr_reader :parent_id, :name
 
@@ -18,6 +25,6 @@ class VereinSeeder
   end
 
   def league_sample
-    InvoiceLists::TEAMS.cycle(rand(2..6)).to_a.sample(rand(1..10)).to_a
+    Team::LEAGUES.cycle(rand(2..6)).to_a.sample(rand(1..10)).to_a
   end
 end

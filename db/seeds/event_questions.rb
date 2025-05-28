@@ -11,12 +11,12 @@ TOURNAMENT_CHOICES = [
   "HD / DM",
   "DD / DD",
   "MX / DX"
-]
+].join(", ")
 
 Event::Question.seed_global({
   event_type: "Event::Tournament", # Is derived for every event
     multiple_choices: true,
-    admin: true,
+    admin: false,
     disclosure: :required,
     translation_attributes: [
       { locale: "de", question: "In welchen Disziplinen tritts du an?", choices: TOURNAMENT_CHOICES },
