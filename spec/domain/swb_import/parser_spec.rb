@@ -39,7 +39,7 @@ describe SwbImport::Parser do
       street: "Musterstrasse",
       housenumber: "123a",
       email: "test@example.com",
-      phone: "41791234567",
+      phone: "+41 79 123 45 67",
       country: "CH",
       language: :de,
       birthday: Date.new(1990, 1, 1)

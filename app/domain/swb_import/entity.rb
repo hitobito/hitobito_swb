@@ -167,6 +167,8 @@ module SwbImport
 
         role.group_id = group_id
         role.type = type
+
+        role.ts_code = nil if type && type.constantize.model_name.ts_role.blank?
       end
     end
 

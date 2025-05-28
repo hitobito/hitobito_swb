@@ -139,11 +139,12 @@ describe SwbImport::Entity do
 
     before do
       csv["groupcode"] = "2ac1e54f-2409-456e-b96b-c2eb0a98390c"
-      csv["role"] = "Spieler"
       csv["memberid"] = person.id
-      csv["TypeName"] = "Junior (U17-U19)"
       csv["startdate"] = "2022-01-01"
       csv["endate"] = "9999-12-31T23:59:59"
+      csv["role"] = "Club Präsident"
+      csv["TypeName"] = ""
+      csv["membershipcode"] = "6de63a1f-63c3-4ca1-8e92-a0000615ddea"
     end
 
     it "reads common attributes" do
@@ -151,12 +152,12 @@ describe SwbImport::Entity do
       expect(role.ts_code).to be_nil
       expect(role.start_on).to eq Date.new(2022, 1, 1)
       expect(role.end_on).to be_nil
+      expect(role.group).to eq groups(:bc_bern_vorstand)
+      expect(role.type).to eq "Group::VereinVorstand::Praesident"
       expect(role).to be_valid
     end
 
     it "reads vorstand role" do
-      csv["role"] = "Club Präsident"
-      csv["TypeName"] = nil
       expect(role.group).to eq groups(:bc_bern_vorstand)
       expect(role.type).to eq "Group::VereinVorstand::Praesident"
     end
@@ -167,14 +168,20 @@ describe SwbImport::Entity do
     end
 
     it "reads verein player role" do
-      expect(role.group).to eq groups(:bc_bern_spieler)
+      csv["role"] = "Spieler"
+      csv["TypeName"] = "Junior (U17-U19)"
       expect(role.type).to eq "Group::VereinSpieler::JuniorU19"
+      expect(role.group).to eq groups(:bc_bern_spieler)
+      expect(role.ts_code).to eq "6de63a1f-63c3-4ca1-8e92-a0000615ddea"
     end
 
     it "reads region player role" do
       csv["groupcode"] = "89c11ebb-5266-4c0a-8d2a-1cc3a05ff06a"
+      csv["role"] = "Spieler"
+      csv["TypeName"] = "Junior (U17-U19)"
       expect(role.group).to eq groups(:brb_spieler)
       expect(role.type).to eq "Group::RegionSpieler::JuniorU19"
+      expect(role.ts_code).to eq "6de63a1f-63c3-4ca1-8e92-a0000615ddea"
     end
 
     it "assigns nil group is not found" do
