@@ -19,25 +19,29 @@ module Roles::Players
     def initialize(role)
       @role = role
       @type = demodulize(role)
-      @current_type = demodulize(role.person.roles.find_by(group:))
-    end
-
-    def new_role
-      role.new_record?
+      @current_type = demodulize(role.person.roles.find_by(group:)) if role.person
     end
 
     def junior_role?
-      ["JuniorU15", "JuniorU19"].include?(role_type)
+      ["JuniorU15", "JuniorU19"].include?(type)
     end
 
     def upgrade?
-      same_type? ? true : UPGRADES[current_type].include?(type)
+      same_type? ? true : UPGRADES[current_type].to_a.include?(type)
+    end
+
+    def has_role?
+      @current_type.present?
+    end
+
+    def new_role?
+      @role.new_record?
     end
 
     private
 
-    def same_type? = role_type == current_player_role&.type
+    def same_type? = type == current_type
 
-    def demodulized_role_type(role) = role.type.demodulize if role
+    def demodulize(role) = (role.type.demodulize if role)
   end
 end

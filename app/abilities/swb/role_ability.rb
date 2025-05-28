@@ -31,6 +31,7 @@ module Swb::RoleAbility
   private
 
   def phase_checker
+    Roles:::
     @phase_checker ||= Roles::Players::Phase.for(subject)
   end
 end
