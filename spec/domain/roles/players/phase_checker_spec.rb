@@ -11,7 +11,7 @@ describe Roles::Players::PhaseChecker do
   let(:person) { people(:member) }
   let(:group) { groups(:brb_spieler) }
   let!(:player_role) { Fabricate(Group::RegionSpieler::Lizenz.sti_name, group:, person:) }
-  let(:subject) { described_class.new(Group::RegionSpieler::Lizenz.new(person:, group:)) }
+  let(:check) { described_class.new(Group::RegionSpieler::Lizenz.new(person:, group:)) }
 
   # Anything can be done in phase_1
   context "phase 1" do
@@ -19,25 +19,25 @@ describe Roles::Players::PhaseChecker do
 
     it "allows create" do
       player_role.destroy! # player should not have current_role
-      expect(subject.create?).to be_truthy
+      expect(check.create?).to be_truthy
     end
 
     it "allows create when downgarding a role" do
-      subject = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
-      expect(subject.create?).to be_truthy
+      check = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
+      expect(check.create?).to be_truthy
     end
 
     it "allows update when upgrading a role" do
-      expect(subject.update?).to be_truthy
+      expect(check.update?).to be_truthy
     end
 
     it "allows update when downgarding a role" do
-      subject = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
-      expect(subject.update?).to be_truthy
+      check = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
+      expect(check.update?).to be_truthy
     end
 
     it "allows destroy" do
-      expect(subject.destroy?).to be_truthy
+      expect(check.destroy?).to be_truthy
     end
   end
 
@@ -49,29 +49,29 @@ describe Roles::Players::PhaseChecker do
 
     it "allows create" do
       player_role.destroy! # player should not have current_role
-      expect(subject.create?).to be_truthy
+      expect(check.create?).to be_truthy
     end
 
     it "allows create when upgrading a role" do
-      expect(subject.create?).to be_truthy
+      expect(check.create?).to be_truthy
     end
 
     it "does not allow create when downgrading a role" do
-      subject = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
-      expect(subject.create?).to be_falsey
+      check = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
+      expect(check.create?).to be_falsey
     end
 
     it "allows update when upgrading a role" do
-      expect(subject.update?).to be_truthy
+      expect(check.update?).to be_truthy
     end
 
     it "does not allow update when downgarding a role" do
-      subject = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
-      expect(subject.update?).to be_falsey
+      check = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
+      expect(check.update?).to be_falsey
     end
 
     it "does not allow destroy" do
-      expect(subject.destroy?).to be_falsey
+      expect(check.destroy?).to be_falsey
     end
   end
 
@@ -82,26 +82,26 @@ describe Roles::Players::PhaseChecker do
 
     it "does not allow create for lizenz role" do
       player_role.destroy! # player should not have current_role
-      expect(subject.create?).to be_falsey
+      expect(check.create?).to be_falsey
     end
 
     it "allows create for junior role" do
       player_role.destroy! # player should not have current_role
-      subject = described_class.new(Group::RegionSpieler::JuniorU15.new)
-      expect(subject.create?).to be_truthy
+      check = described_class.new(Group::RegionSpieler::JuniorU15.new)
+      expect(check.create?).to be_truthy
     end
 
     it "does not allow update" do
-      expect(subject.update?).to be_falsey
+      expect(check.update?).to be_falsey
     end
 
     it "does not allow update when downgarding a role" do
-      subject = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
-      expect(subject.update?).to be_falsey
+      check = described_class.new(Group::RegionSpieler::JuniorU15.new(person:, group:)) # lizenz to junior role is a downgrade
+      expect(check.update?).to be_falsey
     end
 
     it "does not allow destroy" do
-      expect(subject.destroy?).to be_falsey
+      expect(check.destroy?).to be_falsey
     end
   end
 end
