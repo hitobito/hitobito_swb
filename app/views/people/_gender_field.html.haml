@@ -6,7 +6,7 @@
 = field_set_tag do
   %div{data: { controller: 'form-field-toggle', 'form-field-toggle-hide-on-value': Person::GENDERS}}
     %div
-      = f.labeled(:gender) do
+      = f.labeled(:gender, mark_as_required: true) do
         - (Person::GENDERS + ['']).each do |key|
           = f.inline_radio_button(:gender, key, entry.gender_label(key), true, data: { action: 'input->form-field-toggle#toggle'})
 

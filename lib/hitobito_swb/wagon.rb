@@ -24,6 +24,7 @@ module HitobitoSwb
       Role.prepend TsModel
       Person.prepend TsModel
 
+      Event.prepend Swb::Event
       Group.prepend Swb::Group
       Role.prepend Swb::Role
       Person.prepend Swb::Person
