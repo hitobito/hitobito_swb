@@ -30,10 +30,14 @@ class Group::VereinSpieler < ::Group
 
   class LizenzPlusJunior < ::Role::PlayerRole
     self.permissions = [:group_read]
+
+    include Role::LicenseValidation
   end
 
   class LizenzPlus < ::Role::PlayerRole
     self.permissions = [:group_read]
+
+    include Role::LicenseValidation
   end
 
   class LizenzNoRanking < ::Role::PlayerRole
