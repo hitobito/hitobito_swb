@@ -1,4 +1,4 @@
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2011-2025, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -7,6 +7,8 @@ fr:
   activerecord:
     errors:
       models:
+        billing_period:
+          single_active: Es kann nur eine aktive Rechnungsperiode geben
         person:
           cannot_be_destroyed_if_ts_roles_exist: Impossible de supprimer tant que des rôles TS existent.
           requires_phone_number: Un numéro de téléphone doit être enregistré.
@@ -28,6 +30,10 @@ fr:
         one: Tournoi
         many: Tournois
         other: Tournois
+
+      billing_period:
+        one: Rechnungsperiode
+        other: Rechnungsperioden
 
       ### GROUPS
 
@@ -562,40 +568,40 @@ fr:
         description: Membres du comité
 
       group/verein_spieler/aktivmitglied:
-        one: Membre actif
-        description: Membres actifs
+        one: Aktivmitglied
+        other: Aktivmitglieder
 
       group/verein_spieler/passivmitglied:
-        one: Membre passif
-        description: Membres passifs
+        one: Passivmitglied
+        other: Passivmitglieder
 
       group/verein_spieler/junior_u15:
-        one: "Junior.e (jusqu'à U15)"
-        description: "Junior.e.s (jusqu'à U15)"
+        one: "Junior:in (bis U-15)"
+        other: "Junior:innen (bis U-15)"
 
       group/verein_spieler/junior_u19:
-        one: "Junior.e (U17-U19)"
-        description: "Junior.e.s (U17-U19)"
+        one: "Junior:in (U17-U19)"
+        other: "Junior:innen (U17-U19)"
 
       group/verein_spieler/lizenz:
-        one: Licence
-        description: Licences
+        one: Lizenz
+        other: Lizenzen
 
       group/verein_spieler/vereinigungsspieler:
-        one: Joueur.se de club
-        description: Joueur.se.s de club
+        one: Vereinigungsspieler:in
+        other: Vereinigungsspieler:innen
 
       group/verein_spieler/lizenz_plus_junior:
-        one: "Licence plus junior.e (U19)"
-        description: "Licences plus junior.e.s (U19)"
+        one: "Lizenz Plus Junior:innen (U19)"
+        other: "Lizenzen Plus Junior:innen (U19)"
 
       group/verein_spieler/lizenz_plus:
-        one: Licence plus
-        description: Licences plus
+        one: Lizenz Plus
+        other: Lizenzen Plus
 
       group/verein_spieler/lizenz_no_ranking:
-        one: Licence NO ranking
-        description: Licences NO ranking
+        one: Lizenz NO ranking
+        other: Lizenen NO ranking
 
       group/verein_kontakte/kontakt:
         one: Contact
@@ -646,6 +652,9 @@ fr:
               other: "Cher.ère %{first_name}"
 
     attributes:
+      billing_period:
+        name: Name
+        active: aktiv
       event:
         external_link: Lien externe
       contact_account:
@@ -703,3 +712,26 @@ fr:
   subscriber/exclude_person:
     failure: "%{subscriber} n'est pas abonné.e"
 
+  fixed_fees:
+    regions:
+      fee: Grundbeitrag Region
+    teams:
+      grundbeitrag_elite: Grundbeitrag
+      grundbeitrag_andere: Grundbeitrag reduziert
+      team_nla: NLA
+      team_nlb: NLB
+      team_liga_1: 1. Liga
+      team_liga_2: 2. Liga
+      team_liga_3_4: 3. und 4. Liga
+      team_andere: "Junioren, Senioren und 5. Liga Teams"
+      team_vereinigung: Vereinigung
+    roles:
+      aktiv: Aktivmitglieder
+      passiv: Passivmitglieder
+      junior_u15: "Junior:innen (bis U-15)"
+      junior_u19: "Junior:innen (U17-U19)"
+      lizenz: Lizenzen
+      lizenz_plus: Lizenzen Plus
+      lizenz_no_raking: Lizenen NO ranking
+      lizenz_plus_junior: "Lizenzen Plus Junior:innen (U19)"
+      vereinigung: "Vereinigungsspieler:innen"
