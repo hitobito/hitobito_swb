@@ -14,7 +14,7 @@ module Swb::InvoiceLists::RoleItem
 
   def to_invoice_item
     InvoiceItem::Roles
-      .new(name:, unit_cost:, count:, dynamic_cost_parameters: {fixed_fees: fee})
+      .new(name: key, unit_cost:, count:, dynamic_cost_parameters: {fixed_fees: fee})
       .tap(&:recalculate)
       .tap { |item| item.roles = models }
   end

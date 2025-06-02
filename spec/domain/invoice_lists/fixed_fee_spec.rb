@@ -14,7 +14,7 @@ describe InvoiceLists::FixedFee do
 
   subject(:items) { fixed_fee.items }
 
-  subject(:item_names) { fixed_fee.items.map(&:name) }
+  subject(:item_names) { fixed_fee.items.map(&:to_invoice_item).map(&:name) }
 
   subject(:sum) { items.sum(&:total_cost) }
 
