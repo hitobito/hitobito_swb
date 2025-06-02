@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Role::PlayerRole < ::Role
+class Role::Player < ::Role
   validate :only_one_player_role_per_group
 
   private

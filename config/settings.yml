@@ -148,6 +148,8 @@ invoice_lists:
           roles:
             - Group::VereinSpieler::Vereinigungsspieler
 roles:
+  lizenz:
+    end_date: 14 Jun
   phases:
     enabled: true
     open: 15 Jun - 15 Aug
