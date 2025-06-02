@@ -38,4 +38,20 @@ describe "people/_fields.html.haml" do
       expect(dom).to have_css "input[name='person[ts_gender]']", count: 2
     end
   end
+
+  it "renders asterix for gender label" do
+    expect(dom).to have_css "label[for='person_gender'].required", text: "Geschlecht"
+  end
+
+  it "renders asterix for phone_number label" do
+    expect(dom).to have_css "label[for='person_phone_numbers'].required", text: "Telefonnummern"
+  end
+
+  it "renders asterix for street label" do
+    expect(dom).to have_css "label[for='person_street'].required", text: "Adresse"
+  end
+
+  it "renders asterix for zip_town label" do
+    expect(dom).to have_css "label[for='person_zip_code'].required", text: "PLZ/Ort"
+  end
 end
