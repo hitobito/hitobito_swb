@@ -207,8 +207,8 @@ de:
         other: Passivmitglieder
 
       group/dachverband_spieler/junior_u15:
-        one: "Junior:in (bis U-15)"
-        other: "Junior:innen (bis U-15)"
+        one: "Junior:in (bis U15)"
+        other: "Junior:innen (bis U15)"
 
       group/dachverband_spieler/junior_u19:
         one: "Junior:in (U17-U19)"
@@ -351,8 +351,8 @@ de:
         other: Passivmitglieder
 
       group/region_spieler/junior_u15:
-        one: "Junior:in (bis U-15)"
-        other: "Junior:innen (bis U-15)"
+        one: "Junior:in (bis U15)"
+        other: "Junior:innen (bis U15)"
 
       group/region_spieler/junior_u19:
         one: "Junior:in (U17-U19)"
@@ -479,8 +479,8 @@ de:
         other: Passivmitglieder
 
       group/verein_spieler/junior_u15:
-        one: "Junior:in (bis U-15)"
-        other: "Junior:innen (bis U-15)"
+        one: "Junior:in (bis U15)"
+        other: "Junior:innen (bis U15)"
 
       group/verein_spieler/junior_u19:
         one: "Junior:in (U17-U19)"
@@ -618,16 +618,17 @@ de:
       team_nlb: NLB
       team_liga_1: 1. Liga
       team_liga_2: 2. Liga
-      team_liga_3_4: 3. und 4. Liga
+      team_liga_3: 3. Liga
+      team_liga_4: 4. Liga
       team_andere: Junioren, Senioren und 5. Liga Teams
       team_vereinigung: Vereinigung
     roles:
       aktiv: Aktivmitglieder
       passiv: Passivmitglieder
-      junior_u15: Junior:innen (bis U-15)
+      junior_u15: Junior:innen (bis U15)
       junior_u19: Junior:innen (U17-U19)
       lizenz: Lizenzen
       lizenz_plus: Lizenzen Plus
-      lizenz_no_raking: Lizenen NO ranking
+      lizenz_no_raking: Lizenzen NO ranking
       lizenz_plus_junior: Lizenzen Plus Junior:innen (U19)
       vereinigung: Vereinigungsspieler:innen

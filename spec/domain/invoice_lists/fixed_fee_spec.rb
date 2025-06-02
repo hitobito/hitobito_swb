@@ -30,11 +30,11 @@ describe InvoiceLists::FixedFee do
       expect(item_names).to eq [
         "Aktivmitglieder",
         "Passivmitglieder",
-        "Junior:innen (bis U-15)",
+        "Junior:innen (bis U15)",
         "Junior:innen (U17-U19)",
         "Lizenzen",
         "Lizenzen Plus",
-        "Lizenen NO ranking",
+        "Lizenzen NO ranking",
         "Lizenzen Plus Junior:innen (U19)",
         "Vereinigungsspieler:innen"
       ]
@@ -72,8 +72,8 @@ describe InvoiceLists::FixedFee do
     let(:name) { :teams }
     let(:layer_group_ids) { Group::Verein.pluck(:id) }
 
-    it "has 9 configured items" do
-      expect(fixed_fee).to have(9).items
+    it "has 10 configured items" do
+      expect(fixed_fee).to have(10).items
 
       expect(item_names).to eq [
         "Grundbeitrag",
@@ -82,7 +82,8 @@ describe InvoiceLists::FixedFee do
         "NLB",
         "1. Liga",
         "2. Liga",
-        "3. und 4. Liga",
+        "3. Liga",
+        "4. Liga",
         "Junioren, Senioren und 5. Liga Teams",
         "Vereinigung"
       ]

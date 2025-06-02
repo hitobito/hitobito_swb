@@ -85,10 +85,13 @@ invoice_lists:
           unit_cost: 600
           leagues:
             - 2. Liga
-        - key: team_liga_3_4
+        - key: team_liga_3
           unit_cost: 250
           leagues:
             - 3. Liga
+        - key: team_liga_4
+          unit_cost: 250
+          leagues:
             - 4. Liga
         - key: team_andere
           unit_cost: 20
@@ -133,7 +136,7 @@ invoice_lists:
           roles:
             - Group::VereinSpieler::LizenzPlus
         - key: lizenz_no_raking
-          unit_cost: 50
+          unit_cost: 120
           roles:
             - Group::VereinSpieler::LizenzNoRanking
         - key: lizenz_plus_junior
