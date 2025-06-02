@@ -568,28 +568,33 @@ fr:
         description: Membres du comité
 
       group/verein_spieler/aktivmitglied:
-        one: Aktivmitglied
-        other: Aktivmitglieder
+        one: Membre actif
+        many: Membres actifs
+        other: Membres actifs
 
       group/verein_spieler/passivmitglied:
-        one: Passivmitglied
-        other: Passivmitglieder
+        one: Membres passifs
+        many: Membres actifs
+        other: Membres actifs
 
       group/verein_spieler/junior_u15:
-        one: "Junior:in (bis U-15)"
-        other: "Junior:innen (bis U-15)"
+        one: "Junior.e (jusqu'à U15)"
+        many: "Junior.e.s (jusqu'à U15)"
+        other: "Junior.e.s (jusqu'à U15)"
 
       group/verein_spieler/junior_u19:
-        one: "Junior:in (U17-U19)"
-        other: "Junior:innen (U17-U19)"
+        one: "Junior.e (U17-U19)"
+        many: "Junior.e.s (U17-U19)"
+        other: "Junior.e.s (U17-U19)"
 
       group/verein_spieler/lizenz:
         one: Lizenz
         other: Lizenzen
 
       group/verein_spieler/vereinigungsspieler:
-        one: Vereinigungsspieler:in
-        other: Vereinigungsspieler:innen
+        one: Joueur.se d'une union
+        many: Joueur.se.s d'une union
+        other: Joueur.se.s d'une union
 
       group/verein_spieler/lizenz_plus_junior:
         one: "Lizenz Plus Junior:innen (U19)"
@@ -600,8 +605,9 @@ fr:
         other: Lizenzen Plus
 
       group/verein_spieler/lizenz_no_ranking:
-        one: Lizenz NO ranking
-        other: Lizenen NO ranking
+        one: Licence NO ranking
+        many: Licences NO ranking
+        other: Licences NO ranking
 
       group/verein_kontakte/kontakt:
         one: Contact
@@ -720,18 +726,18 @@ fr:
       grundbeitrag_andere: Grundbeitrag reduziert
       team_nla: NLA
       team_nlb: NLB
-      team_liga_1: 1. Liga
-      team_liga_2: 2. Liga
-      team_liga_3_4: 3. und 4. Liga
+      team_liga_1: 1ère ligue
+      team_liga_2: 2e ligue
+      team_liga_3_4: 3e et 4e ligues
       team_andere: "Junioren, Senioren und 5. Liga Teams"
       team_vereinigung: Vereinigung
     roles:
-      aktiv: Aktivmitglieder
-      passiv: Passivmitglieder
-      junior_u15: "Junior:innen (bis U-15)"
-      junior_u19: "Junior:innen (U17-U19)"
+      aktiv: Membres actifs
+      passiv: Membres passifs
+      junior_u15: Junior.e.s (jusqu'à U15)
+      junior_u19: Junior.e.s (U17-U19)
       lizenz: Lizenzen
       lizenz_plus: Lizenzen Plus
       lizenz_no_raking: Lizenen NO ranking
       lizenz_plus_junior: "Lizenzen Plus Junior:innen (U19)"
-      vereinigung: "Vereinigungsspieler:innen"
+      vereinigung: Joueur.se.s d'une union
