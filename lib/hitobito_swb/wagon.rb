@@ -65,6 +65,7 @@ module HitobitoSwb
       ]
 
       Invoice.prepend Swb::Invoice
+      Invoice::BatchCreate.prepend Swb::Invoice::BatchCreate
       InvoiceLists::FixedFee.prepend Swb::InvoiceLists::FixedFees
       InvoiceLists::RoleItem.prepend Swb::InvoiceLists::RoleItem
       InvoiceListsController.prepend Swb::InvoiceListsController
