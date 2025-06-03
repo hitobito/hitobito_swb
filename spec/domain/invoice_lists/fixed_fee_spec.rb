@@ -16,6 +16,8 @@ describe InvoiceLists::FixedFee do
 
   subject(:item_names) { fixed_fee.items.map(&:to_invoice_item).map(&:name) }
 
+  subject(:invoice_item) { fixed_fee.invoice_items.first }
+
   subject(:sum) { items.sum(&:total_cost) }
 
   it "raises when not found" do
@@ -39,6 +41,11 @@ describe InvoiceLists::FixedFee do
         "Vereinigungsspieler:innen"
       ]
     end
+
+    it "has single cost_center and account on invoice_item" do
+      expect(invoice_item.account).to eq "CH56 0483 5035 4099 6000 0"
+      expect(invoice_item.cost_center).to eq "3003"
+    end
   end
 
   describe "regions" do
@@ -48,6 +55,11 @@ describe InvoiceLists::FixedFee do
 
     it "has single translated item" do
       expect(item_names).to eq ["Grundbeitrag Region"]
+    end
+
+    it "has single cost_center and account on invoice_item" do
+      expect(invoice_item.account).to eq "CH56 0483 5035 4099 6000 0"
+      expect(invoice_item.cost_center).to eq "3000"
     end
 
     context "with receivers" do
@@ -87,6 +99,11 @@ describe InvoiceLists::FixedFee do
         "Junioren, Senioren und 5. Liga Teams",
         "Vereinigung"
       ]
+    end
+
+    it "has single cost_center and account on invoice_item" do
+      expect(invoice_item.account).to eq "CH56 0483 5035 4099 6000 0"
+      expect(invoice_item.cost_center).to eq "3000"
     end
 
     it "has expected sum of 60 for two vereine" do
