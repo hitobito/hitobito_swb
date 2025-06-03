@@ -46,6 +46,8 @@ groups:
 invoice_lists:
   fixed_fees:
     regions:
+      account: CH56 0483 5035 4099 6000 0
+      cost_center: 3000
       receivers:
         layer: Group::Region
         roles:
@@ -58,6 +60,8 @@ invoice_lists:
           groups:
             - Group::Region
     teams:
+      account: CH56 0483 5035 4099 6000 0
+      cost_center: 3000
       receivers:
         layer: Group::Verein
         roles:
@@ -104,6 +108,8 @@ invoice_lists:
           leagues:
             - Vereinigung
     roles:
+      account: CH56 0483 5035 4099 6000 0
+      cost_center: 3003
       receivers:
         layer: Group::Verein
         roles:

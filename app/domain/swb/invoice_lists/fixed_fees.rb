@@ -16,6 +16,15 @@ module Swb::InvoiceLists::FixedFees
     end
   end
 
+  def invoice_items
+    items.map do |item|
+      item.to_invoice_item.tap do |invoice_item|
+        invoice_item.account = config.account
+        invoice_item.cost_center = config.cost_center
+      end
+    end
+  end
+
   private
 
   def item_class_for(attrs)
