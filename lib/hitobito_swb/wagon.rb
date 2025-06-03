@@ -58,11 +58,7 @@ module HitobitoSwb
       HitobitoLogEntry.categories += %w[ts]
 
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
-      PeopleController.permitted_attrs += [
-        :ts_gender, :nationality, :nationality_badminton,
-        :international_player_id, :emergency_contact,
-        :advertising, :newsletter
-      ]
+      PeopleController.prepend Swb::PeopleController
 
       Invoice.prepend Swb::Invoice
       Invoice::BatchCreate.prepend Swb::Invoice::BatchCreate
