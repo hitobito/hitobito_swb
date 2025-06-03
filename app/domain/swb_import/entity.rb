@@ -138,6 +138,14 @@ module SwbImport
       super
     end
 
+    def <=>(other)
+      if birthday && other.birthday
+        birthday <=> other.birthday
+      else
+        to_s <=> other.to_s
+      end
+    end
+
     def emails = @@emails
 
     def new_email? = !emails.key?(email)
