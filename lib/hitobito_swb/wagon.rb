@@ -59,6 +59,7 @@ module HitobitoSwb
 
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
       PeopleController.prepend Swb::PeopleController
+      JsonApi::EventsController.prepend Swb::JsonApi::EventsController
 
       Invoice.prepend Swb::Invoice
       Invoice::BatchCreate.prepend Swb::Invoice::BatchCreate
