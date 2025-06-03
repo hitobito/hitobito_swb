@@ -36,7 +36,7 @@ module Swb::Person
     before_validation :reset_ts_gender, unless: -> { gender.blank? }
 
     with_options on: [:create, :update] do
-      validates :first_name, :last_name, :email, :street, :zip_code, :town, :country, :birthday, :ts_gender, presence: true
+      validates :first_name, :last_name, :email, :street, :zip_code, :town, :country, :birthday, :ts_gender, :nationality, presence: true
       validate :assert_phone_number
     end
   end

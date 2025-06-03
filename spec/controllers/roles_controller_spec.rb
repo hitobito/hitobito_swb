@@ -67,6 +67,7 @@ describe RolesController do
                 zip_code: 6414,
                 town: "Ivanstadt",
                 country: "CH",
+                nationality: "CH",
                 gender: "m",
                 phone_numbers_attributes: {"0" => {translated_label: "Mobil", number: "0781234567", public: false}}
               }

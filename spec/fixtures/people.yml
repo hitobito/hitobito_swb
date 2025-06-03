@@ -19,6 +19,7 @@ admin:
   country: FR
   birthday: 1916-08-09
   gender: m
+  nationality: FR
 
 
 leader:
@@ -36,6 +37,7 @@ leader:
   country: CH
   birthday: 1954-03-26
   gender: w
+  nationality: CH
 
 member:
   first_name: My
@@ -50,3 +52,4 @@ member:
   birthday: 1951-10-11
   gender: m
   ts_gender: m
+  nationality: DE
