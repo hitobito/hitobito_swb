@@ -24,7 +24,7 @@ module SwbImport
       configure_truemail
       disable_zip_code_validation
 
-      import(Person, from: :mitglieder)
+      import(Person, from: :mitglieder, sort: true)
       create_search_columns
 
       import(Region, from: :regions)
@@ -57,7 +57,7 @@ module SwbImport
 
     def disable_seed_fu_output = SeedFu.quiet = true
 
-    def import(importer_class, from:) = Importer.new(importer_class, from, lines:, log_dir:, index: @index += 1).run
+    def import(importer_class, from:, sort: false) = Importer.new(importer_class, from, lines:, log_dir:, index: @index += 1, sort:).run
 
     def build_log_dir = Pathname("#{wagon_dir}/log/#{Time.zone.now.strftime("%m-%d-%H_%M_%S")}").tap do |path|
       FileUtils.mkdir_p(path)

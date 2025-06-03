@@ -9,16 +9,18 @@ module SwbImport
   class Importer
     attr_reader :models, :name, :counts, :info, :saved, :failed, :validation_errors, :index
 
-    def initialize(importer_class, from, log_dir: nil, lines: nil, filter: nil, index: nil)
+    def initialize(importer_class, from, log_dir: nil, lines: nil, filter: nil, index: nil, sort: false)
       @name = importer_class.name.demodulize.pluralize
       @csv = Csv.new(from, lines:, filter:).csv
       @models = @csv.map { |row| importer_class.from(row) }.uniq
+      @models = models.sort if sort
       @counts ||= Hash.new(0)
       @info = open_logfile(:info, log_dir)
       @saved = open_logfile(:saved, log_dir, index)
       @failed = open_logfile(:failed, log_dir, index)
       @validation_errors = open_logfile(:invalid, log_dir, index)
       @started = get_time
+      @sort = sort
     end
 
     def run
