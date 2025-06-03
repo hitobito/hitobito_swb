@@ -32,8 +32,9 @@ fr:
         other: Tournois
 
       billing_period:
-        one: Rechnungsperiode
-        other: Rechnungsperioden
+        one: Période de facturation
+        many: Périodes de facturation
+        other: Périodes de facturation
 
       ### GROUPS
 
@@ -588,8 +589,9 @@ fr:
         other: "Junior.e.s (U17-U19)"
 
       group/verein_spieler/lizenz:
-        one: Lizenz
-        other: Lizenzen
+        one: Licence
+        many: Licences
+        other: Licences
 
       group/verein_spieler/vereinigungsspieler:
         one: Joueur.se d'une union
@@ -597,12 +599,14 @@ fr:
         other: Joueur.se.s d'une union
 
       group/verein_spieler/lizenz_plus_junior:
-        one: "Lizenz Plus Junior:innen (U19)"
-        other: "Lizenzen Plus Junior:innen (U19)"
+        one: "Licence Plus junior.e (U19)"
+        many: "Licences Plus junior.e.s (U19)"
+        other: "Licences Plus junior.e.s (U19)"
 
       group/verein_spieler/lizenz_plus:
-        one: Lizenz Plus
-        other: Lizenzen Plus
+        one: Licence Plus
+        many: Licences Plus
+        other: Licences Plus
 
       group/verein_spieler/lizenz_no_ranking:
         one: Licence NO ranking
@@ -659,8 +663,8 @@ fr:
 
     attributes:
       billing_period:
-        name: Name
-        active: aktiv
+        name: Nom
+        active: actif
       event:
         external_link: Lien externe
       contact_account:
@@ -720,24 +724,25 @@ fr:
 
   fixed_fees:
     regions:
-      fee: Grundbeitrag Region
+      fee: Cotisation de région
     teams:
-      grundbeitrag_elite: Grundbeitrag
-      grundbeitrag_andere: Grundbeitrag reduziert
-      team_nla: NLA
-      team_nlb: NLB
+      grundbeitrag_elite: Cotisation de club
+      grundbeitrag_andere: Cotisation réduite de club
+      team_nla: LNA
+      team_nlb: LNB
       team_liga_1: 1ère ligue
       team_liga_2: 2e ligue
-      team_liga_3_4: 3e et 4e ligues
-      team_andere: "Junioren, Senioren und 5. Liga Teams"
-      team_vereinigung: Vereinigung
+      team_liga_3: 3e ligue
+      team_liga_4: 4e ligue
+      team_andere: "Equipes juniores, séniores et 5e ligue"
+      team_vereinigung: Union
     roles:
       aktiv: Membres actifs
       passiv: Membres passifs
       junior_u15: Junior.e.s (jusqu'à U15)
       junior_u19: Junior.e.s (U17-U19)
-      lizenz: Lizenzen
-      lizenz_plus: Lizenzen Plus
-      lizenz_no_raking: Lizenen NO ranking
-      lizenz_plus_junior: "Lizenzen Plus Junior:innen (U19)"
+      lizenz: Licences
+      lizenz_plus: Licences Plus
+      lizenz_no_raking: Licences NO ranking
+      lizenz_plus_junior: Licences plus junior.e.s (U19)
       vereinigung: Joueur.se.s d'une union
