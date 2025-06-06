@@ -164,34 +164,9 @@ roles:
     upgrades:
       Aktivmitglied:
       - Lizenz
-      - LizenzPlusJunior
-      - LizenzPlus
-      - LizenzNoRanking
-      - Vereinigungsspieler
       Passivmitglied:
       - Aktivmitglied
       - Lizenz
-      - JuniorU15
-      - JuniorU19
-      - LizenzPlusJunior
-      - LizenzPlus
-      - LizenzNoRanking
-      - Vereinigungsspieler
-      JuniorU15:
-      - Aktivmitglied
-      - Lizenz
-      - JuniorU19
-      - LizenzPlusJunior
-      - LizenzPlus
-      - LizenzNoRanking
-      - Vereinigungsspieler
-      JuniorU19:
-      - Aktivmitglied
-      - Lizenz
-      - LizenzPlusJunior
-      - LizenzPlus
-      - LizenzNoRanking
-      - Vereinigungsspieler
       Lizenz:
       - Vereinigungsspieler
       LizenzPlusJunior:
