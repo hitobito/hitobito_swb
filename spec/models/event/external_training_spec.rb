@@ -51,12 +51,17 @@ describe Event::ExternalTraining do
       expect(training).not_to be_valid
       expect(training.errors.full_messages).to eq ["Externer Link muss mit http:// oder https:// beginnen"]
     end
+  end
 
-    it "is invalid if contains query string is missing" do
-      expect(RestClient).not_to receive(:get)
-      training.external_link = "https://www.example.com/test?foo=bar"
-      expect(training).not_to be_valid
-      expect(training.errors.full_messages).to eq ["Externer Link darf kein Fragezeichen enthalten"]
-    end
+  it "can be created with name, date and external link" do
+    training = described_class.new(
+      name: "test",
+      groups: [groups(:root)],
+      external_link: "http://example.com/test",
+      dates_attributes: [{start_at: Time.zone.today}]
+    )
+    allow(RestClient).to receive(:get).with("http://example.com/test").and_return(double("response", code: 200))
+    expect(training).to be_valid
+    expect(training.save).to eq true
   end
 end

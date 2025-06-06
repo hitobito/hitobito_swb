@@ -16,7 +16,6 @@ de:
           attributes:
             external_link:
               invalid_protocol: muss mit http:// oder https:// beginnen
-              may_not_contain_query: darf kein Fragezeichen enthalten
         role:
           attributes:
             person:

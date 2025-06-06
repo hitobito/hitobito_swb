@@ -21,8 +21,6 @@ class Event::ExternalTraining < Event
   def assert_external_link
     if VALID_PROTOLS.exclude?(URI::DEFAULT_PARSER.make_regexp.match(external_link).to_a[1])
       errors.add(:external_link, :invalid_protocol)
-    elsif URI.parse(external_link).query.present?
-      errors.add(:external_link, :may_not_contain_query)
     elsif VALID_STATUS_CODES.exclude?(RestClient.get(external_link).code)
       errors.add(:external_link, :invalid)
     end
