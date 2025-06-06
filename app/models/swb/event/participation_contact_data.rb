@@ -9,10 +9,12 @@ module Swb::Event::ParticipationContactData
   extend ActiveSupport::Concern
 
   prepended do
-    self.mandatory_contact_attrs += [
-      :street, :zip_code, :town, :country, :birthday
-    ]
+    additional_attributes = [:ts_gender, :nationality, :nationality_badminton, :international_player_id, :emergency_contact, :advertising, :newsletter]
+    self.contact_attrs += additional_attributes
 
-    delegate :ts_gender, to: :person
+    self.mandatory_contact_attrs += [
+      :street, :zip_code, :town, :country, :birthday, :ts_gender, :nationality
+    ]
+    delegate(*additional_attributes, to: :person)
   end
 end
