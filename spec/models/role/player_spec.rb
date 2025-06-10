@@ -33,6 +33,83 @@ describe Role::Player do
     end
   end
 
+  shared_examples "year_validating_role" do |role_class, year_range|
+    let(:now) { Date.new(2025, 6, 6) }
+
+    let(:person) { Fabricate.build(:person) }
+    let(:group) { role_class.to_s.deconstantize.constantize.first }
+    subject(:role) { Fabricate.build(role_class.sti_name, group: group, person: person) }
+
+    before { travel_to(now) }
+
+    describe role_class do
+      min_date = year_range.end.years.ago.to_date.beginning_of_year if year_range.end
+      max_date = year_range.begin.years.ago.to_date.end_of_year if year_range.begin
+
+      if min_date
+        it "is valid with person born on #{min_date}" do
+          person.birthday = min_date
+          expect(role).to be_valid
+        end
+
+        it "is too old with person born on #{min_date - 1.day}" do
+          person.birthday = min_date - 1.day
+          expect(role).not_to be_valid
+          expect(role.errors.full_messages).to eq ["Person muss an oder nach dem #{I18n.l(min_date)} geboren sein"]
+        end
+      else
+        it "is valid with person born on #{max_date - 100.years}" do
+          person.birthday = max_date - 100.years
+          expect(role).to be_valid
+        end
+      end
+
+      if max_date
+        it "is valid with person born on #{max_date}" do
+          person.birthday = max_date
+          expect(role).to be_valid
+        end
+
+        it "is too young with person born on #{max_date + 1.day}" do
+          person.birthday = max_date + 1.day
+          expect(role).not_to be_valid
+          expect(role.errors.full_messages).to eq ["Person muss an oder vor dem #{I18n.l(max_date)} geboren sein"]
+        end
+
+      else
+        it "is valid with person born on #{min_date + 5.years}" do
+          person.birthday = min_date + 5.years
+          expect(role).to be_valid
+        end
+      end
+    end
+  end
+
+  describe "year validations" do
+    it_behaves_like "year_validating_role", Group::VereinSpieler::JuniorU15, (..14)
+    it_behaves_like "year_validating_role", Group::VereinSpieler::JuniorU19, (15..18)
+    it_behaves_like "year_validating_role", Group::VereinSpieler::Lizenz, (19..)
+    it_behaves_like "year_validating_role", Group::VereinSpieler::Aktivmitglied, (19..)
+    it_behaves_like "year_validating_role", Group::VereinSpieler::Passivmitglied, (19..)
+
+    Role::Player.subclasses.each do |subclass|
+      case subclass.to_s
+      when /U15/
+        it "has U15 ..14 year range" do
+          expect(subclass.year_range).to eq(..14)
+        end
+      when /U19/
+        it "has U19 15..19 year range" do
+          expect(subclass.year_range).to eq 15..18
+        end
+      else
+        it "has default 19.. year range" do
+          expect(subclass.year_range).to eq 19..
+        end
+      end
+    end
+  end
+
   it "all spieler group roles are players" do
     all_types = [Group::DachverbandSpieler, Group::RegionSpieler, Group::VereinSpieler].flat_map(&:role_types)
     all_types.each do |type|

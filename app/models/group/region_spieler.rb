@@ -14,10 +14,10 @@ class Group::RegionSpieler < ::Group
   class Passivmitglied < ::Role::Player
   end
 
-  class JuniorU15 < ::Role::Player
+  class JuniorU15 < ::Role::Player::JuniorU15
   end
 
-  class JuniorU19 < ::Role::Player
+  class JuniorU19 < ::Role::Player::JuniorU19
   end
 
   class Lizenz < ::Role::Player

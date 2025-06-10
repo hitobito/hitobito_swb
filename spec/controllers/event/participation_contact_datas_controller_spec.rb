@@ -39,8 +39,8 @@ describe Event::ParticipationContactDatasController do
         event_id: course.id,
         event_participation_contact_data: {}
       }
-      expect(entry).to have(9).errors
-      expect(entry.errors.attribute_names).to match_array([:birthday, :country, :email, :first_name, :last_name, :phone_numbers, :street, :town, :zip_code])
+      expect(entry).to have(11).errors
+      expect(entry.errors.attribute_names).to match_array([:birthday, :country, :email, :first_name, :last_name, :phone_numbers, :street, :town, :zip_code, :nationality, :ts_gender])
     end
   end
 end

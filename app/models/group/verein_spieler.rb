@@ -9,39 +9,30 @@ class Group::VereinSpieler < ::Group
   ### ROLES
 
   class Aktivmitglied < ::Role::Player
-    self.permissions = [:group_read]
   end
 
   class Passivmitglied < ::Role::Player
-    self.permissions = [:group_read]
   end
 
-  class JuniorU15 < ::Role::Player
-    self.permissions = [:group_read]
+  class JuniorU15 < ::Role::Player::JuniorU15
   end
 
-  class JuniorU19 < ::Role::Player
-    self.permissions = [:group_read]
+  class JuniorU19 < ::Role::Player::JuniorU19
   end
 
   class Lizenz < ::Role::Player
-    self.permissions = [:group_read]
   end
 
   class LizenzPlusJunior < Role::LizenzPlus
-    self.permissions = [:group_read]
   end
 
   class LizenzPlus < Role::LizenzPlus
-    self.permissions = [:group_read]
   end
 
   class LizenzNoRanking < ::Role::Player
-    self.permissions = [:group_read]
   end
 
   class Vereinigungsspieler < ::Role::Player
-    self.permissions = [:group_read]
   end
 
   roles Aktivmitglied,
