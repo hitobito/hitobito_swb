@@ -20,11 +20,25 @@ class SwbPersonSeeder < PersonSeeder
     super if [true, false, false].sample
   end
 
-  def person_attributes(...)
+  def person_attributes(role_type)
     super.tap do |attrs|
+      attrs[:birthday] = birthday_for(attrs[:birthday], role_type)
       attrs[:ts_gender] = attrs[:gender]
     end
   end
+
+  def birthday_for(birthday, role_type)
+    return birthday unless role_type.is_a?(Role::Player)
+    valid_birthdy_for(role_type)
+  end
+
+  def valid_birthday_for(role_type)
+    from = role_type.year_range.begin || 10
+    to = role_type.year_range.end || 99
+
+    Faker::Date.in_date_period(Date.today.year - (from..to).to_.sample)
+  end
+
 end
 
 puzzlers = [

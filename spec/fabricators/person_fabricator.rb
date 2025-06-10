@@ -10,7 +10,7 @@ Fabrication.manager.schematics[:core_person] =
 
 Fabricator(:person, from: :core_person) do
   ts_gender { |attrs| attrs[:gender].presence || Person::GENDERS.sample }
-  birthday { Faker::Date.between(from: 110.years.ago, to: 12.years.ago) }
+  birthday { Faker::Date.between(from: 110.years.ago, to: 21.years.ago) }
   gender { (Person::GENDERS + [""]).sample }
   street { Faker::Address.street_name }
   housenumber { Faker::Address.building_number }
