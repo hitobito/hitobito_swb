@@ -12,6 +12,9 @@ de:
         person:
           cannot_be_destroyed_if_ts_roles_exist: Kann nicht gelöscht werden solange TS Rollen existieren.
           requires_phone_number: Es muss eine Telefonnummer hinterlegt werden.
+          attributes:
+            birthday:
+              invalidates_player_role: ist nicht gültig für aktuelle Spieler Rollen
         event/external_training:
           attributes:
             external_link:
@@ -19,7 +22,12 @@ de:
         role:
           attributes:
             person:
+              must_be_born_after: muss an oder nach dem %{date} geboren sein
+              must_be_born_before: muss an oder vor dem %{date} geboren sein
+              too_young: ist zu jung
+              too_old: ist zu alt
               already_player_in_group: hat bereits eine Spielerrolle in dieser Gruppe
+
     models:
       event/external_training:
         one: Externe Ausbildung

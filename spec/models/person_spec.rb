@@ -63,6 +63,15 @@ describe Person do
       expect(person).not_to be_valid
       expect(person.errors.full_messages).to eq ["Es muss eine Telefonnummer hinterlegt werden."]
     end
+
+    it "verifies that changing birthday does not invalidate player role" do
+      person.birthday = 13.years.ago
+      person.save!
+      Fabricate(Group::VereinSpieler::JuniorU15.sti_name, group: groups(:bc_bern_spieler), person:)
+      person.birthday = 20.years.ago
+      expect(person).not_to be_valid
+      expect(person.errors.full_messages).to eq ["Geburtstag ist nicht gültig für aktuelle Spieler Rollen"]
+    end
   end
 
   it "#member_id is aliased to #id and correctly translated" do

@@ -38,6 +38,7 @@ module Swb::Person
     with_options on: [:create, :update] do
       validates :first_name, :last_name, :email, :street, :zip_code, :town, :country, :birthday, :ts_gender, :nationality, presence: true
       validate :assert_phone_number
+      validate :assert_player_role_valid, if: :birthday_changed?
     end
   end
 
@@ -72,6 +73,12 @@ module Swb::Person
   def assert_phone_number
     if phone_numbers.select(&:valid?).empty?
       errors.add(:base, :requires_phone_number)
+    end
+  end
+
+  def assert_player_role_valid
+    if roles.any? { |role| role.is_a?(Role::Player) && !role.valid? }
+      errors.add(:birthday, :invalidates_player_role)
     end
   end
 end
