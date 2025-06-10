@@ -16,29 +16,29 @@ class SwbPersonSeeder < PersonSeeder
     end
   end
 
-  def seed_accounts(...)
-    super if [true, false, false].sample
+  def seed_additional_emails(...)
+    super if Faker::Boolean.boolean(true_ratio: 0.2)
+  end
+
+  def seed_social_accounts(...)
+    super if Faker::Boolean.boolean(true_ratio: 0.2)
   end
 
   def person_attributes(role_type)
     super.tap do |attrs|
       attrs[:birthday] = birthday_for(attrs[:birthday], role_type)
       attrs[:ts_gender] = attrs[:gender]
+      attrs[:nationality] = Faker::Boolean.boolean(true_ratio: 0.9) ? "CH" : ["DE", "AT", "FR"].sample 
     end
   end
 
   def birthday_for(birthday, role_type)
-    return birthday unless role_type.is_a?(Role::Player)
-    valid_birthdy_for(role_type)
-  end
-
-  def valid_birthday_for(role_type)
+    return birthday unless role_type < Role::Player
     from = role_type.year_range.begin || 10
     to = role_type.year_range.end || 99
 
-    Faker::Date.in_date_period(Date.today.year - (from..to).to_.sample)
+    Faker::Date.in_date_period(year: Date.today.year - (from..to).to_a.sample)
   end
-
 end
 
 puzzlers = [
