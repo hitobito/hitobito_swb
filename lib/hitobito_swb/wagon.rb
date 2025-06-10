@@ -55,7 +55,7 @@ module HitobitoSwb
       Event::ListsController.prepend Swb::Event::ListsController
       EventDecorator.icons["Event::Tournament"] = :trophy
 
-      HitobitoLogEntry.categories += %w[ts]
+      HitobitoLogEntry.categories += %w[ts promotion]
 
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
       PeopleController.prepend Swb::PeopleController
@@ -93,6 +93,10 @@ module HitobitoSwb
       Person::FILTER_ATTRS << [:nationality, :country_select] << [:nationality_badminton, :country_select] << [:newsletter] << [:advertising]
 
       Ability.store.register BillingPeriodAbility
+
+      JobManager.wagon_jobs += [
+        Roles::PromoterJob
+      ]
     end
 
     initializer "swb.add_settings" do |_app|
