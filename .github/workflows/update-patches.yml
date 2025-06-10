@@ -1,0 +1,15 @@
+name: 'Update Patches'
+
+on:
+  workflow_dispatch: # Allow triggering manually
+    inputs:
+      core_ref:
+        description: Use a specific version of the core for the workflow run. Defaults to master.
+        type: string
+        default: 'master'
+jobs:
+  update_patches:
+    uses: hitobito/hitobito/.github/workflows/wagon-update-patches.yml@master
+    with:
+      wagon_repository: ${{ github.event.repository.name }}
+      core_ref: ${{ inputs.core_ref }}
