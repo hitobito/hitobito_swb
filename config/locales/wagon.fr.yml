@@ -16,7 +16,6 @@ fr:
           attributes:
             external_link:
               invalid_protocol: "Doit commencer par http:// ou https://"
-              may_not_contain_query: Ne doit pas contenir de point d'interrogation
         role:
           attributes:
             person:
