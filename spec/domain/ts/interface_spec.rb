@@ -96,7 +96,7 @@ describe Ts::Interface, :tests_ts_api do
       expect do
         operation = interface.post
         expect(operation).to be_success
-      end.to change { model.ts_logs.count }.by(1)
+      end.to change { model.person.ts_logs.count }.by(1)
     end
 
     it "#put uses parent entity in path and not ts_code of model" do
@@ -104,7 +104,7 @@ describe Ts::Interface, :tests_ts_api do
       expect do
         operation = interface.put
         expect(operation).to be_success
-      end.to change { model.ts_logs.count }.by(1)
+      end.to change { model.person.ts_logs.count }.by(1)
     end
 
     it "#put raises when parent entity has no code" do

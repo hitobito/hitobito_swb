@@ -33,7 +33,7 @@ class Ts::Interface::LogEntry
 
   def create!
     HitobitoLogEntry.create!(
-      subject: model,
+      subject: model.is_a?(Role) ? model.person : model,
       category: :ts,
       level: operation.success? ? :info : :error,
       payload: operation.to_h,
