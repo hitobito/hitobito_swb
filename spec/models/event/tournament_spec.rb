@@ -41,23 +41,26 @@ describe Event::Tournament do
       load HitobitoSwb::Wagon.root.join("db", "seeds", "event_questions.rb").to_s
     end
 
-    let(:tournament) { Fabricate.build(:tournament).tap(&:init_questions) }
-    let(:question) { tournament.application_questions.first }
+    let(:tournament) { Fabricate.build(:tournament).tap(&:init_questions).tap(&:save!) }
+    let(:question) { tournament.application_questions.find(&:multiple_choices?) }
 
-    it "builds single application question" do
-      expect(tournament.application_questions).to have(1).item
+    it "builds 5 application questions" do
+      expect(tournament.application_questions).to have(5).item
     end
 
-    answers = ["HE / SM", "DE / SD", "HD / DM", "DD / DD", "MX / DX"].join(", ")
-    [
-      ["de", "In welchen Disziplinen tritts du an?", answers],
-      ["fr", "Dans quelles disciplines concourrez-vous?", answers],
-      ["it", "In quali discipline gareggia?", answers],
-      ["en", "In which disciplines do you compete?", answers]
-    ].each do |locale, text, answers|
-      it "has expected question and answer for #{locale}" do
+    choices = ["HE / SM", "DE / SD", "HD / DM", "DD / DD", "MX / DX"].join(", ")
+
+    questions = [
+      ["de", "In welchen Disziplinen tritts du an?", choices],
+      ["fr", "Dans quelles disciplines concourrez-vous?", choices],
+      ["it", "In quali discipline gareggia?", choices],
+      ["en", "In which disciplines do you compete?", choices]
+    ]
+
+    questions.each do |locale, text, choices|
+      it "has expected question '#{text}' and choices for #{locale}" do
         expect(I18n.with_locale(locale) { question.question }).to eq text
-        expect(I18n.with_locale(locale) { question.choices }).to eq answers.to_s
+        expect(I18n.with_locale(locale) { question.choices }).to eq choices.to_s
         expect(question.disclosure).to eq "required"
         expect(question.multiple_choices).to eq true
       end
