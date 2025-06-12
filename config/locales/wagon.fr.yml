@@ -12,6 +12,9 @@ fr:
         person:
           cannot_be_destroyed_if_ts_roles_exist: Impossible de supprimer tant que des rôles TS existent.
           requires_phone_number: Un numéro de téléphone doit être enregistré.
+          attributes:
+            birthday:
+              invalidates_player_role: ist nicht gültig für aktuelle Spieler Rollen
         event/external_training:
           attributes:
             external_link:
@@ -19,7 +22,12 @@ fr:
         role:
           attributes:
             person:
+              must_be_born_after: "muss an oder nach dem %{date} geboren sein"
+              must_be_born_before: "muss an oder vor dem %{date} geboren sein"
+              too_young: ist zu jung
+              too_old: ist zu alt
               already_player_in_group: A déjà un rôle de joueur dans ce groupe
+
     models:
       event/external_training:
         one: Formation externe
