@@ -41,7 +41,7 @@ describe GroupsController do
 
       it "does not enqueue if not managed" do
         expect do
-          post :create, params: {group: {type: "Group::DachverbandKontakte", name: "test", parent_id: root.id}}
+          post :create, params: {group: {type: "Group::DachverbandKader", name: "test", parent_id: root.id}}
         end.to change { Group.count }
           .and not_change { delayed_jobs.count }
       end
@@ -67,8 +67,8 @@ describe GroupsController do
 
       it "does not enqueue if not managed" do
         expect do
-          put :update, params: {id: kontakte.id, group: {name: "test"}}
-        end.to change { kontakte.reload.name }.to("test")
+          put :update, params: {id: kontakte.id, group: {description: "test"}}
+        end.to change { kontakte.reload.description }.to("test")
           .and not_change { delayed_jobs.count }
       end
 
