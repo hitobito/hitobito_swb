@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_27_090212) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -152,6 +152,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_090212) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["active"], name: "index_billing_periods_on_active", unique: true, where: "(active = true)"
+  end
+
+  create_table "bounces", force: :cascade do |t|
+    t.string "email", null: false
+    t.integer "count", default: 0, null: false
+    t.datetime "blocked_at"
+    t.integer "mailing_list_ids", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_bounces_on_email", unique: true
   end
 
   create_table "calendar_groups", force: :cascade do |t|
@@ -451,14 +461,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_090212) do
   end
 
   create_table "group_translations", force: :cascade do |t|
-    t.integer "group_id", null: false
+    t.bigint "group_id", null: false
     t.string "locale", null: false
+    t.string "privacy_policy_title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "privacy_policy_title"
     t.string "custom_self_registration_title"
+    t.index ["group_id", "locale"], name: "index_group_translations_on_group_id_and_locale", unique: true
     t.index ["group_id"], name: "index_group_translations_on_group_id"
-    t.index ["locale"], name: "index_group_translations_on_locale"
   end
 
   create_table "group_type_orders", force: :cascade do |t|
@@ -780,6 +790,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_090212) do
     t.string "date_location_text"
     t.string "uid"
     t.integer "bounce_parent_id"
+    t.integer "blocked_count", default: 0
     t.index ["invoice_list_id"], name: "index_messages_on_invoice_list_id"
     t.index ["mailing_list_id"], name: "index_messages_on_mailing_list_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
@@ -978,7 +989,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_090212) do
     t.string "postbox"
     t.uuid "ts_code"
     t.string "nationality"
-    t.string "nationality_badminton"
     t.integer "international_player_id"
     t.text "emergency_contact"
     t.boolean "newsletter", default: true, null: false
@@ -1239,6 +1249,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_090212) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "calendar_tags", "tags", on_delete: :cascade
+  add_foreign_key "group_translations", "groups"
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_openid_requests", "oauth_access_grants", column: "access_grant_id", on_delete: :cascade

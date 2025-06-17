@@ -23,10 +23,5 @@ describe PeopleController, js: true do
       find("#attribute_filter option", text: "Nationalität gemäss Pass / ID").click
       expect(page).to have_css ".country_select_field"
     end
-
-    it "is possible to filter nationality_badminton" do
-      find("#attribute_filter option", text: "Nationalität als Badmintonspieler:in").click
-      expect(page).to have_css ".country_select_field"
-    end
   end
 end

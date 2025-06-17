@@ -90,7 +90,7 @@ module HitobitoSwb
       admin_item = NavigationHelper::MAIN.find { |item| item[:label] == :admin }
       admin_item[:active_for] += %w[billing_periods]
 
-      Person::FILTER_ATTRS << [:nationality, :country_select] << [:nationality_badminton, :country_select] << [:newsletter] << [:advertising]
+      Person::FILTER_ATTRS << [:nationality, :country_select] << [:newsletter] << [:advertising]
 
       Ability.store.register BillingPeriodAbility
 

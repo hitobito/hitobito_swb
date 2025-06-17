@@ -9,7 +9,7 @@ module Swb::Event::ParticipationContactData
   extend ActiveSupport::Concern
 
   prepended do
-    additional_attributes = [:ts_gender, :nationality, :nationality_badminton, :international_player_id, :emergency_contact, :advertising, :newsletter]
+    additional_attributes = [:ts_gender, :nationality, :international_player_id, :emergency_contact, :advertising, :newsletter]
     self.contact_attrs += additional_attributes
 
     self.mandatory_contact_attrs += [

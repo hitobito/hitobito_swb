@@ -38,12 +38,10 @@ describe "people/_details_swb.html.haml" do
     expect(dom).to have_css "dl:nth-of-type(2) div:nth-child(2) dd", text: 321
   end
 
-  it "renders nationality and nationality_badminton" do
-    current_user.update!(nationality: "CH", nationality_badminton: "DE")
+  it "renders nationality" do
+    current_user.update!(nationality: "CH")
     render
     expect(dom).to have_css "dl:nth-of-type(3) div:nth-child(1) dt", text: "Nationalität gemäss Pass / ID"
     expect(dom).to have_css "dl:nth-of-type(3) div:nth-child(1) dd", text: "Schweiz"
-    expect(dom).to have_css "dl:nth-of-type(3) div:nth-child(2) dt", text: "Nationalität als Badmintonspieler:in"
-    expect(dom).to have_css "dl:nth-of-type(3) div:nth-child(2) dd", text: "Deutschland"
   end
 end

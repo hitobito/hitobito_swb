@@ -24,10 +24,6 @@ describe "people/_fields_swb.html.haml" do
     expect(dom).to have_select "Nationalität gemäss Pass / ID"
   end
 
-  it "renders country select for nationality_badminton" do
-    expect(dom).to have_select "Nationalität als Badmintonspieler:in"
-  end
-
   it "renders international_player_field field" do
     expect(dom).to have_field "Internationale Spieler-ID"
   end
