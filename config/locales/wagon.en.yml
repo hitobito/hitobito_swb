@@ -341,10 +341,6 @@ en:
         one: "Vorstandsmitglied"
         other: "Vorstandsmitglieder"
 
-      group/region_vorstand/kassier:
-        one: "Kassier:in"
-        other: "Kassier:innen"
-
       group/region_vorstand/administrator:
         one: Administrator:in
         other: Administrator:innen
@@ -468,10 +464,6 @@ en:
       group/verein_vorstand/administrator:
         one: Administrator:in
         other: Administrator:innen
-
-      group/verein_vorstand/kassier:
-        one: "Kassier:in"
-        description: "Kassier:innen"
 
       group/verein_vorstand/mitglied:
         one: Vorstandsmitglied

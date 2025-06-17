@@ -98,7 +98,7 @@ module SwbImport
     ["Club Breitensport", Group::Verein::Breitensport],
     ["Club Ethik", Group::Verein::Ethik],
     ["Club Events/Turniere", Group::Verein::EventTurnier],
-    ["Club Finanzen", Group::Verein::Finanzen],
+    ["Club Finanzen", Group::VereinVorstand::Finanzen],
     ["Club Interclub", Group::Verein::Interclub],
     ["Club J&S-Coach", Group::Verein::JSCoach],
     ["Club Kommunikation", Group::Verein::Kommunikation],
@@ -115,7 +115,7 @@ module SwbImport
     ["Clubtrainer", Group::Verein::Clubtrainer],
 
     ["Region Breitensport", Group::Region::Breitensport],
-    ["Region Finanzen", Group::Region::Finanzen],
+    ["Region Finanzen", Group::RegionVorstand::Finanzen],
     ["Region Interclub", Group::Region::Interclub],
     ["Region J&S-Coach", Group::Region::JSCoach],
     ["Region Kontaktadresse", Group::RegionKontakte::Kontakt],

@@ -42,8 +42,8 @@ describe InvoiceListsController do
 
     describe "regions" do
       before do
-        Fabricate(Group::Region::Finanzen.sti_name, group: groups(:brb))
-        Fabricate(Group::Region::Finanzen.sti_name, group: groups(:bvn))
+        Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:brb_vorstand))
+        Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:bvn_vorstand))
       end
 
       it "renders form" do
@@ -65,7 +65,7 @@ describe InvoiceListsController do
 
     describe "teams" do
       before do
-        Fabricate(Group::Verein::Finanzen.sti_name, group: groups(:bc_bern))
+        Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: groups(:bc_bern_vorstand))
         3.times { Fabricate(:team, group: groups(:bc_bern), league: "NLA") }
       end
 
@@ -88,7 +88,7 @@ describe InvoiceListsController do
 
     describe "roles" do
       before do
-        Fabricate(Group::Verein::Finanzen.sti_name, group: groups(:bc_bern))
+        Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: groups(:bc_bern_vorstand))
         Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: groups(:bc_bern_spieler))
       end
 

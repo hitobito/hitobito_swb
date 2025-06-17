@@ -64,8 +64,8 @@ describe InvoiceLists::FixedFee do
 
     context "with receivers" do
       before do
-        Fabricate(Group::Region::Finanzen.sti_name, group: groups(:brb), person:)
-        Fabricate(Group::Region::Finanzen.sti_name, group: groups(:bvn), person:)
+        Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:brb_vorstand), person:)
+        Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:bvn_vorstand), person:)
       end
 
       it "has single item with sum of 1000" do
@@ -107,8 +107,8 @@ describe InvoiceLists::FixedFee do
     end
 
     it "has expected sum of 60 for two vereine" do
-      Fabricate(Group::Verein::Finanzen.sti_name, group: groups(:bc_bern), person:)
-      Fabricate(Group::Verein::Finanzen.sti_name, group: groups(:bc_thun), person:)
+      Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: groups(:bc_bern_vorstand), person:)
+      Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: groups(:bc_thun_vorstand), person:)
       expect(sum).to eq 60
     end
   end

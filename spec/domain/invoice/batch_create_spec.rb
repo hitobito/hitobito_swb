@@ -16,7 +16,7 @@ describe Invoice::BatchCreate do
     let!(:list) do
       list = InvoiceList.new(group: group, title: :title)
       list.invoice = Invoice.new(title: "invoice", group: group, issued_at: Time.zone.today)
-      Fabricate(Group::Region::Finanzen.sti_name, group: groups(:brb), person:)
+      Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:brb_vorstand), person:)
       InvoiceLists::FixedFee.for(:regions).prepare(list)
       list.tap(&:save!).reload
     end
