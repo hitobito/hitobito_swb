@@ -10,9 +10,8 @@ module Swb::PeopleController
 
   prepended do
     self.permitted_attrs += [
-      :ts_gender, :nationality, :nationality_badminton,
-      :international_player_id, :emergency_contact,
-      :advertising, :newsletter
+      :ts_gender, :nationality, :international_player_id,
+      :emergency_contact, :advertising, :newsletter
     ]
   end
 

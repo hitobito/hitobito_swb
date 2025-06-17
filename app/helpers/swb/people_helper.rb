@@ -14,10 +14,6 @@ module Swb::PeopleHelper
     ISO3166::Country[person.nationality]&.translations&.dig(I18n.locale.to_s)
   end
 
-  def format_person_nationality_badminton(person)
-    ISO3166::Country[person.nationality_badminton]&.translations&.dig(I18n.locale.to_s)
-  end
-
   def format_person_public_profile(person)
     path = format(Settings.people.public_profile % person.id)
     link_to(path, path)

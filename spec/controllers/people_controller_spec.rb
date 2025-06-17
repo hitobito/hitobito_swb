@@ -19,12 +19,6 @@ describe PeopleController do
       end.to change { person.reload.nationality }.from("FR").to("CH")
     end
 
-    it "can update nationality_badminton" do
-      expect do
-        put :update, params: {group_id: person.roles.first.group, id: person.id, person: {nationality_badminton: "CH"}}
-      end.to change { person.reload.nationality_badminton }.from(nil).to("CH")
-    end
-
     it "can update international_player_id" do
       expect do
         put :update, params: {group_id: person.roles.first.group, id: person.id, person: {international_player_id: 321}}

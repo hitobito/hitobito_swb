@@ -5,15 +5,8 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class AddTeams < ActiveRecord::Migration[7.1]
+class RemoveNationalityBadmintonFromPeople < ActiveRecord::Migration[7.1]
   def change
-    create_table(:teams) do |t|
-      t.belongs_to :group
-      t.string :league, null: false
-      t.string :name, null: false
-      t.integer :year, null: false
-      t.timestamps
-      t.index [:group_id, :name, :year], unique: true
-    end
+    remove_column(:people, :nationality_badminton, :string)
   end
 end
