@@ -6,6 +6,8 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class Group::DachverbandGeschaeftsstelle < ::Group
+  self.static_name = true
+
   ### ROLES
 
   self.event_types = []

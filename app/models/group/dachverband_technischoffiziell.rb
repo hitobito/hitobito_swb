@@ -6,6 +6,8 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class Group::DachverbandTechnischoffiziell < ::Group
+  self.static_name = true
+
   ### ROLES
 
   class Linienrichter < ::Role

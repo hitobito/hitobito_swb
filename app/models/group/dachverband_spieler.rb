@@ -6,6 +6,8 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class Group::DachverbandSpieler < ::Group
+  self.static_name = true
+
   class Aktivmitglied < ::Role::Player
   end
 
