@@ -51,8 +51,7 @@ invoice_lists:
       receivers:
         layer: Group::Region
         roles:
-          - Group::Region::Finanzen
-          - Group::RegionVorstand::Kassier
+          - Group::RegionVorstand::Finanzen
           - Group::RegionVorstand::Praesident
       items:
         - key: fee
@@ -65,8 +64,7 @@ invoice_lists:
       receivers:
         layer: Group::Verein
         roles:
-          - Group::Verein::Finanzen
-          - Group::VereinVorstand::Kassier
+          - Group::VereinVorstand::Finanzen
           - Group::VereinVorstand::Praesident
       items:
         - key: grundbeitrag_elite
@@ -113,8 +111,7 @@ invoice_lists:
       receivers:
         layer: Group::Verein
         roles:
-          - Group::Verein::Finanzen
-          - Group::VereinVorstand::Kassier
+          - Group::VereinVorstand::Finanzen
           - Group::VereinVorstand::Praesident
       items:
         - key: aktiv

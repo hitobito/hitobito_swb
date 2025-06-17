@@ -65,10 +65,6 @@ class Group::Region < ::Group
     self.permissions = [:group_read]
   end
 
-  class Finanzen < ::Role
-    self.permissions = [:group_read]
-  end
-
   class Kommunikation < ::Role
     self.permissions = [:group_read]
   end
@@ -92,7 +88,6 @@ class Group::Region < ::Group
     Clubmanagement,
     Ethik,
     EventTurnier,
-    Finanzen,
     Interclub,
     Kommunikation,
     Leistungssport,

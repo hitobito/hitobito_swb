@@ -64,10 +64,6 @@ class Group::Verein < ::Group
     self.permissions = [:group_read]
   end
 
-  class Finanzen < ::Role
-    self.permissions = [:group_read]
-  end
-
   class Kommunikation < ::Role
     self.permissions = [:group_read]
   end
@@ -106,7 +102,6 @@ class Group::Verein < ::Group
     Breitensport,
     Clubmanagement,
     EventTurnier,
-    Finanzen,
     Interclub,
     Kommunikation,
     Leistungssport,

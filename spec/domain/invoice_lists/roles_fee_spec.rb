@@ -11,12 +11,12 @@ describe InvoiceLists::RolesFee do
   subject(:fixed_fee) { described_class.new(:roles) }
 
   let(:bern_spieler) { groups(:bc_bern_spieler) }
-  let(:bc_bern) { groups(:bc_bern) }
+  let(:bc_bern) { groups(:bc_bern_vorstand) }
 
   describe "receivers" do
     subject(:receivers) { fixed_fee.receivers }
 
-    let!(:recipient) { Fabricate(Group::Verein::Finanzen.sti_name, group: bc_bern) }
+    let!(:recipient) { Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: bc_bern) }
     let!(:player) { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: bern_spieler, person: people(:leader)) }
 
     it "includes recipient" do
@@ -39,8 +39,8 @@ describe InvoiceLists::RolesFee do
     let(:items_by_key) { fixed_fee.items.select(&:present?).index_by(&:key) }
 
     before do
-      Fabricate(Group::Verein::Finanzen.sti_name, group: bc_bern)
-      Fabricate(Group::Verein::Finanzen.sti_name, group: groups(:bc_thun))
+      Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: bc_bern)
+      Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: groups(:bc_thun_vorstand))
     end
 
     it "counts player if billed in previous season" do
