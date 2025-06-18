@@ -371,6 +371,11 @@ fr:
         many: "Responsables Club Management"
         other: "Responsables Club Management"
 
+      group/region/finanzen:
+        one: "Responsable des finances"
+        many: "Responsables des finances"
+        other: "Responsables des finances"
+
       group/region/kommunikation:
         one: "Responsable communication"
         many: "Responsables communication"
@@ -406,6 +411,11 @@ fr:
         many: "Membres du comité"
         other: "Membres du comité"
 
+      group/region_vorstand/kassier:
+        one: "Trésorier.ère"
+        many: "Trésorier.ère.s"
+        other: "Caissier.ère.s"
+
       group/region_vorstand/administrator:
         one: Administrateur.trice
         many: Administrateur.trice.s
@@ -420,11 +430,6 @@ fr:
         one: Membre passif
         many: Membres passifs
         other: Membres passifs
-
-      group/region_vorstand/finanzen:
-        one: "Responsable des finances"
-        many: "Responsables des finances"
-        other: "Responsables des finances"
 
       group/region_spieler/junior_u15:
         one: "Junior.e (jusqu'à U15)"
@@ -512,6 +517,11 @@ fr:
         many: "Responsables Club Management"
         other: "Responsables Club Management"
 
+      group/verein/finanzen:
+        one: "Responsable des finances"
+        many: "Responsables des finances"
+        other: "Responsables des finances"
+
       group/verein/kommunikation:
         one: "Responsable communication"
         many: "Responsables communication"
@@ -557,10 +567,9 @@ fr:
         many: Administrateur.trice.s
         other: Administrateur.trice.s
 
-      group/verein_vorstand/finanzen:
-        one: "Responsable des finances"
-        many: "Responsables des finances"
-        other: "Responsables des finances"
+      group/verein_vorstand/kassier:
+        one: "Caissier.ère"
+        description: "Caissier.ère.s"
 
       group/verein_vorstand/mitglied:
         one: Membre du comité
@@ -680,6 +689,7 @@ fr:
         international_player_id: Numéro international du joueur
         member_id: Numéro membre
         nationality: Nationalité selon le passeport / carte d'identité
+        nationality_badminton: Nationalité du/de la joueur.se de badminton
         newsletter: Newsletter
         public_profile: Profil public
         ts_gender: Catégorie de la compétition
