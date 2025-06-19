@@ -309,10 +309,6 @@ en:
         one: "Verantwortliche:r Club Management"
         other: "Verantwortliche Club Managemen"
 
-      group/region/finanzen:
-        one: "Verantwortliche:r Finanzen"
-        other: "Verantwortliche Finanzen"
-
       group/region/kommunikation:
         one: "Verantwortliche:r Kommunikation"
         other: "Verantwortliche Kommunikation"
@@ -341,9 +337,9 @@ en:
         one: "Vorstandsmitglied"
         other: "Vorstandsmitglieder"
 
-      group/region_vorstand/kassier:
-        one: "Kassier:in"
-        other: "Kassier:innen"
+      group/region_vorstand/finanzen:
+        one: "Verantwortliche:r Finanzen"
+        other: "Verantwortliche Finanzen"
 
       group/region_vorstand/administrator:
         one: Administrator:in
@@ -427,10 +423,6 @@ en:
         one: "Verantwortliche:r Club Management"
         other: "Verantwortliche Club Managemen"
 
-      group/verein/finanzen:
-        one: "Verantwortliche:r Finanzen"
-        other: "Verantwortliche Finanzen"
-
       group/verein/kommunikation:
         one: "Verantwortliche:r Kommunikation"
         other: "Verantwortliche Kommunikation"
@@ -469,9 +461,9 @@ en:
         one: Administrator:in
         other: Administrator:innen
 
-      group/verein_vorstand/kassier:
-        one: "Kassier:in"
-        description: "Kassier:innen"
+      group/verein_vorstand/finanzen:
+        one: "Verantwortliche:r Finanzen"
+        other: "Verantwortliche Finanzen"
 
       group/verein_vorstand/mitglied:
         one: Vorstandsmitglied
@@ -575,7 +567,6 @@ en:
         international_player_id: Internationale Spieler-ID
         member_id: Member-ID
         nationality: Nationalität gemäss Pass / ID
-        nationality_badminton: "Nationalität als Badmintonspieler:in"
         newsletter: Newsletter
         public_profile: öffentliches Profil
         ts_gender: Geschlecht Spielbetrieb
