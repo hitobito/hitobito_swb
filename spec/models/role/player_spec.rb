@@ -34,18 +34,17 @@ describe Role::Player do
   end
 
   shared_examples "year_validating_role" do |role_class, year_range|
-    let(:now) { Date.new(2025, 6, 6) }
+    min_date = year_range.end.years.ago.to_date.beginning_of_year if year_range.end
+    max_date = year_range.begin.years.ago.to_date.end_of_year if year_range.begin
 
-    let(:person) { Fabricate.build(:person) }
+    let(:now) { Date.new(2025, 6, 6) }
     let(:group) { role_class.to_s.deconstantize.constantize.first }
-    subject(:role) { Fabricate.build(role_class.sti_name, group: group, person: person) }
+    let!(:role) { Fabricate(role_class.sti_name, group: group, person: person) }
+    let(:person) { Fabricate(:person, birthday: min_date.presence || max_date.presence) }
 
     before { travel_to(now) }
 
     describe role_class do
-      min_date = year_range.end.years.ago.to_date.beginning_of_year if year_range.end
-      max_date = year_range.begin.years.ago.to_date.end_of_year if year_range.begin
-
       if min_date
         it "is valid with person born on #{min_date}" do
           person.birthday = min_date
@@ -53,13 +52,20 @@ describe Role::Player do
         end
 
         it "is too old with person born on #{min_date - 1.day}" do
-          person.birthday = min_date - 1.day
+          expect(role).to be_valid
+          person.update_columns(birthday: min_date - 1.day)
           expect(role).not_to be_valid
           expect(role.errors.full_messages).to eq ["Person muss an oder nach dem #{I18n.l(min_date)} geboren sein"]
         end
+
+        it "still allows destroying person born on #{min_date - 1.day}" do
+          expect(role).to be_valid
+          person.update_columns(birthday: min_date - 1.day)
+          expect { role.destroy! }.to change { Role.count }.by(-1)
+        end
       else
         it "is valid with person born on #{max_date - 100.years}" do
-          person.birthday = max_date - 100.years
+          person.update_columns(birthday: max_date - 100.years)
           expect(role).to be_valid
         end
       end
@@ -76,6 +82,11 @@ describe Role::Player do
           expect(role.errors.full_messages).to eq ["Person muss an oder vor dem #{I18n.l(max_date)} geboren sein"]
         end
 
+        it "still allows destroying person born on #{max_date - 1.day}" do
+          person.birthday = max_date + 1.day
+          role.created_at = 1.day.ago # rqeuired for
+          expect { role.destroy! }.to change { Role.count }.by(-1)
+        end
       else
         it "is valid with person born on #{min_date + 5.years}" do
           person.birthday = min_date + 5.years
