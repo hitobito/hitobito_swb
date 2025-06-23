@@ -21,4 +21,13 @@ describe "hitobito_log_entries/_list.html.haml" do
     allow(view).to receive_messages(model_class: HitobitoLogEntry, category_param: "", entries: entries)
     expect(dom).to have_link("A Leader", href: "/de/people/#{people(:leader).id}")
   end
+
+  it "links to person for person subject" do
+    entries = Kaminari.paginate_array([
+      Fabricate(:ts_log, subject: people(:leader))
+    ])
+    allow(entries).to receive_messages(total_pages: 1, current_page: 1)
+    allow(view).to receive_messages(model_class: HitobitoLogEntry, category_param: "", entries: entries, can?: true)
+    expect(dom).to have_link("A Leader", href: "/de/people/#{people(:leader).id}")
+  end
 end

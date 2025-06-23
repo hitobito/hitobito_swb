@@ -9,7 +9,7 @@ module Swb::HitobitoLogEntriesHelper
   def format_hitobito_log_entry_subject(e)
     case e.subject
     when Role then link_to(e.subject.person, e.subject.person)
-    else f(e, :subject)
+    else format_assoc(e, :subject)
     end
   end
 end
