@@ -57,7 +57,7 @@ module Roles::Players
     def create_log_entry(role, message:, level:)
       HitobitoLogEntry.create!(
         category: :promotion,
-        subject: role.person,
+        subject: role,
         level:,
         message:
       )

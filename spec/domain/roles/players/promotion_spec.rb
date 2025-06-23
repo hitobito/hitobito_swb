@@ -50,10 +50,11 @@ describe Roles::Players::Promotion do
         expect(write_jobs.first.payload_object.gid).to eq person.roles.first.to_global_id
         expect(write_jobs.first.payload_object.operation).to eq :post
         expect(delete_jobs.first.payload_object.attrs).to eq role.ts_destroy_values
-        expect(log.subject).to eq person
+        expect(log.subject).to eq person.roles.find_by(type: Group::VereinSpieler::JuniorU19.sti_name)
         expect(log.category).to eq "promotion"
         expect(log.level).to eq "info"
         expect(log.message).to start_with "Promoted Junior:in (bis U15)"
+        expect { role.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
 
       it "promotes to Lizenz if outside of U19 year range" do
@@ -77,7 +78,7 @@ describe Roles::Players::Promotion do
           expect do
             promotion.run
           end.to change { HitobitoLogEntry.count }.by(1)
-          expect(log.subject).to eq person
+          expect(log.subject).to eq role
           expect(log.category).to eq "promotion"
           expect(log.level).to eq "error"
           expect(log.message).to start_with "Failed to promote Junior:in (bis U15)"
