@@ -16,11 +16,12 @@ describe PeopleController, js: true do
       click_link "Weitere Ansichten"
       click_link "Neuer Filter..."
       expect(page).to have_content "Personen filtern"
+      click_link "Hinzufügen"
       click_link "Felder"
     end
 
     it "is possible to filter nationality" do
-      find("#attribute_filter option", text: "Nationalität gemäss Pass / ID").click
+      select "Nationalität gemäss Pass / ID", from: "attribute_filter"
       expect(page).to have_css ".country_select_field"
     end
   end
