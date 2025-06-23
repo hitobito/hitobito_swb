@@ -9,7 +9,7 @@ class Role::Player < ::Role
   class_attribute :year_range, default: (19..)
 
   validate :only_one_player_role_per_group
-  validate :within_year_range
+  validate :within_year_range, unless: :destroying_role?
 
   self.permissions = [:group_read]
 
@@ -32,6 +32,10 @@ class Role::Player < ::Role
     elsif max_date && person.birthday > max_date
       errors.add(:person, :must_be_born_before, date: I18n.l(max_date))
     end
+  end
+
+  def destroying_role?
+    validation_context == :destroy || end_on&.past?
   end
 
   class JuniorU15 < Player
