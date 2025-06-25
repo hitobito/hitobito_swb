@@ -20,7 +20,7 @@ module Roles::Players
       end
     end
 
-    def roles = role_type.joins(:person).where(people: {birthday: [..max_date]})
+    def roles = role_type.joins(:person).where(people: {birthday: [...max_date]})
 
     private
 

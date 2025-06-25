@@ -29,14 +29,14 @@ describe Roles::Players::Promotion do
       let!(:role) { Fabricate(Group::VereinSpieler::JuniorU15.sti_name, group:, person:) }
 
       it "noops if person is within limit no exceeded limit" do
-        person.update_columns(birthday: 14.years.ago.end_of_year)
+        person.update_columns(birthday: 14.years.ago.beginning_of_year)
         expect do
           promotion.run
         end.not_to change { person.reload.roles.map(&:type) }
       end
 
       it "promotes to JuniorU19" do
-        person.update_columns(birthday: 15.years.ago)
+        person.update_columns(birthday: 15.years.ago.beginning_of_year)
         expect do
           promotion.run
         end.to change { person.reload.roles.map(&:type) }
@@ -113,14 +113,15 @@ describe Roles::Players::Promotion do
     subject(:promotion) { described_class.new(Role::Player::JuniorU19) }
 
     it "noops if person is within limit no exceeded limit" do
-      person = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler), birthday: 18.years.ago)
+      person = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler), birthday: 18.years.ago.beginning_of_year)
       expect do
         promotion.run
-      end.not_to change { person.reload.roles.map(&:type) }
+      end.to not_change { person.reload.roles.map(&:type) }
+        .and not_change { person.reload.roles.map(&:updated_at) }
     end
 
     it "promotes to Lizenz if outside of U19 year range" do
-      person = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler), birthday: 19.years.ago)
+      person = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler), birthday: 19.years.ago.end_of_year)
       expect do
         promotion.run
       end.to change { person.reload.roles.map(&:type) }
