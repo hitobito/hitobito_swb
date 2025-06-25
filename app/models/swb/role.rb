@@ -34,7 +34,7 @@ module Swb::Role
   def ts_destroy_values
     attributes
       .symbolize_keys
-      .slice(*%i[id ts_code group_id person_id start_on end_on])
+      .slice(*%i[id type ts_code group_id person_id start_on end_on])
       .merge(end_on: Time.zone.yesterday)
   end
 

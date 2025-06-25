@@ -18,5 +18,5 @@ class Ts::RoleDestroyJob < BaseJob
 
   private
 
-  def role = @role ||= Role.new(attrs)
+  def role = @role ||= attrs[:type].constantize.new(attrs)
 end

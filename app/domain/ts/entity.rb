@@ -51,18 +51,21 @@ class Ts::Entity < Data
 
   OrganizationLevel = Ts::Entity.define(:code, :name, :level)
 
+  # Groups (Regions, Clubs, Centers), query for list
   OrganizationGroup = Ts::Entity.define(:code, :parent_code, :number, :name,
     :contact, :email, :website, :address, :postal_code, :city, :country,
     :organization_level, :parent_organization_group)
 
+  # Avaiablel Roles
   OrganizationRole = Ts::Entity.define(:code, :name, :organization_level_code)
 
+  # People in TS
   OrganizationPerson = Ts::Entity.define(:code, :member_id, :id_number, :name_type_id,
     :firstname, :middlename, :lastname, :gender_id, :date_of_birth, :nationality,
     :address, :address2, :address3, :postal_code, :city, :country,
     :phone, :mobile, :email, :website, :photo, :active)
 
-  # This is used twice
+  # Roles / Memberships
   OrganizationMembership = Ts::Entity.define(:code, :name, :start_date, :end_date, :remote_system_code,
     :organization_group_code, :organization_group_name,
     :organization_role_code, :organization_role_name,

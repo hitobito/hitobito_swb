@@ -46,6 +46,18 @@ describe Role do
       end
     end
 
+    describe "ts_destroy_values" do
+      it "returns values required for ending role on ts" do
+        expect(role.ts_destroy_values).to include(
+          group_id: role.group_id,
+          person_id: role.person_id,
+          ts_code: role.ts_code,
+          end_on: Time.zone.yesterday,
+          type: role.type
+        )
+      end
+    end
+
     describe Group::Dachverband::Administrator do
       subject(:model_name) { described_class.model_name }
 
