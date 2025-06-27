@@ -11,6 +11,8 @@ class Role::Player < ::Role
   validate :only_one_player_role_per_group
   validate :within_year_range, unless: :destroying_role?
 
+  after_create :mark_as_billed
+
   self.permissions = [:group_read]
 
   private
@@ -36,6 +38,10 @@ class Role::Player < ::Role
 
   def destroying_role?
     validation_context == :destroy || end_on&.past?
+  end
+
+  def mark_as_billed
+    Roles::Players::MarkAsBilled.new(self).run
   end
 
   class JuniorU15 < Player
