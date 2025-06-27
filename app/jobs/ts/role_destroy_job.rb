@@ -14,7 +14,7 @@ class Ts::RoleDestroyJob < BaseJob
     @attrs = attrs
   end
 
-  def perform = role.ts_interface_put
+  def perform = (role.ts_interface_put if role.ts_code)
 
   private
 

@@ -21,4 +21,10 @@ describe Ts::RoleDestroyJob do
     expect(interface).to receive(:put)
     described_class.new(role.ts_destroy_values).perform
   end
+
+  it "noops when role has no ts_code set" do
+    role.ts_code = nil
+    expect(Ts::Interface).not_to receive(:new)
+    described_class.new(role.ts_destroy_values).perform
+  end
 end
