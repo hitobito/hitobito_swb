@@ -127,4 +127,18 @@ describe Role::Player do
       expect(type.new).to be_kind_of(Role::Player)
     end
   end
+
+  describe "billed models" do
+    let(:billing_period) { billing_periods(:current) }
+    let(:group) { groups(:bc_bern_spieler) }
+
+    it "updates billed model" do
+      model = Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:, end_on: 1.day.ago)
+      Fabricate(:billed_model, billing_period:, model:)
+      expect do
+        role = Fabricate(Group::VereinSpieler::Lizenz.sti_name, person:, group:)
+        expect(BilledModel.where(model: role, billing_period:)).to be_exists
+      end.to change { BilledModel.count }.from(1).to(2)
+    end
+  end
 end
