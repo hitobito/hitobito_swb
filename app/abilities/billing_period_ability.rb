@@ -9,6 +9,9 @@ class BillingPeriodAbility < AbilityDsl::Base
   on(BillingPeriod) do
     class_side(:index).if_admin
 
-    permission(:admin).may(:manage).all
+    permission(:admin).may(:read, :create, :update, :destroy).all
+    general(:destroy).if_inactive
   end
+
+  def if_inactive = !subject.active
 end
