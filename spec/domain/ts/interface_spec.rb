@@ -13,6 +13,25 @@ describe Ts::Interface, :tests_ts_api do
 
   subject(:interface) { described_class.new(model) }
 
+  it "does not fail when config is missing" do
+    expect(Ts::Config).to receive(:exist?).and_return(false)
+    expect(Rails.logger).to receive(:info).with <<~TEXT.strip
+      Ts::Config missing
+      METHOD: post
+      <OrganizationGroup>
+        <Code>368f12eb-1eed-48a0-9381-fa7d42fdcf00</Code>
+        <Number>385153371</Number>
+        <Name>Swiss Badminton</Name>
+        <Contact>not_defined</Contact>
+        <Email>lyndon@hitobito.example.com</Email>
+        <Address>Schellingstr. 8</Address>
+        <PostalCode>4692</PostalCode>
+        <City>Charleenhagen</City>
+      </OrganizationGroup>
+    TEXT
+    expect(interface.post).to be_nil
+  end
+
   it "get returns entity from api" do
     stub_api_request(:get, "/Group/#{model.ts_code}", response_body: sucessfull_response_body(model.ts_model))
     expect do

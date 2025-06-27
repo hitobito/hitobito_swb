@@ -41,6 +41,8 @@ class Ts::Interface
   def nested? = @nesting.present?
 
   def request(method, *args)
+    return mock_request(method, *args) unless Ts::Config.exist?
+
     operation = client.send(method, *args)
     ActiveRecord::Base.transaction do
       yield operation.response if block_given?
@@ -52,6 +54,14 @@ class Ts::Interface
     LogEntry.new(model, e.operation).create!
   rescue StandardError => e
     LogEntry.new(model, operation, e).create!
+  end
+
+  def mock_request(method, *args)
+    Rails.logger.info <<~TEXT.strip
+      Ts::Config missing
+      METHOD: #{method}
+      #{args.join(", ")}
+    TEXT
   end
 
   def client
