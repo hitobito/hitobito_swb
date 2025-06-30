@@ -14,7 +14,7 @@ fr:
           requires_phone_number: Un numéro de téléphone doit être enregistré.
           attributes:
             birthday:
-              invalidates_player_role: ist nicht gültig für aktuelle Spieler Rollen
+              invalidates_player_role: n'est pas valable pour les joueurs ayant ces rôles
         event/external_training:
           attributes:
             external_link:
@@ -22,10 +22,10 @@ fr:
         role:
           attributes:
             person:
-              must_be_born_after: "muss an oder nach dem %{date} geboren sein"
-              must_be_born_before: "muss an oder vor dem %{date} geboren sein"
-              too_young: ist zu jung
-              too_old: ist zu alt
+              must_be_born_after: "doit être née le ou après le %{date}."
+              must_be_born_before: "doit être née le ou avant le %{date}."
+              too_young: est trop jeune
+              too_old: est trop vieux
               already_player_in_group: A déjà un rôle de joueur dans ce groupe
 
     models:
@@ -407,8 +407,9 @@ fr:
         other: "Membres du comité"
 
       group/region_vorstand/finanzen:
-        one: "Verantwortliche:r Finanzen"
-        other: "Verantwortliche Finanzen"
+        one: "Responsable des finances"
+        many: "Responsables des finances"
+        other: "Responsables des finances"
 
       group/region_vorstand/administrator:
         one: Administrateur.trice
@@ -557,8 +558,9 @@ fr:
         other: Administrateur.trice.s
 
       group/verein_vorstand/finanzen:
-        one: "Verantwortliche:r Finanzen"
-        other: "Verantwortliche Finanzen"
+        one: "Responsable des finances"
+        many: "Responsables des finances"
+        other: "Responsables des finances"
 
       group/verein_vorstand/mitglied:
         one: Membre du comité
