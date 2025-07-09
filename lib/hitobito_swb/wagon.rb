@@ -101,6 +101,10 @@ module HitobitoSwb
 
     initializer "swb.add_settings" do |_app|
       Settings.add_source!(File.join(paths["config"].existent, "settings.yml"))
+      if Rails.root.join("config", "settings.local.yml")
+        Settings.add_source!(Rails.root.join("config", "settings.local.yml"))
+      end
+
       Settings.reload!
     end
 
