@@ -19,7 +19,8 @@ module Ts
     ["Swiss Badminton Interclub", "3EBE4B1C-274F-43C2-97ED-193CD93C414C"],
     ["Club Interclub", "A6DC0AB7-4904-4C39-901A-2D327941C0FF"],
     ["Region Interclub", "D1E0E7EB-293F-455F-93D0-F5C02615A42F"],
-    ["Clubtrainer", "F2D919E4-37B7-4E56-A205-0D77AA016DB1"]
+    ["Clubtrainer", "F2D919E4-37B7-4E56-A205-0D77AA016DB1"],
+    ["Club Events/Turniere", "2E103842-C99D-49E9-90BE-690DBD411068"]
   ]
 
   MEMBERSHIP_CODE_MAPPING = [
