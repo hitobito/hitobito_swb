@@ -21,6 +21,7 @@ class Group::DachverbandSpieler < ::Group
   end
 
   class Lizenz < ::Role::Player
+    self.unique_across_layers = true
   end
 
   roles Aktivmitglied, Passivmitglied, JuniorU15, JuniorU19, Lizenz
