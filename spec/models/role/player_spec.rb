@@ -8,13 +8,14 @@
 require "spec_helper"
 
 describe Role::Player do
-  let(:group) { groups(:brb_spieler) }
   let(:person) { people(:admin) }
-
-  subject(:role) { Group::RegionSpieler::Aktivmitglied.build(group:, person:) }
 
   describe "::validations" do
     describe "asserting single player role" do
+      let(:group) { groups(:brb_spieler) }
+
+      subject(:role) { Group::RegionSpieler::Aktivmitglied.build(group:, person:) }
+
       it "is invalid if person has any other role in that group" do
         Fabricate(Group::RegionSpieler::Lizenz.sti_name, group:, person:)
         expect(role).not_to be_valid
@@ -23,6 +24,38 @@ describe Role::Player do
 
       it "is valid if player role exists in a different group" do
         Fabricate(Group::RegionSpieler::Lizenz.sti_name, group: groups(:bvn_spieler), person:)
+        expect(role).to be_valid
+      end
+
+      it "can still update that single player role" do
+        role.save!
+        expect(role.update!(end_on: 3.days.from_now)).to eq true
+      end
+    end
+
+    describe "asserting license role" do
+      let(:group) { groups(:bc_bern_spieler) }
+
+      subject(:role) { Group::VereinSpieler::Lizenz.build(group:, person:) }
+
+      it "is invalid if person has any other role in that group" do
+        Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group:, person:)
+        expect(role).not_to be_valid
+        expect(role.errors.full_messages).to eq ["Person hat bereits eine Spielerrolle in dieser Gruppe"]
+      end
+
+      it "is invalid if role of that type exists in a different group" do
+        Fabricate(Group::VereinSpieler::Lizenz.sti_name, group: groups(:bc_thun_spieler), person:)
+        expect(role).not_to be_valid
+        expect(role.errors.full_messages).to eq ["Person hat bereits eine Spielerrolle dieses Typs"]
+      end
+
+      it "is valid if player has no other player roles" do
+        expect(role).to be_valid
+      end
+
+      it "is valid if player has another lizenz role type in a different layer" do
+        Fabricate(Group::VereinSpieler::LizenzPlus.sti_name, group: groups(:bc_thun_spieler), person:)
         expect(role).to be_valid
       end
 
@@ -121,10 +154,21 @@ describe Role::Player do
     end
   end
 
-  it "all spieler group roles are players" do
-    all_types = [Group::DachverbandSpieler, Group::RegionSpieler, Group::VereinSpieler].flat_map(&:role_types)
-    all_types.each do |type|
-      expect(type.new).to be_kind_of(Role::Player)
+  [Group::DachverbandSpieler, Group::RegionSpieler, Group::VereinSpieler].flat_map(&:role_types).each do |type|
+    describe type do
+      it "is a Role::Player" do
+        expect(type.new).to be_kind_of(Role::Player)
+      end
+
+      if /Lizenz/.match?(type.to_s)
+        it "is unique across layers" do
+          expect(type.unique_across_layers).to eq true
+        end
+      else
+        it "is not unique across layers" do
+          expect(type.unique_across_layers).to eq false
+        end
+      end
     end
   end
 

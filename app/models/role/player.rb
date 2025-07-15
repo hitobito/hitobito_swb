@@ -7,8 +7,10 @@
 
 class Role::Player < ::Role
   class_attribute :year_range, default: (19..)
+  class_attribute :unique_across_layers, default: false
 
   validate :only_one_player_role_per_group
+  validate :only_one_player_role_globally, if: :unique_across_layers
   validate :within_year_range, unless: :destroying_role?
 
   after_create :mark_as_billed
@@ -23,6 +25,10 @@ class Role::Player < ::Role
 
   def only_one_player_role_per_group
     errors.add(:person, :already_player_in_group) if (person.roles.where(group:) - [self]).any?
+  end
+
+  def only_one_player_role_globally
+    errors.add(:person, :already_player_of_that_type) if (person.roles.where(type: type) - [self]).any?
   end
 
   def within_year_range

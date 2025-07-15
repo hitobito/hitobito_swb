@@ -23,15 +23,19 @@ class Group::VereinSpieler < ::Group
   end
 
   class Lizenz < ::Role::Player
+    self.unique_across_layers = true
   end
 
   class LizenzPlusJunior < Role::LizenzPlus
+    self.unique_across_layers = true
   end
 
   class LizenzPlus < Role::LizenzPlus
+    self.unique_across_layers = true
   end
 
   class LizenzNoRanking < ::Role::Player
+    self.unique_across_layers = true
   end
 
   class Vereinigungsspieler < ::Role::Player
