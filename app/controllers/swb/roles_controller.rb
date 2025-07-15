@@ -9,6 +9,7 @@ module Swb::RolesController
   extend ActiveSupport::Concern
 
   prepended do
+    helper_method :force_start_on_today?
     before_render_new :populate_person_phone_numbers
     after_destroy :enqueue_ts_delete, if: -> { entry.ts_code }
   end
@@ -17,6 +18,12 @@ module Swb::RolesController
 
   def populate_person_phone_numbers
     entry.person.phone_numbers.build(label: :mobile) if entry.person.phone_numbers.none?
+  end
+
+  def build_new_type
+    super.tap do |role|
+      role.start_on = Time.zone.today if force_start_on_today?(role)
+    end
   end
 
   def create_new_role_and_destroy_old_role
@@ -47,4 +54,6 @@ module Swb::RolesController
   def enqueue_ts_delete(model = entry)
     Ts::RoleDestroyJob.new(model.ts_destroy_values).enqueue!
   end
+
+  def force_start_on_today?(role) = role.ts_managed? && !current_ability.user_context.admin
 end
