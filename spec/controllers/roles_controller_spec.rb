@@ -8,9 +8,80 @@
 require "spec_helper"
 
 describe RolesController do
-  before { sign_in(people(:admin)) }
+  describe "changing player roles" do
+    let(:gs) { groups(:root_gs) }
+    let(:group) { groups(:bc_bern_spieler) }
+    let(:tomorrow) { Time.zone.tomorrow }
+
+    let(:person) { people(:leader) }
+    let(:one_year_ago) { 1.year.ago.to_date }
+    let(:one_week_ago) { 1.week.ago.to_date }
+    let!(:role) { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:, start_on: one_year_ago, created_at: one_year_ago) }
+
+    describe "GET#edit" do
+      render_views
+      let(:dom) { Capybara::Node::Simple.new(response.body) }
+
+      context "as admin" do
+        before { sign_in(people(:admin)) }
+
+        it "has start_on field" do
+          get :edit, params: {group_id: group.id, id: role.id}
+          expect(dom).to have_field("Von")
+        end
+      end
+
+      context "as vereins admin" do
+        let(:vereins_admin) { Fabricate(Group::VereinVorstand::Administrator.sti_name, group: groups(:bc_bern_vorstand)) }
+
+        before { sign_in(vereins_admin.person) }
+
+        it "hides start_on field" do
+          get :edit, params: {group_id: group.id, id: role.id}
+          expect(dom).not_to have_field("Von")
+        end
+
+        context "on normal role" do
+          let(:role) { vereins_admin }
+
+          it "shows start_on field" do
+            get :edit, params: {group_id: role.group_id, id: role.id}
+            expect(dom).to have_field("Von")
+          end
+        end
+      end
+    end
+
+    describe "PUT#update" do
+      context "as admin" do
+        before { sign_in(people(:admin)) }
+
+        it "allows setting start_on" do
+          expect do
+            put :update, params: {group_id: group.id, id: role.id, role: {type: Group::VereinSpieler::Passivmitglied.sti_name, start_on: one_week_ago}}
+          end.not_to change { person.roles.count }
+          expect(person.roles.find_by(type: "Group::VereinSpieler::Passivmitglied").start_on).to eq one_week_ago
+          expect(person.roles.with_inactive.find_by(type: "Group::VereinSpieler::Aktivmitglied").end_on).to eq Time.zone.yesterday
+        end
+      end
+
+      context "as vereins admin" do
+        before { sign_in(Fabricate(Group::VereinVorstand::Administrator.sti_name, group: groups(:bc_bern_vorstand)).person) }
+
+        it "ignores start_on param and sets it to today" do
+          expect do
+            put :update, params: {group_id: group.id, id: role.id, role: {type: Group::VereinSpieler::Passivmitglied.sti_name, start_on: one_week_ago}}
+          end.not_to change { person.roles.count }
+          expect(person.roles.find_by(type: "Group::VereinSpieler::Passivmitglied").start_on).to eq Time.zone.today
+          expect(person.roles.with_inactive.find_by(type: "Group::VereinSpieler::Aktivmitglied").end_on).to eq Time.zone.yesterday
+        end
+      end
+    end
+  end
 
   describe "ts write jobs" do
+    before { sign_in(people(:admin)) }
+
     let(:gs) { groups(:root_gs) }
     let(:interclub) { "Group::DachverbandGeschaeftsstelle::Interclub" }
 
