@@ -66,7 +66,7 @@ module SwbImport
     def wagon_dir = Wagons.all[0].root
 
     def truncate_tables
-      ActiveRecord::Base.connection.truncate_tables(:groups, :roles, :people, :invoice_configs, :phone_numbers, :social_accounts, :additional_emails, :versions, :sessions, :delayed_jobs)
+      ActiveRecord::Base.connection.truncate_tables(:group_translations, :groups, :roles, :people, :invoice_configs, :phone_numbers, :social_accounts, :additional_emails, :versions, :sessions, :delayed_jobs)
     end
 
     def import_root_seeds = %w[custom_contents root].each { |file| load Rails.root.join("db/seeds/#{file}.rb") }
