@@ -26,6 +26,7 @@ en:
               must_be_born_before: "muss an oder vor dem %{date} geboren sein"
               too_young: ist zu jung
               too_old: ist zu alt
+              already_player_of_that_type: hat bereits eine Spielerrolle dieses Typs
               already_player_in_group: hat bereits eine Spielerrolle in dieser Gruppe
 
     models:
