@@ -14,18 +14,29 @@ describe "people/_show_left_swb.html.haml" do
   }
   let(:person) { people(:admin) }
 
+  let(:current_user) { people(:member) }
+
   before do
     allow(view).to receive(:entry).and_return(person.decorate)
+    allow(view).to receive(:current_ability).and_return(Ability.new(current_user))
   end
 
   describe "ts info" do
-    it "is shown when ts_code is set on person" do
-      expect(dom).to have_css("h2", text: "Tournament Software")
+    it "is not shown when person to people without admin permission" do
+      expect(dom).not_to have_css("h2", text: "Tournament Software")
     end
 
-    it "is not shown when ts_code is missing on person" do
-      person.update!(ts_code: nil)
-      expect(dom).not_to have_css("h2", text: "Tournament Software")
+    context "as admin" do
+      let(:current_user) { people(:admin) }
+
+      it "is shown when ts_code is set on person" do
+        expect(dom).to have_css("h2", text: "Tournament Software")
+      end
+
+      it "is not shown when ts_code is missing on person" do
+        person.update!(ts_code: nil)
+        expect(dom).not_to have_css("h2", text: "Tournament Software")
+      end
     end
   end
 
