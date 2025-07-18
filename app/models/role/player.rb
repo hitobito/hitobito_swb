@@ -15,7 +15,7 @@ class Role::Player < ::Role
 
   after_create :mark_as_billed
 
-  self.permissions = [:group_read]
+  self.permissions = []
 
   private
 
