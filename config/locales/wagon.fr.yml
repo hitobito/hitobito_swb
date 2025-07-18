@@ -71,7 +71,7 @@ fr:
         many: Comissions
         other: Commissions
 
-      group/dachverband_spieler: Joueur
+      group/dachverband_spieler: Joueur.se
       group/dachverband_kader: Cadre
 
       group/dachverband_kontakte: Contacts
@@ -86,7 +86,7 @@ fr:
         many: Comités
         other: Comités
 
-      group/region_spieler: Joueur
+      group/region_spieler: Joueur.se
 
       group/region_kontakte: Contacts
 
@@ -104,7 +104,7 @@ fr:
         many: Comités
         other: Comités
 
-      group/verein_spieler: Joueur
+      group/verein_spieler: Joueur.se
 
       group/verein_kontakte: Contacts
 
