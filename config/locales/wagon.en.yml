@@ -63,7 +63,7 @@ en:
         one: Kommission
         other: Kommissionen
 
-      group/dachverband_spieler: Spieler
+      group/dachverband_spieler: "Spieler:innen"
       group/dachverband_kader: Kader
 
       group/dachverband_kontakte: Kontakte
@@ -76,7 +76,7 @@ en:
         one: Vorstand
         other: Vorstände
 
-      group/region_spieler: Spieler
+      group/region_spieler: "Spieler:innen"
 
       group/region_kontakte: Kontakte
 
@@ -92,7 +92,7 @@ en:
         one: Vorstand
         other: Vorstände
 
-      group/verein_spieler: Spieler
+      group/verein_spieler: "Spieler:innen"
 
       group/verein_kontakte: Kontakte
 
@@ -563,7 +563,7 @@ en:
         founded_on: Gründungsdatum
         yearly_budget: Jahresbudget
       person:
-        advertising: Werbung
+        advertising: Dienstleistungs-Angebote
         emergency_contact: Notfallkontakt
         international_player_id: Internationale Spieler-ID
         member_id: Member-ID
