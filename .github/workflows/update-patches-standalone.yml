@@ -50,11 +50,20 @@ jobs:
           echo "Automated change" >> file.txt
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           branch: automation/update-xyz
           title: "Automated update"
           body: "This PR was created automatically."
+
+
+      - name: Enable auto-merge for the PR
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: rebase
 
       # - name: Check out the core, which contains the shared setup action
       #   uses: actions/checkout@v4
