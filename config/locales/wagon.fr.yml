@@ -71,7 +71,7 @@ fr:
         many: Comissions
         other: Commissions
 
-      group/dachverband_spieler: "Spieler:innen"
+      group/dachverband_spieler: Joueur·euse·s
       group/dachverband_kader: Cadre
 
       group/dachverband_kontakte: Contacts
@@ -86,7 +86,7 @@ fr:
         many: Comités
         other: Comités
 
-      group/region_spieler: "Spieler:innen"
+      group/region_spieler: Joueur·euse·s
 
       group/region_kontakte: Contacts
 
@@ -104,7 +104,7 @@ fr:
         many: Comités
         other: Comités
 
-      group/verein_spieler: "Spieler:innen"
+      group/verein_spieler: Joueur·euse·s
 
       group/verein_kontakte: Contacts
 
@@ -676,7 +676,7 @@ fr:
         founded_on: Date de création
         yearly_budget: Budget annuel
       person:
-        advertising: Dienstleistungs-Angebote
+        advertising: Recevoir les offres de Swiss Badminton
         emergency_contact: Contact d'urgence
         international_player_id: Numéro international du joueur
         member_id: Numéro membre
