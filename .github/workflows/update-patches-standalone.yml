@@ -57,7 +57,6 @@ jobs:
           title: "Automated update"
           body: "This PR was created automatically."
 
-
       - name: Enable auto-merge for the PR
         if: steps.cpr.outputs.pull-request-number != ''
         uses: peter-evans/enable-pull-request-automerge@v3
