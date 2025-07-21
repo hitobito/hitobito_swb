@@ -59,11 +59,12 @@ jobs:
 
 
       - name: Run ${{ github.event.repository.name }} patch generation
-        working-directory: ${{  github.event.repository.name }}
+        working-directory: ${{ github.event.repository.name }}
         run: |
           bundle exec rake app:wagon:patches:generate
 
       - name: Create Pull Request with patch updates
+        id: cpr
         uses: peter-evans/create-pull-request@v6
         with:
           commit-message: "Updating patches"
@@ -71,3 +72,12 @@ jobs:
           title: "Update patches"
           body: "Automated patch update"
           base: master
+          path: ${{ github.event.repository.name }}
+
+
+      - name: Enable auto-merge for the PR
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: squash
