@@ -42,42 +42,54 @@ jobs:
         ports: ["11211:11211"]
 
     steps:
-      - name: Check out the core, which contains the shared setup action
-        uses: actions/checkout@v4
-        with:
-          repository: hitobito/hitobito
-          ref: master
-          path: .hitobito_core_repo
-          fetch-depth: 1
+      - uses: actions/checkout@v4
 
-      - name: "Prepare"
-        uses: ./.hitobito_core_repo/.github/actions/wagon-ci-setup
-        with:
-          assets: false
-          wagon_repository: ${{ github.event.repository.name }}
-          core_ref: master
-
-
-      - name: Run ${{ github.event.repository.name }} patch generation
-        working-directory: ${{ github.event.repository.name }}
+      - name: Make updates
         run: |
-          bundle exec rake app:wagon:patches:generate
+          echo "Automated change" >> file.txt
 
-      - name: Create Pull Request with patch updates
-        id: cpr
+      - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          commit-message: "Updating patches"
-          branch: update-patches/${{ github.run_id }}
-          title: "Update patches"
-          body: "Automated patch update"
-          base: master
-          path: ${{ github.event.repository.name }}
+          branch: automation/update-xyz
+          title: "Automated update"
+          body: "This PR was created automatically."
 
-
-      - name: Enable auto-merge for the PR
-        if: steps.cpr.outputs.pull-request-number != ''
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
-          merge-method: squash
+      # - name: Check out the core, which contains the shared setup action
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: hitobito/hitobito
+      #     ref: master
+      #     path: .hitobito_core_repo
+      #     fetch-depth: 1
+      #
+      # - name: "Prepare"
+      #   uses: ./.hitobito_core_repo/.github/actions/wagon-ci-setup
+      #   with:
+      #     assets: false
+      #     wagon_repository: ${{ github.event.repository.name }}
+      #     core_ref: master
+      #
+      # - name: Run ${{ github.event.repository.name }} patch generation
+      #   working-directory: ${{ github.event.repository.name }}
+      #   run: |
+      #     bundle exec rake app:wagon:patches:generate
+      #
+      # - name: Create Pull Request with patch updates
+      #   id: cpr
+      #   uses: peter-evans/create-pull-request@v6
+      #   with:
+      #     commit-message: "Updating patches"
+      #     branch: update-patches/${{ github.run_id }}
+      #     title: "Update patches"
+      #     body: "Automated patch update"
+      #     base: master
+      #     path: ${{ github.event.repository.name }}
+      #     add_path: ".patches.yml"
+      #
+      # - name: Enable auto-merge for the PR
+      #   if: steps.cpr.outputs.pull-request-number != ''
+      #   uses: peter-evans/enable-pull-request-automerge@v3
+      #   with:
+      #     pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+      #     merge-method: squash
