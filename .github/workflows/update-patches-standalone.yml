@@ -57,16 +57,11 @@ jobs:
           wagon_repository: ${{ github.event.repository.name }}
           core_ref: master
 
+
       - name: Run ${{ github.event.repository.name }} patch generation
         working-directory: ${{ github.event.repository.name }}
         run: |
           bundle exec rake app:wagon:patches:generate
-
-      - name: Commit patches
-        uses: stefanzweifel/git-auto-commit-action@v6
-        with:
-          file_pattern: ".patches.yml"
-          repository: ${{ github.event.repository.name }}
 
       - name: Create Pull Request with patch updates
         id: cpr
@@ -78,6 +73,7 @@ jobs:
           body: "Automated patch update"
           base: master
           path: ${{ github.event.repository.name }}
+
 
       - name: Enable auto-merge for the PR
         if: steps.cpr.outputs.pull-request-number != ''
