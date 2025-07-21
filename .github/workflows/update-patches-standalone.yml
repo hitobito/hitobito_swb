@@ -42,34 +42,26 @@ jobs:
         ports: ["11211:11211"]
 
     steps:
-      - name: Checkout repository
+      - name: Check out the core, which contains the shared setup action
         uses: actions/checkout@v4
-
-      # The following steps replace the shared wagon-ci-setup composite action.
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
+          repository: hitobito/hitobito
+          ref: master
+          path: .hitobito_core_repo
+          fetch-depth: 1
 
-      - name: Cache Ruby gems
-        uses: actions/cache@v4
+      - name: "Prepare"
+        uses: ./.hitobito_core_repo/.github/actions/wagon-ci-setup
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
+          assets: false
+          wagon_repository: ${{ github.event.repository.name }}
+          core_ref: master
 
-      - name: Install dependencies
+
+      - name: Run ${{ github.event.repository.name }} patch generation
+        working-directory: ${{  github.event.repository.name }}
         run: |
-          gem install bundler
-          bundle config set path 'vendor/bundle'
-          bundle install --jobs 4 --retry 3
-
-      # If you need asset compilation, add it here
-
-      - name: Prepare DB (if required)
-        run: |
-          bundle exec rake db:setup
+          bundle exec rake app:wagon:patches:generate
 
       - name: Generate patches
         run: |
