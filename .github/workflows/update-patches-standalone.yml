@@ -1,0 +1,85 @@
+name: "Update Patches - Standalone"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update-patches:
+    runs-on: ubuntu-22.04
+    env:
+      HEADLESS: true
+      RAILS_DB_ADAPTER: postgresql
+      RAILS_DB_HOST: 127.0.0.1
+      RAILS_DB_PORT: 5432
+      RAILS_DB_USERNAME: hitobito
+      RAILS_DB_PASSWORD: hitobito
+      RAILS_DB_NAME: hitobito_test
+      RAILS_TEST_DB_NAME: hitobito_test
+      RAILS_ENV: test
+      DISABLE_TEST_SCHEMA_MAINTENANCE: true
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: hitobito
+          POSTGRES_PASSWORD: hitobito
+          POSTGRES_DB: hitobito_test
+        ports:
+          - "5432:5432"
+        options: >-
+          --health-cmd "pg_isready -U hitobito"
+          --health-interval 10s
+          --health-timeout 10s
+          --health-retries 10
+      memcached:
+        image: memcached
+        ports: ["11211:11211"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # The following steps replace the shared wagon-ci-setup composite action.
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+
+      - name: Cache Ruby gems
+        uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle config set path 'vendor/bundle'
+          bundle install --jobs 4 --retry 3
+
+      # If you need asset compilation, add it here
+
+      - name: Prepare DB (if required)
+        run: |
+          bundle exec rake db:setup
+
+      - name: Generate patches
+        run: |
+          bundle exec rake app:wagon:patches:generate
+
+      - name: Create Pull Request with patch updates
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: update patches"
+          branch: update-patches/${{ github.run_id }}
+          title: "Update patches"
+          body: "Automated patch update"
+          base: master
