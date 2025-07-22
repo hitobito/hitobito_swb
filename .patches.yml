@@ -1,10 +1,4 @@
 ---
-- :method: :upcoming_user_events
-  :constant: Event::ListsController
-  :wagon: swb
-  :source_file: hitobito/app/controllers/event/lists_controller.rb
-  :patch_file: hitobito_swb/app/controllers/swb/event/lists_controller.rb
-  :patch_file_line: 32
 - :method: :person_attributes
   :constant: Export::Tabular::People::PeopleAddress
   :wagon: swb
