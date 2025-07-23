@@ -12,7 +12,7 @@ module Swb::Invoice::BatchCreate
 
   def add_invoice_items(invoice, recipient)
     super.then do
-      next unless fixed_fee
+      next unless invoice_list.fixed_fee
 
       invoice.recipient_address = [
         Group.find(recipient.layer_group_id).name,
