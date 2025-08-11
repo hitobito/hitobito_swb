@@ -20,12 +20,6 @@ de:
     title_event/tournament: Turnier
     title_event/external_training: Externe Ausbildung
 
-  event:
-    participations:
-      print:
-        heading_event/tournament: Anmeldung Turnier
-        heading_event/external_training: Anmeldung Externe Ausbildung
-
   invoice_lists/fixed_fee:
     active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
 
@@ -69,3 +63,7 @@ de:
         title: Demnächst stattfindende externe Ausbildungen
         explanation:
           Hier werden die kommenden externen Ausbildungen angezeigt.
+    participations:
+      print:
+        heading_event/tournament: Anmeldung Turnier
+        heading_event/external_training: Anmeldung Externe Ausbildung
