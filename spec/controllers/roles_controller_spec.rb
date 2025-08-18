@@ -53,6 +53,13 @@ describe RolesController do
     end
 
     describe "PUT#update" do
+      around do |example|
+        # roles can only be updated in an open phase
+        travel_to(Time.zone.parse("2025-08-12 14:00:00")) do
+          example.run
+        end
+      end
+
       context "as admin" do
         before { sign_in(people(:admin)) }
 
