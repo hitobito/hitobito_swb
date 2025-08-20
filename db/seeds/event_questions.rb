@@ -13,11 +13,11 @@ TOURNAMENT_CHOICES = [
   "MX / DX"
 ].join(", ")
 
-YES_NO = {
-  de: "Ja, Nein",
-  fr: "Oui, Non",
-  it: "Si, No",
-  en: "Yes, No"
+YES = {
+  de: "Ja",
+  fr: "Oui",
+  it: "Si",
+  en: "Yes"
 }
 
 Event::Question.seed_global({
@@ -39,10 +39,10 @@ Event::Question.seed_global({
   admin: false,
   disclosure: :optional,
   translation_attributes: [
-    {locale: "de", question: "Ich suche eine/n Doppelpartner:in", choices: YES_NO[:de]},
-    {locale: "fr", question: "Je cherche un.e partenaire de double", choices: YES_NO[:fr]},
-    {locale: "it", question: "Cerco un partner per il doppio", choices: YES_NO[:it]},
-    {locale: "en", question: "I am looking for a double partner", choices: YES_NO[:en]}
+    {locale: "de", question: "Ich suche eine/n Doppelpartner:in", choices: YES[:de]},
+    {locale: "fr", question: "Je cherche un.e partenaire de double", choices: YES[:fr]},
+    {locale: "it", question: "Cerco un partner per il doppio", choices: YES[:it]},
+    {locale: "en", question: "I am looking for a double partner", choices: YES[:en]}
   ]
 })
 
@@ -52,10 +52,10 @@ Event::Question.seed_global({
   admin: false,
   disclosure: :optional,
   translation_attributes: [
-    {locale: "de", question: "Ich suche eine/n Mixed-Partner:in", choices: YES_NO[:de]},
-    {locale: "fr", question: "Je cherche un.e partenaire de mixte", choices: YES_NO[:fr]},
-    {locale: "it", question: "Cerco un partner per il doppio misto", choices: YES_NO[:it]},
-    {locale: "en", question: "I am looking for a mixed-double partner", choices: YES_NO[:en]}
+    {locale: "de", question: "Ich suche eine/n Mixed-Partner:in", choices: YES[:de]},
+    {locale: "fr", question: "Je cherche un.e partenaire de mixte", choices: YES[:fr]},
+    {locale: "it", question: "Cerco un partner per il doppio misto", choices: YES[:it]},
+    {locale: "en", question: "I am looking for a mixed-double partner", choices: YES[:en]}
   ]
 })
 
