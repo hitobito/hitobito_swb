@@ -7,23 +7,23 @@
 
 namespace :swb do
   file "tmp/regions.csv" => ["data/exportLevel-Regions-19032025.xlsx"] do
-    sh "in2csv 'data/exportLevel-Regions-19032025.xlsx' > tmp/regions.csv"
+    sh "in2csv --sheet Region 'data/50820_Export_Structure_SB.xlsx' > tmp/regions.csv"
   end
 
   file "tmp/clubs.csv" => ["data/exportLevel-Clubs-19032025.xlsx"] do
-    sh "in2csv 'data/exportLevel-Clubs-19032025.xlsx' > tmp/clubs.csv"
+    sh "in2csv --sheet Club 'data/50820_Export_Structure_SB.xlsx' > tmp/clubs.csv"
   end
 
   file "tmp/mitglieder.csv" => ["data/Mitglieder_Export_Hitobito_mit_code.xlsx"] do
     # has bad lines with memberid AA9991
-    sh "in2csv 'data/Mitglieder_Export_Hitobito_mit_code.xlsx' | grep -v AA9991 > tmp/mitglieder.csv"
+    sh "in2csv 'data/250820_Export_Members_SB.xlsx | grep -v AA9991 > tmp/mitglieder.csv"
   end
 
   file "tmp/teams.csv" => ["data/Mtglieder_Export_Hitobito.xlsx"] do
-    sh "in2csv --sheet Teams_Eli   data/Export_Manschaften.xlsx  > tmp/teams_eli.csv"
-    sh "in2csv --sheet Teams_Jun   data/Export_Manschaften.xlsx  > tmp/teams_jun.csv"
-    sh "in2csv --sheet Teams_Sen   data/Export_Manschaften.xlsx  > tmp/teams_sen.csv"
-    sh "in2csv --sheet Vereinigung data/Export_Manschaften.xlsx  > tmp/teams_ver.csv"
+    sh "in2csv --sheet Teams_Eli   data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_eli.csv"
+    sh "in2csv --sheet Teams_Jun   data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_jun.csv"
+    sh "in2csv --sheet Teams_Sen   data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_sen.csv"
+    sh "in2csv --sheet Vereinigung data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_ver.csv"
   end
 
   desc "Imports and pushes local DB to INT"
