@@ -30,6 +30,8 @@ module HitobitoSwb
       Person.prepend Swb::Person
       Event::ParticipationContactData.prepend Swb::Event::ParticipationContactData
 
+      ApplicationController.include BasicAuth if Settings.basic_auth
+
       GroupsController.prepend TsModelController
       PeopleController.prepend TsModelController
       RolesController.prepend TsModelController
