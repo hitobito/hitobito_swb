@@ -124,17 +124,19 @@ module SwbImport
     self.model_class = ::Person
     self.ident_keys = [:ts_code]
 
-    @@emails = {}
+    cattr_accessor :emails, default: {}
 
     def self.reset!
-      @@emails = ::Person.where.not(email: nil).pluck(:email, :id).to_h
+      self.emails = ::Person.where.not(email: nil).pluck(:email, :id).to_h
     end
 
     def save
       return super.tap { emails[email] = id } if new_email?
 
-      model.additional_emails.build(email: email, label: "Andere")
-      model.email = nil
+      prefix, postfix = email.split("@")
+      email_with_id = "#{prefix}+#{id}@#{postfix}"
+      model.email = email_with_id
+      emails[email_with_id] = id
       super
     end
 
@@ -145,8 +147,6 @@ module SwbImport
         to_s <=> other.to_s
       end
     end
-
-    def emails = @@emails
 
     def new_email? = !emails.key?(email)
 

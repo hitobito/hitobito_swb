@@ -130,6 +130,21 @@ describe SwbImport::Entity do
       csv["Mitteilungen"] = "False"
       expect(person.newsletter).to eq false
     end
+
+    describe "emails" do
+      let(:parent) { described_class.from(csv.symbolize_keys) }
+      let(:child) { described_class.from(csv.symbolize_keys.merge(id: 2, dob: "2000-10-1")) }
+
+      it "sorting sorts ascending from dob" do
+        expect([child, parent].sort).to eq [parent, child]
+      end
+
+      it "uses plus notation for duplicate email" do
+        expect(parent.save).to eq true
+        expect(child.save).to eq true
+        expect(Person.find(child.id).email).to eq "jane+1@example.com"
+      end
+    end
   end
 
   describe SwbImport::Role do
