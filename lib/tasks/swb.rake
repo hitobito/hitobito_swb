@@ -6,23 +6,32 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 namespace :swb do
-  file "tmp/regions.csv" => ["data/exportLevel-Regions-19032025.xlsx"] do
-    sh "in2csv --sheet Region 'data/50820_Export_Structure_SB.xlsx' > tmp/regions.csv"
+  file "tmp/regions.csv" => ["data/250828_Export_Structure_SB.xlsx"] do
+    sh "in2csv --sheet Region 'data/250828_Export_Structure_SB.xlsx' > tmp/regions.csv"
   end
 
-  file "tmp/clubs.csv" => ["data/exportLevel-Clubs-19032025.xlsx"] do
-    sh "in2csv --sheet Club 'data/50820_Export_Structure_SB.xlsx' > tmp/clubs.csv"
+  file "tmp/clubs.csv" => ["data/250828_Export_Structure_SB.xlsx"] do
+    sh "in2csv --sheet Club 'data/250828_Export_Structure_SB.xlsx' > tmp/clubs.csv"
   end
 
-  file "tmp/mitglieder.csv" => ["data/Mitglieder_Export_Hitobito_mit_code.xlsx"] do
+  file "tmp/mitglieder.csv" => ["data/250828_exportmembers.xlsx"] do
     # has bad lines with memberid AA9991
-    sh "in2csv 'data/250820_Export_Members_SB.xlsx | grep -v AA9991 > tmp/mitglieder.csv"
+    sh "in2csv 'data/250828_exportmembers.xlsx' | grep -v AA9991 > tmp/mitglieder.csv"
   end
 
-  file "tmp/teams.csv" => ["data/Mtglieder_Export_Hitobito.xlsx"] do
-    sh "in2csv --sheet Teams_Eli   data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_eli.csv"
-    sh "in2csv --sheet Teams_Jun   data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_jun.csv"
-    sh "in2csv --sheet Teams_Sen   data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_sen.csv"
+  file "tmp/teams_eli.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
+    sh "in2csv --sheet Teams_Eli data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_eli.csv"
+  end
+
+  file "tmp/teams_jun.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
+    sh "in2csv --sheet Teams_Jun data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_jun.csv"
+  end
+
+  file "tmp/teams_sen.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
+    sh "in2csv --sheet Teams_Sen data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_sen.csv"
+  end
+
+  file "tmp/teams_ver.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
     sh "in2csv --sheet Vereinigung data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_ver.csv"
   end
 

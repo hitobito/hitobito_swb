@@ -133,10 +133,12 @@ module SwbImport
     def save
       return super.tap { emails[email] = id } if new_email?
 
-      prefix, postfix = email.split("@")
-      email_with_id = "#{prefix}+#{id}@#{postfix}"
-      model.email = email_with_id
-      emails[email_with_id] = id
+      if email.present?
+        prefix, postfix = email.split("@")
+        email_with_id = "#{prefix}+#{id}@#{postfix}"
+        model.email = email_with_id
+        emails[email_with_id] = id
+      end
       super
     end
 
