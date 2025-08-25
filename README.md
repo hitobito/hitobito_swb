@@ -20,7 +20,7 @@ of Swiss Badminton.
       * Geschäftsstelle
         * Geschäftsführer:in: [:layer_and_below_full, :admin, :contact_data, :approve_applications]
         * Mitglied: [:group_read]
-        * J&S Coach: [:group_read]
+        * J+S Coach: [:group_read]
         * Verantwortliche:r Antidoping: [:layer_and_below_full, :impersonation]
         * Verantwortliche:r Ausbildung: [:layer_and_below_full, :impersonation]
         * Verantwortliche:r Breitensport: [:layer_and_below_full, :impersonation]
@@ -61,10 +61,10 @@ of Swiss Badminton.
         * Gönner:in: []
         * Medien: []
         * Partner: []
-        * J&S Expert:in: []
+        * J+S Expert:in: []
     * Region < Dachverband
       * Region
-        * J&S Coach: [:group_read]
+        * J+S Coach: [:group_read]
         * Verantwortliche:r Antidoping: [:group_read]
         * Verantwortliche:r Ausbildung: [:group_read]
         * Verantwortliche:r Breitensport: [:group_read]
@@ -99,7 +99,7 @@ of Swiss Badminton.
         * Partner: []
     * Verein < Region
       * Verein
-        * J&S Coach: [:group_read]
+        * J+S Coach: [:group_read]
         * Schiedsrichter:in: [:group_read]
         * Clubtrainer:in (TS): [:group_read]
         * Nationalliga: [:group_read]
