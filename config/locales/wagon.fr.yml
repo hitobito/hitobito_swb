@@ -176,9 +176,8 @@ fr:
         other: Membres
 
       group/dachverband_geschaeftsstelle/js_coach:
-        one: "Coach J&S"
-        many: "Coachs J&S"
-        other: "Coachs J&S"
+        one: "J+S Coach"
+        other: "J+S Coaches"
 
       group/dachverband_geschaeftsstelle/umfeld:
         one: "Responsable de l’environnement de performance"
@@ -313,9 +312,8 @@ fr:
       group/dachverband_kontakte/partner: Partenaire
 
       group/dachverband_kontakte/js_experte:
-        one: Expert.e J&S
-        many: Expert.e.s J&S
-        other: Expert.e.s J&S
+        one: J+S Expert:in
+        other: J+S Expert:innen
 
       group/region/ethik:
         one: "Responsable de l'éthique"
@@ -353,9 +351,8 @@ fr:
         other: "Responsables interclub"
 
       group/region/js_coach:
-        one: "Coach J&S"
-        many: "Coachs J&S"
-        other: "Coachs J&S"
+        one: "J+S Coach"
+        other: "J+S Coaches"
 
       group/region/umfeld:
         one: "Responsable de l’environnement de performance"
@@ -494,9 +491,8 @@ fr:
         other: "Responsables interclub"
 
       group/verein/js_coach:
-        one: "Coach J&S"
-        many: "Coachs J&S"
-        other: "Coachs J&S"
+        one: "J+S Coach"
+        other: "J+S Coaches"
 
       group/verein/umfeld:
         one: "Responsable de l’environnement de performance"

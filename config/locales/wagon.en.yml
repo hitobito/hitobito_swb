@@ -151,8 +151,8 @@ en:
         other: Mitglieder
 
       group/dachverband_geschaeftsstelle/js_coach:
-        one: "J&S Coach"
-        other: "J&S Coaches"
+        one: "J+S Coach"
+        other: "J+S Coaches"
 
       group/dachverband_geschaeftsstelle/umfeld:
         one: "Verantwortliche:r Umfeld"
@@ -263,8 +263,8 @@ en:
       group/dachverband_kontakte/partner: Partner
 
       group/dachverband_kontakte/js_experte:
-        one: J&S Expert:in
-        other: J&S Expert:innen
+        one: J+S Expert:in
+        other: J+S Expert:innen
 
       group/region/ethik:
         one: "Verantwortliche:r Ethik"
@@ -295,8 +295,8 @@ en:
         other: "Verantwortliche Interclub"
 
       group/region/js_coach:
-        one: "J&S Coach"
-        other: "J&S Coaches"
+        one: "J+S Coach"
+        other: "J+S Coaches"
 
       group/region/umfeld:
         one: "Verantwortliche:r Umfeld"
@@ -409,8 +409,8 @@ en:
         other: "Verantwortliche Interclub"
 
       group/verein/js_coach:
-        one: "J&S Coach"
-        other: "J&S Coaches"
+        one: "J+S Coach"
+        other: "J+S Coaches"
 
       group/verein/umfeld:
         one: "Verantwortliche:r Umfeld"
