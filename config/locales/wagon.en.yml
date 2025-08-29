@@ -580,32 +580,30 @@ en:
     application_market:
       index:
         add_participant: "Teilnehmer:in hinzufügen"
-
+    lists:
+      tournaments:
+        title: Demnächst stattfindende Turniere
+        explanation: >
+          Hier werden Turnier von Gruppen angezeigt bei denen du Mitglied bist. Andere Tourniere findest du bei den organisierenden Gruppen.
+      external_trainings:
+        title: Demnächst stattfindende externe Ausbildungen
+        explanation:
+          Hier werden die kommenden externen Ausbildungen angezeigt.
+    participations:
+      print:
+        heading_event/tournament: Anmeldung Turnier
+        heading_event/external_training: Anmeldung Externe Ausbildung
   events:
     application_fields:
       caption_signature: "Teilnehmer:innen müssen die Anmeldung unterschreiben"
+    fields_swb:
+      caption_external_link: "Externer Anmeldelink mit Protokol (z.b. http://www.example.com/kurs123)"
     form:
       caption_requires_approval: "Der/Die Gruppenleiter:in wird informiert und muss die Anmeldung bestätigen."
-
-  mailing_lists:
-    form:
-      caption_anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
-
-  mailing_list_decorator:
-    anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
-    anyone_may_not_post: "Beliebige Absender:innen dürfen <strong>nicht</strong> auf die Mailingliste schreiben"
-
-  people:
-    tabs:
-      colleagues: "Mitarbeiter:innen"
-
-  subscriber:
-    exclude_person:
-      form:
-        exclude_subscriber: "Abonnent:in ausschliessen"
-
-  subscriber/exclude_person:
-    failure: "%{subscriber} ist nicht Abonnent:in"
+    global:
+      link:
+        add_event/tournament: Turnier hinzufügen
+        add_event/external_training: Externe Ausbildung hinzufügen
 
   fixed_fees:
     regions:
@@ -631,3 +629,62 @@ en:
       lizenz_no_raking: Lizenzen NO ranking
       lizenz_plus_junior: "Lizenzen Plus Junior:innen (U19)"
       vereinigung: "Vereinigungsspieler:innen"
+
+  invoice_lists/fixed_fee:
+    active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
+
+  global:
+    below: "unter %{value}"
+    above: "über %{value}"
+    title_event/tournament: Turnier
+    title_event/external_training: Externe Ausbildung
+
+  groups:
+    aside_swb:
+      title_teams: Teams
+    actions_show_swb:
+      invoice_button_dropdown: Verbandsrechnungen
+      invoice_button_regions: Regionen
+      invoice_button_teams: Teams
+      invoice_button_roles: Spieler
+
+  mailing_lists:
+    form:
+      caption_anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
+
+  mailing_list_decorator:
+    anyone_may_post: "Beliebige Absender:innen dürfen auf die Mailingliste schreiben"
+    anyone_may_not_post: "Beliebige Absender:innen dürfen <strong>nicht</strong> auf die Mailingliste schreiben"
+
+  navigation:
+    tournaments: Turniere
+    external_trainings: Externe Ausbildungen
+
+  people:
+    fields_swb:
+      label_email_settings: Mailversand
+      caption_newsletter: Ich möchte den Newsletter erhalten
+      caption_advertising: Ich möchte Dienstleistungs-Angebote erhalten
+    tabs:
+      colleagues: "Mitarbeiter:innen"
+
+  subscriber:
+    exclude_person:
+      form:
+        exclude_subscriber: "Abonnent:in ausschliessen"
+
+  subscriber/exclude_person:
+    failure: "%{subscriber} ist nicht Abonnent:in"
+
+  shared:
+    ts_info:
+      title: Tournament Software
+      last_synced_at: Letzte Aktualisierung
+      levels:
+        info: erfolgreich
+        error: fehlgeschlagen
+        pending: wartet
+
+  time:
+    formats:
+      date_time_without_year: "%d.%m %H:%M"

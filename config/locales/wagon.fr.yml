@@ -71,7 +71,7 @@ fr:
         many: Comissions
         other: Commissions
 
-      group/dachverband_spieler: Joueur·euse·s
+      group/dachverband_spieler: "Joueur·euse·s"
       group/dachverband_kader: Cadre
 
       group/dachverband_kontakte: Contacts
@@ -86,7 +86,7 @@ fr:
         many: Comités
         other: Comités
 
-      group/region_spieler: Joueur·euse·s
+      group/region_spieler: "Joueur·euse·s"
 
       group/region_kontakte: Contacts
 
@@ -104,7 +104,7 @@ fr:
         many: Comités
         other: Comités
 
-      group/verein_spieler: Joueur·euse·s
+      group/verein_spieler: "Joueur·euse·s"
 
       group/verein_kontakte: Contacts
 
@@ -667,7 +667,7 @@ fr:
           landline: Téléphone fixe
           mobile: Téléphone portable
       event/role:
-        remove_participant_role: Supprimer le rôle de participant.e
+        remove_participant_role: "Supprimer le rôle de participant.e"
       group:
         founded_on: Date de création
         yearly_budget: Budget annuel
@@ -683,38 +683,36 @@ fr:
         ts_code: Code TS
         ts_last_sync: Dernière actualisation TS
       service_token:
-        mailing_lists: Abonné.e.s aux listes de diffusions
+        mailing_lists: "Abonné.e.s aux listes de diffusions"
 
   event:
     application_market:
       index:
-        add_participant: Ajouter un.e participant.e
-
+        add_participant: "Ajouter un.e participant.e"
+    lists:
+      tournaments:
+        title: Demnächst stattfindende Turniere
+        explanation: >
+          Hier werden Turnier von Gruppen angezeigt bei denen du Mitglied bist. Andere Tourniere findest du bei den organisierenden Gruppen.
+      external_trainings:
+        title: Demnächst stattfindende externe Ausbildungen
+        explanation:
+          Hier werden die kommenden externen Ausbildungen angezeigt.
+    participations:
+      print:
+        heading_event/tournament: Anmeldung Turnier
+        heading_event/external_training: Anmeldung Externe Ausbildung
   events:
     application_fields:
-      caption_signature: Les participant.e.s doivent signer l'inscription.
+      caption_signature: "Les participant.e.s doivent signer l'inscription."
+    fields_swb:
+      caption_external_link: "Externer Anmeldelink mit Protokol (z.b. http://www.example.com/kurs123)"
     form:
       caption_requires_approval: "Le/la responsable de groupe est informé.e et doit confirmer l'inscription."
-
-  mailing_lists:
-    form:
-      caption_anyone_may_post: "N’importe quel.le expéditeur.trice peut écrire sur la liste de diffusion."
-
-  mailing_list_decorator:
-    anyone_may_post: "Tout.e expéditeur.trice peut écrire à la liste de diffusion."
-    anyone_may_not_post: "Seules les personnes autorisées peuvent écrire à la liste de diffusion."
-
-  people:
-    tabs:
-      colleagues: Collaborateur.trice.s
-
-  subscriber:
-    exclude_person:
-      form:
-        exclude_subscriber: "Exclure un.e abonné.e"
-
-  subscriber/exclude_person:
-    failure: "%{subscriber} n'est pas abonné.e"
+    global:
+      link:
+        add_event/tournament: Turnier hinzufügen
+        add_event/external_training: Externe Ausbildung hinzufügen
 
   fixed_fees:
     regions:
@@ -733,10 +731,69 @@ fr:
     roles:
       aktiv: Membres actifs
       passiv: Membres passifs
-      junior_u15: Junior.e.s (jusqu'à U15)
-      junior_u19: Junior.e.s (U17-U19)
+      junior_u15: "Junior.e.s (jusqu'à U15)"
+      junior_u19: "Junior.e.s (U17-U19)"
       lizenz: Licences
       lizenz_plus: Licences Plus
       lizenz_no_raking: Licences NO ranking
-      lizenz_plus_junior: Licences plus junior.e.s (U19)
-      vereinigung: Joueur.se.s d'une union
+      lizenz_plus_junior: "Licences plus junior.e.s (U19)"
+      vereinigung: "Joueur.se.s d'une union"
+
+  invoice_lists/fixed_fee:
+    active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
+
+  global:
+    below: "unter %{value}"
+    above: "über %{value}"
+    title_event/tournament: Turnier
+    title_event/external_training: Externe Ausbildung
+
+  groups:
+    aside_swb:
+      title_teams: Teams
+    actions_show_swb:
+      invoice_button_dropdown: Verbandsrechnungen
+      invoice_button_regions: Regionen
+      invoice_button_teams: Teams
+      invoice_button_roles: Spieler
+
+  mailing_lists:
+    form:
+      caption_anyone_may_post: "N’importe quel.le expéditeur.trice peut écrire sur la liste de diffusion."
+
+  mailing_list_decorator:
+    anyone_may_post: "Tout.e expéditeur.trice peut écrire à la liste de diffusion."
+    anyone_may_not_post: "Seules les personnes autorisées peuvent écrire à la liste de diffusion."
+
+  navigation:
+    tournaments: Turniere
+    external_trainings: Externe Ausbildungen
+
+  people:
+    fields_swb:
+      label_email_settings: Mailversand
+      caption_newsletter: Ich möchte den Newsletter erhalten
+      caption_advertising: Ich möchte Dienstleistungs-Angebote erhalten
+    tabs:
+      colleagues: "Collaborateur.trice.s"
+
+  subscriber:
+    exclude_person:
+      form:
+        exclude_subscriber: "Exclure un.e abonné.e"
+
+  subscriber/exclude_person:
+    failure: "%{subscriber} n'est pas abonné.e"
+
+  shared:
+    ts_info:
+      title: Tournament Software
+      last_synced_at: Letzte Aktualisierung
+      levels:
+        info: erfolgreich
+        error: fehlgeschlagen
+        pending: wartet
+
+  time:
+    formats:
+      date_time_without_year: "%d.%m %H:%M"
