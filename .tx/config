@@ -6,9 +6,3 @@ file_filter = config/locales/wagon.<lang>.yml
 source_file = config/locales/wagon.de.yml
 source_lang = de
 type        = YML
-
-[o:hitobito:p:hitobito_swb:r:views]
-file_filter = config/locales/views.<lang>.yml
-source_file = config/locales/views.de.yml
-source_lang = de
-type        = YML
