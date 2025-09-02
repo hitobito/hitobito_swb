@@ -12,6 +12,7 @@ class Event::ExternalTraining < Event
 
   self.role_types = []
   self.used_attributes = [:name, :description, :external_link]
+  self.used_attributes -= [:guest_limit]
 
   validates :external_link, presence: true
   validate :assert_external_link, if: -> { external_link_changed? && external_link.present? }
