@@ -4,9 +4,7 @@
 - # https://github.com/hitobito/hitobito_swb.
 
 = render 'contactable/address_fields', f: fields
-= fields.labeled(:gender) do
-  - (Person::GENDERS + ['']).each do |key|
-    = fields.inline_radio_button(:gender, key, Person.new(gender: key).gender_label)
+= render 'people/gender_field', f: fields, entry: fields.object
 = fields.labeled_string_field(:birthday,
                          help_inline: t('people.fields.format_birthday'),
                          class: 'col-2 form-control form-control-sm d-inline')
