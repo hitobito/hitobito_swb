@@ -14,7 +14,7 @@ fr:
           requires_phone_number: Un numéro de téléphone doit être enregistré.
           attributes:
             birthday:
-              invalidates_player_role: n'est pas valable pour les joueurs ayant ces rôles
+              invalidates_player_role: n'est pas valable pour les joueur.euse.s ayant ces rôles
         event/external_training:
           attributes:
             external_link:
@@ -26,8 +26,8 @@ fr:
               must_be_born_before: "doit être née le ou avant le %{date}."
               too_young: est trop jeune
               too_old: est trop vieux
-              already_player_of_that_type: a déjà un rôle de joueur dans ce groupe
-              already_player_in_group: A déjà un rôle de joueur dans ce groupe
+              already_player_of_that_type: a déjà un rôle de joueur.euse dans ce groupe
+              already_player_in_group: A déjà un rôle de joueur.euse dans ce groupe
 
     models:
       event/external_training:
@@ -71,7 +71,7 @@ fr:
         many: Comissions
         other: Commissions
 
-      group/dachverband_spieler: "Joueur·euse·s"
+      group/dachverband_spieler: "Joueur.euse.s"
       group/dachverband_kader: Cadre
 
       group/dachverband_kontakte: Contacts
@@ -86,7 +86,7 @@ fr:
         many: Comités
         other: Comités
 
-      group/region_spieler: "Joueur·euse·s"
+      group/region_spieler: "Joueur.euse.s"
 
       group/region_kontakte: Contacts
 
@@ -104,7 +104,7 @@ fr:
         many: Comités
         other: Comités
 
-      group/verein_spieler: "Joueur·euse·s"
+      group/verein_spieler: "Joueur.euse.s"
 
       group/verein_kontakte: Contacts
 
@@ -251,7 +251,7 @@ fr:
       group/dachverband_spieler/passivmitglied:
         one: Membre passif
         many: Membres passifs
-        other: Membres passifs
+        other: Membre passif
 
       group/dachverband_spieler/junior_u15:
         one: "Junior.e (jusqu'à U15)"
@@ -425,7 +425,7 @@ fr:
       group/region_spieler/passivmitglied:
         one: Membre passif
         many: Membres passifs
-        other: Membres passifs
+        other: Membre passif
 
       group/region_spieler/junior_u15:
         one: "Junior.e (jusqu'à U15)"
@@ -575,7 +575,7 @@ fr:
       group/verein_spieler/passivmitglied:
         one: Membres passifs
         many: Membres actifs
-        other: Membres actifs
+        other: Membre passif
 
       group/verein_spieler/junior_u15:
         one: "Junior.e (jusqu'à U15)"
@@ -678,7 +678,7 @@ fr:
       person:
         advertising: Recevoir les offres de Swiss Badminton
         emergency_contact: Contact d'urgence
-        international_player_id: Numéro international du joueur
+        international_player_id: Numéro international du joueur.euse
         member_id: Numéro membre
         nationality: Nationalité selon le passeport / carte d'identité
         newsletter: Newsletter
@@ -734,7 +734,7 @@ fr:
       team_vereinigung: Union
     roles:
       aktiv: Membres actifs
-      passiv: Membres passifs
+      passiv: Membres passif
       junior_u15: "Junior.e.s (jusqu'à U15)"
       junior_u19: "Junior.e.s (U17-U19)"
       lizenz: Licences
