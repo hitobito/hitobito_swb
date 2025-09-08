@@ -176,8 +176,9 @@ fr:
         other: Membres
 
       group/dachverband_geschaeftsstelle/js_coach:
-        one: "J+S Coach"
-        other: "J+S Coaches"
+        one: "Coach J+S"
+        many: "Coachs J+S"
+        other: "Coachs J+S"
 
       group/dachverband_geschaeftsstelle/umfeld:
         one: "Responsable de l’environnement de performance"
@@ -312,8 +313,9 @@ fr:
       group/dachverband_kontakte/partner: Partenaire
 
       group/dachverband_kontakte/js_experte:
-        one: J+S Expert:in
-        other: J+S Expert:innen
+        one: Expert(e) J+S
+        many: Expert(e)s J+S
+        other: Expert.e.s J+S
 
       group/region/ethik:
         one: "Responsable de l'éthique"
@@ -351,8 +353,9 @@ fr:
         other: "Responsables interclub"
 
       group/region/js_coach:
-        one: "J+S Coach"
-        other: "J+S Coaches"
+        one: "Coach J+S"
+        many: "Coachs J+S"
+        other: "Coachs J+S"
 
       group/region/umfeld:
         one: "Responsable de l’environnement de performance"
@@ -491,8 +494,9 @@ fr:
         other: "Responsables interclub"
 
       group/verein/js_coach:
-        one: "J+S Coach"
-        other: "J+S Coaches"
+        one: "Coach J+S"
+        many: "Coachs J+S"
+        other: "Coachs J+S"
 
       group/verein/umfeld:
         one: "Responsable de l’environnement de performance"
@@ -691,28 +695,28 @@ fr:
         add_participant: "Ajouter un.e participant.e"
     lists:
       tournaments:
-        title: Demnächst stattfindende Turniere
+        title: Tournois à venir
         explanation: >
-          Hier werden Turnier von Gruppen angezeigt bei denen du Mitglied bist. Andere Tourniere findest du bei den organisierenden Gruppen.
+          Les tournois des groupes dont tu es membre sont affichés ici. Tu trouveras d'autres tournois dans les groupes organisateurs.
       external_trainings:
-        title: Demnächst stattfindende externe Ausbildungen
+        title: Formations externes à venir
         explanation:
-          Hier werden die kommenden externen Ausbildungen angezeigt.
+          Les formations externes à venir sont affichées ici.
     participations:
       print:
-        heading_event/tournament: Anmeldung Turnier
-        heading_event/external_training: Anmeldung Externe Ausbildung
+        heading_event/tournament: Inscription au tournoi
+        heading_event/external_training: Inscription formation externe
   events:
     application_fields:
       caption_signature: "Les participant.e.s doivent signer l'inscription."
     fields_swb:
-      caption_external_link: "Externer Anmeldelink mit Protokol (z.b. http://www.example.com/kurs123)"
+      caption_external_link: "Lien de connexion externe avec procès-verbal (p. ex. http://www.example.com/kurs123)"
     form:
       caption_requires_approval: "Le/la responsable de groupe est informé.e et doit confirmer l'inscription."
     global:
       link:
-        add_event/tournament: Turnier hinzufügen
-        add_event/external_training: Externe Ausbildung hinzufügen
+        add_event/tournament: Ajouter un tournoi
+        add_event/external_training: Ajouter une formation externe
 
   fixed_fees:
     regions:
@@ -740,22 +744,22 @@ fr:
       vereinigung: "Joueur.se.s d'une union"
 
   invoice_lists/fixed_fee:
-    active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
+    active_billing_period_required: Aucune période de facturation n'est actuellement active
 
   global:
-    below: "unter %{value}"
-    above: "über %{value}"
-    title_event/tournament: Turnier
-    title_event/external_training: Externe Ausbildung
+    below: "sous %{value}"
+    above: "sur %{value}"
+    title_event/tournament: Tournoi
+    title_event/external_training: Formation externe
 
   groups:
     aside_swb:
-      title_teams: Teams
+      title_teams: Équipes
     actions_show_swb:
-      invoice_button_dropdown: Verbandsrechnungen
-      invoice_button_regions: Regionen
-      invoice_button_teams: Teams
-      invoice_button_roles: Spieler
+      invoice_button_dropdown: Factures de la fédération
+      invoice_button_regions: Régions
+      invoice_button_teams: Équipes
+      invoice_button_roles: Joueur
 
   mailing_lists:
     form:
@@ -766,14 +770,14 @@ fr:
     anyone_may_not_post: "Seules les personnes autorisées peuvent écrire à la liste de diffusion."
 
   navigation:
-    tournaments: Turniere
-    external_trainings: Externe Ausbildungen
+    tournaments: Tournois
+    external_trainings: Formations externes
 
   people:
     fields_swb:
-      label_email_settings: Mailversand
-      caption_newsletter: Ich möchte den Newsletter erhalten
-      caption_advertising: Ich möchte Dienstleistungs-Angebote erhalten
+      label_email_settings: Envoi de mail
+      caption_newsletter: Je souhaite recevoir la newsletter.
+      caption_advertising: Je souhaite recevoir des offres de partenaires.
     tabs:
       colleagues: "Collaborateur.trice.s"
 
@@ -788,11 +792,11 @@ fr:
   shared:
     ts_info:
       title: Tournament Software
-      last_synced_at: Letzte Aktualisierung
+      last_synced_at: Dernière mise à jour
       levels:
-        info: erfolgreich
-        error: fehlgeschlagen
-        pending: wartet
+        info: avec succès
+        error: a échoué
+        pending: attend
 
   time:
     formats:
