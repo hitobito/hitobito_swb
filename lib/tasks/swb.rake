@@ -19,6 +19,10 @@ namespace :swb do
     sh "in2csv 'data/250828_exportmembers.xlsx' | grep -v AA9991 > tmp/mitglieder.csv"
   end
 
+  file "tmp/mitglieder_without_roles.csv" => ["data/250907_Export_INACTIVE_Members_SB.xlsx"] do
+    sh "in2csv 'data/250907_Export_INACTIVE_Members_SB.xlsx' > tmp/mitglieder_without_roles.csv"
+  end
+
   file "tmp/teams_eli.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
     sh "in2csv --sheet Teams_Eli data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_eli.csv"
   end
@@ -44,6 +48,7 @@ namespace :swb do
 
   required_csv = [
     "tmp/mitglieder.csv",
+    "tmp/mitglieder_without_roles.csv",
     "tmp/regions.csv",
     "tmp/clubs.csv",
     "tmp/teams_eli.csv",
@@ -68,6 +73,10 @@ namespace :swb do
     SwbImport::Importer.new(SwbImport::TeamJun, :teams_jun).run
     SwbImport::Importer.new(SwbImport::TeamSen, :teams_sen).run
     SwbImport::Importer.new(SwbImport::Team, :teams_ver).run
+  end
+
+  task import_mitglieder_without_roles: ["tmp/mitglieder_without_roles.csv", :environment] do
+    SwbImport::Runner.new.import_mitglieder_without_roles
   end
 
   namespace :ts do

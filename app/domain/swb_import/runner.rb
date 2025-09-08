@@ -25,6 +25,7 @@ module SwbImport
       disable_zip_code_validation
 
       import(Person, from: :mitglieder, sort: true)
+      import(Person, from: :mitglieder_without_roles, sort: true)
       create_search_columns
 
       import(Region, from: :regions)
@@ -41,7 +42,13 @@ module SwbImport
       seed_static_people
     end
 
-    # private
+    def import_mitglieder_without_roles
+      configure_truemail
+      disable_zip_code_validation
+      import(Person, from: :mitglieder_without_roles, sort: true)
+    end
+
+    private
 
     def reset_db
       truncate_tables
@@ -57,7 +64,7 @@ module SwbImport
 
     def disable_seed_fu_output = SeedFu.quiet = true
 
-    def import(importer_class, from:, sort: false) = Importer.new(importer_class, from, lines:, log_dir:, index: @index += 1, sort:).run
+    def import(importer_class, from:, sort: false, lines: nil) = Importer.new(importer_class, from, lines:, log_dir:, index: @index += 2, sort:).run
 
     def build_log_dir = Pathname("#{wagon_dir}/log/#{Time.zone.now.strftime("%m-%d-%H_%M_%S")}").tap do |path|
       FileUtils.mkdir_p(path)
