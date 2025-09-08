@@ -79,7 +79,7 @@ module SwbImport
     [:Language, :language, :parse_language],
     [:phone, :phone, :parse_phone_number],
     [:mobile, :mobile, :parse_phone_number],
-    [:Mitteilungen, :newsletter, ->(v) { v.downcase }]
+    [:Mitteilungen, :newsletter, ->(v) { v ? v.downcase : "false" }]
   ]
 
   ROLE_MAPPINGS = [

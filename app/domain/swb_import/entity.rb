@@ -124,10 +124,10 @@ module SwbImport
     self.model_class = ::Person
     self.ident_keys = [:ts_code]
 
-    cattr_accessor :emails, default: {}
+    cattr_accessor :emails
 
     def self.reset!
-      self.emails = ::Person.where.not(email: nil).pluck(:email, :id).to_h
+      self.emails ||= ::Person.where.not(email: nil).pluck(:email, :id).to_h
     end
 
     def save
