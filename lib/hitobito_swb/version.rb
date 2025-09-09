@@ -6,5 +6,5 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 module HitobitoSwb
-  VERSION = "2.6.18"
+  VERSION = "2.6.19"
 end
