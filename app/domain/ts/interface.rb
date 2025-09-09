@@ -34,6 +34,10 @@ class Ts::Interface
     request(:put, code, ts_model.to_xml)
   end
 
+  def client
+    @client ||= Ts::Client.new(ts_model.class, nesting: nesting)
+  end
+
   private
 
   def ts_code? = model.ts_code.present?
@@ -62,9 +66,5 @@ class Ts::Interface
       METHOD: #{method}
       #{args.join(", ")}
     TEXT
-  end
-
-  def client
-    @client ||= Ts::Client.new(ts_model.class, nesting: nesting)
   end
 end

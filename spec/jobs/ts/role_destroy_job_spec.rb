@@ -13,7 +13,7 @@ describe Ts::RoleDestroyJob do
   let(:interface) { instance_double(Ts::Interface) }
   let(:attrs) { %w[id code group_id person_id start_on] }
 
-  it "uses interface to post" do
+  it "uses interface to post with persisted" do
     expect(Ts::Interface).to receive(:new) do |role_proxy, args|
       expect(args[:nesting]).to eq person.ts_model
       expect(role_proxy).to be_persisted
@@ -23,7 +23,7 @@ describe Ts::RoleDestroyJob do
     described_class.new(role.ts_destroy_values).perform
   end
 
-  it "uses interface to post with non persisted model" do
+  it "uses interface to post with non persisted model if model no longer exists" do
     expect(Ts::Interface).to receive(:new) do |role_proxy, args|
       expect(args[:nesting]).to eq person.ts_model
       expect(role_proxy).not_to be_persisted
