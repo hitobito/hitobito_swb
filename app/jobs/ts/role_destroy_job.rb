@@ -8,13 +8,17 @@
 class Ts::RoleDestroyJob < BaseJob
   self.parameters = [:attrs]
 
-  attr_reader :attrs, :role
+  attr_reader :attrs
 
   def initialize(attrs)
     @attrs = attrs
-    @role = Role.with_inactive.find_by(id: attrs[:id]) || attrs[:type].constantize.new(attrs)
-    @role.attributes = attrs.except(:id)
   end
 
   def perform = (role.ts_interface_put if role.ts_code)
+
+  def role
+    @role ||= (Role.with_inactive.find_by(id: attrs[:id]) || attrs[:type].constantize.new(attrs)).tap do |r|
+      r.attributes = attrs
+    end
+  end
 end

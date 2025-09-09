@@ -17,7 +17,7 @@ describe Ts::RoleDestroyJob do
     expect(Ts::Interface).to receive(:new) do |role_proxy, args|
       expect(args[:nesting]).to eq person.ts_model
       expect(role_proxy).to be_persisted
-      expect(role_proxy.attributes.compact_blank.symbolize_keys).to include(role.ts_destroy_values)
+      expect(role_proxy.attributes.symbolize_keys).to include(role.ts_destroy_values)
     end.and_return(interface)
     expect(interface).to receive(:put)
     described_class.new(role.ts_destroy_values).perform
@@ -27,7 +27,7 @@ describe Ts::RoleDestroyJob do
     expect(Ts::Interface).to receive(:new) do |role_proxy, args|
       expect(args[:nesting]).to eq person.ts_model
       expect(role_proxy).not_to be_persisted
-      expect(role_proxy.attributes.compact_blank.symbolize_keys).to include(role.ts_destroy_values)
+      expect(role_proxy.attributes.symbolize_keys).to include(role.ts_destroy_values)
     end.and_return(interface)
     expect(interface).to receive(:put)
     destroy_values = role.ts_destroy_values
@@ -39,5 +39,12 @@ describe Ts::RoleDestroyJob do
     role.ts_code = nil
     expect(Ts::Interface).not_to receive(:new)
     described_class.new(role.ts_destroy_values).perform
+  end
+
+  it "properly populates role" do
+    job = described_class.new(role.ts_destroy_values).enqueue!
+    role_in_job = job.reload.payload_object.role
+    expect(role_in_job).to be_present
+    expect(role_in_job.attributes.symbolize_keys).to include(role.ts_destroy_values)
   end
 end
