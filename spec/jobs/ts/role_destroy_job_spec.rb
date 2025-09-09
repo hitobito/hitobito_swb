@@ -13,13 +13,26 @@ describe Ts::RoleDestroyJob do
   let(:interface) { instance_double(Ts::Interface) }
   let(:attrs) { %w[id code group_id person_id start_on] }
 
-  it "uses interface to post" do
+  it "uses interface to post with persisted" do
     expect(Ts::Interface).to receive(:new) do |role_proxy, args|
       expect(args[:nesting]).to eq person.ts_model
-      expect(role_proxy.attributes.compact_blank.symbolize_keys).to eq role.ts_destroy_values
+      expect(role_proxy).to be_persisted
+      expect(role_proxy.attributes.compact_blank.symbolize_keys).to include(role.ts_destroy_values)
     end.and_return(interface)
     expect(interface).to receive(:put)
     described_class.new(role.ts_destroy_values).perform
+  end
+
+  it "uses interface to post with non persisted model if model no longer exists" do
+    expect(Ts::Interface).to receive(:new) do |role_proxy, args|
+      expect(args[:nesting]).to eq person.ts_model
+      expect(role_proxy).not_to be_persisted
+      expect(role_proxy.attributes.compact_blank.symbolize_keys).to include(role.ts_destroy_values)
+    end.and_return(interface)
+    expect(interface).to receive(:put)
+    destroy_values = role.ts_destroy_values
+    Role.where(id: role.id).delete_all
+    described_class.new(destroy_values).perform
   end
 
   it "noops when role has no ts_code set" do
