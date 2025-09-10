@@ -31,8 +31,8 @@ it:
 
     models:
       event/external_training:
-        one: Externe Ausbildung
-        other: Externe Ausbildungen
+        one: Ausbildung
+        other: Ausbildungen
       event/tournament:
         one: Turnier
         other: Turniere
@@ -592,7 +592,7 @@ it:
     participations:
       print:
         heading_event/tournament: Anmeldung Turnier
-        heading_event/external_training: Anmeldung Externe Ausbildung
+        heading_event/external_training: Anmeldung Ausbildung
   events:
     application_fields:
       caption_signature: "Teilnehmer:innen müssen die Anmeldung unterschreiben"
@@ -603,7 +603,7 @@ it:
     global:
       link:
         add_event/tournament: Turnier hinzufügen
-        add_event/external_training: Externe Ausbildung hinzufügen
+        add_event/external_training: Ausbildung hinzufügen
 
   fixed_fees:
     regions:
@@ -637,7 +637,7 @@ it:
     below: "unter %{value}"
     above: "über %{value}"
     title_event/tournament: Turnier
-    title_event/external_training: Externe Ausbildung
+    title_event/external_training: Ausbildung
 
   groups:
     aside_swb:
@@ -658,7 +658,7 @@ it:
 
   navigation:
     tournaments: Turniere
-    external_trainings: Externe Ausbildungen
+    external_trainings: Ausbildungen
 
   people:
     fields_swb:
