@@ -10,24 +10,24 @@ class Group::VereinVorstand < ::Group
 
   ### ROLES
 
-  class Praesident < ::Role
-    self.permissions = [:layer_full, :contact_data]
-  end
-
-  class Vizepraesident < ::Role
-    self.permissions = [:layer_full, :contact_data]
+  class Administrator < ::Role
+    self.permissions = [:layer_full, :finance]
   end
 
   class Finanzen < ::Role
-    self.permissions = [:layer_read, :contact_data, :finance]
+    self.permissions = [:layer_read, :finance]
   end
 
-  class Administrator < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data, :finance]
+  class Praesident < ::Role
+    self.permissions = [:group_read, :players_group_read]
+  end
+
+  class Vizepraesident < ::Role
+    self.permissions = [:group_read, :players_group_read]
   end
 
   class Mitglied < ::Role
-    self.permissions = [:layer_full, :contact_data]
+    self.permissions = [:group_read, :players_group_read]
   end
 
   roles Praesident, Vizepraesident, Finanzen, Mitglied, Administrator

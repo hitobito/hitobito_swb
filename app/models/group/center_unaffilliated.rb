@@ -11,7 +11,7 @@ class Group::CenterUnaffilliated < ::Group
   ### ROLES
 
   class Direktion < ::Role
-    self.permissions = [:group_full, :contact_data]
+    self.permissions = [:group_full]
   end
 
   roles Direktion

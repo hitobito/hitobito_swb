@@ -94,8 +94,15 @@ module HitobitoSwb
 
       Person::FILTER_ATTRS << [:nationality, :country_select] << [:newsletter] << [:advertising]
 
+      # Abilities
+      Role::Types::Permissions << :players_group_read
+      Role::PermissionImplicationsForGroups[:players_group_read] = {
+        group_read: [Group::VereinSpieler, Group::RegionSpieler]
+      }
+
       Ability.store.register BillingPeriodAbility
 
+      # Jobs
       JobManager.wagon_jobs += [
         Roles::PromoterJob
       ]

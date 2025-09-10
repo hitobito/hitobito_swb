@@ -10,20 +10,20 @@ class Group::RegionVorstand < ::Group
 
   ### ROLES
 
+  class Administrator < ::Role
+    self.permissions = [:layer_and_below_full, :finance]
+  end
+
+  class Finanzen < ::Role
+    self.permissions = [:layer_and_below_read, :finance]
+  end
+
   class Praesident < ::Role
     self.permissions = [:layer_and_below_read]
   end
 
   class Vizepraesident < ::Role
     self.permissions = [:layer_and_below_read]
-  end
-
-  class Administrator < ::Role
-    self.permissions = [:layer_and_below_full]
-  end
-
-  class Finanzen < ::Role
-    self.permissions = [:layer_and_below_read, :contact_data, :finance]
   end
 
   class Mitglied < ::Role

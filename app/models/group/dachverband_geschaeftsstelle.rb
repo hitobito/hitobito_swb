@@ -13,7 +13,7 @@ class Group::DachverbandGeschaeftsstelle < ::Group
   self.event_types = []
 
   class Geschaeftsfuehrer < ::Role
-    self.permissions = [:layer_and_below_full, :admin, :contact_data, :approve_applications]
+    self.permissions = [:layer_and_below_full, :admin, :approve_applications]
   end
 
   class Mitglied < ::Role
@@ -25,7 +25,7 @@ class Group::DachverbandGeschaeftsstelle < ::Group
   end
 
   class Interclub < ::Role
-    self.permissions = [:layer_and_below_full, :contact_data, :impersonation]
+    self.permissions = [:layer_and_below_full, :impersonation]
   end
 
   class EventTurnier < ::Role
