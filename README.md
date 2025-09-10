@@ -5,7 +5,8 @@ of Swiss Badminton.
 
 ## Additional Features
 
-- Updates certain Person, Groups and Roles to [TournamentSoftware](https://www.tournamentsoftware.com/)
+- Imports via CSV files [Import](./doc/import.md)
+- Updates certain Person, Groups and Roles to [TournamentSoftware](./doc/tournament_software.md)
 
 ## SWB Organization Hierarchy
 
@@ -14,11 +15,11 @@ of Swiss Badminton.
       * Dachverband
         * Administrator:in: [:admin, :layer_and_below_full, :impersonation]
       * Vorstand
-        * Präsident:in: [:layer_full, :contact_data]
-        * Vizepräsident:in: [:layer_full, :contact_data]
-        * Vorstandsmitglied: [:layer_full, :contact_data]
+        * Präsident:in: [:layer_full]
+        * Vizepräsident:in: [:layer_full]
+        * Vorstandsmitglied: [:layer_full]
       * Geschäftsstelle
-        * Geschäftsführer:in: [:layer_and_below_full, :admin, :contact_data, :approve_applications]
+        * Geschäftsführer:in: [:layer_and_below_full, :admin, :approve_applications]
         * Mitglied: [:group_read]
         * J+S Coach: [:group_read]
         * Verantwortliche:r Antidoping: [:layer_and_below_full, :impersonation]
@@ -28,7 +29,7 @@ of Swiss Badminton.
         * Verantwortliche:r Ethik: [:layer_and_below_full, :impersonation]
         * Verantwortliche:r Event/Turnier: [:layer_and_below_full, :impersonation]
         * Verantwortliche:r Finanzen: [:layer_and_below_full, :impersonation, :finance]
-        * Verantwortliche:r Interclub (TS): [:layer_and_below_full, :contact_data, :impersonation]
+        * Verantwortliche:r Interclub (TS): [:layer_and_below_full, :impersonation]
         * Verantwortliche:r Kommunikation: [:layer_and_below_full, :impersonation]
         * Verantwortliche:r Leistungssport: [:layer_and_below_full, :impersonation]
         * Verantwortliche:r Marketing: [:layer_and_below_full, :impersonation]
@@ -71,7 +72,7 @@ of Swiss Badminton.
         * Verantwortliche:r Club Management: [:group_read]
         * Verantwortliche:r Ethik: [:group_read]
         * Verantwortliche:r Event/Turnier: [:group_read]
-        * Verantwortliche:r Interclub (TS): [:layer_and_below_full]
+        * Verantwortliche:r Interclub (TS): [:group_read, :players_group_read]
         * Verantwortliche:r Kommunikation: [:group_read]
         * Verantwortliche:r Leistungssport: [:group_read]
         * Verantwortliche:r Marketing: [:group_read]
@@ -82,8 +83,8 @@ of Swiss Badminton.
       * Vorstand
         * Präsident:in: [:layer_and_below_read]
         * Vizepräsident:in: [:layer_and_below_read]
-        * Administrator:in: [:layer_and_below_full]
-        * Verantwortliche:r Finanzen: [:layer_and_below_read, :contact_data, :finance]
+        * Administrator:in: [:layer_and_below_full, :finance]
+        * Verantwortliche:r Finanzen: [:layer_and_below_read, :finance]
         * Vorstandsmitglied: [:layer_and_below_read]
       * Spieler:innen
         * Aktivmitglied (TS): []
@@ -109,7 +110,7 @@ of Swiss Badminton.
         * Verantwortliche:r Breitensport: [:group_read]
         * Verantwortliche:r Club Management: [:group_read]
         * Verantwortliche:r Event/Turnier (TS): [:group_read]
-        * Verantwortliche:r Interclub (TS): [:layer_and_below_full]
+        * Verantwortliche:r Interclub (TS): [:group_read, :players_group_read]
         * Verantwortliche:r Kommunikation: [:group_read]
         * Verantwortliche:r Leistungssport: [:group_read]
         * Verantwortliche:r Marketing: [:group_read]
@@ -118,11 +119,11 @@ of Swiss Badminton.
         * Verantwortliche:r Personal: [:group_read]
         * Verantwortliche:r Umfeld: [:group_read]
       * Vorstand
-        * Präsident:in: [:layer_full, :contact_data]
-        * Vizepräsident:in: [:layer_full, :contact_data]
-        * Verantwortliche:r Finanzen: [:layer_read, :contact_data, :finance]
-        * Vorstandsmitglied: [:layer_full, :contact_data]
-        * Administrator:in: [:layer_and_below_full, :contact_data, :finance]
+        * Präsident:in: [:group_read, :players_group_read]
+        * Vizepräsident:in: [:group_read, :players_group_read]
+        * Verantwortliche:r Finanzen: [:layer_read, :finance]
+        * Vorstandsmitglied: [:group_read, :players_group_read]
+        * Administrator:in: [:layer_full, :finance]
       * Spieler:innen
         * Aktivmitglied (TS): []
         * Passivmitglied (TS): []
@@ -141,9 +142,9 @@ of Swiss Badminton.
         * Partner: []
     * Center (Mitglied) < Dachverband
       * Center (Mitglied)
-        * Direktion: [:group_full, :contact_data]
+        * Direktion: [:group_full]
     * Center < Dachverband
       * Center
-        * Direktion: [:group_full, :contact_data]
+        * Direktion: [:group_full]
 (Output of rake app:hitobito:roles)
 <!-- roles:end -->

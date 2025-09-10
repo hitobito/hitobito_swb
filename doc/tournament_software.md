@@ -5,10 +5,8 @@ TS nur noch für den Spielbetrieb (Liga, Tournier, Ranglisten usw) verwendet, di
 (Gruppen, Personen, Rollen) passiert in hitobito (HB).
 
 Damit TS weiterhin relevante und aktuelle Daten erhält, synchronisiert HB gewisse Daten zurück nach TS.
-Die Synchronisierung passiert via Jobs, die von Controller actions gescheduled werden und die Daten nach 
+Die Synchronisierung passiert via Jobs, die von Controller actions gescheduled werden und die Daten nach
 TS schreiben. Es **wird nicht** von TS gelesen.
-
-
 
 
 ## Interaktion mit dem API
@@ -72,21 +70,21 @@ Aktualisieren von einer Resource erfolgt über PUT auf dem Resource Endpoint (au
     </Result>
 
 
-## Rollen (nested unter members)
+## Hitobito Sync
+
+Hitobito überträgt gewisse Datenänderungen nach TS. Aktuell werden primär Persondaten und Rollen übertragen.
+
+Dazu inkludieren die Models das `TsModel` Module und konfigurieren es entsprechend (siehe zb [Person](./app/models/swb/person.rb))
+
+Der Sync selbst wird dann via Jobs durchgeführt (siehe [./app/jobs/ts/](./app/jobs/ts/)) welche via Controller Actions
+(siehe [./app/controllers/concerns/ts_model.rb](./app/controllers/concerns/ts_model.rb)) gescheduled werden.
+
+
+## Besonderheiten
+
+### Rollen (nested unter members)
 
 Für Rollen wird immer mit der Nesting Resorcen (Member) interagiert, die Rolle wird via Code nur im Payload und nicht in
 der URL identifiziert.
 
-## Aktueller Stand
 
-- [x] Anlegen von Person
-- [x] Updaten von Person
-- [ ] Löschen von Person (API unklar)
-
-- [x] Anlegen von Gruppe
-- [x] Updaten von Gruppe
-- [ ] Löschen von Gruppe (API unklar)
-
-- [x] Anlegen von Rolle
-- [x] Updaten von Rolle
-- [ ] Löschen von Rolle (API unklar, kein code bei importierten Rollen)
