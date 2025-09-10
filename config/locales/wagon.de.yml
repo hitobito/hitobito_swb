@@ -573,6 +573,11 @@ de:
         ts_gender: Geschlecht Spielbetrieb
         ts_code: TS Code
         ts_last_sync: TS letzte aktualisierung
+      role:
+        class:
+          permission:
+            description:
+              players_group_read: Lesen der Spieler:innen Gruppe.
       service_token:
         mailing_lists: "Abonnent:innen von Mailinglisten"
 

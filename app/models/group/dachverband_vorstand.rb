@@ -11,15 +11,15 @@ class Group::DachverbandVorstand < ::Group
   ### ROLES
 
   class Praesident < ::Role
-    self.permissions = [:layer_full, :contact_data]
+    self.permissions = [:layer_full]
   end
 
   class Vizepraesident < ::Role
-    self.permissions = [:layer_full, :contact_data]
+    self.permissions = [:layer_full]
   end
 
   class Mitglied < ::Role
-    self.permissions = [:layer_full, :contact_data]
+    self.permissions = [:layer_full]
   end
 
   roles Praesident, Vizepraesident, Mitglied
