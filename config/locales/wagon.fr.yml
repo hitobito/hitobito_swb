@@ -685,6 +685,11 @@ fr:
         ts_gender: Catégorie de la compétition
         ts_code: Code TS
         ts_last_sync: Dernière actualisation TS
+      role:
+        class:
+          permission:
+            description:
+              players_group_read: "Lesen der Spieler:innen Gruppe."
       service_token:
         mailing_lists: "Abonné.e.s aux listes de diffusions"
 
