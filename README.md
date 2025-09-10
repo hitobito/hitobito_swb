@@ -72,7 +72,7 @@ of Swiss Badminton.
         * Verantwortliche:r Club Management: [:group_read]
         * Verantwortliche:r Ethik: [:group_read]
         * Verantwortliche:r Event/Turnier: [:group_read]
-        * Verantwortliche:r Interclub (TS): [:group_read, :players_group_read]
+        * Verantwortliche:r Interclub (TS): [:layer_and_below_full]
         * Verantwortliche:r Kommunikation: [:group_read]
         * Verantwortliche:r Leistungssport: [:group_read]
         * Verantwortliche:r Marketing: [:group_read]
