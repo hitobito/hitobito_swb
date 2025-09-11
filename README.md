@@ -110,7 +110,7 @@ of Swiss Badminton.
         * Verantwortliche:r Breitensport: [:group_read]
         * Verantwortliche:r Club Management: [:group_read]
         * Verantwortliche:r Event/Turnier (TS): [:group_read]
-        * Verantwortliche:r Interclub (TS): [:group_read, :players_group_read]
+        * Verantwortliche:r Interclub (TS): [:layer_full]
         * Verantwortliche:r Kommunikation: [:group_read]
         * Verantwortliche:r Leistungssport: [:group_read]
         * Verantwortliche:r Marketing: [:group_read]

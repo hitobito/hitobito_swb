@@ -25,7 +25,7 @@ class Group::Verein < ::Group
   end
 
   class Interclub < ::Role
-    self.permissions = [:group_read, :players_group_read]
+    self.permissions = [:layer_full]
   end
 
   class EventTurnier < ::Role
