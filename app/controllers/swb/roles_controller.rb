@@ -55,5 +55,5 @@ module Swb::RolesController
     Ts::RoleDestroyJob.new(model.ts_destroy_values).enqueue!
   end
 
-  def force_start_on_today?(role) = role.ts_managed? && !current_ability.user_context.admin
+  def force_start_on_today?(role) = !current_ability.user_context.admin
 end

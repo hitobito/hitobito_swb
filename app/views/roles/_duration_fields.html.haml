@@ -4,7 +4,7 @@
 - # https://github.com/hitobito/hitobito_swb.
 
 = field_set_tag Role.human_attribute_name(:dates) do
-  - unless force_start_on_today?(f.object)
+  - unless f.object.ts_managed? && force_start_on_today?(f.object)
     = f.labeled(:start_on) do
       = f.date_field(:start_on, class: 'date col-6', value: f(@role.start_on))
   = f.labeled(:end_on) do

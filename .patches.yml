@@ -40,7 +40,7 @@
   :wagon: swb
   :source_file: hitobito/app/models/role.rb
   :patch_file: hitobito_swb/app/models/swb/role.rb
-  :patch_file_line: 27
+  :patch_file_line: 33
 - :method: :build_new_type
   :constant: RolesController
   :wagon: swb
