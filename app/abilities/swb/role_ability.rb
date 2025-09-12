@@ -17,20 +17,22 @@ module Swb::RoleAbility
   end
 
   def if_create_in_active_phase?
-    !player? || active_phase.create?
+    !player? || admin? || active_phase.create?
   end
 
   def if_destroy_in_active_phase?
-    !player? || active_phase.destroy?
+    !player? || admin? || active_phase.destroy?
   end
 
   def if_update_in_active_phase?
-    !player? || active_phase.update?
+    !player? || admin? || active_phase.update?
   end
 
   private
 
   def player? = subject.is_a?(Role::Player)
+
+  def admin? = user_context.admin
 
   def active_phase
     @active_phase ||= Roles::Players::Phases.active(subject)
