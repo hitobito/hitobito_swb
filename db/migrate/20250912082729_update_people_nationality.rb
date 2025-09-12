@@ -7,7 +7,7 @@
 
 class UpdatePeopleNationality < ActiveRecord::Migration[7.1]
   def up
-    iso3166_ioc_country_mapping.each do |iso, ico|
+    iso3166_ioc_country_mapping.each do |iso, ioc|
       next if iso.blank?
 
       execute "UPDATE people SET nationality = '#{iso}' WHERE nationality = '#{ioc}'"
