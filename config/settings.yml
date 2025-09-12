@@ -159,10 +159,6 @@ roles:
     reduced: 16 Aug - 31 Jan
     restricted: 1 Jan - 14 Jun
     upgrades:
-      JuniorU15:
-      - Vereinigungsspieler
-      JuniorU19:
-      - Vereinigungsspieler
       Aktivmitglied:
       - Lizenz
       Passivmitglied:
