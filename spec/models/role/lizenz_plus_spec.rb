@@ -31,11 +31,21 @@ describe Role::LizenzPlus do
     end
   end
 
-  it "validates end_on on persisted models" do
-    expect(model.save!).to eq true
-    model.end_on = model.end_on + 1.day
-    expect(model).not_to be_valid
-    expect(model.errors.full_messages).to eq ["Bis darf nicht verändert werden"]
+  describe "::validations" do
+    it "validates end_on on persisted models" do
+      expect(model.save!).to eq true
+      model.end_on = model.end_on + 1.day
+      expect(model).not_to be_valid
+      expect(model.errors.full_messages).to eq ["Bis darf nicht verändert werden"]
+    end
+
+    it "allows modification if admin" do
+      Current.admin = true
+      expect(model.save!).to eq true
+      model.end_on = model.end_on + 1.day
+      expect(model).to be_valid
+      Current.admin = false
+    end
   end
 
   it "only Verein has two lizenz plus role types" do
