@@ -13,7 +13,7 @@ class Role::LizenzPlus < Role::Player
   private
 
   def assert_end_on_unchanged
-    if will_save_change_to_end_on?
+    if !Current.admin && will_save_change_to_end_on?
       errors.add(:end_on, :readonly)
     end
   end

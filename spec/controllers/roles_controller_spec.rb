@@ -8,14 +8,15 @@
 require "spec_helper"
 
 describe RolesController do
+  let(:group) { groups(:bc_bern_spieler) }
+  let(:one_year_ago) { 1.year.ago.to_date }
+  let(:one_week_ago) { 1.week.ago.to_date }
+  let(:person) { people(:leader) }
+
   describe "changing player roles" do
     let(:gs) { groups(:root_gs) }
-    let(:group) { groups(:bc_bern_spieler) }
     let(:tomorrow) { Time.zone.tomorrow }
 
-    let(:person) { people(:leader) }
-    let(:one_year_ago) { 1.year.ago.to_date }
-    let(:one_week_ago) { 1.week.ago.to_date }
     let!(:role) { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:, start_on: one_year_ago, created_at: one_year_ago) }
 
     describe "GET#edit" do
@@ -257,6 +258,18 @@ describe RolesController do
         end.to change { Role.where(id: managed_role.id).count }.by(-1)
           .and not_change { delete_jobs.count }
           .and not_change { write_jobs.count }
+      end
+
+      context "lizenz plus role" do
+        let(:group) { groups(:bc_bern_spieler) }
+        let!(:role) { Fabricate(Group::VereinSpieler::LizenzPlus.sti_name, person:, group:, ts_code: Faker::Internet.uuid) }
+
+        it "can destroy lizenzplus role" do
+          expect do
+            delete :destroy, params: {group_id: role.group_id, id: role.id}
+          end.to change { Role.count }.by(-1)
+            .and change { delete_jobs.count }
+        end
       end
     end
   end
