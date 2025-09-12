@@ -24,6 +24,12 @@ module Swb::Role
     }
   end
 
+  module ClassMethods
+    def ts_managed_types
+      Ts::ROLE_MAPPINGS.map { |m| m.type.sti_name }
+    end
+  end
+
   def to_s(...)
     return super unless ts_managed?
 
