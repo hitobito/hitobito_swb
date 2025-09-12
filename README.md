@@ -119,10 +119,10 @@ of Swiss Badminton.
         * Verantwortliche:r Personal: [:group_read]
         * Verantwortliche:r Umfeld: [:group_read]
       * Vorstand
-        * Präsident:in: [:group_read, :players_group_read]
-        * Vizepräsident:in: [:group_read, :players_group_read]
-        * Verantwortliche:r Finanzen: [:layer_read, :finance]
-        * Vorstandsmitglied: [:group_read, :players_group_read]
+        * Präsident:in: [:layer_full, :players_group_read]
+        * Vizepräsident:in: [:layer_full, :players_group_read]
+        * Verantwortliche:r Finanzen: [:layer_full, :finance]
+        * Vorstandsmitglied: [:layer_full, :players_group_read]
         * Administrator:in: [:layer_full, :finance]
       * Spieler:innen
         * Aktivmitglied (TS): []

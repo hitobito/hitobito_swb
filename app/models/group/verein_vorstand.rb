@@ -15,19 +15,19 @@ class Group::VereinVorstand < ::Group
   end
 
   class Finanzen < ::Role
-    self.permissions = [:layer_read, :finance]
+    self.permissions = [:layer_full, :finance]
   end
 
   class Praesident < ::Role
-    self.permissions = [:group_read, :players_group_read]
+    self.permissions = [:layer_full, :players_group_read]
   end
 
   class Vizepraesident < ::Role
-    self.permissions = [:group_read, :players_group_read]
+    self.permissions = [:layer_full, :players_group_read]
   end
 
   class Mitglied < ::Role
-    self.permissions = [:group_read, :players_group_read]
+    self.permissions = [:layer_full, :players_group_read]
   end
 
   roles Praesident, Vizepraesident, Finanzen, Mitglied, Administrator
