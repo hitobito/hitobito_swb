@@ -11,6 +11,7 @@ module Swb::RolesController
   prepended do
     helper_method :force_start_on_today?
     before_render_new :populate_person_phone_numbers
+    before_action :set_admin
     after_destroy :enqueue_ts_delete, if: -> { entry.ts_code }
   end
 
@@ -55,5 +56,7 @@ module Swb::RolesController
     Ts::RoleDestroyJob.new(model.ts_destroy_values).enqueue!
   end
 
-  def force_start_on_today?(role) = !current_ability.user_context.admin
+  def force_start_on_today?(role) = role.ts_managed? && !Current.admin
+
+  def set_admin = Current.admin = current_ability.user_context.admin || current_user.root?
 end
