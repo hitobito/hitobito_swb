@@ -75,7 +75,7 @@ module SwbImport
     [:postalcode, :zip_code],
     [:city, :town],
     [:country, :country, :parse_country],
-    [:country, :nationality],
+    [:nationality, :nationality, :parse_country],
     [:Language, :language, :parse_language],
     [:phone, :phone, :parse_phone_number],
     [:mobile, :mobile, :parse_phone_number],
