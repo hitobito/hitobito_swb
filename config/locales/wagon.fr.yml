@@ -785,6 +785,9 @@ fr:
     tabs:
       colleagues: "Collaborateur.trice.s"
 
+  role_lists:
+    unsupported_for_ts_role: Wird für Tournament Software Rollen aktuell nicht unterstützt.
+
   subscriber:
     exclude_person:
       form:
