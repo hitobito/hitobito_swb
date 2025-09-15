@@ -135,6 +135,7 @@ describe Role::Player do
     it_behaves_like "year_validating_role", Group::VereinSpieler::Lizenz, (19..)
     it_behaves_like "year_validating_role", Group::VereinSpieler::Aktivmitglied, (19..)
     it_behaves_like "year_validating_role", Group::VereinSpieler::Passivmitglied, (19..)
+    it_behaves_like "year_validating_role", Group::VereinSpieler::Vereinigungsspieler, (0..)
 
     Role::Player.subclasses.each do |subclass|
       case subclass.to_s
@@ -145,6 +146,10 @@ describe Role::Player do
       when /U19/
         it "has U19 15..19 year range" do
           expect(subclass.year_range).to eq 15..18
+        end
+      when /Vereinigungsspieler/
+        it "has open year range" do
+          expect(subclass.year_range).to eq 0..
         end
       else
         it "has default 19.. year range" do

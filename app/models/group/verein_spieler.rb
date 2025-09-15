@@ -39,6 +39,7 @@ class Group::VereinSpieler < ::Group
   end
 
   class Vereinigungsspieler < ::Role::Player
+    self.year_range = (0..)
   end
 
   roles Aktivmitglied,
