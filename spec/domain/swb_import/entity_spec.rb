@@ -94,6 +94,7 @@ describe SwbImport::Entity do
       csv["postalcode"] = "3001"
       csv["city"] = "Bern"
       csv["country"] = "SUI"
+      csv["nationality"] = "SCO"
       csv["phone"] = "0791234567"
       csv["mobile"] = "0791234567"
       csv["Language"] = "Deutsch (SUI)"
@@ -113,6 +114,7 @@ describe SwbImport::Entity do
       expect(person.country).to eq "CH"
       expect(person.phone_numbers).to have(2).items
       expect(person.newsletter).to eq true
+      expect(person.nationality).to eq "GB"
       expect(person).to be_valid
     end
 
