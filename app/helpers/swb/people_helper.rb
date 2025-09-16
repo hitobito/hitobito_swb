@@ -15,6 +15,8 @@ module Swb::PeopleHelper
   end
 
   def format_person_public_profile(person)
+    return if Settings.people.public_profile.blank?
+
     path = format(Settings.people.public_profile % person.id)
     link_to(path, path)
   end

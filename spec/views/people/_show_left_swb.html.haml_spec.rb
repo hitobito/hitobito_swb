@@ -48,6 +48,7 @@ describe "people/_show_left_swb.html.haml" do
 
   describe "public profile" do
     it "renders public profile link" do
+      allow(Settings.people).to receive(:public_profile).and_return("https://www.example.com/player/%d")
       expect(dom).to have_css "dt", text: "öffentliches Profil"
       expect(dom).to have_css "dd a", text: "https://www.example.com/player/#{person.id}"
     end
