@@ -18,11 +18,11 @@ describe "people/_show_left_swb.html.haml" do
 
   before do
     allow(view).to receive(:entry).and_return(person.decorate)
-    allow(view).to receive(:current_ability).and_return(Ability.new(current_user))
+    allow(controller).to receive(:current_user).and_return(current_user)
   end
 
   describe "ts info" do
-    it "is not shown when person to people without admin permission" do
+    it "is not shown to people without admin permission" do
       expect(dom).not_to have_css("h2", text: "Tournament Software")
     end
 
