@@ -689,6 +689,7 @@ it:
       title: Tournament Software
       last_synced_at: Letzte Aktualisierung
       levels:
+        ok: OK
         info: erfolgreich
         error: fehlgeschlagen
         pending: wartet

@@ -801,6 +801,7 @@ fr:
       title: Tournament Software
       last_synced_at: Dernière mise à jour
       levels:
+        ok: OK
         info: avec succès
         error: a échoué
         pending: attend
