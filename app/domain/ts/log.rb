@@ -7,8 +7,8 @@
 
 module Ts
   class Log
-    def initialize(log_entry)
-      @level = log_entry&.level || :pending
+    def initialize(ts_code, log_entry)
+      @level = log_entry&.level || (ts_code ? :ok : :pending)
       @timestamp = log_entry&.created_at
     end
 
