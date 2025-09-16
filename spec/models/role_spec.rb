@@ -154,4 +154,46 @@ describe Role do
       end
     end
   end
+
+  describe "#to_s" do
+    let(:group) { groups(:brb) }
+    let(:person) { people(:admin) }
+    let(:ts_code) { Faker::Internet.uuid }
+    let(:role) { Fabricate(Group::Region::JSCoach.sti_name, person:, group:) }
+
+    it "uses translation" do
+      expect(role.to_s).to eq "J+S Coach"
+    end
+
+    context "ts managed role" do
+      let(:role) { Fabricate(Group::Region::Interclub.sti_name, person:, group:) }
+
+      it "has pending ts suffix with ts_code or log_entry" do
+        expect(role.to_s).to eq "Verantwortliche:r Interclub (TS - wartet)"
+      end
+
+      it "has pending suffix if role has neither ts_code nor log_entry" do
+        expect(role.to_s).to eq "Verantwortliche:r Interclub (TS - wartet)"
+      end
+
+      it "has ok suffix if role has ts_code but no log_entry yet" do
+        role.ts_code = ts_code
+        expect(role.to_s).to eq "Verantwortliche:r Interclub (TS - OK)"
+      end
+
+      it "has ok suffix with timestamp if sync succeeded" do
+        travel_to Time.zone.local(2025, 9, 16, 12, 35) do
+          Fabricate(:ts_log, subject: role)
+        end
+        expect(role.to_s).to eq "Verantwortliche:r Interclub (TS - erfolgreich - 16.09 12:35)"
+      end
+
+      it "has failed suffix with timestamp if sync failed" do
+        travel_to Time.zone.local(2025, 9, 16, 12, 35) do
+          Fabricate(:ts_log, subject: role, level: :error)
+        end
+        expect(role.to_s).to eq "Verantwortliche:r Interclub (TS - fehlgeschlagen - 16.09 12:35)"
+      end
+    end
+  end
 end

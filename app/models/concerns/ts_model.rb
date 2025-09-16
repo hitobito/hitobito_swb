@@ -24,7 +24,7 @@ module TsModel
 
   def ts_model = ts_entity.build(ts_params)
 
-  def ts_log = Ts::Log.new(ts_latest_log)
+  def ts_log = Ts::Log.new(ts_code, ts_latest_log)
 
   def ts_managed? = Ts::Config.exist?
 
