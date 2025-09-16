@@ -4,5 +4,7 @@
 - #  https://github.com/hitobito/hitobito_swb.
 
 = render_present_attrs(entry, *entry.used_attributes(:founded_on, :yearly_budget))
-= render "shared/ts_info", entry: entry if entry.ts_code
-= render_present_attrs(entry, *entry.used_attributes(:ts_club_number))
+
+- if can?(:show_details, @group)
+  = render "shared/ts_info", entry: entry if entry.ts_code
+  = render_present_attrs(entry, *entry.used_attributes(:ts_club_number))
