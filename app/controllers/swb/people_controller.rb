@@ -23,4 +23,10 @@ module Swb::PeopleController
       scope.includes(roles: :ts_latest_log)
     end
   end
+
+  def model_scope
+    super.then do |scope|
+      (action_name == "show") ? scope.includes(roles: [:ts_latest_log, group: :layer_group]) : scope
+    end
+  end
 end
