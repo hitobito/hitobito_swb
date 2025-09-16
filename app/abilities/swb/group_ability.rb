@@ -12,6 +12,16 @@ module Swb::GroupAbility
     on(Group) do
       permission(:any).may(:"index_event/tournaments").all
       permission(:any).may(:"index_event/external_trainings").all
+
+      permission(:any)
+        .may(:index_events, :index_mailing_lists)
+        .if_player_in_hierarchy_or_any_role
+    end
+
+    def if_player_in_hierarchy_or_any_role
+      return if_any_role unless user.roles.all? { |r| r.is_a?(Role::Player) }
+
+      user.groups_hierarchy_ids.include?(subject.layer_group_id)
     end
   end
 end
