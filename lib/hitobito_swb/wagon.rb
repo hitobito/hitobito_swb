@@ -92,6 +92,7 @@ module HitobitoSwb
 
       admin_item = NavigationHelper::MAIN.find { |item| item[:label] == :admin }
       admin_item[:active_for] += %w[billing_periods]
+      admin_item[:if] = ->(_) { can?(:index, CustomContent) }
 
       Person::FILTER_ATTRS << [:nationality, :country_select] << [:newsletter] << [:advertising]
 
