@@ -14,7 +14,7 @@ module Swb::GroupAbility
       permission(:any).may(:"index_event/external_trainings").all
 
       permission(:any)
-        .may(:index_events, :index_mailing_lists)
+        .may(:read, :index_events, :index_mailing_lists)
         .if_player_in_hierarchy_or_any_role
     end
 

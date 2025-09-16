@@ -17,7 +17,7 @@ describe GroupAbility do
     let(:person) { Fabricate(:person) }
     let(:role) { Fabricate(Group::RegionSpieler::Aktivmitglied.sti_name, person:, group:) }
 
-    %i[index_events index_mailing_lists].each do |action|
+    %i[read index_events index_mailing_lists].each do |action|
       it "may #{action} on player group" do
         expect(ability).to be_able_to(action, group)
       end
