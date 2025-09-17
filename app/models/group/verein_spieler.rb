@@ -27,6 +27,7 @@ class Group::VereinSpieler < ::Group
   end
 
   class LizenzPlusJunior < Role::LizenzPlus
+    self.year_range = (..18)
     self.unique_across_layers = true
   end
 
