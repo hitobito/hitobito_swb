@@ -104,6 +104,24 @@ describe SwbImport::Parser do
     end
   end
 
+  describe "street and housenumber" do
+    [
+      ["Belpstrasse 35", "Belpstrasse", "35"],
+      ["Belpstrasse 35a", "Belpstrasse", "35a"],
+      ["Belpstrasse 35 a", "Belpstrasse", "35 a"],
+      ["35 Belpstrasse", "Belpstrasse", "35"],
+      ["35, Belpstrasse", "Belpstrasse", "35"],
+      ["35a, Belpstrasse", "Belpstrasse", "35a"],
+      ["35 A, Belpstrasse", "Belpstrasse", "35 A"]
+    ].each do |address, street, housenumber|
+      it "parses #{address} into #{street} - #{housenumber}" do
+        attrs[:address] = address
+        expect(parsed_data[:street]).to eq street
+        expect(parsed_data[:housenumber]).to eq housenumber
+      end
+    end
+  end
+
   describe "language" do
     [
       ["Deutsch (SUI)", :de],

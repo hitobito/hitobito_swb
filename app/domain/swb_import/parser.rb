@@ -10,8 +10,8 @@ module SwbImport
     attr_reader :mappings, :attrs
 
     # Matches most but most likely not all
-    STREET_LAST = /(.*?)\s(\d+\w*)/
-    STREET_FIRST = /(\d+\w*),?\s(.*?)/
+    NUMBER_LAST = /^(.*?)\s(\d+\s?\w*)+$/
+    NUMBER_FIRST = /^(\d+\s?[a-zA-Z]?),?\s(.*)/
     COUNTRY_MAPPING = {
       "ENG" => "GBR",
       "UK" => "GBR",
@@ -57,9 +57,13 @@ module SwbImport
 
     def parse_language(v) = LANGUAGES.find { |regex, val| regex.match?(v) }&.second || :de
 
-    def parse_street_from_address(v) = v.to_s[STREET_FIRST, 2] || v.to_s[STREET_LAST, 1]
+    def parse_street_from_address(v)
+      v.to_s[NUMBER_FIRST, 2].presence || v.to_s[NUMBER_LAST, 1] || v.to_s
+    end
 
-    def parse_housenumber_from_address(v) = v.to_s[STREET_FIRST, 1] || v.to_s[STREET_LAST, 2]
+    def parse_housenumber_from_address(v)
+      v.to_s[NUMBER_FIRST, 1].presence || v.to_s[NUMBER_LAST, 2]
+    end
 
     def parse_date(v) = Date.parse(v) rescue nil # rubocop:disable Style/RescueModifier
 
