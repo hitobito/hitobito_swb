@@ -15,19 +15,19 @@ class Group::RegionVorstand < ::Group
   end
 
   class Finanzen < ::Role
-    self.permissions = [:layer_and_below_read, :finance]
+    self.permissions = [:layer_and_below_full, :finance]
   end
 
   class Praesident < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Vizepraesident < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = [:layer_and_below_full]
   end
 
   class Mitglied < ::Role
-    self.permissions = [:layer_and_below_read]
+    self.permissions = [:layer_and_below_full]
   end
 
   roles Praesident, Vizepraesident, Administrator, Finanzen, Mitglied
