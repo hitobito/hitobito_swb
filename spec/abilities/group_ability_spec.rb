@@ -26,8 +26,18 @@ describe GroupAbility do
         expect(ability).to be_able_to(action, group.parent)
       end
 
-      it "may #{action} on root" do
-        expect(ability).to be_able_to(action, groups(:root))
+      if action == :read
+        it "may #{action} on root" do
+          expect(ability).to be_able_to(action, groups(:root))
+        end
+      else
+        it "may not #{action} on root" do
+          expect(ability).not_to be_able_to(action, groups(:root))
+        end
+      end
+
+      it "may not #{action} on child of root" do
+        expect(ability).not_to be_able_to(action, groups(:root_vs))
       end
 
       it "may not #{action} on another region" do

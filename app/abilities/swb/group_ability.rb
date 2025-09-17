@@ -14,14 +14,21 @@ module Swb::GroupAbility
       permission(:any).may(:"index_event/external_trainings").all
 
       permission(:any)
-        .may(:read, :index_events, :index_mailing_lists)
+        .may(:index_events, :index_mailing_lists)
         .if_player_in_hierarchy_or_any_role
+      permission(:any)
+        .may(:read)
+        .if_player_in_hierarchy_or_root_or_any_role
+    end
+
+    def if_player_in_hierarchy_or_root_or_any_role
+      if_player_in_hierarchy_or_any_role || subject.root?
     end
 
     def if_player_in_hierarchy_or_any_role
       return if_any_role unless user.roles.all? { |r| r.is_a?(Role::Player) }
 
-      user.groups_hierarchy_ids.include?(subject.layer_group_id)
+      user.groups_hierarchy_ids[1..].include?(subject.layer_group_id)
     end
   end
 end
