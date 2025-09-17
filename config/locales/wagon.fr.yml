@@ -31,8 +31,9 @@ fr:
 
     models:
       event/external_training:
-        one: Ausbildung
-        other: Ausbildungen
+        one: Formation
+        many: Formations
+        other: Formations
       event/tournament:
         one: Tournoi
         many: Tournois
@@ -689,7 +690,7 @@ fr:
         class:
           permission:
             description:
-              players_group_read: "Lesen der Spieler:innen Gruppe."
+              players_group_read: Lecture du groupe des joueur.euse.s
       service_token:
         mailing_lists: "Abonné.e.s aux listes de diffusions"
 
@@ -709,7 +710,7 @@ fr:
     participations:
       print:
         heading_event/tournament: Inscription au tournoi
-        heading_event/external_training: Anmeldung Ausbildung
+        heading_event/external_training: Inscription à une formation
   events:
     application_fields:
       caption_signature: "Les participant.e.s doivent signer l'inscription."
@@ -720,7 +721,7 @@ fr:
     global:
       link:
         add_event/tournament: Ajouter un tournoi
-        add_event/external_training: Ausbildung hinzufügen
+        add_event/external_training: Ajouter une formation
 
   fixed_fees:
     regions:
@@ -754,7 +755,7 @@ fr:
     below: "sous %{value}"
     above: "sur %{value}"
     title_event/tournament: Tournoi
-    title_event/external_training: Ausbildung
+    title_event/external_training: Formation
 
   groups:
     aside_swb:
@@ -775,7 +776,7 @@ fr:
 
   navigation:
     tournaments: Tournois
-    external_trainings: Ausbildungen
+    external_trainings: Formations
 
   people:
     fields_swb:
@@ -786,7 +787,7 @@ fr:
       colleagues: "Collaborateur.trice.s"
 
   role_lists:
-    unsupported_for_ts_role: Wird für Tournament Software Rollen aktuell nicht unterstützt.
+    unsupported_for_ts_role: Les rôles ne sont actuellement pas pris en charge pour Tournament Software.
 
   subscriber:
     exclude_person:
