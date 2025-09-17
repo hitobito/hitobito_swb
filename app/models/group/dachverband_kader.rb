@@ -6,8 +6,6 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class Group::DachverbandKader < ::Group
-  self.event_types = []
-
   class Athlet < ::Role
     self.permissions = [:group_read]
   end
