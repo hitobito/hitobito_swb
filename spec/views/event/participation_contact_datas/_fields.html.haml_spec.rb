@@ -19,6 +19,7 @@ describe "event/participation_contact_datas/_fields.html.haml" do
   before do
     assign(:policy_finder, instance_double(Group::PrivacyPolicyFinder, acceptance_needed?: false))
     allow(view).to receive(:entry).and_return(entry)
+    allow(view).to receive(:event).and_return(event)
     allow(view).to receive(:fields).and_return(form_builder)
     allow(view).to receive(:f).and_return(form_builder)
   end

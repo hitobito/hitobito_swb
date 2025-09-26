@@ -18,6 +18,7 @@ class Event::Tournament < Event
     :external_applications,
     :signature,
     :signature_confirmation,
-    :signature_confirmation_text
+    :signature_confirmation_text,
+    :guest_limit
   ]
 end
