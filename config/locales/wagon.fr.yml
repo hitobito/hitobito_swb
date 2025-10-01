@@ -17,11 +17,7 @@ fr:
               invalidates_player_role: n'est pas valable pour les joueur.euse.s ayant ces rôles
             email:
               taken: >
-                  a déjà été attribué. Cette adresse doit être unique pour chaque
-                  personne, car elle est utilisée pour l'authentification. Néanmoins,
-                  sous "adresses e-mail supplémentaires", tu peux fournir des adresses
-                  mêmes si elles sont déjà attribuées en tant qu'adresse principale
-                  d'un autre utilisateur.
+                a déjà été attribué. Cette adresse doit être unique pour chaque personne, car elle est utilisée pour l'authentification. Néanmoins, sous "adresses e-mail supplémentaires", tu peux fournir des adresses mêmes si elles sont déjà attribuées en tant qu'adresse principale d'un autre utilisateur.
         event/external_training:
           attributes:
             external_link:

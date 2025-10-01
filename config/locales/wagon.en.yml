@@ -15,6 +15,9 @@ en:
           attributes:
             birthday:
               invalidates_player_role: ist nicht gültig für aktuelle Spieler Rollen
+            email:
+              taken: >
+                ist bereits vergeben. Diese Adresse muss für alle Personen eindeutig sein, da sie beim Login verwendet wird. Du kannst jedoch unter 'Weitere E-Mails' Adressen eintragen, welche bei anderen Personen als Haupt-E-Mail vergeben sind.
         event/external_training:
           attributes:
             external_link:
