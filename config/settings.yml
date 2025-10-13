@@ -80,11 +80,11 @@ invoice_lists:
           leagues:
             - NLB
         - key: team_liga_1
-          unit_cost: 800
+          unit_cost: 600
           leagues:
             - 1. Liga
         - key: team_liga_2
-          unit_cost: 600
+          unit_cost: 500
           leagues:
             - 2. Liga
         - key: team_liga_3
