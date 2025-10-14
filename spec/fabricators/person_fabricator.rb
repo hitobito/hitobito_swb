@@ -18,5 +18,8 @@ Fabricator(:person, from: :core_person) do
   country { %w[DE CH FR AT US].sample }
   zip_code { |attrs| Faker::Number.number(digits: (%w[AT CH].include?(attrs[:country]) ? 4 : 5)) }
   nationality { |attrs| attrs[:country] }
-  after_build { phone_numbers.build(label: %w[landline mobile].sample, number: Faker::Base.numerify("+41 77 ### ## ##")) }
+  after_build {
+    phone_numbers.build(label: %w[landline mobile].sample,
+      number: Faker::Base.numerify("+41 77 ### ## ##"))
+  }
 end

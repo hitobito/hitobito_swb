@@ -26,7 +26,9 @@ describe Event::ExternalTraining do
     end
 
     it "validates return code of external link" do
-      expect(RestClient).to receive(:get).with("http://example.com/test").and_return(double("response", code: 500))
+      expect(RestClient).to receive(:get).with("http://example.com/test").and_return(double(
+        "response", code: 500
+      ))
       training.external_link = "http://example.com/test"
       expect(training).not_to be_valid
       expect(training.errors.full_messages).to eq ["Externer Link ist nicht gültig"]
@@ -40,7 +42,9 @@ describe Event::ExternalTraining do
     end
 
     it "is valid if external link is valid" do
-      expect(RestClient).to receive(:get).with("http://example.com/test").and_return(double("response", code: 200))
+      expect(RestClient).to receive(:get).with("http://example.com/test").and_return(double(
+        "response", code: 200
+      ))
       training.external_link = "http://example.com/test"
       expect(training).to be_valid
     end
@@ -49,7 +53,9 @@ describe Event::ExternalTraining do
       expect(RestClient).not_to receive(:get)
       training.external_link = "www.example.com/test"
       expect(training).not_to be_valid
+      # rubocop:todo Layout/LineLength
       expect(training.errors.full_messages).to eq ["Externer Link muss mit http:// oder https:// beginnen"]
+      # rubocop:enable Layout/LineLength
     end
   end
 
@@ -60,7 +66,9 @@ describe Event::ExternalTraining do
       external_link: "http://example.com/test",
       dates_attributes: [{start_at: Time.zone.today}]
     )
-    allow(RestClient).to receive(:get).with("http://example.com/test").and_return(double("response", code: 200))
+    allow(RestClient).to receive(:get).with("http://example.com/test").and_return(double(
+      "response", code: 200
+    ))
     expect(training).to be_valid
     expect(training.save).to eq true
   end

@@ -14,8 +14,12 @@ describe Roles::PromoterJob do
   let(:u19_promotion) { instance_double(Roles::Players::Promotion) }
 
   it "promotes u15 and u19 players" do
+    # rubocop:todo Layout/LineLength
     expect(Roles::Players::Promotion).to receive(:new).with(Role::Player::JuniorU15).and_return(u15_promotion)
+    # rubocop:enable Layout/LineLength
+    # rubocop:todo Layout/LineLength
     expect(Roles::Players::Promotion).to receive(:new).with(Role::Player::JuniorU19).and_return(u19_promotion)
+    # rubocop:enable Layout/LineLength
     expect(u15_promotion).to receive(:run)
     expect(u19_promotion).to receive(:run)
     job.perform

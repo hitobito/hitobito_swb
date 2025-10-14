@@ -19,7 +19,8 @@ class Ts::Entity < Data
 
     def build(attrs = {}) = new(**members.product([nil]).to_h.merge(attrs))
 
-    def from_xml(xml, clear_whitespace: false)
+    # rubocop:todo Metrics/AbcSize
+    def from_xml(xml, clear_whitespace: false) # rubocop:todo Metrics/CyclomaticComplexity # rubocop:todo Metrics/AbcSize
       values = Hash.from_xml(xml).dig(name.demodulize).transform_keys(&:underscore).symbolize_keys
         .transform_values { |v| v.to_s[/^\d+$/] ? v.to_i : v }
         .transform_values do |v|
@@ -29,6 +30,7 @@ class Ts::Entity < Data
 
       build(**values.slice(*members).compact_blank)
     end
+    # rubocop:enable Metrics/AbcSize
   end
 
   def to_s = "#{name.demodulize}: #{name} (#{code})"
@@ -66,13 +68,17 @@ class Ts::Entity < Data
     :phone, :mobile, :email, :website, :photo, :active)
 
   # Roles / Memberships
+  # rubocop:todo Layout/LineLength
   OrganizationMembership = Ts::Entity.define(:code, :name, :start_date, :end_date, :remote_system_code,
+    # rubocop:enable Layout/LineLength
     :organization_group_code, :organization_group_name,
     :organization_role_code, :organization_role_name,
     :organization_membership_code, :organization_membership_name)
 
   module List
+    # rubocop:todo Layout/LineLength
     def to_xml(list) = list.map(&:to_xml_hash).to_xml(root: list.first.class.name.demodulize.pluralize, skip_types: true)
+      # rubocop:enable Layout/LineLength
       .gsub(list.first.class.name.demodulize.pluralize, "Result")
 
     def from_xml(text, stylesheet = nil)

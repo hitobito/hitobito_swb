@@ -70,7 +70,9 @@ describe Person do
       Fabricate(Group::VereinSpieler::JuniorU15.sti_name, group: groups(:bc_bern_spieler), person:)
       person.birthday = 20.years.ago
       expect(person).not_to be_valid
+      # rubocop:todo Layout/LineLength
       expect(person.errors.full_messages).to eq ["Geburtstag ist nicht gültig für aktuelle Spieler Rollen"]
+      # rubocop:enable Layout/LineLength
     end
   end
 
@@ -102,9 +104,12 @@ describe Person do
 
   describe "#destroy" do
     it "may not be destroyed if ts managed roles exist" do
-      Fabricate(Group::Region::Interclub.sti_name, group: groups(:brb), person:, ts_code: Faker::Internet.uuid)
+      Fabricate(Group::Region::Interclub.sti_name, group: groups(:brb), person:,
+        ts_code: Faker::Internet.uuid)
       expect(person.destroy).to eq(false)
+      # rubocop:todo Layout/LineLength
       expect(person.errors.full_messages).to eq ["Kann nicht gelöscht werden solange TS Rollen existieren."]
+      # rubocop:enable Layout/LineLength
     end
   end
 end

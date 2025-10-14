@@ -40,7 +40,9 @@ module Roles::Players
       return @billed_model if defined?(@billed_model)
 
       @billed_model = BilledModel
+        # rubocop:todo Layout/LineLength
         .find_by(billing_period: BillingPeriod.active, model_type: "Role", model_id: roles.map(&:id))
+      # rubocop:enable Layout/LineLength
     end
   end
 end

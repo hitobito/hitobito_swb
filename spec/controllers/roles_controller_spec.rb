@@ -17,7 +17,12 @@ describe RolesController do
     let(:gs) { groups(:root_gs) }
     let(:tomorrow) { Time.zone.tomorrow }
 
-    let!(:role) { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:, start_on: one_year_ago, created_at: one_year_ago) }
+    let!(:role) {
+      # rubocop:todo Layout/LineLength
+      Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:, start_on: one_year_ago,
+        # rubocop:enable Layout/LineLength
+        created_at: one_year_ago)
+    }
 
     describe "GET#edit" do
       render_views
@@ -33,7 +38,9 @@ describe RolesController do
       end
 
       context "as vereins admin" do
-        let(:vereins_admin) { Fabricate(Group::VereinVorstand::Administrator.sti_name, group: groups(:bc_bern_vorstand)) }
+        let(:vereins_admin) {
+          Fabricate(Group::VereinVorstand::Administrator.sti_name, group: groups(:bc_bern_vorstand))
+        }
 
         before { sign_in(vereins_admin.person) }
 
@@ -66,22 +73,41 @@ describe RolesController do
 
         it "allows setting start_on" do
           expect do
-            put :update, params: {group_id: group.id, id: role.id, role: {type: Group::VereinSpieler::Passivmitglied.sti_name, start_on: one_week_ago}}
+            put :update,
+              params: {group_id: group.id, id: role.id,
+                       # rubocop:todo Layout/LineLength
+                       role: {type: Group::VereinSpieler::Passivmitglied.sti_name, start_on: one_week_ago}}
+            # rubocop:enable Layout/LineLength
           end.not_to change { person.roles.count }
+          # rubocop:todo Layout/LineLength
           expect(person.roles.find_by(type: "Group::VereinSpieler::Passivmitglied").start_on).to eq one_week_ago
+          # rubocop:enable Layout/LineLength
+          # rubocop:todo Layout/LineLength
           expect(person.roles.with_inactive.find_by(type: "Group::VereinSpieler::Aktivmitglied").end_on).to eq Time.zone.yesterday
+          # rubocop:enable Layout/LineLength
         end
       end
 
       context "as vereins admin" do
-        before { sign_in(Fabricate(Group::VereinVorstand::Administrator.sti_name, group: groups(:bc_bern_vorstand)).person) }
+        before {
+          sign_in(Fabricate(Group::VereinVorstand::Administrator.sti_name,
+            group: groups(:bc_bern_vorstand)).person)
+        }
 
         it "ignores start_on param and sets it to today" do
           expect do
-            put :update, params: {group_id: group.id, id: role.id, role: {type: Group::VereinSpieler::Passivmitglied.sti_name, start_on: one_week_ago}}
+            put :update,
+              params: {group_id: group.id, id: role.id,
+                       # rubocop:todo Layout/LineLength
+                       role: {type: Group::VereinSpieler::Passivmitglied.sti_name, start_on: one_week_ago}}
+            # rubocop:enable Layout/LineLength
           end.not_to change { person.roles.count }
+          # rubocop:todo Layout/LineLength
           expect(person.roles.find_by(type: "Group::VereinSpieler::Passivmitglied").start_on).to eq Time.zone.today
+          # rubocop:enable Layout/LineLength
+          # rubocop:todo Layout/LineLength
           expect(person.roles.with_inactive.find_by(type: "Group::VereinSpieler::Aktivmitglied").end_on).to eq Time.zone.yesterday
+          # rubocop:enable Layout/LineLength
         end
       end
     end
@@ -95,7 +121,9 @@ describe RolesController do
 
     let(:person) { people(:admin) }
     let(:leader) { roles(:leader) }
-    let(:managed_role) { Fabricate(interclub, person: people(:leader), group: gs, ts_code: Faker::Internet.uuid) }
+    let(:managed_role) {
+      Fabricate(interclub, person: people(:leader), group: gs, ts_code: Faker::Internet.uuid)
+    }
 
     let(:write_jobs) { Delayed::Job.where("handler ilike '%Ts::WriteJob%'") }
     let(:delete_jobs) { Delayed::Job.where("handler ilike '%Ts::RoleDestroyJob%'") }
@@ -118,7 +146,10 @@ describe RolesController do
 
       it "does not enqueue if invalid" do
         expect do
-          post :create, params: {group_id: gs.id, role: {type: interclub, person_id: person.id, start_on: Date.tomorrow, end_on: Date.yesterday}}
+          post :create,
+            params: {group_id: gs.id,
+                     role: {type: interclub, person_id: person.id, start_on: Date.tomorrow,
+                            end_on: Date.yesterday}}
         end.to not_change { Role.count }
           .and not_change { write_jobs.count }
       end
@@ -126,7 +157,10 @@ describe RolesController do
       it "does not enqueue if not managed" do
         person.update!(ts_code: nil)
         expect do
-          post :create, params: {group_id: gs.id, role: {type: "Group::DachverbandGeschaeftsstelle::JSCoach", person_id: person.id}}
+          post :create,
+            params: {group_id: gs.id,
+                     role: {type: "Group::DachverbandGeschaeftsstelle::JSCoach",
+                            person_id: person.id}}
         end.to change { Role.count }
           .and not_change { write_jobs.count }
       end
@@ -148,7 +182,8 @@ describe RolesController do
                 country: "CH",
                 nationality: "CH",
                 gender: "m",
-                phone_numbers_attributes: {"0" => {translated_label: "Mobil", number: "0781234567", public: false}}
+                phone_numbers_attributes: {"0" => {translated_label: "Mobil", number: "0781234567",
+                                                   public: false}}
               }
             }
           }
@@ -162,28 +197,34 @@ describe RolesController do
       it "enqueues one if managed and person already managed" do
         leader.person.update(ts_code: Faker::Internet.uuid)
         expect do
-          put :update, params: {group_id: managed_role.group_id, id: managed_role.id, role: {end_on: Date.tomorrow}}
+          put :update,
+            params: {group_id: managed_role.group_id, id: managed_role.id,
+                     role: {end_on: Date.tomorrow}}
         end.to change { managed_role.reload.end_on }.to(Date.tomorrow)
           .and change { write_jobs.count }.by(1)
       end
 
       it "enqueues two if managed and person not yet managed" do
         expect do
-          put :update, params: {group_id: managed_role.group_id, id: managed_role.id, role: {end_on: Date.tomorrow}}
+          put :update,
+            params: {group_id: managed_role.group_id, id: managed_role.id,
+                     role: {end_on: Date.tomorrow}}
         end.to change { managed_role.reload.end_on }.to(Date.tomorrow)
           .and change { write_jobs.count }.by(2)
       end
 
       it "does not enqueue if not managed" do
         expect do
-          put :update, params: {group_id: leader.group_id, id: leader.id, role: {end_on: Date.tomorrow}}
+          put :update,
+            params: {group_id: leader.group_id, id: leader.id, role: {end_on: Date.tomorrow}}
         end.to change { leader.reload.end_on }.to(Date.tomorrow)
           .and not_change { write_jobs.count }
       end
 
       it "does not enqueue if changed params are irrelevant" do
         expect do
-          put :update, params: {group_id: managed_role.group_id, id: managed_role.id, role: {label: "test"}}
+          put :update,
+            params: {group_id: managed_role.group_id, id: managed_role.id, role: {label: "test"}}
         end.to change { managed_role.reload.label }.to("test")
           .and not_change { write_jobs.count }
       end
@@ -191,26 +232,43 @@ describe RolesController do
       describe "changing type" do
         it "does not enqueue anything if no role type is managed" do
           expect do
-            put :update, params: {group_id: leader.group_id, id: leader.id, role: {type: "Group::DachverbandGeschaeftsstelle::Mitglied", group_id: leader.group_id}}
+            put :update,
+              params: {group_id: leader.group_id, id: leader.id,
+                       # rubocop:todo Layout/LineLength
+                       role: {type: "Group::DachverbandGeschaeftsstelle::Mitglied", group_id: leader.group_id}}
+            # rubocop:enable Layout/LineLength
           end.to not_change { Role.count }
             .and not_change { write_jobs.count }
             .and not_change { delete_jobs.count }
+          # rubocop:todo Layout/LineLength
           expect(leader.person.reload.roles.pluck(:type)).to eq ["Group::DachverbandGeschaeftsstelle::Mitglied"]
+          # rubocop:enable Layout/LineLength
         end
 
         it "enqueues two write jobs when changing to managed role and person not yet managed" do
           expect do
-            put :update, params: {group_id: leader.group_id, id: leader.id, role: {type: "Group::DachverbandGeschaeftsstelle::Interclub", group_id: leader.group_id}}
+            put :update,
+              params: {group_id: leader.group_id, id: leader.id,
+                       # rubocop:todo Layout/LineLength
+                       role: {type: "Group::DachverbandGeschaeftsstelle::Interclub", group_id: leader.group_id}}
+            # rubocop:enable Layout/LineLength
           end.to not_change { Role.count }
             .and not_change { delete_jobs.count }
             .and change { write_jobs.count }.by(2)
         end
 
+        # rubocop:todo Layout/LineLength
         it "enqueues single write and delete job when changing to managed role and person and deleted role are managed" do
-          other = Fabricate(Group::Region::Interclub.sti_name, person: people(:leader), group: groups(:brb), ts_code: Faker::Internet.uuid)
+          # rubocop:enable Layout/LineLength
+          other = Fabricate(Group::Region::Interclub.sti_name, person: people(:leader),
+            group: groups(:brb), ts_code: Faker::Internet.uuid)
 
           expect do
-            put :update, params: {group_id: other.group_id, id: other.id, role: {type: "Group::DachverbandGeschaeftsstelle::Interclub", group_id: leader.group_id}}
+            put :update,
+              params: {group_id: other.group_id, id: other.id,
+                       # rubocop:todo Layout/LineLength
+                       role: {type: "Group::DachverbandGeschaeftsstelle::Interclub", group_id: leader.group_id}}
+            # rubocop:enable Layout/LineLength
           end.to not_change { Role.count }
             .and change { delete_jobs.count }.by(1)
             .and change { write_jobs.count }.by(2)
@@ -220,7 +278,9 @@ describe RolesController do
           managed_role # initialize
 
           expect do
-            put :update, params: {group_id: managed_role.group_id, id: managed_role.id, role: {type: "Group::Region::EventTurnier", group_id: groups(:brb).id}}
+            put :update,
+              params: {group_id: managed_role.group_id, id: managed_role.id,
+                       role: {type: "Group::Region::EventTurnier", group_id: groups(:brb).id}}
           end.to not_change { Role.count }
             .and change { delete_jobs.count }.by(1)
             .and not_change { write_jobs.count }
@@ -262,7 +322,10 @@ describe RolesController do
 
       context "lizenz plus role" do
         let(:group) { groups(:bc_bern_spieler) }
-        let!(:role) { Fabricate(Group::VereinSpieler::LizenzPlus.sti_name, person:, group:, ts_code: Faker::Internet.uuid) }
+        let!(:role) {
+          Fabricate(Group::VereinSpieler::LizenzPlus.sti_name, person:, group:,
+            ts_code: Faker::Internet.uuid)
+        }
 
         it "can destroy lizenzplus role" do
           expect do

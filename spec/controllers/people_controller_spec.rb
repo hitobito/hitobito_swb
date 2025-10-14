@@ -15,19 +15,24 @@ describe PeopleController do
 
     it "can update nationality" do
       expect do
-        put :update, params: {group_id: person.roles.first.group, id: person.id, person: {nationality: "CH"}}
+        put :update,
+          params: {group_id: person.roles.first.group, id: person.id, person: {nationality: "CH"}}
       end.to change { person.reload.nationality }.from("FR").to("CH")
     end
 
     it "can update international_player_id" do
       expect do
-        put :update, params: {group_id: person.roles.first.group, id: person.id, person: {international_player_id: 321}}
+        put :update,
+          params: {group_id: person.roles.first.group, id: person.id,
+                   person: {international_player_id: 321}}
       end.to change { person.reload.international_player_id }.from(nil).to(321)
     end
 
     it "can update emergency_contact" do
       expect do
-        put :update, params: {group_id: person.roles.first.group, id: person.id, person: {emergency_contact: "foo\nbar"}}
+        put :update,
+          params: {group_id: person.roles.first.group, id: person.id,
+                   person: {emergency_contact: "foo\nbar"}}
       end.to change { person.reload.emergency_contact }.from(nil).to("foo\nbar")
     end
   end
@@ -61,7 +66,11 @@ describe PeopleController do
         person = Fabricate(:person, ts_code: Faker::Internet.uuid)
         Fabricate(Group::Region::Interclub.sti_name, group:, person:, ts_code: Faker::Internet.uuid)
         expect do
-          put :update, params: {group_id: group.id, id: person.id, person: {family_members_attributes: {"1" => {kind: :sibling, other_id: people(:leader)}}}}
+          put :update,
+            params: {group_id: group.id, id: person.id,
+                     # rubocop:todo Layout/LineLength
+                     person: {family_members_attributes: {"1" => {kind: :sibling, other_id: people(:leader)}}}}
+          # rubocop:enable Layout/LineLength
         end.to change { person.family_members.count }
           .and not_change { delayed_jobs.count }
       end

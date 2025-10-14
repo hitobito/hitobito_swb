@@ -19,7 +19,9 @@ describe Role::Player do
       it "is invalid if person has any other role in that group" do
         Fabricate(Group::RegionSpieler::Lizenz.sti_name, group:, person:)
         expect(role).not_to be_valid
+        # rubocop:todo Layout/LineLength
         expect(role.errors.full_messages).to eq ["Person hat bereits eine Spielerrolle in dieser Gruppe"]
+        # rubocop:enable Layout/LineLength
       end
 
       it "is valid if player role exists in a different group" do
@@ -41,7 +43,9 @@ describe Role::Player do
       it "is invalid if person has any other role in that group" do
         Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group:, person:)
         expect(role).not_to be_valid
+        # rubocop:todo Layout/LineLength
         expect(role.errors.full_messages).to eq ["Person hat bereits eine Spielerrolle in dieser Gruppe"]
+        # rubocop:enable Layout/LineLength
       end
 
       it "is invalid if role of that type exists in a different group" do
@@ -55,7 +59,8 @@ describe Role::Player do
       end
 
       it "is valid if player has another lizenz role type in a different layer" do
-        Fabricate(Group::VereinSpieler::LizenzPlus.sti_name, group: groups(:bc_thun_spieler), person:)
+        Fabricate(Group::VereinSpieler::LizenzPlus.sti_name, group: groups(:bc_thun_spieler),
+          person:)
         expect(role).to be_valid
       end
 
@@ -88,7 +93,9 @@ describe Role::Player do
           expect(role).to be_valid
           person.update_columns(birthday: min_date - 1.day)
           expect(role).not_to be_valid
+          # rubocop:todo Layout/LineLength
           expect(role.errors.full_messages).to eq ["Person muss an oder nach dem #{I18n.l(min_date)} geboren sein"]
+          # rubocop:enable Layout/LineLength
         end
 
         it "still allows destroying person born on #{min_date - 1.day}" do
@@ -112,7 +119,9 @@ describe Role::Player do
         it "is too young with person born on #{max_date + 1.day}" do
           person.birthday = max_date + 1.day
           expect(role).not_to be_valid
+          # rubocop:todo Layout/LineLength
           expect(role.errors.full_messages).to eq ["Person muss an oder vor dem #{I18n.l(max_date)} geboren sein"]
+          # rubocop:enable Layout/LineLength
         end
 
         it "still allows destroying person born on #{max_date - 1.day}" do
@@ -164,7 +173,8 @@ describe Role::Player do
     end
   end
 
-  [Group::DachverbandSpieler, Group::RegionSpieler, Group::VereinSpieler].flat_map(&:role_types).each do |type|
+  [Group::DachverbandSpieler, Group::RegionSpieler,
+    Group::VereinSpieler].flat_map(&:role_types).each do |type|
     describe type do
       it "is a Role::Player" do
         expect(type.new).to be_kind_of(Role::Player)
@@ -187,7 +197,8 @@ describe Role::Player do
     let(:group) { groups(:bc_bern_spieler) }
 
     it "updates billed model" do
-      model = Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:, end_on: 1.day.ago)
+      model = Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:,
+        end_on: 1.day.ago)
       Fabricate(:billed_model, billing_period:, model:)
       expect do
         role = Fabricate(Group::VereinSpieler::Lizenz.sti_name, person:, group:)

@@ -57,7 +57,7 @@ class Ts::Client
 
   private
 
-  def request(method, url, payload = nil)
+  def request(method, url, payload = nil) # rubocop:todo Metrics/AbcSize
     request = Request.new(method, url, payload)
     response = RestClient.send(method, url, *[payload, options].compact)
     Operation.new(request:, response: Response.new(entity, response)).tap do |operation|

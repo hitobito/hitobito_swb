@@ -17,7 +17,7 @@ module SwbImport
       @index = 0
     end
 
-    def run
+    def run # rubocop:todo Metrics/MethodLength
       disable_seed_fu_output
 
       reset_db
@@ -64,19 +64,28 @@ module SwbImport
 
     def disable_seed_fu_output = SeedFu.quiet = true
 
-    def import(importer_class, from:, sort: false, lines: nil) = Importer.new(importer_class, from, lines:, log_dir:, index: @index += 2, sort:).run
+    def import(importer_class, from:, sort: false,
+      lines: nil) = Importer.new(importer_class, from, lines:, log_dir:, index: @index += 2,
+        sort:).run
 
+    # rubocop:todo Layout/LineLength
     def build_log_dir = Pathname("#{wagon_dir}/log/#{Time.zone.now.strftime("%m-%d-%H_%M_%S")}").tap do |path|
+      # rubocop:enable Layout/LineLength
       FileUtils.mkdir_p(path)
     end
 
     def wagon_dir = Wagons.all[0].root
 
     def truncate_tables
-      ActiveRecord::Base.connection.truncate_tables(:group_translations, :groups, :roles, :people, :invoice_configs, :phone_numbers, :social_accounts, :additional_emails, :versions, :sessions, :delayed_jobs)
+      ActiveRecord::Base.connection.truncate_tables(:group_translations, :groups, :roles, :people,
+        # rubocop:todo Layout/LineLength
+        :invoice_configs, :phone_numbers, :social_accounts, :additional_emails, :versions, :sessions, :delayed_jobs)
+      # rubocop:enable Layout/LineLength
     end
 
-    def import_root_seeds = %w[custom_contents root].each { |file| load Rails.root.join("db/seeds/#{file}.rb") }
+    def import_root_seeds = %w[custom_contents root].each { |file|
+      load Rails.root.join("db/seeds/#{file}.rb")
+    }
 
     def import_wagon_seeds(*files)
       files.each do |file|
@@ -86,9 +95,11 @@ module SwbImport
 
     def rebuild_groups = Group.rebuild!
 
+    # rubocop:todo Layout/LineLength
     def delete_empty_groups = Group.where.not("layer_group_id = groups.id").where.missing(:roles).delete_all
+    # rubocop:enable Layout/LineLength
 
-    def sequence_reset_statements
+    def sequence_reset_statements # rubocop:todo Metrics/MethodLength
       sql = <<~SQL
         SELECT 'SELECT SETVAL(' ||
         quote_literal(quote_ident(PGT.schemaname) || '.' || quote_ident(S.relname)) ||
@@ -113,7 +124,7 @@ module SwbImport
       end
     end
 
-    def seed_static_people
+    def seed_static_people # rubocop:todo Metrics/MethodLength
       load(Rails.root.join("db", "seeds", "support", "person_seeder.rb"))
 
       puzzlers = [

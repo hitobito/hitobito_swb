@@ -107,7 +107,9 @@ module SwbImport
     ["Club Nachwuchs", Group::Verein::Nachwuchs],
     ["Club Nationalliga", Group::Verein::Nationalliga],
     ["Club Offical", Group::VereinKontakte::Kontakt],
-    ["Club Präsident", [Group::VereinVorstand::Praesident, Group::Center::Direktion, Group::CenterUnaffilliated::Direktion]],
+    ["Club Präsident",
+      [Group::VereinVorstand::Praesident, Group::Center::Direktion,
+        Group::CenterUnaffilliated::Direktion]],
     ["Club Schiedsrichter", Group::Verein::Schiedsrichter],
     ["Club Sport Integrity", Group::Verein::Antidoping],
     ["Club Vize-Präsident", Group::VereinVorstand::Vizepraesident],
@@ -142,10 +144,18 @@ module SwbImport
   ].to_h
 
   SPIELER_LIZENZ_MAPPING = [
-    ["Aktiv", [Group::DachverbandSpieler::Aktivmitglied, Group::RegionSpieler::Aktivmitglied, Group::VereinSpieler::Aktivmitglied]],
-    ["Passiv", [Group::DachverbandSpieler::Passivmitglied, Group::RegionSpieler::Passivmitglied, Group::VereinSpieler::Passivmitglied]],
-    ["Junior (U17-U19)", [Group::DachverbandSpieler::JuniorU19, Group::RegionSpieler::JuniorU19, Group::VereinSpieler::JuniorU19]],
-    ["Junior (up to U15)", [Group::DachverbandSpieler::JuniorU15, Group::RegionSpieler::JuniorU15, Group::VereinSpieler::JuniorU15]],
+    ["Aktiv",
+      [Group::DachverbandSpieler::Aktivmitglied, Group::RegionSpieler::Aktivmitglied,
+        Group::VereinSpieler::Aktivmitglied]],
+    ["Passiv",
+      [Group::DachverbandSpieler::Passivmitglied, Group::RegionSpieler::Passivmitglied,
+        Group::VereinSpieler::Passivmitglied]],
+    ["Junior (U17-U19)",
+      [Group::DachverbandSpieler::JuniorU19, Group::RegionSpieler::JuniorU19,
+        Group::VereinSpieler::JuniorU19]],
+    ["Junior (up to U15)",
+      [Group::DachverbandSpieler::JuniorU15, Group::RegionSpieler::JuniorU15,
+        Group::VereinSpieler::JuniorU15]],
 
     ["Lizenz", Group::VereinSpieler::Lizenz],
     ["Lizenz NO ranking", Group::VereinSpieler::LizenzNoRanking],

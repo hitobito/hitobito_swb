@@ -72,7 +72,9 @@ describe SwbImport::Entity do
       expect(group).to be_kind_of(Group::Center)
     end
 
+    # rubocop:todo Layout/LineLength
     it "uses Group::CenterUnaffilliated under Dachverband if short_name is CENT and name does not start with '.'" do
+      # rubocop:enable Layout/LineLength
       csv["Parentnumber"] = "CENT"
       expect(group.parent).to eq groups(:root)
       expect(group).to be_kind_of(Group::CenterUnaffilliated)

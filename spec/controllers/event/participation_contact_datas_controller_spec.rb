@@ -40,7 +40,10 @@ describe Event::ParticipationContactDatasController do
         event_participation_contact_data: {}
       }
       expect(entry).to have(11).errors
-      expect(entry.errors.attribute_names).to match_array([:birthday, :country, :email, :first_name, :last_name, :phone_numbers, :street, :town, :zip_code, :nationality, :ts_gender])
+      expect(entry.errors.attribute_names).to match_array([:birthday, :country, :email,
+        # rubocop:todo Layout/LineLength
+        :first_name, :last_name, :phone_numbers, :street, :town, :zip_code, :nationality, :ts_gender])
+      # rubocop:enable Layout/LineLength
     end
   end
 end

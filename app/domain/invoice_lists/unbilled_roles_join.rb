@@ -18,6 +18,7 @@ module InvoiceLists::UnbilledRolesJoin
       ON billed_models.model_id = roles.id AND billed_models.model_type = :model_type
       AND billed_models.billing_period_id = :billing_period_id
     SQL
-    Role.sanitize_sql_for_conditions([sql, model_id: "roles.id", model_type: Role.sti_name, billing_period_id: BillingPeriod.active.id])
+    Role.sanitize_sql_for_conditions([sql,
+      model_id: "roles.id", model_type: Role.sti_name, billing_period_id: BillingPeriod.active.id])
   end
 end

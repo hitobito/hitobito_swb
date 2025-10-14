@@ -58,13 +58,15 @@ module SwbImport
     def build
       super do |model|
         model.parent_id = self.class.root_id
-        model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone, phone2].any?(&:present?)
+        model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone,
+          phone2].any?(&:present?)
         model.phone_numbers.build(label: :mobile, number: mobile) if mobile
         model.social_accounts.build(label: :website, name: website) if website
       end
     end
 
-    def to_s(details: false) = ["#{status} #{model} (#{model.short_name})", (full_error_messages if details)].compact_blank.join(": ")
+    def to_s(details: false) = ["#{status} #{model} (#{model.short_name})",
+      (full_error_messages if details)].compact_blank.join(": ")
   end
 
   Club = Entity.new(*CLUB_MAPPINGS.map(&:second), keyword_init: true) do
@@ -76,16 +78,22 @@ module SwbImport
 
     def self.root = @root ||= Group.root
 
-    def to_s(details: false) = ["#{status} #{model} (#{model.id})", (full_error_messages if details)].compact_blank.join(": ")
+    def to_s(details: false) = ["#{status} #{model} (#{model.id})",
+      (full_error_messages if details)].compact_blank.join(": ")
 
-    def build
+    # rubocop:todo Metrics/AbcSize
+    def build # rubocop:todo Metrics/CyclomaticComplexity # rubocop:todo Metrics/AbcSize
       super do |model|
+        # rubocop:todo Layout/LineLength
         model.parent = model.is_a?(Group::Verein) ? Group::Region.find_by(short_name: parent_number) : self.class.root
-        model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone, phone2].any?(&:present?)
+        # rubocop:enable Layout/LineLength
+        model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone,
+          phone2].any?(&:present?)
         model.phone_numbers.build(label: :mobile, number: mobile) if mobile
         model.social_accounts.build(label: :website, name: website) if website
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     def model_class
       return Group::Verein unless parent_number == CENTER_PARENT_NUMBER
@@ -106,7 +114,8 @@ module SwbImport
 
     def to_s(details: false)
       values = to_h.except(:name).values.join(",")
-      ["#{status} #{model} (#{details ? [name, values].join(",") : name})", (full_error_messages if details)].compact_blank.join(": ")
+      ["#{status} #{model} (#{details ? [name, values].join(",") : name})",
+        (full_error_messages if details)].compact_blank.join(": ")
     end
   end
 
@@ -118,6 +127,7 @@ module SwbImport
     self.mappings = TEAM_MAPPING_SEN
   end
 
+  # rubocop:todo Metrics/BlockLength
   Person = Entity.new(*PERSON_MAPPINGS.map(&:second), keyword_init: true) do
     self.mappings = PERSON_MAPPINGS
     self.non_assignable_attrs = [:phone, :mobile]
@@ -161,10 +171,13 @@ module SwbImport
 
     def to_s(details: false)
       values = to_h.except(:id, :first_name, :last_name).values.join(",")
-      ["#{status} #{model} (#{details ? [id, values].join(",") : id})", (full_error_messages if details)].compact_blank.join(": ")
+      ["#{status} #{model} (#{details ? [id, values].join(",") : id})",
+        (full_error_messages if details)].compact_blank.join(": ")
     end
   end
+  # rubocop:enable Metrics/BlockLength
 
+  # rubocop:todo Metrics/BlockLength
   Role = Entity.new(*ROLE_MAPPINGS.map(&:second), keyword_init: true) do
     self.mappings = ROLE_MAPPINGS
     self.model_class = ::Role
@@ -173,7 +186,9 @@ module SwbImport
 
     def build
       super do |role|
-        type, group_id = group_ids.fetch(groupcode.downcase, {}).find { |type, _| role_types.include?(type) }
+        type, group_id = group_ids.fetch(groupcode.downcase, {}).find { |type, _|
+          role_types.include?(type)
+        }
 
         role.group_id = group_id
         role.type = type
@@ -185,11 +200,14 @@ module SwbImport
     def to_s(details: false)
       values = to_h.slice(*non_assignable_attrs).values.join(",")
       values += ",#{group_types[groupcode]}" if details
-      ["#{status} #{person} #{model} (#{details ? [values].join(",") : role})", (full_error_messages if details)].compact_blank.join(": ")
+      ["#{status} #{person} #{model} (#{details ? [values].join(",") : role})",
+        (full_error_messages if details)].compact_blank.join(": ")
     end
 
     def role_types
+      # rubocop:todo Layout/LineLength
       (Array(ROLE_TYPE_MAPPING[role]) + Array(SPIELER_LIZENZ_MAPPING[spieler_role_type])).compact_blank.map(&:to_s)
+      # rubocop:enable Layout/LineLength
     end
 
     def person = people[person_id] || person_id
@@ -226,4 +244,5 @@ module SwbImport
       .map { |id, first_name, last_name| [id, "#{first_name} #{last_name} (#{id})"] }
       .to_h
   end
+  # rubocop:enable Metrics/BlockLength
 end

@@ -26,7 +26,8 @@ describe Ts::Client, :tests_ts_api do
     end
 
     it "can update entity" do
-      stub_api_request(:put, sub_path, request_body: entity.to_xml, response_body: sucessfull_response_body(entity))
+      stub_api_request(:put, sub_path, request_body: entity.to_xml,
+        response_body: sucessfull_response_body(entity))
 
       operation = client.put(entity.code, entity.to_xml)
       expect(operation).to be_success
@@ -51,7 +52,10 @@ describe Ts::Client, :tests_ts_api do
     let(:role_code) { Faker::Internet.uuid }
     let(:person_code) { Faker::Internet.uuid }
 
-    let(:entity) { Ts::Entity::OrganizationMembership.build(code:, organization_group_code: group_code, organization_role_code: role_code) }
+    let(:entity) {
+      Ts::Entity::OrganizationMembership.build(code:, organization_group_code: group_code,
+        organization_role_code: role_code)
+    }
     let(:person) { Ts::Entity::OrganizationPerson.build(code: person_code) }
 
     subject(:client) { described_class.new(entity.class, nesting: person) }
@@ -65,13 +69,15 @@ describe Ts::Client, :tests_ts_api do
     end
 
     it "can create entity" do
-      stub_api_request(:post, "/Person/#{person_code}/Membership", request_body: entity.to_xml, response_body: sucessfull_response_body(entity))
+      stub_api_request(:post, "/Person/#{person_code}/Membership", request_body: entity.to_xml,
+        response_body: sucessfull_response_body(entity))
       response = client.post(entity.to_xml)
       expect(response).to be_success
     end
 
     it "can update entity" do
-      stub_api_request(:put, sub_path, request_body: entity.to_xml, response_body: sucessfull_response_body(entity))
+      stub_api_request(:put, sub_path, request_body: entity.to_xml,
+        response_body: sucessfull_response_body(entity))
 
       response = client.put(entity.code, entity.to_xml)
       expect(response).to be_success

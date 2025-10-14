@@ -41,7 +41,9 @@ describe Ts::Entity do
   end
 
   describe Ts::Entity::OrganizationGroup do
+    # rubocop:todo Layout/LineLength
     it_behaves_like "ts_entity", ignored_members: [:parent_group, :parent_code] # only used for writing
+    # rubocop:enable Layout/LineLength
   end
 
   describe Ts::Entity::OrganizationRole do
@@ -56,7 +58,8 @@ describe Ts::Entity do
     it_behaves_like "ts_entity"
 
     it "upcases id fields" do
-      hash = Hash.from_xml(described_class.build(gender_id: 1, member_id: 2, firstname: "test").to_xml)
+      hash = Hash.from_xml(described_class.build(gender_id: 1, member_id: 2,
+        firstname: "test").to_xml)
       expect(hash.dig("OrganizationPerson", "GenderID")).to eq "1"
       expect(hash.dig("OrganizationPerson", "MemberID")).to eq "2"
       expect(hash.dig("OrganizationPerson", "Firstname")).to eq "test"

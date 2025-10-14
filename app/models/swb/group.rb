@@ -38,5 +38,7 @@ module Swb::Group
     validates :yearly_budget, inclusion: {in: Group::Budget.list.map(&:to_s)}, allow_blank: true
   end
 
-  def ts_managed? = super && [Group::Region, Group::Verein, Group::Center].any? { |type| is_a?(type) }
+  def ts_managed? = super && [Group::Region, Group::Verein, Group::Center].any? { |type|
+    is_a?(type)
+  }
 end

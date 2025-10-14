@@ -9,7 +9,9 @@ module SwbImport
   class Importer
     attr_reader :models, :name, :counts, :info, :saved, :failed, :validation_errors, :index
 
-    def initialize(importer_class, from, log_dir: nil, lines: nil, filter: nil, index: nil, sort: false)
+    # rubocop:todo Metrics/AbcSize
+    def initialize(importer_class, from, log_dir: nil, lines: nil, filter: nil, index: nil,
+      sort: false)
       @name = importer_class.name.demodulize.pluralize
       @csv = Csv.new(from, lines:, filter:).csv
       @models = @csv.map { |row| importer_class.from(row) }.uniq
@@ -22,8 +24,9 @@ module SwbImport
       @started = get_time
       @sort = sort
     end
+    # rubocop:enable Metrics/AbcSize
 
-    def run
+    def run # rubocop:todo Metrics/AbcSize
       write(:info)
       write(:info, "===")
       write(:info, "Got #{models.count} #{name}, running validations, pls stand by ..")
@@ -34,7 +37,8 @@ module SwbImport
       # Still trying to save all, as we have more restrict validations in place
       models.select { |model| save(model) }
 
-      write(:info, " success: #{counts[:success]}, failed: #{counts[:failed]}, duration: #{duration}")
+      write(:info,
+        " success: #{counts[:success]}, failed: #{counts[:failed]}, duration: #{duration}")
 
       write(:info, "===")
       write(:info)

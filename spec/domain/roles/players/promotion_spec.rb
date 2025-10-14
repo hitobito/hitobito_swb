@@ -10,7 +10,8 @@ require "spec_helper"
 describe Roles::Players::Promotion do
   def create_spieler(role_type, group, birthday:)
     offset = role_type.year_range.end - 1
-    Fabricate(role_type.sti_name, group:, person: Fabricate(:person, birthday: offset.years.ago)).then do |role|
+    Fabricate(role_type.sti_name, group:,
+      person: Fabricate(:person, birthday: offset.years.ago)).then do |role|
       role.person.tap { |p| p.update_columns(birthday:) }
     end
   end
@@ -50,7 +51,9 @@ describe Roles::Players::Promotion do
         expect(write_jobs.first.payload_object.gid).to eq person.roles.first.to_global_id
         expect(write_jobs.first.payload_object.operation).to eq :post
         expect(delete_jobs.first.payload_object.attrs).to eq role.ts_destroy_values
+        # rubocop:todo Layout/LineLength
         expect(log.subject).to eq person.roles.find_by(type: Group::VereinSpieler::JuniorU19.sti_name)
+        # rubocop:enable Layout/LineLength
         expect(log.category).to eq "promotion"
         expect(log.level).to eq "info"
         expect(log.message).to start_with "Promoted Junior:in (bis U15)"
@@ -85,7 +88,8 @@ describe Roles::Players::Promotion do
         end
 
         it "continues with promotion if one fails" do
-          thun_spieler = create_spieler(Group::VereinSpieler::JuniorU15, groups(:bc_thun_spieler), birthday: 17.years.ago)
+          thun_spieler = create_spieler(Group::VereinSpieler::JuniorU15, groups(:bc_thun_spieler),
+            birthday: 17.years.ago)
           Group.where(id: group.id).delete_all
           expect do
             promotion.run
@@ -97,9 +101,14 @@ describe Roles::Players::Promotion do
     end
 
     it "promotes multiple types of JuniorU15 roles" do
-      thun_spieler = create_spieler(Group::VereinSpieler::JuniorU15, groups(:bc_thun_spieler), birthday: 17.years.ago)
-      region_spieler = create_spieler(Group::RegionSpieler::JuniorU15, groups(:brb_spieler), birthday: 19.years.ago)
-      root_spieler = create_spieler(Group::DachverbandSpieler::JuniorU15, Fabricate(Group::DachverbandSpieler.sti_name, parent: groups(:root)), birthday: 17.years.ago)
+      thun_spieler = create_spieler(Group::VereinSpieler::JuniorU15, groups(:bc_thun_spieler),
+        birthday: 17.years.ago)
+      region_spieler = create_spieler(Group::RegionSpieler::JuniorU15, groups(:brb_spieler),
+        birthday: 19.years.ago)
+      root_spieler = create_spieler(Group::DachverbandSpieler::JuniorU15,
+        # rubocop:todo Layout/LineLength
+        Fabricate(Group::DachverbandSpieler.sti_name, parent: groups(:root)), birthday: 17.years.ago)
+      # rubocop:enable Layout/LineLength
       expect do
         promotion.run
       end.not_to change { Role.count }
@@ -113,7 +122,8 @@ describe Roles::Players::Promotion do
     subject(:promotion) { described_class.new(Role::Player::JuniorU19) }
 
     it "noops if person is within limit no exceeded limit" do
-      person = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler), birthday: 18.years.ago.beginning_of_year)
+      person = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler),
+        birthday: 18.years.ago.beginning_of_year)
       expect do
         promotion.run
       end.to not_change { person.reload.roles.map(&:type) }
@@ -121,7 +131,8 @@ describe Roles::Players::Promotion do
     end
 
     it "promotes to Lizenz if outside of U19 year range" do
-      person = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler), birthday: 19.years.ago.end_of_year)
+      person = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler),
+        birthday: 19.years.ago.end_of_year)
       expect do
         promotion.run
       end.to change { person.reload.roles.map(&:type) }
@@ -130,9 +141,14 @@ describe Roles::Players::Promotion do
     end
 
     it "promotes multiple types of JuniorU19 roles" do
-      thun_spieler = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler), birthday: 19.years.ago)
-      region_spieler = create_spieler(Group::RegionSpieler::JuniorU19, groups(:brb_spieler), birthday: 20.years.ago)
-      root_spieler = create_spieler(Group::DachverbandSpieler::JuniorU19, Fabricate(Group::DachverbandSpieler.sti_name, parent: groups(:root)), birthday: 20.years.ago)
+      thun_spieler = create_spieler(Group::VereinSpieler::JuniorU19, groups(:bc_thun_spieler),
+        birthday: 19.years.ago)
+      region_spieler = create_spieler(Group::RegionSpieler::JuniorU19, groups(:brb_spieler),
+        birthday: 20.years.ago)
+      root_spieler = create_spieler(Group::DachverbandSpieler::JuniorU19,
+        # rubocop:todo Layout/LineLength
+        Fabricate(Group::DachverbandSpieler.sti_name, parent: groups(:root)), birthday: 20.years.ago)
+      # rubocop:enable Layout/LineLength
       expect do
         described_class.new(Role::Player::JuniorU19).run
       end.not_to change { Role.count }

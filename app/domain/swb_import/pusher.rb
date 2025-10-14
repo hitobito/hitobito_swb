@@ -14,7 +14,9 @@ module SwbImport
       db_dump = "tmp/dump.sql"
       puts "Dumping local schema"
       ActiveRecord::Base.connection.execute "ALTER SCHEMA public RENAME TO database"
+      # rubocop:todo Layout/LineLength
       system("PGPASSWORD=$RAILS_DB_PASSWORD #{pg_dump} -cOx -h $RAILS_DB_HOST -U $RAILS_DB_USERNAME $RAILS_DB_NAME > #{db_dump}")
+      # rubocop:enable Layout/LineLength
       ActiveRecord::Base.connection.execute "ALTER SCHEMA database RENAME TO public"
       project = `oc project -q`.strip
       fail "Unexpected project: #{project}" unless project.starts_with?("hit-swb")
@@ -23,7 +25,7 @@ module SwbImport
     end
     # rubocop:enable Rails/Output
 
-    def update_sequences
+    def update_sequences # rubocop:todo Metrics/MethodLength
       sql = <<~SQL
         SELECT 'SELECT SETVAL(' ||
           quote_literal(quote_ident(PGT.schemaname) || '.' || quote_ident(S.relname)) ||

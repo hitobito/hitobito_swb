@@ -17,7 +17,9 @@ class Ts::RoleDestroyJob < BaseJob
   def perform = (role.ts_interface_put if role.ts_code)
 
   def role
+    # rubocop:todo Layout/LineLength
     @role ||= (Role.with_inactive.find_by(id: attrs[:id]) || attrs[:type].constantize.new(attrs)).tap do |r|
+      # rubocop:enable Layout/LineLength
       r.attributes = attrs
     end
   end

@@ -19,7 +19,7 @@ module HitobitoSwb
       #{config.root}/app/jobs
     ]
 
-    config.to_prepare do
+    config.to_prepare do # rubocop:todo Metrics/BlockLength
       Group.prepend TsModel
       Role.prepend TsModel
       Person.prepend TsModel

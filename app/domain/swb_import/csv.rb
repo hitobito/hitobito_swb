@@ -19,7 +19,8 @@ module SwbImport
 
     def csv = @csv ||= filtered(parse_csv)
 
-    def parse_csv = CSV.parse(readlines, headers: true, skip_blanks: true, skip_lines: EMPTY_LINE_REGEX)
+    def parse_csv = CSV.parse(readlines, headers: true, skip_blanks: true,
+      skip_lines: EMPTY_LINE_REGEX)
 
     def readlines = lines ? target.readlines.take(lines).join : target.read
 

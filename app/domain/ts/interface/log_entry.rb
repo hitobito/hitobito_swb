@@ -19,7 +19,9 @@ class Ts::Interface::LogEntry
     },
     put: {
       success: "Updated %<model>s %<to_s>s (%<id>d, %<ts_code>s)",
+      # rubocop:todo Layout/LineLength
       failed: "Update failed for %<model>s (%<to_s>s, %<id>d, %<ts_code>s) - (%<error_code>s, %<error_message>s)"
+      # rubocop:enable Layout/LineLength
     }
   }
 
@@ -37,7 +39,8 @@ class Ts::Interface::LogEntry
       category: :ts,
       level: operation.success? ? :info : :error,
       payload: operation.to_h,
-      message: [exception_info, sprintf(MESSAGES.dig(method, state) % message_info)].compact_blank.join(" - ")
+      message: [exception_info,
+        sprintf(MESSAGES.dig(method, state) % message_info)].compact_blank.join(" - ")
     )
   end
 
