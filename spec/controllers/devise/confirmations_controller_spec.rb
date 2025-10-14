@@ -19,8 +19,10 @@ describe Devise::ConfirmationsController do
   end
 
   it "enqueues write job when confirming email" do
-    person.update!(ts_code: Faker::Internet.uuid, unconfirmed_email: "dummy@example.com", confirmation_token: "ab")
-    Fabricate(Group::Region::Interclub.sti_name, person:, group: groups(:brb), ts_code: Faker::Internet.uuid)
+    person.update!(ts_code: Faker::Internet.uuid, unconfirmed_email: "dummy@example.com",
+      confirmation_token: "ab")
+    Fabricate(Group::Region::Interclub.sti_name, person:, group: groups(:brb),
+      ts_code: Faker::Internet.uuid)
     expect do
       get :show, params: {confirmation_token: "ab"}
     end.to change { person.reload.email }.from("admin@hitobito.example.com").to("dummy@example.com")

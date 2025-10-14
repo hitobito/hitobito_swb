@@ -28,7 +28,8 @@ describe Roles::Players::MarkAsBilled do
   end
 
   it "noops if billed model exists but was for role without cost" do
-    model = create(Group::VereinSpieler::Passivmitglied.sti_name, person:, group:, end_on: 1.day.ago)
+    model = create(Group::VereinSpieler::Passivmitglied.sti_name, person:, group:,
+      end_on: 1.day.ago)
 
     Fabricate(:billed_model, billing_period:, model:)
     expect { subject.run }.not_to change { BilledModel.count }

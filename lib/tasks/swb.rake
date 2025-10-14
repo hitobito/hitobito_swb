@@ -68,7 +68,8 @@ namespace :swb do
   end
 
   desc "Imports Teams for current year"
-  task import_teams: ["tmp/teams_eli.csv", "tmp/teams_jun.csv", "tmp/teams_sen.csv", "tmp/teams_ver.csv", :environment] do
+  task import_teams: ["tmp/teams_eli.csv", "tmp/teams_jun.csv", "tmp/teams_sen.csv",
+    "tmp/teams_ver.csv", :environment] do
     SwbImport::Importer.new(SwbImport::Team, :teams_eli).run
     SwbImport::Importer.new(SwbImport::TeamJun, :teams_jun).run
     SwbImport::Importer.new(SwbImport::TeamSen, :teams_sen).run
@@ -92,6 +93,8 @@ namespace :swb do
   end
 
   def ts_call(path)
+    # rubocop:todo Layout/LineLength
     sh "curl -s  -u $TS_USERNAME:$TS_PASSWORD $TS_HOST/1.0/Organization/$TS_ORGANIZATION/#{path} | xmllint  --format -"
+    # rubocop:enable Layout/LineLength
   end
 end

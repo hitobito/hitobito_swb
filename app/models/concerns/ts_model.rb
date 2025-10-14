@@ -16,7 +16,8 @@ module TsModel
     scope :with_ts_code, -> { where.not(ts_code: nil) }
     scope :without_ts_code, -> { where(ts_code: nil) }
 
-    with_options class_name: "HitobitoLogEntry", as: :subject, inverse_of: :subject, dependent: :nullify do
+    with_options class_name: "HitobitoLogEntry", as: :subject, inverse_of: :subject,
+      dependent: :nullify do
       has_many :ts_logs
       has_one :ts_latest_log, -> { order(created_at: :desc) }
     end
@@ -38,7 +39,9 @@ module TsModel
       .to_h.compact_blank
   end
 
+  # rubocop:todo Layout/LineLength
   def responds_to_ts_code? = respond_to?(:ts_code) # might not be set (e.g reduced people select for index)
+  # rubocop:enable Layout/LineLength
 
   def read_ts_value(from) = from.is_a?(Proc) ? instance_exec(&from) : send(from)
 

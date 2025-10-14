@@ -21,7 +21,9 @@ describe InvoiceLists::FixedFee do
   subject(:sum) { items.sum(&:total_cost) }
 
   it "raises when not found" do
-    expect { described_class.for(:foobar) }.to raise_error(RuntimeError, "No config exists for foobar")
+    expect {
+      described_class.for(:foobar)
+    }.to raise_error(RuntimeError, "No config exists for foobar")
   end
 
   describe "roles" do

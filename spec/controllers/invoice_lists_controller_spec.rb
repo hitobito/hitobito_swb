@@ -13,7 +13,8 @@ describe InvoiceListsController do
   let(:current) { billing_periods(:current) }
 
   before do
-    Fabricate(Group::DachverbandGeschaeftsstelle::Finanzen.sti_name, group: groups(:root_gs), person:)
+    Fabricate(Group::DachverbandGeschaeftsstelle::Finanzen.sti_name, group: groups(:root_gs),
+      person:)
     sign_in(person)
   end
 
@@ -56,8 +57,11 @@ describe InvoiceListsController do
 
       it "can submit form" do
         expect do
-          post :create, params: {group_id: group.id, fixed_fees: :regions, invoice_list: {invoice: {title: "Regions"}}}
-          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id, invoice_list.id, returning: true))
+          post :create,
+            params: {group_id: group.id, fixed_fees: :regions,
+                     invoice_list: {invoice: {title: "Regions"}}}
+          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id,
+            invoice_list.id, returning: true))
         end.to change { Invoice.count }.by(2)
         expect(invoice_list.amount_total).to eq 1000
       end
@@ -79,8 +83,11 @@ describe InvoiceListsController do
 
       it "can submit form" do
         expect do
-          post :create, params: {group_id: group.id, fixed_fees: :teams, invoice_list: {invoice: {title: "Teams"}}}
-          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id, invoice_list.id, returning: true))
+          post :create,
+            params: {group_id: group.id, fixed_fees: :teams,
+                     invoice_list: {invoice: {title: "Teams"}}}
+          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id,
+            invoice_list.id, returning: true))
         end.to change { Invoice.count }.by(1)
         expect(invoice_list.reload.amount_total).to eq 3300
       end
@@ -102,8 +109,11 @@ describe InvoiceListsController do
 
       it "can submit form" do
         expect do
-          post :create, params: {group_id: group.id, fixed_fees: :roles, invoice_list: {invoice: {title: "Teams"}}}
-          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id, InvoiceList.last.id, returning: true))
+          post :create,
+            params: {group_id: group.id, fixed_fees: :roles,
+                     invoice_list: {invoice: {title: "Teams"}}}
+          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id,
+            InvoiceList.last.id, returning: true))
         end
       end
     end

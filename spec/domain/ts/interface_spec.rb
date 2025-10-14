@@ -33,7 +33,8 @@ describe Ts::Interface, :tests_ts_api do
   end
 
   it "get returns entity from api" do
-    stub_api_request(:get, "/Group/#{model.ts_code}", response_body: sucessfull_response_body(model.ts_model))
+    stub_api_request(:get, "/Group/#{model.ts_code}",
+      response_body: sucessfull_response_body(model.ts_model))
     expect do
       entity = interface.get
       expect(entity).to be_kind_of(Ts::Entity::OrganizationGroup)
@@ -41,13 +42,16 @@ describe Ts::Interface, :tests_ts_api do
   end
 
   it "#post puts xml representation to remote and creates log entry" do
-    stub_api_request(:post, "/Group", request_body: model.ts_model.to_xml, response_body: sucessfull_response_body(model.ts_model))
+    stub_api_request(:post, "/Group", request_body: model.ts_model.to_xml,
+      response_body: sucessfull_response_body(model.ts_model))
     expect do
       operation = interface.post
       expect(operation).to be_success
     end.to change { model.ts_logs.count }.by(1)
 
+    # rubocop:todo Layout/LineLength
     expect(latest_log.message).to eq "Created Group::Dachverband Swiss Badminton (385153371, 368f12eb-1eed-48a0-9381-fa7d42fdcf00)"
+    # rubocop:enable Layout/LineLength
     expect(latest_log.payload.dig("request", "method")).to eq "post"
     expect(latest_log.payload.dig("request", "url")).to eq url + "/Group"
     expect(latest_log.payload.dig("request", "body")).to eq model.ts_model.to_xml
@@ -56,13 +60,16 @@ describe Ts::Interface, :tests_ts_api do
   end
 
   it "#put puts xml representation to remote and creates log entry" do
-    stub_api_request(:put, "/Group/#{model.ts_code}", request_body: model.ts_model.to_xml, response_body: sucessfull_response_body(model.ts_model))
+    stub_api_request(:put, "/Group/#{model.ts_code}", request_body: model.ts_model.to_xml,
+      response_body: sucessfull_response_body(model.ts_model))
     expect do
       operation = interface.put
       expect(operation).to be_success
     end.to change { model.ts_logs.count }.by(1)
 
+    # rubocop:todo Layout/LineLength
     expect(latest_log.message).to eq "Updated Group::Dachverband Swiss Badminton (385153371, 368f12eb-1eed-48a0-9381-fa7d42fdcf00)"
+    # rubocop:enable Layout/LineLength
     expect(latest_log.payload.dig("request", "method")).to eq "put"
     expect(latest_log.payload.dig("request", "url")).to eq url + "/Group/#{model.ts_code}"
     expect(latest_log.payload.dig("request", "body")).to eq model.ts_model.to_xml
@@ -77,7 +84,8 @@ describe Ts::Interface, :tests_ts_api do
 
   describe "errors" do
     it "logs application level error" do
-      stub_api_request(:post, "/Group", request_body: model.ts_model.to_xml, status: 422, response_body: error_response_body)
+      stub_api_request(:post, "/Group", request_body: model.ts_model.to_xml, status: 422,
+        response_body: error_response_body)
       expect do
         interface.post
       end.to change { model.ts_logs.count }.by(1)
@@ -89,7 +97,8 @@ describe Ts::Interface, :tests_ts_api do
     end
 
     it "logs internal server error" do
-      stub_api_request(:post, "/Group", request_body: model.ts_model.to_xml, status: 500, response_body: error_response_body)
+      stub_api_request(:post, "/Group", request_body: model.ts_model.to_xml, status: 500,
+        response_body: error_response_body)
       expect do
         interface.post
       end.to change { model.ts_logs.count }.by(1)
@@ -106,12 +115,17 @@ describe Ts::Interface, :tests_ts_api do
     let(:person) { people(:admin) }
     let(:ts_code) { Faker::Internet.uuid }
 
-    let(:model) { Fabricate(Group::RegionVorstand::Praesident.sti_name, group:, person:, id: 123, ts_code:) }
+    let(:model) {
+      Fabricate(Group::RegionVorstand::Praesident.sti_name, group:, person:, id: 123, ts_code:)
+    }
 
     subject(:interface) { described_class.new(model, nesting: person.ts_model) }
 
     it "#post uses parent entity in path" do
-      stub_api_request(:post, "/Person/#{person.ts_code}/Membership", request_body: model.ts_model.to_xml, response_body: sucessfull_response_body(model.ts_model))
+      stub_api_request(:post, "/Person/#{person.ts_code}/Membership",
+        # rubocop:todo Layout/LineLength
+        request_body: model.ts_model.to_xml, response_body: sucessfull_response_body(model.ts_model))
+      # rubocop:enable Layout/LineLength
       expect do
         operation = interface.post
         expect(operation).to be_success
@@ -119,7 +133,10 @@ describe Ts::Interface, :tests_ts_api do
     end
 
     it "#put uses parent entity in path and not ts_code of model" do
-      stub_api_request(:put, "/Person/#{person.ts_code}/Membership", request_body: model.ts_model.to_xml, response_body: sucessfull_response_body(model.ts_model))
+      stub_api_request(:put, "/Person/#{person.ts_code}/Membership",
+        # rubocop:todo Layout/LineLength
+        request_body: model.ts_model.to_xml, response_body: sucessfull_response_body(model.ts_model))
+      # rubocop:enable Layout/LineLength
       expect do
         operation = interface.put
         expect(operation).to be_success

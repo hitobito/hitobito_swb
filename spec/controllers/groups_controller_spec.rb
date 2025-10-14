@@ -41,7 +41,8 @@ describe GroupsController do
 
       it "does not enqueue if not managed" do
         expect do
-          post :create, params: {group: {type: "Group::DachverbandKader", name: "test", parent_id: root.id}}
+          post :create,
+            params: {group: {type: "Group::DachverbandKader", name: "test", parent_id: root.id}}
         end.to change { Group.count }
           .and not_change { delayed_jobs.count }
       end

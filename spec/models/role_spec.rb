@@ -14,7 +14,10 @@ describe Role do
     let(:ts_code) { Faker::Internet.uuid }
     let(:created_at) { Time.zone.local(2025, 4, 9, 10, 12) }
 
-    subject(:role) { Fabricate.build(Group::Region::Interclub.sti_name, group:, person:, ts_code:, id: 123, created_at:, start_on: nil) }
+    subject(:role) {
+      Fabricate.build(Group::Region::Interclub.sti_name, group:, person:, ts_code:, id: 123,
+        created_at:, start_on: nil)
+    }
 
     subject(:ts_model) { role.ts_model }
 
@@ -98,7 +101,9 @@ describe Role do
       end
 
       it "has ts suffix in model instance #to_s" do
+        # rubocop:todo Layout/LineLength
         expect(Fabricate.build(described_class.sti_name).to_s).to eq "Verantwortliche:r Interclub (TS - wartet)"
+        # rubocop:enable Layout/LineLength
       end
 
       it "has ts suffix in model instance #to_s" do
@@ -131,7 +136,10 @@ describe Role do
     end
 
     describe Group::VereinSpieler::Lizenz do
-      subject(:model) { Fabricate.build(described_class.sti_name, group: groups(:bc_bern_spieler), created_at: Time.zone.now) }
+      subject(:model) {
+        Fabricate.build(described_class.sti_name, group: groups(:bc_bern_spieler),
+          created_at: Time.zone.now)
+      }
 
       it "uses membership code and maps group from layer" do
         expect(model.ts_model).to have_attributes(

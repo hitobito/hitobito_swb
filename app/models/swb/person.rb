@@ -36,7 +36,8 @@ module Swb::Person
     before_validation :reset_ts_gender, unless: -> { gender.blank? }
 
     with_options on: [:create, :update] do
-      validates :first_name, :last_name, :email, :street, :zip_code, :town, :country, :birthday, :ts_gender, :nationality, presence: true
+      validates :first_name, :last_name, :email, :street, :zip_code, :town, :country, :birthday,
+        :ts_gender, :nationality, presence: true
       validate :assert_phone_number
       validate :assert_player_role_valid, if: :birthday_changed?
     end
@@ -60,7 +61,9 @@ module Swb::Person
     end
   end
 
-  def contactable_value(rel, label) = send(rel).find { |c| send(rel).model.translate_label(label) == c.label }&.value
+  def contactable_value(rel, label) = send(rel).find { |c|
+    send(rel).model.translate_label(label) == c.label
+  }&.value
 
   def reset_ts_gender = self.ts_gender = gender
 

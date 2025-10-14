@@ -23,8 +23,12 @@ describe Group::Budget do
 
   it "fails on bad value" do
     expect { described_class.new("..") }.to raise_error(ArgumentError, "invalid Group::Budget: ..")
-    expect { described_class.new("a..b") }.to raise_error(ArgumentError, "invalid Group::Budget: a..b")
-    expect { described_class.new("5...10") }.to raise_error(ArgumentError, "invalid Group::Budget: 5...10")
+    expect {
+      described_class.new("a..b")
+    }.to raise_error(ArgumentError, "invalid Group::Budget: a..b")
+    expect {
+      described_class.new("5...10")
+    }.to raise_error(ArgumentError, "invalid Group::Budget: 5...10")
   end
 
   [

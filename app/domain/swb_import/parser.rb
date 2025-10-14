@@ -48,8 +48,11 @@ module SwbImport
       conversion.respond_to?(:call) ? conversion.call(value) : send(conversion, value)
     end
 
-    def parse_email(v) = Truemail.validate(v.to_s.downcase.delete(" ").gsub("(at)", "@"), with: :regex)
-      .result.then { |r| r.email if r.success }
+    def parse_email(v) = Truemail.validate(v.to_s.downcase.delete(" ").gsub("(at)", "@"),
+      with: :regex)
+      .result.then { |r|
+      r.email if r.success
+    } # rubocop:todo Layout/BlockAlignment
 
     def parse_phone_number(v) = Phonelib.parse(v).then { |n| n.international if n.valid? }
 
@@ -68,7 +71,8 @@ module SwbImport
     def parse_date(v) = Date.parse(v) rescue nil # rubocop:disable Style/RescueModifier
 
     def parse_ts_club_number(v)
-      @@club_numbers ||= Group.where.not(ts_club_number: nil).pluck(:ts_club_number, :id).to_h.stringify_keys
+      @@club_numbers ||= Group.where.not(ts_club_number: nil).pluck(:ts_club_number,
+        :id).to_h.stringify_keys
       @@club_numbers[v]
     end
   end

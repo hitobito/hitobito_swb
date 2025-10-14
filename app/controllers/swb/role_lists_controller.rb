@@ -14,10 +14,13 @@ module Swb::RoleListsController
 
   private
 
-  def redirect_if_modifying_ts_role
+  def redirect_if_modifying_ts_role # rubocop:todo Metrics/AbcSize
     creates_ts_role = Role.ts_managed_types.include?(params.dig(:role, :type))
     changes_ts_role = (Role.ts_managed_types & params.fetch(:role, {}).fetch(:types, {}).keys).any?
-    deletes_ts_roles = Role.where(id: params[:ids], type: Role.ts_managed_types).exists? if params[:ids]
+    if params[:ids]
+      deletes_ts_roles = Role.where(id: params[:ids],
+        type: Role.ts_managed_types).exists?
+    end
 
     if creates_ts_role || changes_ts_role || deletes_ts_roles
       redirect_to(group_people_path(group), alert: t("role_lists.unsupported_for_ts_role"))

@@ -24,7 +24,9 @@ describe Roles::Players::Checker do
   end
 
   describe "#upgrade" do
-    let!(:existing_role) { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:) }
+    let!(:existing_role) {
+      Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, person:, group:)
+    }
     let(:attrs) { {person_id: person.id, group_id: group.id} }
 
     it "is true for same type" do
@@ -46,7 +48,8 @@ describe Roles::Players::Checker do
     end
 
     it "is false for existing role" do
-      role = Fabricate(Group::VereinSpieler::Lizenz.sti_name, person:, group: groups(:bc_thun_spieler))
+      role = Fabricate(Group::VereinSpieler::Lizenz.sti_name, person:,
+        group: groups(:bc_thun_spieler))
       expect(described_class.new(role)).not_to be_new
     end
   end

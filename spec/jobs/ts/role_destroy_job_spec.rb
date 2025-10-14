@@ -9,7 +9,10 @@ require "spec_helper"
 
 describe Ts::RoleDestroyJob do
   let(:person) { people(:admin) }
-  let(:role) { Fabricate(Group::Region::Interclub.sti_name, person:, group: groups(:brb), ts_code: Faker::Internet.uuid) }
+  let(:role) {
+    Fabricate(Group::Region::Interclub.sti_name, person:, group: groups(:brb),
+      ts_code: Faker::Internet.uuid)
+  }
   let(:interface) { instance_double(Ts::Interface) }
   let(:attrs) { %w[id code group_id person_id start_on] }
 

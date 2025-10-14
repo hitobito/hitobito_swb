@@ -11,11 +11,14 @@ module SwbImport
       File.write("ts_hitobito_roles.csv", generate)
     end
 
-    def generate
+    # rubocop:todo Metrics/MethodLength
+    # rubocop:todo Metrics/AbcSize
+    def generate # rubocop:todo Metrics/CyclomaticComplexity # rubocop:todo Metrics/AbcSize # rubocop:todo Metrics/MethodLength
       by_role = @mitglieder.group_by(&:role).sort_by { |k, v| v.size }.reverse
       layers = ["Group::Verein", "Group::Center", "Group::Region", "Group::Dachverband"]
       others = @mitglieder.map(&:groupname).uniq.select { |name| !name.starts_with?("BC ") }.sort
-      @headers = ["TS Rolle", "TS Typ", "Total", "Rolle Hitobito", "Total Gruppen", *layers, *others]
+      @headers = ["TS Rolle", "TS Typ", "Total", "Rolle Hitobito", "Total Gruppen", *layers,
+        *others]
       CSV.generate do |csv|
         csv << @headers
         by_role.each do |role, mitglieder|
@@ -29,11 +32,15 @@ module SwbImport
         end
       end
     end
+    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/MethodLength
 
     def layer_types = @layer_types ||= Group.where("layer_group_id = id").pluck(:name, :type).to_h
 
     def add_row(role, mitglieder, type_name: nil)
+      # rubocop:todo Layout/LineLength
       hitobito_role = type_name.present? ? SPIELER_LIZENZ_MAPPING[type_name] : ROLE_TYPE_MAPPING[role]
+      # rubocop:enable Layout/LineLength
       group_names = mitglieder.map(&:groupname)
       layer_type_count = group_names.map { |name| layer_types[name] }.tally
       bcs_count = mitglieder.map(&:groupname).count { |name| name.starts_with?("BC ") }

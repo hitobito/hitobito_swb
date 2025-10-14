@@ -18,7 +18,10 @@ describe RoleAbility do
 
   describe "phase checking" do
     context "regular" do
-      let(:person) { Fabricate(Group::RegionVorstand::Administrator.sti_name, group: groups(:brb_vorstand)).person }
+      let(:person) {
+        Fabricate(Group::RegionVorstand::Administrator.sti_name,
+          group: groups(:brb_vorstand)).person
+      }
 
       before do
         expect(Roles::Players::Phases).to receive(:active).with(kind_of(Role)).and_return(phase)

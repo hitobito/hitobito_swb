@@ -11,7 +11,9 @@ describe Role::LizenzPlus do
   let(:group) { groups(:bc_bern_spieler) }
   let(:person) { people(:admin) }
 
-  subject(:model) { Fabricate.build(Group::VereinSpieler::LizenzPlus.sti_name, person:, group:).tap(&:valid?) }
+  subject(:model) {
+    Fabricate.build(Group::VereinSpieler::LizenzPlus.sti_name, person:, group:).tap(&:valid?)
+  }
 
   it "sets end_on to 14.6 of next year when current date is after 14.6" do
     travel_to(Date.new(2000, 8, 1)) do
@@ -50,7 +52,8 @@ describe Role::LizenzPlus do
 
   it "only Verein has two lizenz plus role types" do
     lizenz_plus_types = [Group::VereinSpieler::LizenzPlus, Group::VereinSpieler::LizenzPlusJunior]
-    all_types = [Group::DachverbandSpieler, Group::RegionSpieler, Group::VereinSpieler].flat_map(&:role_types)
+    all_types = [Group::DachverbandSpieler, Group::RegionSpieler,
+      Group::VereinSpieler].flat_map(&:role_types)
     (all_types - lizenz_plus_types).each do |type|
       expect(type.new).not_to be_kind_of(Role::LizenzPlus)
     end

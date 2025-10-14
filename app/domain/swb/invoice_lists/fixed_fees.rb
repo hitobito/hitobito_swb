@@ -27,7 +27,7 @@ module Swb::InvoiceLists::FixedFees
 
   private
 
-  def item_class_for(attrs)
+  def item_class_for(attrs) # rubocop:todo Metrics/CyclomaticComplexity
     case attrs
     in { roles: Array } then InvoiceLists::RoleItem
     in { groups: Array } then InvoiceLists::RegionItem

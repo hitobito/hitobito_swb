@@ -17,7 +17,10 @@ describe InvoiceLists::RolesFee do
     subject(:receivers) { fixed_fee.receivers }
 
     let!(:recipient) { Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: bc_bern) }
-    let!(:player) { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: bern_spieler, person: people(:leader)) }
+    let!(:player) {
+      Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: bern_spieler,
+        person: people(:leader))
+    }
 
     it "includes recipient" do
       expect(receivers.roles).to eq [recipient]
@@ -44,13 +47,17 @@ describe InvoiceLists::RolesFee do
     end
 
     it "counts player if billed in previous season" do
-      player, _ = 2.times.map { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: bern_spieler) }
+      player, _ = 2.times.map {
+        Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: bern_spieler)
+      }
       Fabricate(:billed_model, model: player, billing_period: billing_periods(:previous))
       expect(items_by_key["aktiv"].count).to eq 2
     end
 
     it "ignores player if already billed in current season" do
-      player, _ = 2.times.map { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: bern_spieler) }
+      player, _ = 2.times.map {
+        Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: bern_spieler)
+      }
       Fabricate(:billed_model, model: player, billing_period: billing_periods(:current))
       expect(items_by_key["aktiv"].count).to eq 1
     end
@@ -59,7 +66,8 @@ describe InvoiceLists::RolesFee do
       2.times { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: bern_spieler) }
       3.times { Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: thun_spieler) }
       3.times { Fabricate(Group::VereinSpieler::Passivmitglied.sti_name, group: bern_spieler) }
-      Fabricate(Group::VereinSpieler::JuniorU19.sti_name, group: thun_spieler, person: Fabricate(:person, birthday: 17.years.ago))
+      Fabricate(Group::VereinSpieler::JuniorU19.sti_name, group: thun_spieler,
+        person: Fabricate(:person, birthday: 17.years.ago))
 
       expect(items_by_key["aktiv"].count).to eq 5
       expect(items_by_key["aktiv"].unit_cost).to eq 30

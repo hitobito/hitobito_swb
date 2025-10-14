@@ -10,7 +10,9 @@ require "spec_helper"
 describe InvoiceLists::RoleItem do
   let(:layer_group_ids) { nil }
   let(:role) { roles(:leader) }
-  let(:attrs) { {fee: :roles, key: :aktiv, unit_cost: 1, layer_group_ids:, roles: [role.class.sti_name]} }
+  let(:attrs) {
+    {fee: :roles, key: :aktiv, unit_cost: 1, layer_group_ids:, roles: [role.class.sti_name]}
+  }
 
   subject(:item) { described_class.new(**attrs) }
 

@@ -9,8 +9,10 @@ module Swb::StandardFormBuilder
   def labeled_country_select(key)
     labeled(key) do
       country_select(key,
-        {priority_countries: Settings.countries.prioritized, selected: object.send(key), include_blank: ""},
-        {class: "form-select form-select-sm tom-select", data: {placeholder: " ", chosen_no_results: I18n.t("global.chosen_no_results")}})
+        {priority_countries: Settings.countries.prioritized, selected: object.send(key),
+         include_blank: ""},
+        {class: "form-select form-select-sm tom-select",
+         data: {placeholder: " ", chosen_no_results: I18n.t("global.chosen_no_results")}})
     end
   end
 end

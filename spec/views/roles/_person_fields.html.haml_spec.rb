@@ -16,7 +16,8 @@ describe "roles/_additional_person_fields_swb.html.haml" do
   let(:entry) { Role.new(group: group, person: Person.new) }
 
   before do
-    allow(view).to receive(:fields).and_return(StandardFormBuilder.new(:person, Person.new, view, {}))
+    allow(view).to receive(:fields).and_return(StandardFormBuilder.new(:person, Person.new, view,
+      {}))
   end
 
   it "does render gender and ts_gender fields" do

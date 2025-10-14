@@ -28,10 +28,14 @@ class Role::Player < ::Role
   end
 
   def only_one_player_role_globally
-    errors.add(:person, :already_player_of_that_type) if (person.roles.where(type: type) - [self]).any?
+    if (person.roles.where(type: type) - [self]).any?
+      errors.add(:person,
+        :already_player_of_that_type)
+    end
   end
 
-  def within_year_range
+  # rubocop:todo Metrics/AbcSize
+  def within_year_range # rubocop:todo Metrics/CyclomaticComplexity # rubocop:todo Metrics/AbcSize
     min_date = Date.new(Time.zone.now.year - year_range.end) if year_range.end
     max_date = Date.new(Time.zone.now.year - year_range.begin).end_of_year if year_range.begin
 
@@ -41,6 +45,7 @@ class Role::Player < ::Role
       errors.add(:person, :must_be_born_before, date: I18n.l(max_date))
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def destroying_role?
     validation_context == :destroy || end_on&.past?

@@ -61,7 +61,10 @@ describe TsModel do
 
     it_behaves_like "ts model", entity_class: Ts::Entity::OrganizationPerson do
       let(:model_changes) { {town: "new name"} }
-      let(:ts_params) { {code: ts_code, firstname: model.first_name, lastname: model.last_name, email: model.email, member_id: 1} }
+      let(:ts_params) {
+        {code: ts_code, firstname: model.first_name, lastname: model.last_name, email: model.email,
+         member_id: 1}
+      }
     end
   end
 
@@ -71,7 +74,12 @@ describe TsModel do
     let(:now) { Time.zone.local(2025, 4, 1, 16, 10) }
     let(:nesting) { person.ts_model }
 
-    subject(:model) { Fabricate.build(Group::DachverbandGeschaeftsstelle::Interclub.sti_name, group:, person:, ts_code:, id: 1, created_at: now, start_on: nil) }
+    subject(:model) {
+      # rubocop:todo Layout/LineLength
+      Fabricate.build(Group::DachverbandGeschaeftsstelle::Interclub.sti_name, group:, person:, ts_code:,
+        # rubocop:enable Layout/LineLength
+        id: 1, created_at: now, start_on: nil)
+    }
 
     before { travel_to(now) }
 
