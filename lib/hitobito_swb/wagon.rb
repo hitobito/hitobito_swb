@@ -46,6 +46,8 @@ module HitobitoSwb
 
       Export::Tabular::People::PeopleAddress.prepend Swb::Export::Tabular::People::PeopleAddress
 
+      TableDisplay.register_column(Person, TableDisplays::PublicColumn, [:member_id])
+
       # Tournaments with questions
       EventAbility.prepend Swb::EventAbility
       GroupAbility.prepend Swb::GroupAbility
