@@ -11,7 +11,7 @@ module Swb::PeopleHelper
   end
 
   def format_person_nationality(person)
-    ISO3166::Country[person.nationality]&.translations&.dig(I18n.locale.to_s)
+    ISO3166::Country[person.nationality]&.translations&.dig(I18n.locale.to_sym)
   end
 
   def format_person_public_profile(person)

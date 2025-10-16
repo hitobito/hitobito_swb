@@ -105,7 +105,7 @@ describe SwbImport::Entity do
 
     it "reads default attributes" do
       expect(person.id).to eq 1
-      expect(person.ts_code).to eq "1AC189B8-060E-4859-BDCB-099F208D3C3D"
+      expect(person.ts_code).to eq "1ac189b8-060e-4859-bdcb-099f208d3c3d"
       expect(person.first_name).to eq "Jane"
       expect(person.last_name).to eq "Doe"
       expect(person.language).to eq "de"
