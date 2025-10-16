@@ -181,6 +181,7 @@ describe RolesController do
                 town: "Ivanstadt",
                 country: "CH",
                 nationality: "CH",
+                language: "fr",
                 gender: "m",
                 phone_numbers_attributes: {"0" => {translated_label: "Mobil", number: "0781234567",
                                                    public: false}}
@@ -190,6 +191,24 @@ describe RolesController do
         end.to change { Role.count }.by(1)
           .and change { Person.count }.by(1)
           .and change { PhoneNumber.count }.by(1)
+
+        created_person = Person.last
+        expect(created_person).to have_attributes({
+          first_name: "Dario",
+          last_name: "Ahlke",
+          email: "dario.ahlke2@hitobito.example.com",
+          birthday: Date.parse("03.02.1983"),
+          street: "Bahnhof Str.",
+          housenumber: "2",
+          zip_code: "6414",
+          town: "Ivanstadt",
+          country: "CH",
+          nationality: "CH",
+          language: "fr",
+          gender: "m"
+        })
+
+        expect(created_person.phone_numbers.first.number).to eq "+41 78 123 45 67"
       end
     end
 
