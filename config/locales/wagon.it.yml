@@ -697,6 +697,10 @@ it:
         error: fehlgeschlagen
         pending: wartet
 
+  table_displays:
+    person:
+      id: Member-ID
+
   time:
     formats:
       date_time_without_year: "%d.%m %H:%M"
