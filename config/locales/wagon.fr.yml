@@ -812,7 +812,7 @@ fr:
 
   table_displays:
     person:
-      id: Member-ID
+      id: Numéro de membre
 
   time:
     formats:
