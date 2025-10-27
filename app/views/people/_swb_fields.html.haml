@@ -1,0 +1,14 @@
+-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+-#  hitobito_swb and licensed under the Affero General Public License version 3
+-#  or later. See the COPYING file at the top-level directory or at
+-#  https://github.com/hitobito/hitobito_swb.
+
+-# SWB-specific form fields that are shared across multiple forms.
+-# Not to be confused with the _fields_swb partial.
+
+= f.labeled_country_select(:nationality)
+= f.labeled_input_field(:international_player_id)
+= f.labeled_input_field(:emergency_contact)
+= f.labeled(t('.label_email_settings')) do
+  = f.input_field(:advertising, caption: t('.caption_advertising'))
+  = f.input_field(:newsletter, caption: t('.caption_newsletter'))

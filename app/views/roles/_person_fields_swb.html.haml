@@ -3,4 +3,11 @@
 -#  or later. See the COPYING file at the top-level directory or at
 -#  https://github.com/hitobito/hitobito_swb.
 
-= render 'people/fields_swb', f: f
+= f.labeled_collection_select(:language,
+                              Person::LANGUAGES,
+                              :first,
+                              :last,
+                              { prompt: true },
+                              class: 'form-select form-select-sm')
+
+= render 'people/swb_fields', f: f
