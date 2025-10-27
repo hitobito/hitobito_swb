@@ -3,15 +3,4 @@
 -#  or later. See the COPYING file at the top-level directory or at
 -#  https://github.com/hitobito/hitobito_swb.
 
-= f.labeled_country_select(:nationality)
-= f.labeled_collection_select(:language,
-                              Person::LANGUAGES,
-                              :first,
-                              :last,
-                              { prompt: true },
-                              class: 'form-select form-select-sm')
-= f.labeled_input_field(:international_player_id)
-= f.labeled_input_field(:emergency_contact)
-= f.labeled(t('.label_email_settings')) do
-  = f.input_field(:advertising, caption: t('.caption_advertising'))
-  = f.input_field(:newsletter, caption: t('.caption_newsletter'))
+= render 'people/swb_fields', f: f
