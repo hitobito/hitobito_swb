@@ -669,7 +669,7 @@ en:
     external_trainings: Ausbildungen
 
   people:
-    swb_fields:
+    fields_swb:
       label_email_settings: Mailversand
       caption_newsletter: Ich möchte den Newsletter erhalten
       caption_advertising: Ich möchte Dienstleistungs-Angebote erhalten
