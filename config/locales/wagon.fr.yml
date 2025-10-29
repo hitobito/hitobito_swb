@@ -782,7 +782,7 @@ fr:
     external_trainings: Formations
 
   people:
-    fields_swb:
+    swb_fields:
       label_email_settings: Envoi de mail
       caption_newsletter: Je souhaite recevoir la newsletter.
       caption_advertising: Je souhaite recevoir des offres de partenaires.
