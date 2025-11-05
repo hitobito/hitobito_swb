@@ -35,7 +35,7 @@ module Roles::Players
       create_log_entry(role, level: :error,
         message: "Failed to promote #{role} for (#{role.person})")
       Airbrake.notify(exception, parameters: role.attributes)
-      Raven.capture_exception(exception, logger: "delayed_job")
+      Sentry.capture_exception(exception, logger: "delayed_job")
     end
 
     def destroy_expired(role)
