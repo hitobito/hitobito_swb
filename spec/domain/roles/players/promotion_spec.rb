@@ -77,7 +77,7 @@ describe Roles::Players::Promotion do
         it "writes log and notifies error trackers" do
           Group.where(id: group.id).delete_all
           expect(Airbrake).to receive(:notify)
-          expect(Raven).to receive(:capture_exception)
+          expect(Sentry).to receive(:capture_exception)
           expect do
             promotion.run
           end.to change { HitobitoLogEntry.count }.by(1)
