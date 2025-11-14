@@ -13,4 +13,10 @@ describe Event do
   it "adds phone_numbers to required_contact_attrs by default" do
     expect(event.required_contact_attrs).to eq ["phone_numbers"]
   end
+
+  # NOTE: disabled because feature is broken without further changes
+  it "is invalid with non zero guest_limit" do
+    event.guest_limit = 2
+    expect(event).not_to be_valid
+  end
 end

@@ -10,6 +10,14 @@ module Swb::Event
 
   prepended do
     before_validation :add_phone_number_to_required_contact_attrs
+
+    validate :assert_guests_not_activated
+  end
+
+  private
+
+  def assert_guests_not_activated
+    errors.add(:guest_limit, :invalid) unless guest_limit.to_i.zero?
   end
 
   def add_phone_number_to_required_contact_attrs
