@@ -12,12 +12,14 @@ describe "event/participation_contact_datas/_fields.html.haml" do
     render
     Capybara::Node::Simple.new(@rendered)
   }
+  let(:current_user) { people(:admin).tap(&:valid?) }
   let(:event) { Fabricate.build(:event, groups: [groups(:root)]) }
   let(:entry) { Event::ParticipationContactData.new(event, Person.new, {}) }
   let(:form_builder) { StandardFormBuilder.new(:participation_contact_data, entry, view, {}) }
 
   before do
     assign(:policy_finder, instance_double(Group::PrivacyPolicyFinder, acceptance_needed?: false))
+    allow(view).to receive(:current_user).and_return(current_user)
     allow(view).to receive(:entry).and_return(entry)
     allow(view).to receive(:event).and_return(event)
     allow(view).to receive(:fields).and_return(form_builder)
