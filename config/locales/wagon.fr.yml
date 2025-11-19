@@ -279,7 +279,7 @@ fr:
       group/dachverband_kader/trainer:
         one: "Entraîneur.se"
         many: "Entraîneur.se.s"
-        other: "Entraîneur.re.s"
+        other: "Entraîneur.e.s"
 
       group/dachverband_kontakte/kontakt:
         one: Contact
@@ -539,7 +539,7 @@ fr:
       group/verein/clubtrainer:
         one: "Entraîneur.se de club"
         many: "Entraîneur.se.s de club"
-        other: "Entraîneur.re.s de club"
+        other: "Entraîneur.e.s de club"
 
       group/verein/nationalliga: "Ligue nationale"
 
