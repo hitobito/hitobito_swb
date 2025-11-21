@@ -7,7 +7,7 @@
 
 require "spec_helper"
 
-describe InvoiceLists::VereinItem do
+describe InvoiceRuns::VereinItem do
   let(:attrs) { {fee: :teams, key: :grundbeitrag_elite, unit_cost: 10, layer_group_ids:} }
   let(:bc_bern) { groups(:bc_bern) }
   let(:bc_olten) { groups(:bc_olten) }

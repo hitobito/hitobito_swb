@@ -43,7 +43,7 @@ groups:
     - 10000..15000
     - 15000..
 
-invoice_lists:
+invoice_runs:
   fixed_fees:
     regions:
       account: CH56 0483 5035 4099 6000 0

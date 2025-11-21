@@ -5,17 +5,17 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module InvoiceLists
+module InvoiceRuns
   class TeamsFee < FixedFee
     private
 
     def item_class_for(attrs)
       case attrs
-      in { leagues: Array} then InvoiceLists::TeamItem
+      in { leagues: Array} then InvoiceRuns::TeamItem
       in { name: }
         case name
-        when /grundbeitrag_elite/ then InvoiceLists::VereinItem
-        when /grundbeitrag_andere/ then InvoiceLists::VereinReducedItem
+        when /grundbeitrag_elite/ then InvoiceRuns::VereinItem
+        when /grundbeitrag_andere/ then InvoiceRuns::VereinReducedItem
         end
       end
     end
