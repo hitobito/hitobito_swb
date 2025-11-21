@@ -5,15 +5,17 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module InvoiceLists
-  class RegionItem < Item
-    def initialize(fee:, key:, unit_cost:, layer_group_ids:, groups:)
+module InvoiceRuns
+  class TeamItem < Item
+    def initialize(fee:, key:, unit_cost:, leagues:, layer_group_ids: nil)
       super(fee:, key:, unit_cost:, layer_group_ids:)
-      @groups = groups
+      @leagues = leagues
     end
 
     private
 
-    def scope = Group::Region.where(type: @groups)
+    def scope = Group::Verein
+      .joins(:teams)
+      .where(teams: {league: @leagues})
   end
 end

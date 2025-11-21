@@ -5,15 +5,12 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module InvoiceLists
-  class VereinItem < Item
-    private
+module Swb::InvoiceRunsController
+  extend ActiveSupport::Concern
 
-    def scope
-      Group::Verein
-        .joins(:teams)
-        .where(teams: {league: Team::TOP_LEAGUES})
-        .distinct
-    end
+  def cancel_all_invoices
+    invoice_item_ids = invoices.flat_map { |i| i.invoice_items.map(&:id) }
+    super
+    BilledModel.where(invoice_item_id: invoice_item_ids).delete_all
   end
 end

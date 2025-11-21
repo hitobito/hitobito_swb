@@ -7,7 +7,7 @@
 
 require "spec_helper"
 
-describe InvoiceListsController do
+describe InvoiceRunsController do
   let(:group) { groups(:root) }
   let(:person) { people(:leader) }
   let(:current) { billing_periods(:current) }
@@ -38,7 +38,7 @@ describe InvoiceListsController do
   describe "fixed fees" do
     render_views
 
-    let(:invoice_list) { InvoiceList.last }
+    let(:invoice_run) { InvoiceRun.last }
     let(:dom) { Capybara::Node::Simple.new(response.body) }
 
     describe "regions" do
@@ -59,11 +59,11 @@ describe InvoiceListsController do
         expect do
           post :create,
             params: {group_id: group.id, fixed_fees: :regions,
-                     invoice_list: {invoice: {title: "Regions"}}}
-          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id,
-            invoice_list.id, returning: true))
+                     invoice_run: {invoice: {title: "Regions"}}}
+          expect(response).to redirect_to(group_invoice_run_invoices_path(group.id,
+            invoice_run.id, returning: true))
         end.to change { Invoice.count }.by(2)
-        expect(invoice_list.amount_total).to eq 1000
+        expect(invoice_run.amount_total).to eq 1000
       end
     end
 
@@ -85,11 +85,11 @@ describe InvoiceListsController do
         expect do
           post :create,
             params: {group_id: group.id, fixed_fees: :teams,
-                     invoice_list: {invoice: {title: "Teams"}}}
-          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id,
-            invoice_list.id, returning: true))
+                     invoice_run: {invoice: {title: "Teams"}}}
+          expect(response).to redirect_to(group_invoice_run_invoices_path(group.id,
+            invoice_run.id, returning: true))
         end.to change { Invoice.count }.by(1)
-        expect(invoice_list.reload.amount_total).to eq 3300
+        expect(invoice_run.reload.amount_total).to eq 3300
       end
     end
 
@@ -111,9 +111,9 @@ describe InvoiceListsController do
         expect do
           post :create,
             params: {group_id: group.id, fixed_fees: :roles,
-                     invoice_list: {invoice: {title: "Teams"}}}
-          expect(response).to redirect_to(group_invoice_list_invoices_path(group.id,
-            InvoiceList.last.id, returning: true))
+                     invoice_run: {invoice: {title: "Teams"}}}
+          expect(response).to redirect_to(group_invoice_run_invoices_path(group.id,
+            InvoiceRun.last.id, returning: true))
         end
       end
     end

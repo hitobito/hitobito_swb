@@ -5,12 +5,15 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module Swb::InvoiceListsController
-  extend ActiveSupport::Concern
+module InvoiceRuns
+  class RegionItem < Item
+    def initialize(fee:, key:, unit_cost:, layer_group_ids:, groups:)
+      super(fee:, key:, unit_cost:, layer_group_ids:)
+      @groups = groups
+    end
 
-  def cancel_all_invoices
-    invoice_item_ids = invoices.flat_map { |i| i.invoice_items.map(&:id) }
-    super
-    BilledModel.where(invoice_item_id: invoice_item_ids).delete_all
+    private
+
+    def scope = Group::Region.where(type: @groups)
   end
 end

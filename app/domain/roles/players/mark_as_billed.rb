@@ -23,7 +23,7 @@ module Roles::Players
     attr_reader :role
 
     def role_types_with_costs
-      @role_types_with_costs ||= InvoiceLists::FixedFee.for(:roles).config.items
+      @role_types_with_costs ||= InvoiceRuns::FixedFee.for(:roles).config.items
         .select { |item| item.unit_cost.positive? }
         .flat_map(&:roles)
     end

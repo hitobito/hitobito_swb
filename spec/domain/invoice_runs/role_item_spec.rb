@@ -7,7 +7,7 @@
 
 require "spec_helper"
 
-describe InvoiceLists::RoleItem do
+describe InvoiceRuns::RoleItem do
   let(:layer_group_ids) { nil }
   let(:role) { roles(:leader) }
   let(:attrs) {

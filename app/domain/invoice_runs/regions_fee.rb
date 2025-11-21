@@ -5,10 +5,10 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module InvoiceLists
+module InvoiceRuns
   class RegionsFee < FixedFee
     private
 
-    def item_class_for(attrs) = InvoiceLists::RegionItem
+    def item_class_for(attrs) = InvoiceRuns::RegionItem
   end
 end

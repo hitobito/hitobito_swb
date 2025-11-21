@@ -7,7 +7,7 @@
 
 require "spec_helper"
 
-describe InvoiceLists::FixedFee do
+describe InvoiceRuns::FixedFee do
   let(:person) { people(:admin) }
 
   subject(:fixed_fee) { described_class.for(name) }

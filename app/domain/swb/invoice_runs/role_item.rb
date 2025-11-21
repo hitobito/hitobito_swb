@@ -5,11 +5,11 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module Swb::InvoiceLists::RoleItem
+module Swb::InvoiceRuns::RoleItem
   extend ActiveSupport::Concern
 
   prepended do
-    include InvoiceLists::UnbilledRolesJoin
+    include InvoiceRuns::UnbilledRolesJoin
   end
 
   def to_invoice_item

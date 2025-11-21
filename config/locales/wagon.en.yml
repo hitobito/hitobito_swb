@@ -638,7 +638,7 @@ en:
       lizenz_plus_junior: "Lizenzen Plus Junior:innen (U19)"
       vereinigung: "Vereinigungsspieler:innen"
 
-  invoice_lists/fixed_fee:
+  invoice_runs/fixed_fee:
     active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
 
   global:

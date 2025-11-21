@@ -5,23 +5,23 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module InvoiceLists
+module InvoiceRuns
   class RolesFee < FixedFee
-    include InvoiceLists::UnbilledRolesJoin
+    include InvoiceRuns::UnbilledRolesJoin
 
     def initialize(...)
       super
       @layer_group_ids ||= unbilled_layer_group_ids if billing_period_active?
     end
 
-    def prepare(invoice_list)
+    def prepare(invoice_run)
       return super if BillingPeriod.active
 
       yield [:warning, t(".active_billing_period_required")] if block_given?
     end
 
     def receivers
-      InvoiceLists::Receivers.new(
+      InvoiceRuns::Receivers.new(
         config.receivers,
         layer_group_ids
       )
