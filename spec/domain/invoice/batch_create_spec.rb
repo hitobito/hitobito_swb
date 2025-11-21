@@ -14,10 +14,10 @@ describe Invoice::BatchCreate do
   describe "fixed memberhip fee" do
     let(:person) { people(:admin) }
     let!(:list) do
-      list = InvoiceList.new(group: group, title: :title)
+      list = InvoiceRun.new(group: group, title: :title)
       list.invoice = Invoice.new(title: "invoice", group: group, issued_at: Time.zone.today)
       Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:brb_vorstand), person:)
-      InvoiceLists::FixedFee.for(:regions).prepare(list)
+      InvoiceRuns::FixedFee.for(:regions).prepare(list)
       list.tap(&:save!).reload
     end
 

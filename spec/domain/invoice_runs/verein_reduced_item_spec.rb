@@ -6,7 +6,7 @@
 #  https://github.com/hitobito/hitobito_swb.
 require "spec_helper"
 
-describe InvoiceLists::VereinReducedItem do
+describe InvoiceRuns::VereinReducedItem do
   let(:attrs) { {fee: :teams, key: :grundbeitrag_andere, unit_cost: 10, layer_group_ids:} }
   let(:bc_bern) { groups(:bc_bern) }
   let(:bc_olten) { groups(:bc_olten) }

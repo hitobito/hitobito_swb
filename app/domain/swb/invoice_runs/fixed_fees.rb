@@ -5,14 +5,14 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito.
 
-module Swb::InvoiceLists::FixedFees
+module Swb::InvoiceRuns::FixedFees
   extend ActiveSupport::Concern
 
   module ClassMethods
     def for(key, layer_group_ids = nil)
       return super unless key.to_sym == :roles
 
-      InvoiceLists::RolesFee.new(key, layer_group_ids)
+      InvoiceRuns::RolesFee.new(key, layer_group_ids)
     end
   end
 
@@ -29,13 +29,13 @@ module Swb::InvoiceLists::FixedFees
 
   def item_class_for(attrs) # rubocop:todo Metrics/CyclomaticComplexity
     case attrs
-    in { roles: Array } then InvoiceLists::RoleItem
-    in { groups: Array } then InvoiceLists::RegionItem
-    in { leagues: Array} then InvoiceLists::TeamItem
+    in { roles: Array } then InvoiceRuns::RoleItem
+    in { groups: Array } then InvoiceRuns::RegionItem
+    in { leagues: Array} then InvoiceRuns::TeamItem
     in { key: }
       case key
-      when /grundbeitrag_elite/ then InvoiceLists::VereinItem
-      when /grundbeitrag_andere/ then InvoiceLists::VereinReducedItem
+      when /grundbeitrag_elite/ then InvoiceRuns::VereinItem
+      when /grundbeitrag_andere/ then InvoiceRuns::VereinReducedItem
       end
     else fail "no item for #{attrs}"
     end

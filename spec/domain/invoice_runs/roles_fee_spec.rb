@@ -7,7 +7,7 @@
 
 require "spec_helper"
 
-describe InvoiceLists::RolesFee do
+describe InvoiceRuns::RolesFee do
   subject(:fixed_fee) { described_class.new(:roles) }
 
   let(:bern_spieler) { groups(:bc_bern_spieler) }

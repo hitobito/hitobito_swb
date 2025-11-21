@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_21_120000) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
+    t.string "checksum"
     t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -273,6 +273,30 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.index ["event_id"], name: "index_event_dates_on_event_id"
   end
 
+  create_table "event_guests", force: :cascade do |t|
+    t.bigint "main_applicant_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.string "company_name"
+    t.boolean "company"
+    t.string "email"
+    t.string "address_care_of"
+    t.string "street"
+    t.string "housenumber"
+    t.string "postbox"
+    t.string "zip_code"
+    t.string "town"
+    t.string "country"
+    t.string "gender"
+    t.date "birthday"
+    t.string "phone_number"
+    t.string "language"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["main_applicant_id"], name: "index_event_guests_on_main_applicant_id"
+  end
+
   create_table "event_invitations", force: :cascade do |t|
     t.string "participation_type", null: false
     t.datetime "declined_at", precision: nil
@@ -336,17 +360,19 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
 
   create_table "event_participations", id: :serial, force: :cascade do |t|
     t.integer "event_id", null: false
-    t.integer "person_id", null: false
+    t.integer "participant_id", null: false
     t.text "additional_information"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.boolean "active", default: false, null: false
     t.integer "application_id"
     t.boolean "qualified"
+    t.string "participant_type"
     t.index ["application_id"], name: "index_event_participations_on_application_id"
-    t.index ["event_id", "person_id"], name: "index_event_participations_on_event_id_and_person_id", unique: true
     t.index ["event_id"], name: "index_event_participations_on_event_id"
-    t.index ["person_id"], name: "index_event_participations_on_person_id"
+    t.index ["participant_id"], name: "index_event_participations_on_participant_id"
+    t.index ["participant_type", "participant_id", "event_id"], name: "index_event_participations_on_polymorphic_and_event", unique: true
+    t.index ["participant_type", "participant_id"], name: "idx_on_participant_type_participant_id_bfb6fab1d7"
   end
 
   create_table "event_question_translations", force: :cascade do |t|
@@ -438,6 +464,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.integer "minimum_participants"
     t.boolean "automatic_assignment", default: false, null: false
     t.string "visible_contact_attributes", default: "[\"name\", \"address\", \"phone_number\", \"email\", \"social_account\"]"
+    t.integer "guest_limit", default: 0, null: false
     t.string "external_link"
     t.index ["kind_id"], name: "index_events_on_kind_id"
     t.index ["shared_access_token"], name: "index_events_on_shared_access_token"
@@ -591,6 +618,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.string "sender_name"
     t.string "logo_position", default: "disabled", null: false
     t.integer "reference_prefix"
+    t.string "payee_name"
+    t.string "payee_street"
+    t.string "payee_housenumber"
+    t.string "payee_zip_code"
+    t.string "payee_town"
+    t.string "payee_country", default: "CH"
     t.index ["group_id"], name: "index_invoice_configs_on_group_id"
   end
 
@@ -609,7 +642,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
   end
 
-  create_table "invoice_lists", force: :cascade do |t|
+  create_table "invoice_runs", force: :cascade do |t|
     t.string "receiver_type"
     t.bigint "receiver_id"
     t.bigint "group_id"
@@ -624,9 +657,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "receivers"
-    t.index ["creator_id"], name: "index_invoice_lists_on_creator_id"
-    t.index ["group_id"], name: "index_invoice_lists_on_group_id"
-    t.index ["receiver_type", "receiver_id"], name: "index_invoice_lists_on_receiver_type_and_receiver_id"
+    t.index ["creator_id"], name: "index_invoice_runs_on_creator_id"
+    t.index ["group_id"], name: "index_invoice_runs_on_group_id"
+    t.index ["receiver_type", "receiver_id"], name: "index_invoice_runs_on_receiver_type_and_receiver_id"
   end
 
   create_table "invoices", id: :serial, force: :cascade do |t|
@@ -657,12 +690,24 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.integer "creator_id"
     t.string "vat_number"
     t.string "currency", default: "CHF", null: false
-    t.bigint "invoice_list_id"
+    t.bigint "invoice_run_id"
     t.string "reference", null: false
     t.boolean "hide_total", default: false, null: false
+    t.string "recipient_name"
+    t.string "recipient_street"
+    t.string "recipient_housenumber"
+    t.string "recipient_zip_code"
+    t.string "recipient_town"
+    t.string "recipient_country"
+    t.string "payee_name"
+    t.string "payee_street"
+    t.string "payee_housenumber"
+    t.string "payee_zip_code"
+    t.string "payee_town"
+    t.string "payee_country"
     t.index ["esr_number"], name: "index_invoices_on_esr_number"
     t.index ["group_id"], name: "index_invoices_on_group_id"
-    t.index ["invoice_list_id"], name: "index_invoices_on_invoice_list_id"
+    t.index ["invoice_run_id"], name: "index_invoices_on_invoice_run_id"
     t.index ["recipient_id"], name: "index_invoices_on_recipient_id"
     t.index ["sequence_number"], name: "index_invoices_on_sequence_number"
   end
@@ -779,7 +824,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "invoice_attributes"
-    t.bigint "invoice_list_id"
+    t.bigint "invoice_run_id"
     t.text "text"
     t.string "salutation"
     t.string "pp_post"
@@ -791,7 +836,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.string "uid"
     t.integer "bounce_parent_id"
     t.integer "blocked_count", default: 0
-    t.index ["invoice_list_id"], name: "index_messages_on_invoice_list_id"
+    t.index ["invoice_run_id"], name: "index_messages_on_invoice_run_id"
     t.index ["mailing_list_id"], name: "index_messages_on_mailing_list_id"
     t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
@@ -1017,6 +1062,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.index ["group_id", "group_type"], name: "index_people_filters_on_group_id_and_group_type"
   end
 
+  create_table "people_managers", force: :cascade do |t|
+    t.integer "manager_id", null: false
+    t.integer "managed_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["manager_id", "managed_id"], name: "index_people_managers_on_manager_id_and_managed_id", unique: true
+  end
+
   create_table "person_add_request_ignored_approvers", id: :serial, force: :cascade do |t|
     t.integer "group_id", null: false
     t.integer "person_id", null: false
@@ -1144,6 +1197,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_17_111554) do
     t.boolean "event_participations", default: false, null: false
     t.boolean "mailing_lists", default: false, null: false
     t.string "permission", default: "layer_read", null: false
+    t.boolean "register_people", default: false, null: false
   end
 
   create_table "sessions", id: :serial, force: :cascade do |t|

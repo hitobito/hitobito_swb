@@ -67,9 +67,9 @@ module HitobitoSwb
 
       Invoice.prepend Swb::Invoice
       Invoice::BatchCreate.prepend Swb::Invoice::BatchCreate
-      InvoiceLists::FixedFee.prepend Swb::InvoiceLists::FixedFees
-      InvoiceLists::RoleItem.prepend Swb::InvoiceLists::RoleItem
-      InvoiceListsController.prepend Swb::InvoiceListsController
+      InvoiceRuns::FixedFee.prepend Swb::InvoiceRuns::FixedFees
+      InvoiceRuns::RoleItem.prepend Swb::InvoiceRuns::RoleItem
+      InvoiceRunsController.prepend Swb::InvoiceRunsController
 
       # Navigation
       events_index = NavigationHelper::MAIN.index { |opts| opts[:label] == :events }

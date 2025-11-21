@@ -751,7 +751,7 @@ fr:
       lizenz_plus_junior: "Licences plus junior.e.s (U19)"
       vereinigung: "Joueur.se.s d'une union"
 
-  invoice_lists/fixed_fee:
+  invoice_runs/fixed_fee:
     active_billing_period_required: Aucune période de facturation n'est actuellement active
 
   global:
