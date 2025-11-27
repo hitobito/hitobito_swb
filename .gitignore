@@ -31,3 +31,6 @@ coverage
 Gemfile.local
 Gemfile.local.lock
 data/*
+
+db/schema.rb
+db/schema.rb.diff
