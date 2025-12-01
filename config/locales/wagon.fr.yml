@@ -752,7 +752,7 @@ fr:
       vereinigung: "Joueur.se.s d'une union"
 
   invoice_runs/fixed_fee:
-    active_billing_period_required: Aucune période de facturation n'est actuellement active
+    active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
 
   global:
     below: "sous %{value}"
