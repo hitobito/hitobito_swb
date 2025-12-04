@@ -14,10 +14,7 @@ module Swb::Invoice::BatchCreate
     super.then do
       next unless invoice_run.fixed_fee
 
-      invoice.recipient_address = [
-        Group.find(recipient.layer_group_id).name,
-        Person::Address.new(Person.find(recipient.id)).for_invoice
-      ].join("\n")
+      invoice.recipient_company_name = Group.find(recipient.layer_group_id).name
     end
   end
 end

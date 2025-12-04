@@ -13,17 +13,17 @@ describe Invoice::BatchCreate do
 
   describe "fixed memberhip fee" do
     let(:person) { people(:admin) }
-    let!(:list) do
-      list = InvoiceRun.new(group: group, title: :title)
-      list.invoice = Invoice.new(title: "invoice", group: group, issued_at: Time.zone.today)
+    let!(:run) do
+      run = InvoiceRun.new(group: group, title: :title)
+      run.invoice = Invoice.new(title: "invoice", group: group, issued_at: Time.zone.today)
       Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:brb_vorstand), person:)
-      InvoiceRuns::FixedFee.for(:regions).prepare(list)
-      list.tap(&:save!).reload
+      InvoiceRuns::FixedFee.for(:regions).prepare(run)
+      run.tap(&:save!).reload
     end
 
     it "includes layer name in title" do
       expect do
-        Invoice::BatchCreate.new(list).call
+        Invoice::BatchCreate.new(run).call
       end.to change { group.invoices.count }.by(1)
       expect(invoice.recipient_address).to eq <<~TEXT.chomp
         Badminton Regionalverband Bern
