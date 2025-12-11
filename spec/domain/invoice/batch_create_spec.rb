@@ -9,7 +9,6 @@ require "spec_helper"
 
 describe Invoice::BatchCreate do
   let(:group) { groups(:root) }
-  let(:invoice) { group.invoices.last }
 
   describe "fixed memberhip fee" do
     let(:person) { people(:admin) }
@@ -24,7 +23,10 @@ describe Invoice::BatchCreate do
     it "includes layer name in title" do
       expect do
         Invoice::BatchCreate.new(run).call
-      end.to change { group.invoices.count }.by(1)
+      end.to change { group.issued_invoices.count }.by(1)
+
+      invoice = group.issued_invoices.last
+
       expect(invoice.recipient_address).to eq <<~TEXT.chomp
         Badminton Regionalverband Bern
         Chief Admin
