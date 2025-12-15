@@ -30,8 +30,7 @@ describe Event::Tournament do
       :hidden_contact_attrs,
       :participations_visible,
       :globally_visible,
-      :minimum_participants,
-      :automatic_assignment
+      :minimum_participants
     ]
   end
 
