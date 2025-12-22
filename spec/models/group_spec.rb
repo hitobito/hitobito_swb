@@ -50,6 +50,11 @@ describe Group do
       )
     end
 
+    it "uses ts_club_number over id if present" do
+      group.ts_club_number = 32
+      expect(ts_model).to have_attributes(number: 32)
+    end
+
     it "maps additional attributes if present" do
       group.id = 1
       group.email = "group@example.com"
