@@ -19,7 +19,7 @@ module Swb::Group
     self.ts_mapping = {
       name: :name,
       code: :ts_code,
-      number: :id,
+      number: -> { ts_club_number || id },
       parent_code: :parent_ts_code,
       contact: -> { contact&.to_s || :not_defined },
       address: :address,

@@ -1,6 +1,8 @@
-# Hitobito SWB Changelog
+## Version unreleased
 
-# unreleased
+* Beim TS sync wird das Feld `number` mit `ts_club_number` befüllt (#161)
+
+## Version 2.7.0
 
 * Tournamentsoftware API integration wurde umgesetzt (#16)
 * Gründungsjahr und Jahresbudget Felder wurden für Region, Center und Verein ergänzt (#19)
