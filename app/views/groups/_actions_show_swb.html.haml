@@ -3,6 +3,5 @@
 - #  or later. See the COPYING file at the top-level directory or at
 - #  https://github.com/hitobito/hitobito_swb.
 
-- if @group.root? && can?(:index_invoices, @group) && @group.invoice_config.valid?
+- if @group.root? && can?(:index_issued_invoices, @group) && @group.invoice_config.valid?
   = Dropdown::FixedFeesDropdown.new(self, @group).to_s
-
