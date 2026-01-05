@@ -45,8 +45,10 @@ describe RolesController do
         before { sign_in(vereins_admin.person) }
 
         it "hides start_on field" do
-          get :edit, params: {group_id: group.id, id: role.id}
-          expect(dom).not_to have_field("Von")
+          travel_to(Time.zone.parse("2025-08-12 14:00:00")) do
+            get :edit, params: {group_id: group.id, id: role.id}
+            expect(dom).not_to have_field("Von")
+          end
         end
 
         context "on normal role" do

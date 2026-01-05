@@ -27,7 +27,7 @@ module Roles::Players::Phases
     attr_reader :checker
 
     def parse_date(string)
-      start_on, end_on = string.split(" - ").map { |s| Date.parse(s) }
+      start_on, end_on = string.split(" - ").map { |s| Time.zone.parse(s).to_date }
       end_on += 1.year if end_on < start_on
 
       Range.new(start_on, end_on)
