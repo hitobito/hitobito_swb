@@ -20,13 +20,6 @@ module InvoiceRuns
       yield [:warning, t(".active_billing_period_required")] if block_given?
     end
 
-    def receivers
-      InvoiceRuns::Receivers.new(
-        config.receivers,
-        layer_group_ids
-      )
-    end
-
     private
 
     def unbilled_layer_group_ids
