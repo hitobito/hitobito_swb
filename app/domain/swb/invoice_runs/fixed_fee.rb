@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito.
 
-module Swb::InvoiceRuns::FixedFees
+module Swb::InvoiceRuns::FixedFee
   extend ActiveSupport::Concern
 
   module ClassMethods
