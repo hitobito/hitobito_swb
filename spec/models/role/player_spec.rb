@@ -75,12 +75,9 @@ describe Role::Player do
     min_date = year_range.end.years.ago.to_date.beginning_of_year if year_range.end
     max_date = year_range.begin.years.ago.to_date.end_of_year if year_range.begin
 
-    let(:now) { Date.new(2025, 6, 6) }
     let(:group) { role_class.to_s.deconstantize.constantize.first }
     let!(:role) { Fabricate(role_class.sti_name, group: group, person: person) }
     let(:person) { Fabricate(:person, birthday: min_date.presence || max_date.presence) }
-
-    before { travel_to(now) }
 
     describe role_class do
       if min_date
