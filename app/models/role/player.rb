@@ -9,8 +9,8 @@ class Role::Player < ::Role
   class_attribute :year_range, default: (19..)
   class_attribute :unique_across_layers, default: false
 
-  validate :only_one_player_role_per_group
-  validate :only_one_player_role_globally, if: :unique_across_layers
+  validate :only_one_player_role_per_group, unless: :destroys?
+  validate :only_one_player_role_globally, if: :unique_across_layers, unless: :destroys?
   validate :within_year_range, unless: :destroying_role?
 
   after_create :mark_as_billed
@@ -18,6 +18,10 @@ class Role::Player < ::Role
   self.permissions = []
 
   private
+
+  def destroys?
+    changes.keys == %w[end_on] && changes["end_on"].first.nil?
+  end
 
   def person_years
     person.years(Time.zone.now.next_year.beginning_of_year)
