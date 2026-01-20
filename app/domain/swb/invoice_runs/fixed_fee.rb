@@ -29,13 +29,13 @@ module Swb::InvoiceRuns::FixedFee
 
   def item_class_for(attrs) # rubocop:todo Metrics/CyclomaticComplexity
     case attrs
-    in { roles: Array } then InvoiceRuns::RoleItem
-    in { groups: Array } then InvoiceRuns::RegionItem
-    in { leagues: Array} then InvoiceRuns::TeamItem
+    in { roles: Array } then Invoice::RoleCountItem
+    in { groups: Array } then Invoice::RegionItem
+    in { leagues: Array} then Invoice::TeamItem
     in { key: }
       case key
-      when /grundbeitrag_elite/ then InvoiceRuns::VereinItem
-      when /grundbeitrag_andere/ then InvoiceRuns::VereinReducedItem
+      when /grundbeitrag_elite/ then Invoice::VereinItem
+      when /grundbeitrag_andere/ then Invoice::VereinReducedItem
       end
     else fail "no item for #{attrs}"
     end

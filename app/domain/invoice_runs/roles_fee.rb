@@ -7,7 +7,7 @@
 
 module InvoiceRuns
   class RolesFee < FixedFee
-    include InvoiceRuns::UnbilledRolesJoin
+    include Invoices::UnbilledRolesJoin
 
     def initialize(...)
       super

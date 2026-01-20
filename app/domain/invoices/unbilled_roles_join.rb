@@ -5,7 +5,10 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-module InvoiceRuns::UnbilledRolesJoin
+module Invoices::UnbilledRolesJoin
+
+  private
+
   def with_unbilled_roles(scope)
     scope
       .joins(unbilled_roles_join)
