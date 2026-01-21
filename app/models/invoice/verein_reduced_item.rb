@@ -15,7 +15,7 @@ class Invoice::VereinReducedItem < VereinItem
   end
 
   def team_scope
-    { league: nil }
+    {league: nil}
   end
 
   def top_league_condition

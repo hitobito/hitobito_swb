@@ -5,13 +5,5 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class PeriodInvoiceTemplate::VereinItem < InvoiceItem
-  validates :unit_cost, money: true
-
-  def unit_cost
-    BigDecimal(dynamic_cost_parameters[:unit_cost])
-  rescue ArgumentError, TypeError
-    errors.add(:unit_cost, :is_not_a_decimal_number)
-    BigDecimal(0)
-  end
+class PeriodInvoiceTemplate::VereinItem < PeriodInvoiceTemplate::Item
 end
