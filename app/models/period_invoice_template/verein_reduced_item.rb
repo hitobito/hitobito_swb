@@ -5,5 +5,5 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class PeriodInvoiceTemplate::VereinReducedItem < VereinItem
+class PeriodInvoiceTemplate::VereinReducedItem < PeriodInvoiceTemplate::VereinItem
 end
