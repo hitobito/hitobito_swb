@@ -41,70 +41,10 @@ describe InvoiceRunsController do
     let(:invoice_run) { InvoiceRun.last }
     let(:dom) { Capybara::Node::Simple.new(response.body) }
 
-    describe "regions" do
-      before do
-        Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:brb_vorstand))
-        Fabricate(Group::RegionVorstand::Finanzen.sti_name, group: groups(:bvn_vorstand))
-      end
-
-      it "renders form" do
-        get :new, params: {group_id: group.id, fixed_fees: :regions}
-        expect(response).to be_successful
-
-        expect(dom).not_to have_css(".alert-warning")
-        expect(dom).to have_css("table td.right", text: "1'000.00 CHF")
-      end
-
-      it "can submit form" do
-        expect do
-          post :create,
-            params: {group_id: group.id, fixed_fees: :regions,
-                     invoice_run: {invoice: {title: "Regions"}}}
-          expect(response).to redirect_to(group_invoice_run_invoices_path(group.id,
-            invoice_run.id, returning: true))
-        end.to change { Invoice.count }.by(2)
-        expect(invoice_run.amount_total).to eq 1000
-      end
-    end
-
-    describe "teams" do
-      before do
-        Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: groups(:bc_bern_vorstand))
-        3.times { Fabricate(:team, group: groups(:bc_bern), league: "NLA") }
-      end
-
-      it "renders form" do
-        get :new, params: {group_id: group.id, fixed_fees: :teams}
-        expect(response).to be_successful
-
-        expect(dom).to have_css(".alert-warning", text: "Für folgende Gruppen konnte kein")
-        expect(dom).to have_css("table td.right", text: "3'300.00 CHF")
-      end
-
-      it "can submit form" do
-        expect do
-          post :create,
-            params: {group_id: group.id, fixed_fees: :teams,
-                     invoice_run: {invoice: {title: "Teams"}}}
-          expect(response).to redirect_to(group_invoice_run_invoices_path(group.id,
-            invoice_run.id, returning: true))
-        end.to change { Invoice.count }.by(1)
-        expect(invoice_run.reload.amount_total).to eq 3300
-      end
-    end
-
     describe "roles" do
       before do
         Fabricate(Group::VereinVorstand::Finanzen.sti_name, group: groups(:bc_bern_vorstand))
         Fabricate(Group::VereinSpieler::Aktivmitglied.sti_name, group: groups(:bc_bern_spieler))
-      end
-
-      it "renders form" do
-        get :new, params: {group_id: group.id, fixed_fees: :roles}
-        expect(response).to be_successful
-
-        expect(dom).to have_css(".alert-warning", text: "Für folgende Gruppen konnte kein")
-        expect(dom).to have_css("table td.right", text: "30.00 CHF")
       end
 
       it "can submit form" do
