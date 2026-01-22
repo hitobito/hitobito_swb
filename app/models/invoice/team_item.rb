@@ -6,30 +6,22 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class Invoice::TeamItem < Invoice::PeriodItem
-  self.dynamic_cost_parameter_definitions = {
-    leagues: :array,
-    unit_cost: :decimal
-  }
-
   validates :leagues, presence: true
-
-  def count
-    @count ||= base_scope
-      .active(period_start_on..period_end_on)
-      .where(id: group_scope)
-      .where(teams: {league: leagues})
-      .count
-  end
 
   private
 
   def base_scope
     Group::Verein
-      .without_archived_or_deleted
       .joins(:teams)
+      .where(teams: {league: leagues})
   end
 
   def leagues
     dynamic_cost_parameters[:leagues] || []
+  end
+
+  def people_condition
+    # Disable the people condition, this item cannot be used in an invoice addressed to a person
+    Person.all
   end
 end
