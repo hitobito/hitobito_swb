@@ -1,7 +1,7 @@
 root:
   group: root
   sequence_number: 1
-  beneficiary: "Hitobito AG"
+  beneficiary: Hitobito AG
   payee: "Swiss Badminton\nHans Gerber\nSwitzerland"
   address: "Schellingstr. 8"
   iban: "CH93 0076 2011 6238 5295 7"
@@ -9,3 +9,17 @@ root:
   payment_slip: "qr"
   participant_number: "10-5318-6"
   vat_number: "CH 1234"
+
+bc_bern:
+  group: bc_bern
+  sequence_number: 1
+  beneficiary: Hitobito AG
+  payee_name: Hitobito AG
+  payee_street: Belpstrasse
+  payee_housenumber: 37
+  payee_zip_code: 3007
+  payee_town: Bern
+  payee_country: CH
+  address: "bc bern address"
+  iban: "CH66 0076 2011 6238 5295 8"
+  account_number: "01-162-5"

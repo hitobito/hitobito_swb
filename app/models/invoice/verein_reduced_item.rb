@@ -13,7 +13,6 @@ class Invoice::VereinReducedItem < Invoice::VereinItem
     Group::Verein
       .joins("LEFT JOIN teams ON teams.group_id = groups.id AND #{top_league_condition}")
       .where(teams: {league: nil})
-
   end
 
   def top_league_condition
