@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 module Invoices::UnbilledRolesJoin
-
   private
 
   def with_unbilled_roles(scope)
