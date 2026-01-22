@@ -6,24 +6,23 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class Invoice::VereinItem < Invoice::PeriodItem
-  def count
-    @count ||= base_scope
-      .active(period_start_on..period_end_on)
-      .where(id: group_scope)
-      .where(teams: team_scope)
-      .distinct # this is a "Pauschale". Each Verein only pays once.
-      .count
-  end
-
   private
 
   def base_scope
     Group::Verein
-      .without_archived_or_deleted
-      .joins(:teams)
+      .merge(teams_condition)
+      .distinct # this is a "Pauschale". Each Verein only pays once, regardless of how many teams
   end
 
-  def team_scope
-    {league: Team::TOP_LEAGUES}
+  def teams_condition
+    # Any top league teams present
+    Group::Verein
+      .joins(:teams)
+      .where(teams: {league: Team::TOP_LEAGUES})
+  end
+
+  def people_condition
+    # Disable the people condition, this item cannot be used in an invoice addressed to a person
+    Person.all
   end
 end

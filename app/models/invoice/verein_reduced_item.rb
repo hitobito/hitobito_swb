@@ -5,17 +5,15 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class Invoice::VereinReducedItem < VereinItem
+class Invoice::VereinReducedItem < Invoice::VereinItem
   private
 
-  def base_scope
+  def teams_condition
+    # No top league teams present
     Group::Verein
-      .without_archived_or_deleted
       .joins("LEFT JOIN teams ON teams.group_id = groups.id AND #{top_league_condition}")
-  end
+      .where(teams: {league: nil})
 
-  def team_scope
-    {league: nil}
   end
 
   def top_league_condition
