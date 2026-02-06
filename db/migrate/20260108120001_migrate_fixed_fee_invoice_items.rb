@@ -109,6 +109,11 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
 
       Person::LANGUAGES.each do |lang, _|
         LocaleSetter.with_locale(locale: lang) do
+          invoice_item_join_sql = ApplicationRecord.sanitize_sql(
+            ["LEFT JOIN billed_models ON billed_models.invoice_item_id = invoice_items.id " \
+             "AND billed_models.billing_period_id = (?)", billing_period.id]
+          )
+
           yield InvoiceItem.from(InvoiceItem.joins(:invoice)
             .joins("LEFT JOIN people ON invoices.recipient_id = people.id AND " \
               "invoices.recipient_type = 'Person'")
@@ -116,8 +121,7 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
             # Use a left join instead of inner join, to ensure all invoice items
             # are migrated at least once, even when they mistakenly have no billed_model
             # associated with them
-            .joins("LEFT JOIN billed_models ON billed_models.invoice_item_id = invoice_items.id " \
-              "AND billed_models.billing_period_id = (?)", billing_period.id)
+            .joins(invoice_item_join_sql)
             .distinct.select(:id)),
             year
         end
