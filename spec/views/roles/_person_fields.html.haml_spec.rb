@@ -9,16 +9,16 @@ require "spec_helper"
 
 describe "roles/_additional_person_fields_swb.html.haml" do
   let(:dom) {
-    render
+    render "roles/additional_person_fields_swb", fields: form_builder
     Capybara::Node::Simple.new(@rendered)
   }
   let(:group) { groups(:root_gs) }
   let(:entry) { Role.new(group: group, person: Person.new) }
-
-  before do
-    allow(view).to receive(:fields).and_return(StandardFormBuilder.new(:person, Person.new, view,
-      {}))
-  end
+  let(:form_builder) {
+    StandardFormBuilder.new(:person, Person.new, view, {
+      builder: StandardFormBuilder
+    })
+  }
 
   it "does render gender and ts_gender fields" do
     expect(dom).to have_css "label", text: "Geschlecht"
