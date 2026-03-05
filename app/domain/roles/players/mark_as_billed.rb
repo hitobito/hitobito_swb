@@ -23,9 +23,18 @@ module Roles::Players
     attr_reader :role
 
     def role_types_with_costs
-      @role_types_with_costs ||= InvoiceRuns::FixedFee.for(:roles).config.items
-        .select { |item| item.unit_cost.positive? }
-        .flat_map(&:roles)
+      # TODO in #164, delete or replace this logic entirely.
+      #   The logic has been replaced with hard-coded results because InvoiceRuns::FixedFee
+      #   was removed from the core, in favor of more configurable period invoice templates.
+      #   Probably, these role types will be configurable in the UI in the new solution.
+      # @role_types_with_costs ||= InvoiceRuns::FixedFee.for(:roles).config.items
+      # .select { |item| item.unit_cost.positive? }
+      # .flat_map(&:roles)
+
+      ["Group::VereinSpieler::Aktivmitglied", "Group::VereinSpieler::JuniorU15",
+        "Group::VereinSpieler::JuniorU19", "Group::VereinSpieler::Lizenz",
+        "Group::VereinSpieler::LizenzPlus", "Group::VereinSpieler::LizenzNoRanking",
+        "Group::VereinSpieler::LizenzPlusJunior"]
     end
 
     def roles

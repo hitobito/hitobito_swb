@@ -66,9 +66,7 @@ module HitobitoSwb
       JsonApi::EventsController.prepend Swb::JsonApi::EventsController
 
       Invoice.prepend Swb::Invoice
-      Invoice::BatchCreate.prepend Swb::Invoice::BatchCreate
       Invoice::RoleCountItem.prepend Swb::Invoice::RoleCountItem
-      InvoiceRuns::FixedFee.prepend Swb::InvoiceRuns::FixedFee
       InvoiceRunsController.prepend Swb::InvoiceRunsController
 
       # Navigation
