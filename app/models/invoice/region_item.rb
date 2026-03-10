@@ -8,6 +8,10 @@
 class Invoice::RegionItem < Invoice::PeriodItem
   private
 
+  def subject_type
+    Group::Region
+  end
+
   def base_scope
     Group::Region
   end
@@ -15,5 +19,9 @@ class Invoice::RegionItem < Invoice::PeriodItem
   def people_condition
     # Disable the people condition, this item cannot be used in an invoice addressed to a person
     Person.all
+  end
+
+  def active_condition(start_on, end_on)
+    Group.active(start_on..end_on)
   end
 end
