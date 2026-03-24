@@ -726,34 +726,6 @@ fr:
         add_event/tournament: Ajouter un tournoi
         add_event/external_training: Ajouter une formation
 
-  fixed_fees:
-    regions:
-      fee: Cotisation de région
-    teams:
-      grundbeitrag_elite: Cotisation de club
-      grundbeitrag_andere: Cotisation réduite de club
-      team_nla: LNA
-      team_nlb: LNB
-      team_liga_1: 1ère ligue
-      team_liga_2: 2e ligue
-      team_liga_3: 3e ligue
-      team_liga_4: 4e ligue
-      team_andere: "Equipes juniores, séniores et 5e ligue"
-      team_vereinigung: Union
-    roles:
-      aktiv: Membres actifs
-      passiv: Membres passif
-      junior_u15: "Junior.e.s (jusqu'à U15)"
-      junior_u19: "Junior.e.s (U17-U19)"
-      lizenz: Licences
-      lizenz_plus: Licences Plus
-      lizenz_no_raking: Licences NO ranking
-      lizenz_plus_junior: "Licences plus junior.e.s (U19)"
-      vereinigung: "Joueur.se.s d'une union"
-
-  invoice_runs/fixed_fee:
-    active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
-
   global:
     below: "sous %{value}"
     above: "sur %{value}"

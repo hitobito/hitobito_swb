@@ -4,6 +4,10 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
+  # Class stub used because BillingPeriod has been removed from the codebase in the meantime
+  class BillingPeriod < ActiveRecord::Base
+  end
+
   def up
     say_with_time "migrating region items" do
       in_each_language_and_billing_period do |base_scope, year|
@@ -102,9 +106,6 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
 
   def in_each_language_and_billing_period
     BillingPeriod.order(:created_at).all.each do |billing_period|
-      # TODO if SWB adds more billing periods, especially multiple in the same year,
-      #   this heuristic will not work correctly. But since billing_period does not
-      #   have any semblance of connection to time, we have to do stunts like this.
       year = billing_period.name.include?('25') ? 2025 : 2026
 
       Person::LANGUAGES.each do |lang, _|

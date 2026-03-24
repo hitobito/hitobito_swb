@@ -546,6 +546,19 @@ de:
         one: Referent:in
         other: Referent:innen
 
+      period_invoice_template/region_item:
+        one: Grundbeitrag Region
+        other: Grundbeiträge Region
+      period_invoice_template/verein_item:
+        one: Grundbeitrag Verein
+        other: Grundbeiträge Verein
+      period_invoice_template/verein_reduced_item:
+        one: Grundbeitrag Verein reduziert
+        other: Grundbeiträge Verein reduziert
+      period_invoice_template/team_item:
+        one: Teambeitrag
+        other: Teambeiträge
+
       salutation:
         available:
           lieber_vorname:
@@ -615,34 +628,6 @@ de:
       link:
         add_event/tournament: Turnier hinzufügen
         add_event/external_training: Ausbildung hinzufügen
-
-  fixed_fees:
-    regions:
-      fee: Grundbeitrag Region
-    teams:
-      grundbeitrag_elite: Grundbeitrag
-      grundbeitrag_andere: Grundbeitrag reduziert
-      team_nla: NLA
-      team_nlb: NLB
-      team_liga_1: 1. Liga
-      team_liga_2: 2. Liga
-      team_liga_3: 3. Liga
-      team_liga_4: 4. Liga
-      team_andere: "Junioren, Senioren und 5. Liga Teams"
-      team_vereinigung: Vereinigung
-    roles:
-      aktiv: Aktivmitglieder
-      passiv: Passivmitglieder
-      junior_u15: "Junior:innen (bis U15)"
-      junior_u19: "Junior:innen (U17-U19)"
-      lizenz: Lizenzen
-      lizenz_plus: Lizenzen Plus
-      lizenz_no_raking: Lizenzen NO ranking
-      lizenz_plus_junior: "Lizenzen Plus Junior:innen (U19)"
-      vereinigung: "Vereinigungsspieler:innen"
-
-  invoice_runs/fixed_fee:
-    active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
 
   global:
     below: "unter %{value}"

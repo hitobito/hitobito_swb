@@ -1,0 +1,184 @@
+#  Copyright (c) 2026, Swiss Badminton. This file is part of
+#  hitobito_swb and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_swb.
+
+region_item:
+  type: PeriodInvoiceTemplate::RegionItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "500.00"}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:regionen) %>
+
+verein_item:
+  type: PeriodInvoiceTemplate::VereinItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "300.00"}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+verein_reduced_item:
+  type: PeriodInvoiceTemplate::VereinReducedItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "30.00"}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+nla_item:
+  type: PeriodInvoiceTemplate::TeamItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "1000.00", leagues: ["NLA"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+nlb_item:
+  type: PeriodInvoiceTemplate::TeamItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "800.00", leagues: ["NLB"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+liga1_item:
+  type: PeriodInvoiceTemplate::TeamItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "600.00", leagues: ["1. Liga"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+liga2_item:
+  type: PeriodInvoiceTemplate::TeamItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "500.00", leagues: ["2. Liga"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+liga3_item:
+  type: PeriodInvoiceTemplate::TeamItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "250.00", leagues: ["3. Liga"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+liga4_item:
+  type: PeriodInvoiceTemplate::TeamItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "250.00", leagues: ["4. Liga"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+junioren_senioren_5liga_item:
+  type: PeriodInvoiceTemplate::TeamItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "200.00", leagues: ["Junioren", "Senioren", "NL - 5. Liga"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+vereinigung_item:
+  type: PeriodInvoiceTemplate::TeamItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3000"
+  dynamic_cost_parameters: <%= {unit_cost: "300.00", leagues: ["Vereinigung"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:teams) %>
+
+aktivmitglieder_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "30.00", role_types: ["Group::VereinSpieler::Aktivmitglied"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
+
+passivmitglieder_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "0.00", role_types: ["Group::VereinSpieler::Passivmitglied"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
+
+junior_u15_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "20.00", role_types: ["Group::VereinSpieler::JuniorU15"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
+
+junior_u19_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "40.00", role_types: ["Group::VereinSpieler::JuniorU19"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
+
+lizenz_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "120.00", role_types: ["Group::VereinSpieler::Lizenz"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
+
+lizenz_plus_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "50.00", role_types: ["Group::VereinSpieler::LizenzPlus"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
+
+lizenz_no_ranking_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "120.00", role_types: ["Group::VereinSpieler::LizenzNoRanking"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
+
+lizenz_plus_junior_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "20.00", role_types: ["Group::VereinSpieler::LizenzPlusJunior"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
+
+vereinigungsspieler_item:
+  type: PeriodInvoiceTemplate::RoleCountItem
+  account: "CH56 0483 5035 4099 6000 0"
+  cost_center: "3003"
+  dynamic_cost_parameters: <%= {unit_cost: "0.00", role_types: ["Group::VereinSpieler::Vereinigungsspieler"]}.to_yaml.inspect %>
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  period_invoice_template_id: <%= ActiveRecord::FixtureSet.identify(:spieler) %>
