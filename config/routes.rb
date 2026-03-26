@@ -20,6 +20,5 @@ Rails.application.routes.draw do
 
     get "list_tournaments" => "event/lists#tournaments", :as => :list_tournaments
     get "list_external_trainings" => "event/lists#external_trainings", :as => :list_external_trainings
-    resources :billing_periods, except: :show
   end
 end
