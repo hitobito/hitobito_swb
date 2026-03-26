@@ -11,13 +11,11 @@ class Invoice::TeamItem < Invoice::PeriodItem
   private
 
   def subject_type
-    Group::Verein
+    Team
   end
 
   def base_scope
-    Group::Verein
-      .joins(:teams)
-      .where(teams: {league: leagues})
+    Team.joins(:group).where(league: leagues)
   end
 
   def leagues
