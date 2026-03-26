@@ -14,6 +14,16 @@ Rails.application.routes.draw do
         collection do
           get "tournament" => "events#index", :type => "Event::Tournament"
           get "external_training" => "events#index", :type => "Event::ExternalTraining"
+          scope module: "events", only: [:new, :create] do
+            resources :filters,
+                      path: "tournament/filters",
+                      as: "events_tournament_filters",
+                      type: "Event::Tournament"
+            resources :filters,
+                      path: "external_training/filters",
+                      as: "events_external_training_filters",
+                      type: "Event::ExternalTraining"
+          end
         end
       end
     end
