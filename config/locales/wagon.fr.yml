@@ -725,11 +725,6 @@ fr:
   groups:
     aside_swb:
       title_teams: Équipes
-    actions_show_swb:
-      invoice_button_dropdown: Factures de la fédération
-      invoice_button_regions: Régions
-      invoice_button_teams: Équipes
-      invoice_button_roles: Joueur
 
   mailing_lists:
     form:

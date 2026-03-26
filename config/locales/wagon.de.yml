@@ -629,11 +629,6 @@ de:
   groups:
     aside_swb:
       title_teams: Teams
-    actions_show_swb:
-      invoice_button_dropdown: Verbandsrechnungen
-      invoice_button_regions: Regionen
-      invoice_button_teams: Teams
-      invoice_button_roles: Spieler
 
   mailing_lists:
     form:
