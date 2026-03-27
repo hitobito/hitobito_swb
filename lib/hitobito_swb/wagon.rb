@@ -65,10 +65,6 @@ module HitobitoSwb
       PeopleController.prepend Swb::PeopleController
       JsonApi::EventsController.prepend Swb::JsonApi::EventsController
 
-      Invoice.prepend Swb::Invoice
-      Invoice::RoleCountItem.prepend Swb::Invoice::RoleCountItem
-      InvoiceRunsController.prepend Swb::InvoiceRunsController
-
       # Navigation
       events_index = NavigationHelper::MAIN.index { |opts| opts[:label] == :events }
       NavigationHelper::MAIN.insert(
@@ -90,7 +86,6 @@ module HitobitoSwb
       )
 
       admin_item = NavigationHelper::MAIN.find { |item| item[:label] == :admin }
-      admin_item[:active_for] += %w[billing_periods]
       admin_item[:if] = ->(_) { can?(:index, CustomContent) }
 
       Person::FILTER_ATTRS << [:nationality, :country_select] << [:newsletter] << [:advertising]
@@ -100,8 +95,6 @@ module HitobitoSwb
       Role::PermissionImplicationsForGroups[:players_group_read] = {
         group_read: [Group::VereinSpieler, Group::RegionSpieler]
       }
-
-      Ability.store.register BillingPeriodAbility
 
       # Jobs
       JobManager.wagon_jobs += [

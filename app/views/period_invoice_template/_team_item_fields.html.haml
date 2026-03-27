@@ -1,0 +1,10 @@
+-#  Copyright (c) 2026, BdP and DPSG. This file is part of
+-#  hitobito_swb and licensed under the Affero General Public License version 3
+-#  or later. See the COPYING file at the top-level directory or at
+-#  https://github.com/hitobito/hitobito_swb.
+
+= f.labeled :leagues do
+  - Team::LEAGUES.each do |league|
+    = label_tag(nil, class: 'checkbox inline') do
+      = f.check_box_tag(f.object_name + "[dynamic_cost_parameters][leagues][]", league, f.object.leagues.include?(league))
+      = league

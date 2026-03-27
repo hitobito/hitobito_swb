@@ -7,8 +7,6 @@ fr:
   activerecord:
     errors:
       models:
-        billing_period:
-          single_active: Il ne peut y avoir qu'une seule période de facturation active
         person:
           cannot_be_destroyed_if_ts_roles_exist: Impossible de supprimer tant que des rôles TS existent.
           requires_phone_number: Un numéro de téléphone doit être enregistré.
@@ -41,11 +39,6 @@ fr:
         one: Tournoi
         many: Tournois
         other: Tournois
-
-      billing_period:
-        one: Période de facturation
-        many: Périodes de facturation
-        other: Périodes de facturation
 
       ### GROUPS
 
@@ -664,9 +657,6 @@ fr:
               other: "Cher.ère %{first_name}"
 
     attributes:
-      billing_period:
-        name: Nom
-        active: actif
       event:
         external_link: Lien externe
       contact_account:
@@ -726,34 +716,6 @@ fr:
         add_event/tournament: Ajouter un tournoi
         add_event/external_training: Ajouter une formation
 
-  fixed_fees:
-    regions:
-      fee: Cotisation de région
-    teams:
-      grundbeitrag_elite: Cotisation de club
-      grundbeitrag_andere: Cotisation réduite de club
-      team_nla: LNA
-      team_nlb: LNB
-      team_liga_1: 1ère ligue
-      team_liga_2: 2e ligue
-      team_liga_3: 3e ligue
-      team_liga_4: 4e ligue
-      team_andere: "Equipes juniores, séniores et 5e ligue"
-      team_vereinigung: Union
-    roles:
-      aktiv: Membres actifs
-      passiv: Membres passif
-      junior_u15: "Junior.e.s (jusqu'à U15)"
-      junior_u19: "Junior.e.s (U17-U19)"
-      lizenz: Licences
-      lizenz_plus: Licences Plus
-      lizenz_no_raking: Licences NO ranking
-      lizenz_plus_junior: "Licences plus junior.e.s (U19)"
-      vereinigung: "Joueur.se.s d'une union"
-
-  invoice_runs/fixed_fee:
-    active_billing_period_required: Aktuell ist keine Rechnungsperiod aktiv
-
   global:
     below: "sous %{value}"
     above: "sur %{value}"
@@ -763,11 +725,6 @@ fr:
   groups:
     aside_swb:
       title_teams: Équipes
-    actions_show_swb:
-      invoice_button_dropdown: Factures de la fédération
-      invoice_button_regions: Régions
-      invoice_button_teams: Équipes
-      invoice_button_roles: Joueur
 
   mailing_lists:
     form:

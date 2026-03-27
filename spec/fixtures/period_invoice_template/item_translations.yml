@@ -1,0 +1,267 @@
+#  Copyright (c) 2026, Swiss Badminton. This file is part of
+#  hitobito_swb and licensed under the Affero General Public License version 3
+#  or later. See the COPYING file at the top-level directory or at
+#  https://github.com/hitobito/hitobito_swb.
+
+_fixture:
+  model_class: PeriodInvoiceTemplate::Item::Translation
+
+region_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:region_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Grundbeitrag Region
+region_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:region_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Cotisation de région
+
+verein_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:verein_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Grundbeitrag
+verein_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:verein_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Cotisation de club
+
+verein_reduced_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:verein_reduced_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Grundbeitrag reduziert
+verein_reduced_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:verein_reduced_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Cotisation réduite de club
+
+nla_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:nla_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: NLA
+nla_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:nla_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: LNA
+
+nlb_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:nlb_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: NLB
+nlb_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:nlb_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: LNB
+
+liga1_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:liga1_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: 1. Liga
+liga1_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:liga1_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: 1ère ligue
+
+liga2_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:liga2_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: 2. Liga
+liga2_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:liga2_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: 2e ligue
+
+liga3_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:liga3_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: 3. Liga
+liga3_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:liga3_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: 3e ligue
+
+liga4_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:liga4_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: 4. Liga
+liga4_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:liga4_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: 4e ligue
+
+junioren_senioren_5liga_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:junioren_senioren_5liga_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Junioren, Senioren und 5. Liga Teams
+junioren_senioren_5liga_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:junioren_senioren_5liga_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Equipes juniores, séniores et 5e ligue
+
+vereinigung_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:vereinigung_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Vereinigung
+vereinigung_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:vereinigung_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Union
+
+aktivmitglieder_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:aktivmitglieder_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Aktivmitglieder
+aktivmitglieder_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:aktivmitglieder_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Membres actifs
+
+passivmitglieder_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:passivmitglieder_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Passivmitglieder
+passivmitglieder_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:passivmitglieder_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Membres passif
+
+junior_u15_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:junior_u15_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Junior:innen (bis U15)
+junior_u15_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:junior_u15_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Junior.e.s (jusqu'à U15)
+
+junior_u19_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:junior_u19_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Junior:innen (U17-U19)
+junior_u19_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:junior_u19_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Junior.e.s (U17-U19)
+
+lizenz_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:lizenz_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Lizenzen
+lizenz_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:lizenz_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Licences
+
+lizenz_plus_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:lizenz_plus_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Lizenzen Plus
+lizenz_plus_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:lizenz_plus_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Licences Plus
+
+lizenz_no_ranking_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:lizenz_no_ranking_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Lizenzen NO ranking
+lizenz_no_ranking_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:lizenz_no_ranking_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Lizenzen NO ranking
+
+lizenz_plus_junior_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:lizenz_plus_junior_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Lizenzen Plus Junior:innen (U19)
+lizenz_plus_junior_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:lizenz_plus_junior_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Licences plus junior.e.s (U19)
+
+vereinigungsspieler_item_de:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:vereinigungsspieler_item) %>
+  locale: de
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Vereinigungsspieler:innen
+vereinigungsspieler_item_fr:
+  period_invoice_template_item_id: <%= ActiveRecord::FixtureSet.identify(:vereinigungsspieler_item) %>
+  locale: fr
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+  name: Joueur.se.s d'une union

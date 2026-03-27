@@ -102,13 +102,32 @@ describe Invoice::TeamItem do
 
       it "counts teams in bern" do
         Fabricate(:team, group: bc_bern, league: "NLA")
+        Fabricate(:team, group: bc_bern, league: "NLA")
         Fabricate(:team, group: bc_bern, league: "NLB")
-        expect(item.count).to eq 2
+        expect(item.count).to eq 3
       end
 
       it "ignores teams in olten" do
         Fabricate(:team, group: bc_olten, league: "NLA")
         Fabricate(:team, group: bc_olten, league: "NLB")
+        expect(item.count).to eq 0
+      end
+    end
+
+    context "for upper layer" do
+      let(:region) { groups(:bvn) }
+
+      subject(:item) { described_class.for_groups(region, **attrs) }
+
+      it "counts teams in vereine under the region" do
+        Fabricate(:team, group: bc_olten, league: "NLA")
+        Fabricate(:team, group: bc_olten, league: "NLA")
+        Fabricate(:team, group: bc_olten, league: "NLB")
+        expect(item.count).to eq 3
+      end
+
+      it "ignores teams in vereine outside the region" do
+        Fabricate(:team, group: bc_bern, league: "NLA")
         expect(item.count).to eq 0
       end
     end
