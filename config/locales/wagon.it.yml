@@ -537,6 +537,19 @@ it:
         one: Referent:in
         other: Referent:innen
 
+      period_invoice_template/region_item:
+        one: Grundbeitrag Region
+        other: Grundbeiträge Region
+      period_invoice_template/verein_item:
+        one: Grundbeitrag Verein
+        other: Grundbeiträge Verein
+      period_invoice_template/verein_reduced_item:
+        one: Grundbeitrag Verein reduziert
+        other: Grundbeiträge Verein reduziert
+      period_invoice_template/team_item:
+        one: Teambeitrag
+        other: Teambeiträge
+
       salutation:
         available:
           lieber_vorname:
