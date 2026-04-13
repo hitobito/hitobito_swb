@@ -23,7 +23,6 @@ regionen = PeriodInvoiceTemplate.seed(:name, {
   name: "Regionen 2026",
   start_on: "2026-01-01",
   end_on: "2026-12-31",
-  recipient_group_type: "Group::Region",
   group_id: Group.root.id,
   recipient_source_id: regionen_recipients.id,
   recipient_source_type: "GroupsFilter"
@@ -45,7 +44,6 @@ teams = PeriodInvoiceTemplate.seed(:name, {
   name: "Teams 2026",
   start_on: "2026-01-01",
   end_on: "2026-12-31",
-  recipient_group_type: "Group::Verein",
   group_id: Group.root.id,
   recipient_source_id: teams_recipients.id,
   recipient_source_type: "GroupsFilter"
@@ -147,7 +145,6 @@ roles = PeriodInvoiceTemplate.seed(:name, {
   name: "Spieler 2026",
   start_on: "2026-01-01",
   end_on: "2026-12-31",
-  recipient_group_type: "Group::Verein",
   group_id: Group.root.id,
   recipient_source_id: roles_source.id,
   recipient_source_type: "GroupsFilter"

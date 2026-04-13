@@ -7,7 +7,6 @@ regionen:
   name: Regionen 2026
   start_on: 2026-01-01
   end_on: 2026-12-31
-  recipient_group_type: Group::Region
   group: root
   recipient_source: regionen (GroupsFilter)
 
@@ -15,7 +14,6 @@ teams:
   name: Teams 2026
   start_on: 2026-01-01
   end_on: 2026-12-31
-  recipient_group_type: Group::Verein
   group: root
   recipient_source: teams (GroupsFilter)
 
@@ -23,6 +21,5 @@ spieler:
   name: Spieler 2026
   start_on: 2026-01-01
   end_on: 2026-12-31
-  recipient_group_type: Group::Verein
   group: root
   recipient_source: spieler (GroupsFilter)
