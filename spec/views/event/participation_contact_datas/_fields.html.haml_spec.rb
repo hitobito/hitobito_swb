@@ -37,7 +37,8 @@ describe "event/participation_contact_datas/_fields.html.haml" do
 
   it "has other required fields" do
     expect(dom).to have_css "label", text: "Geburtstag"
-    expect(dom).to have_css "label", text: "Adresse"
+    expect(dom).to have_css "label", text: "Strasse"
+    expect(dom).to have_css "label", text: "Nr."
     expect(dom).to have_css "label", text: "PLZ"
     expect(dom).to have_css "label", text: "Ort"
     expect(dom).to have_css "label", text: "E-Mail"
