@@ -132,47 +132,47 @@ describe PeriodInvoiceTemplatesController, js: true do
 
       with_basic_info(name: "Spieler 2026", period_start_on: "1.1.2026", period_end_on: "31.12.2026",
         recipient_group_type: "Vereine") do
-        add_item("Rollen-Zählung", name_de: "Aktivmitglieder",
+        add_item("Rollen-Abrechnung", name_de: "Aktivmitglieder",
           name_fr: "Membres actifs", unit_cost: 30, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Aktivmitglied")
         end
-        add_item("Rollen-Zählung", name_de: "Passivmitglieder",
+        add_item("Rollen-Abrechnung", name_de: "Passivmitglieder",
           name_fr: "Membres passif", unit_cost: 0, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Passivmitglied")
         end
-        add_item("Rollen-Zählung", name_de: "Junior:innen (bis U15)",
+        add_item("Rollen-Abrechnung", name_de: "Junior:innen (bis U15)",
           name_fr: "Junior.e.s (jusqu'à U15)", unit_cost: 20, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Junior:in (bis U15) (TS)")
         end
-        add_item("Rollen-Zählung", name_de: "Junior:innen (U17-U19)",
+        add_item("Rollen-Abrechnung", name_de: "Junior:innen (U17-U19)",
           name_fr: "Junior.e.s (U17-U19)", unit_cost: 40, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Junior:in (U17-U19) (TS)")
         end
-        add_item("Rollen-Zählung", name_de: "Lizenzen",
+        add_item("Rollen-Abrechnung", name_de: "Lizenzen",
           name_fr: "Licences", unit_cost: 120, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Lizenz (TS)")
         end
-        add_item("Rollen-Zählung", name_de: "Lizenzen Plus",
+        add_item("Rollen-Abrechnung", name_de: "Lizenzen Plus",
           name_fr: "Licences Plus", unit_cost: 50, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Lizenz Plus (TS)")
         end
-        add_item("Rollen-Zählung", name_de: "Lizenzen NO ranking",
+        add_item("Rollen-Abrechnung", name_de: "Lizenzen NO ranking",
           name_fr: "Lizenzen NO ranking", unit_cost: 120, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Lizenz NO ranking (TS)")
         end
-        add_item("Rollen-Zählung", name_de: "Lizenzen Plus Junior:innen (U19)",
+        add_item("Rollen-Abrechnung", name_de: "Lizenzen Plus Junior:innen (U19)",
           name_fr: "Licences plus junior.e.s (U19)", unit_cost: 20, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Lizenz Plus Junior:innen (U19) (TS)")
         end
-        add_item("Rollen-Zählung", name_de: "Vereinigungsspieler:innen",
+        add_item("Rollen-Abrechnung", name_de: "Vereinigungsspieler:innen",
           name_fr: "Joueur.se.s d'une union", unit_cost: 0, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Vereinigungsspieler:in (TS)")
@@ -225,7 +225,7 @@ describe PeriodInvoiceTemplatesController, js: true do
     # contents could be present in the page after this selection. In the UI,
     # we have no easy way of seeing this change happen, and so capybara's
     # built in waiting cannot be used here.
-    select recipient_group_type, from: "Empfängergruppen" if recipient_group_type
+    select recipient_group_type, from: "Rechnungsempfänger" if recipient_group_type
   end
 
   def add_item(type, name_de: nil, name_fr: nil, unit_cost: nil, vat_rate: nil, cost_center: nil,
