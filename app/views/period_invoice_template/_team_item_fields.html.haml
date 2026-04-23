@@ -3,6 +3,7 @@
 -#  or later. See the COPYING file at the top-level directory or at
 -#  https://github.com/hitobito/hitobito_swb.
 
+= render "period_invoice_templates/shared_item_fields", f: f
 = f.labeled :leagues do
   - Team::LEAGUES.each do |league|
     = label_tag(nil, class: 'checkbox inline') do
