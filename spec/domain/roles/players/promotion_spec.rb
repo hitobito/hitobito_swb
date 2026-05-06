@@ -56,7 +56,7 @@ describe Roles::Players::Promotion do
         # rubocop:enable Layout/LineLength
         expect(log.category).to eq "promotion"
         expect(log.level).to eq "info"
-        expect(log.message).to start_with "Promoted Junior:in (bis U15)"
+        expect(log.message).to start_with "Promoted Lizenz Nachwuchs bis U15"
         expect { role.reload }.to raise_error(ActiveRecord::RecordNotFound)
       end
 
@@ -84,7 +84,7 @@ describe Roles::Players::Promotion do
           expect(log.subject).to eq role
           expect(log.category).to eq "promotion"
           expect(log.level).to eq "error"
-          expect(log.message).to start_with "Failed to promote Junior:in (bis U15)"
+          expect(log.message).to start_with "Failed to promote Lizenz Nachwuchs bis U15"
         end
 
         it "continues with promotion if one fails" do
@@ -155,6 +155,27 @@ describe Roles::Players::Promotion do
       expect(thun_spieler.roles.first.type).to eq "Group::VereinSpieler::Lizenz"
       expect(region_spieler.roles.first.type).to eq "Group::RegionSpieler::Lizenz"
       expect(root_spieler.roles.first.type).to eq "Group::DachverbandSpieler::Lizenz"
+    end
+  end
+
+  context "Junioren aktivmitglider" do
+    it "promotes AktivmitgliedU15 to AktivmitgliedU19" do
+      person = create_spieler(Group::VereinSpieler::AktivmitgliedU15, groups(:bc_thun_spieler),
+        birthday: 16.years.ago.end_of_year)
+      expect do
+        described_class.new(Role::Player::JuniorU15).run
+      end.to change { person.reload.roles.map(&:type) }
+        .from(%w[Group::VereinSpieler::AktivmitgliedU15])
+        .to(%w[Group::VereinSpieler::AktivmitgliedU19])
+    end
+    it "promotes AktivmitgliedU19 to Lizenz" do
+      person = create_spieler(Group::VereinSpieler::AktivmitgliedU19, groups(:bc_thun_spieler),
+        birthday: 19.years.ago.end_of_year)
+      expect do
+        described_class.new(Role::Player::JuniorU19).run
+      end.to change { person.reload.roles.map(&:type) }
+        .from(%w[Group::VereinSpieler::AktivmitgliedU19])
+        .to(%w[Group::VereinSpieler::Lizenz])
     end
   end
 end

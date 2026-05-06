@@ -9,6 +9,13 @@ module Roles::Players
   class Checker
     attr_reader :role, :type, :current_type, :upgrades
 
+    JUNIOR_TYPES = [
+      "JuniorU15",
+      "JuniorU19",
+      "AktivmitgliedU15",
+      "AktivmitgliedU19"
+    ]
+
     delegate :group, to: :role
 
     def initialize(role)
@@ -19,7 +26,7 @@ module Roles::Players
     end
 
     def junior?
-      ["JuniorU15", "JuniorU19"].include?(type)
+      JUNIOR_TYPES.include?(type)
     end
 
     def upgrade?
