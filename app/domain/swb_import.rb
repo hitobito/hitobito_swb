@@ -150,12 +150,22 @@ module SwbImport
     ["Passiv",
       [Group::DachverbandSpieler::Passivmitglied, Group::RegionSpieler::Passivmitglied,
         Group::VereinSpieler::Passivmitglied]],
-    ["Junior (U17-U19)",
-      [Group::DachverbandSpieler::JuniorU19, Group::RegionSpieler::JuniorU19,
-        Group::VereinSpieler::JuniorU19]],
-    ["Junior (up to U15)",
-      [Group::DachverbandSpieler::JuniorU15, Group::RegionSpieler::JuniorU15,
-        Group::VereinSpieler::JuniorU15]],
+    ["Junior (U17-U19)", [
+      Group::DachverbandSpieler::JuniorU19,
+      Group::RegionSpieler::JuniorU19,
+      Group::VereinSpieler::JuniorU19,
+      Group::DachverbandSpieler::AktivmitgliedU19,
+      Group::RegionSpieler::AktivmitgliedU19,
+      Group::VereinSpieler::AktivmitgliedU19
+    ]],
+    ["Junior (up to U15)", [
+      Group::DachverbandSpieler::JuniorU15,
+      Group::RegionSpieler::JuniorU15,
+      Group::VereinSpieler::JuniorU15,
+      Group::DachverbandSpieler::AktivmitgliedU15,
+      Group::RegionSpieler::AktivmitgliedU15,
+      Group::VereinSpieler::AktivmitgliedU15
+    ]],
 
     ["Lizenz", Group::VereinSpieler::Lizenz],
     ["Lizenz NO ranking", Group::VereinSpieler::LizenzNoRanking],

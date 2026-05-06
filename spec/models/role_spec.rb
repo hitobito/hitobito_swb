@@ -204,4 +204,37 @@ describe Role do
       end
     end
   end
+
+  it "has expected ts_managed types" do
+    expect(Role.ts_managed_types).to match_array [
+      "Group::DachverbandGeschaeftsstelle::Interclub",
+      "Group::DachverbandSpieler::Aktivmitglied",
+      "Group::DachverbandSpieler::AktivmitgliedU15",
+      "Group::DachverbandSpieler::AktivmitgliedU19",
+      "Group::DachverbandSpieler::JuniorU15",
+      "Group::DachverbandSpieler::JuniorU19",
+      "Group::DachverbandSpieler::Passivmitglied",
+      "Group::Region::Interclub",
+      "Group::RegionSpieler::Aktivmitglied",
+      "Group::RegionSpieler::AktivmitgliedU15",
+      "Group::RegionSpieler::AktivmitgliedU19",
+      "Group::RegionSpieler::JuniorU15",
+      "Group::RegionSpieler::JuniorU19",
+      "Group::RegionSpieler::Passivmitglied",
+      "Group::Verein::Clubtrainer",
+      "Group::Verein::EventTurnier",
+      "Group::Verein::Interclub",
+      "Group::VereinSpieler::Aktivmitglied",
+      "Group::VereinSpieler::AktivmitgliedU15",
+      "Group::VereinSpieler::AktivmitgliedU19",
+      "Group::VereinSpieler::JuniorU15",
+      "Group::VereinSpieler::JuniorU19",
+      "Group::VereinSpieler::Lizenz",
+      "Group::VereinSpieler::LizenzNoRanking",
+      "Group::VereinSpieler::LizenzPlus",
+      "Group::VereinSpieler::LizenzPlusJunior",
+      "Group::VereinSpieler::Passivmitglied",
+      "Group::VereinSpieler::Vereinigungsspieler"
+    ]
+  end
 end

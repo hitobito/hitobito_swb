@@ -6,10 +6,8 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 module Roles::Players::Phases
-  # rubocop:todo Layout/LineLength
-  # During phase_3, nothing besides the creation of certain roles is allowed, no upgrades/downgrades, no deletions
-  # rubocop:enable Layout/LineLength
-  # Only junior roles can be created
+  # During phase_3, nothing besides the creation of certain roles is allowed,
+  # no upgrades/downgrades, no deletions. Only junior roles can be created
   class Restricted < Base
     def create?
       checker.new? && checker.junior?

@@ -18,6 +18,8 @@ describe Roles::Players::Checker do
   it "#junior? knows about what roles are junior" do
     expect(check("JuniorU15")).to be_junior
     expect(check("JuniorU19")).to be_junior
+    expect(check("AktivmitgliedU15")).to be_junior
+    expect(check("AktivmitgliedU19")).to be_junior
     expect(check("LizenzPlusJunior")).not_to be_junior
     expect(check("Aktivmitglied")).not_to be_junior
     expect(check("Lizenz")).not_to be_junior

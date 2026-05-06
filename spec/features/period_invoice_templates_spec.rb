@@ -135,22 +135,22 @@ describe PeriodInvoiceTemplatesController, js: true do
         add_item("Rollen-Abrechnung", name_de: "Aktivmitglieder",
           name_fr: "Membres actifs", unit_cost: 30, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
-          select_role_type("Aktivmitglied")
+          select_role_type("Aktivmitglied (TS)")
         end
         add_item("Rollen-Abrechnung", name_de: "Passivmitglieder",
           name_fr: "Membres passif", unit_cost: 0, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
-          select_role_type("Passivmitglied")
+          select_role_type("Passivmitglied (TS)")
         end
-        add_item("Rollen-Abrechnung", name_de: "Junior:innen (bis U15)",
+        add_item("Rollen-Abrechnung", name_de: "Lizenzen Nachwuchs bis U15",
           name_fr: "Junior.e.s (jusqu'à U15)", unit_cost: 20, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
-          select_role_type("Junior:in (bis U15) (TS)")
+          select_role_type("Lizenz Nachwuchs bis U15 (TS)")
         end
-        add_item("Rollen-Abrechnung", name_de: "Junior:innen (U17-U19)",
+        add_item("Rollen-Abrechnung", name_de: "Lizenzen Nachwuchs U17-U19",
           name_fr: "Junior.e.s (U17-U19)", unit_cost: 40, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
-          select_role_type("Junior:in (U17-U19) (TS)")
+          select_role_type("Lizenz Nachwuchs U17-U19 (TS)")
         end
         add_item("Rollen-Abrechnung", name_de: "Lizenzen",
           name_fr: "Licences", unit_cost: 120, cost_center: "3003",
@@ -167,10 +167,10 @@ describe PeriodInvoiceTemplatesController, js: true do
           account: "CH56 0483 5035 4099 6000 0") do
           select_role_type("Lizenz NO ranking (TS)")
         end
-        add_item("Rollen-Abrechnung", name_de: "Lizenzen Plus Junior:innen (U19)",
+        add_item("Rollen-Abrechnung", name_de: "Lizenzen Plus Nachwuchs (U19)",
           name_fr: "Licences plus junior.e.s (U19)", unit_cost: 20, cost_center: "3003",
           account: "CH56 0483 5035 4099 6000 0") do
-          select_role_type("Lizenz Plus Junior:innen (U19) (TS)")
+          select_role_type("Lizenz Plus Nachwuchs (U19) (TS)")
         end
         add_item("Rollen-Abrechnung", name_de: "Vereinigungsspieler:innen",
           name_fr: "Joueur.se.s d'une union", unit_cost: 0, cost_center: "3003",
@@ -188,9 +188,9 @@ describe PeriodInvoiceTemplatesController, js: true do
       expect(entry.recipient_source.parent_id).to eq group.id
       expect(entry.items.length).to be 9
       expect(entry.items.map(&:type)).to eq(Array.new(9, "PeriodInvoiceTemplate::RoleCountItem"))
-      expect(entry.items.map(&:name)).to eq(["Aktivmitglieder", "Passivmitglieder", "Junior:innen (bis U15)",
-        "Junior:innen (U17-U19)", "Lizenzen", "Lizenzen Plus", "Lizenzen NO ranking",
-        "Lizenzen Plus Junior:innen (U19)", "Vereinigungsspieler:innen"])
+      expect(entry.items.map(&:name)).to eq(["Aktivmitglieder", "Passivmitglieder", "Lizenzen Nachwuchs bis U15",
+        "Lizenzen Nachwuchs U17-U19", "Lizenzen", "Lizenzen Plus", "Lizenzen NO ranking",
+        "Lizenzen Plus Nachwuchs (U19)", "Vereinigungsspieler:innen"])
       expect(entry.items.map(&:name_fr)).to eq(["Membres actifs", "Membres passif", "Junior.e.s (jusqu'à U15)",
         "Junior.e.s (U17-U19)", "Licences", "Licences Plus", "Lizenzen NO ranking", "Licences plus junior.e.s (U19)",
         "Joueur.se.s d'une union"])
@@ -199,7 +199,7 @@ describe PeriodInvoiceTemplatesController, js: true do
       }).to eq(["30.00", "0.00", "20.00", "40.00", "120.00", "50.00", "120.00", "20.00", "0.00"])
       expect(entry.items.map { |item|
         item.dynamic_cost_parameters[:role_types]
-      }).to eq([
+      }).to match_array([
         ["Group::VereinSpieler::Aktivmitglied"],
         ["Group::VereinSpieler::Passivmitglied"],
         ["Group::VereinSpieler::JuniorU15"],
@@ -255,10 +255,10 @@ describe PeriodInvoiceTemplatesController, js: true do
     fill_in "Konto", with: account
   end
 
-  def select_role_type(type)
+  def select_role_type(type) # rubocop:disable Metrics/AbcSize
     click_button "Rollentypen auswählen"
     expect(page).to have_content "Schliessen"
-    all("label", text: type).last.check
+    all("label", text: type).index_by { |x| x.native.text }.fetch(type).check
     click_button "Schliessen"
     expect(page).to have_no_content "Schliessen"
     expect(page).to have_content type

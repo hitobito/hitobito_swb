@@ -20,9 +20,21 @@ class Group::DachverbandSpieler < ::Group
   class JuniorU19 < ::Role::Player::JuniorU19
   end
 
+  class AktivmitgliedU15 < JuniorU15
+  end
+
+  class AktivmitgliedU19 < JuniorU19
+  end
+
   class Lizenz < ::Role::Player
     self.unique_across_layers = true
   end
 
-  roles Aktivmitglied, Passivmitglied, JuniorU15, JuniorU19, Lizenz
+  roles Aktivmitglied,
+    Passivmitglied,
+    JuniorU15,
+    JuniorU19,
+    AktivmitgliedU15,
+    AktivmitgliedU19,
+    Lizenz
 end
