@@ -52,7 +52,11 @@ module Roles::Players
 
     def role_type_for(role)
       years = Time.zone.now.year - role.person.birthday.year
-      type = Role::Player::JuniorU19.year_range.include?(years) ? "JuniorU19" : "Lizenz"
+      type = if Role::Player::JuniorU19.year_range.include?(years)
+        role.type.gsub("U15", "U19").demodulize
+      else
+        "Lizenz"
+      end
       [role.type.deconstantize, type].join("::").constantize
     end
 
