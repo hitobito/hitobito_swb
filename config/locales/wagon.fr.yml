@@ -250,14 +250,20 @@ fr:
         other: Membre passif
 
       group/dachverband_spieler/junior_u15:
-        one: "Junior.e (jusqu'à U15)"
-        many: "Junior.e.s (jusqu'à U15)"
-        other: "Junior.e.s (jusqu'à U15)"
+        one: "Lizenz Nachwuchs bis U15"
+        other: "Lizenzen Nachwuchs bis U15"
 
       group/dachverband_spieler/junior_u19:
-        one: "Junior.e (U17-U19)"
-        many: "Junior.e.s (U17-U19)"
-        other: "Junior.e.s (U17-U19)"
+        one: "Lizenz Nachwuchs U17-U19"
+        other: "Lizenzen Nachwuchs U17-U19"
+
+      group/dachverband_spieler/aktivmitglied_u15:
+        one: "Aktivmitgliedschaft bis U15"
+        other: "Aktivmitgliedschaften bis U15"
+
+      group/dachverband_spieler/aktivmitglied_u19:
+        one: "Aktivmitgliedschaft U17-U19"
+        other: "Aktivmitgliedschaften U17-U19"
 
       group/dachverband_spieler/lizenz:
         one: Licence
@@ -424,14 +430,20 @@ fr:
         other: Membre passif
 
       group/region_spieler/junior_u15:
-        one: "Junior.e (jusqu'à U15)"
-        many: "Junior.e.s (jusqu'à U15)"
-        other: "Junior.e.s (jusqu'à U15)"
+        one: "Lizenz Nachwuchs bis U15"
+        other: "Lizenzen Nachwuchs bis U15"
 
       group/region_spieler/junior_u19:
-        one: "Junior.e (U17-U19)"
-        many: "Junior.e.s (U17-U19)"
-        other: "Junior.e.s (U17-U19)"
+        one: "Lizenz Nachwuchs U17-U19"
+        other: "Lizenzen Nachwuchs U17-U19"
+
+      group/region_spieler/aktivmitglied_u15:
+        one: "Aktivmitgliedschaft bis U15"
+        other: "Aktivmitgliedschaften bis U15"
+
+      group/region_spieler/aktivmitglied_u19:
+        one: "Aktivmitgliedschaft U17-U19"
+        other: "Aktivmitgliedschaften U17-U19"
 
       group/region_spieler/lizenz:
         one: Licence
@@ -574,14 +586,20 @@ fr:
         other: Membre passif
 
       group/verein_spieler/junior_u15:
-        one: "Junior.e (jusqu'à U15)"
-        many: "Junior.e.s (jusqu'à U15)"
-        other: "Junior.e.s (jusqu'à U15)"
+        one: "Lizenz Nachwuchs bis U15"
+        other: "Lizenzen Nachwuchs bis U15"
 
       group/verein_spieler/junior_u19:
-        one: "Junior.e (U17-U19)"
-        many: "Junior.e.s (U17-U19)"
-        other: "Junior.e.s (U17-U19)"
+        one: "Lizenz Nachwuchs U17-U19"
+        other: "Lizenzen Nachwuchs U17-U19"
+
+      group/verein_spieler/aktivmitglied_u15:
+        one: "Aktivmitgliedschaft bis U15"
+        other: "Aktivmitgliedschaften bis U15"
+
+      group/verein_spieler/aktivmitglied_u19:
+        one: "Aktivmitgliedschaft U17-U19"
+        other: "Aktivmitgliedschaften U17-U19"
 
       group/verein_spieler/lizenz:
         one: Licence
@@ -594,9 +612,8 @@ fr:
         other: Joueur.se.s d'une union
 
       group/verein_spieler/lizenz_plus_junior:
-        one: "Licence Plus junior.e (U19)"
-        many: "Licences Plus junior.e.s (U19)"
-        other: "Licences Plus junior.e.s (U19)"
+        one: "Lizenz Plus Nachwuchs (U19)"
+        other: "Lizenzen Plus Nachwuchs (U19)"
 
       group/verein_spieler/lizenz_plus:
         one: Licence Plus
