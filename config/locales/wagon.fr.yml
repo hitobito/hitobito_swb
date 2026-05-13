@@ -250,20 +250,24 @@ fr:
         other: Membre passif
 
       group/dachverband_spieler/junior_u15:
-        one: "Lizenz Nachwuchs bis U15"
-        other: "Lizenzen Nachwuchs bis U15"
+        one: "Licence relève jusqu'à U15"
+        many: "Licences relève jusqu'à U15"
+        other: "Licence relève jusqu'à U15"
 
       group/dachverband_spieler/junior_u19:
-        one: "Lizenz Nachwuchs U17-U19"
-        other: "Lizenzen Nachwuchs U17-U19"
+        one: "Licence relève U17-U19"
+        many: "Licences relève U17-U19"
+        other: "Licence relève U17-U19"
 
       group/dachverband_spieler/aktivmitglied_u15:
-        one: "Aktivmitgliedschaft bis U15"
-        other: "Aktivmitgliedschaften bis U15"
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliation relève jusqu'à U15"
 
       group/dachverband_spieler/aktivmitglied_u19:
-        one: "Aktivmitgliedschaft U17-U19"
-        other: "Aktivmitgliedschaften U17-U19"
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliation relève U17-U19"
 
       group/dachverband_spieler/lizenz:
         one: Licence
@@ -430,20 +434,24 @@ fr:
         other: Membre passif
 
       group/region_spieler/junior_u15:
-        one: "Lizenz Nachwuchs bis U15"
-        other: "Lizenzen Nachwuchs bis U15"
+        one: "Licence relève jusqu'à U15"
+        many: "Licences relève jusqu'à U15"
+        other: "Licence relève jusqu'à U15"
 
       group/region_spieler/junior_u19:
-        one: "Lizenz Nachwuchs U17-U19"
-        other: "Lizenzen Nachwuchs U17-U19"
+        one: "Licence relève U17-U19"
+        many: "Licences relève U17-U19"
+        other: "Licence relève U17-U19"
 
       group/region_spieler/aktivmitglied_u15:
-        one: "Aktivmitgliedschaft bis U15"
-        other: "Aktivmitgliedschaften bis U15"
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliation relève jusqu'à U15"
 
       group/region_spieler/aktivmitglied_u19:
-        one: "Aktivmitgliedschaft U17-U19"
-        other: "Aktivmitgliedschaften U17-U19"
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliation relève U17-U19"
 
       group/region_spieler/lizenz:
         one: Licence
@@ -586,20 +594,24 @@ fr:
         other: Membre passif
 
       group/verein_spieler/junior_u15:
-        one: "Lizenz Nachwuchs bis U15"
-        other: "Lizenzen Nachwuchs bis U15"
+        one: "Licence relève jusqu'à U15"
+        many: "Licences relève jusqu'à U15"
+        other: "Licence relève jusqu'à U15"
 
       group/verein_spieler/junior_u19:
-        one: "Lizenz Nachwuchs U17-U19"
-        other: "Lizenzen Nachwuchs U17-U19"
+        one: "Licence relève U17-U19"
+        many: "Licences relève U17-U19"
+        other: "Licence relève U17-U19"
 
       group/verein_spieler/aktivmitglied_u15:
-        one: "Aktivmitgliedschaft bis U15"
-        other: "Aktivmitgliedschaften bis U15"
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliation relève jusqu'à U15"
 
       group/verein_spieler/aktivmitglied_u19:
-        one: "Aktivmitgliedschaft U17-U19"
-        other: "Aktivmitgliedschaften U17-U19"
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliation relève U17-U19"
 
       group/verein_spieler/lizenz:
         one: Licence
@@ -612,8 +624,9 @@ fr:
         other: Joueur.se.s d'une union
 
       group/verein_spieler/lizenz_plus_junior:
-        one: "Lizenz Plus Nachwuchs (U19)"
-        other: "Lizenzen Plus Nachwuchs (U19)"
+        one: "Licence Plus relève U19"
+        many: "Licences Plus relève U19"
+        other: "Licence Plus relève U19"
 
       group/verein_spieler/lizenz_plus:
         one: Licence Plus
@@ -667,17 +680,21 @@ fr:
         other: Intervenant.e.s
 
       period_invoice_template/region_item:
-        one: Grundbeitrag Region
-        other: Grundbeiträge Region
+        one: Cotisation de base de région
+        many: Cotisations de base de région
+        other: Cotisation de base de région
       period_invoice_template/verein_item:
-        one: Grundbeitrag Verein
-        other: Grundbeiträge Verein
+        one: Cotisation de base de club
+        many: Cotisations de base de club
+        other: Cotisation de base de club
       period_invoice_template/verein_reduced_item:
-        one: Grundbeitrag Verein reduziert
-        other: Grundbeiträge Verein reduziert
+        one: Cotisation de base réduite de club
+        many: Cotisations de base réduite de club
+        other: Cotisation de base réduite de club
       period_invoice_template/team_item:
-        one: Teambeitrag
-        other: Teambeiträge
+        one: Cotisation d'équipe
+        many: Cotisations d'équipe
+        other: Cotisation d'équipe
 
       salutation:
         available:
