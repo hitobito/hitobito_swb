@@ -231,12 +231,12 @@ de:
         other: "Lizenzen Nachwuchs U17-U19"
 
       group/dachverband_spieler/aktivmitglied_u15:
-        one: "Aktivmitgliedschaft bis U15"
-        other: "Aktivmitgliedschaften bis U15"
+        one: "Mitgliedschaft bis U15"
+        other: "Mitgliedschaften bis U15"
 
       group/dachverband_spieler/aktivmitglied_u19:
-        one: "Aktivmitgliedschaft U17-U19"
-        other: "Aktivmitgliedschaften U17-U19"
+        one: "Mitgliedschaft U17-U19"
+        other: "Mitgliedschaften U17-U19"
 
       group/dachverband_spieler/lizenz:
         one: Lizenz
@@ -379,12 +379,12 @@ de:
         other: "Lizenzen Nachwuchs U17-U19"
 
       group/region_spieler/aktivmitglied_u15:
-        one: "Aktivmitgliedschaft bis U15"
-        other: "Aktivmitgliedschaften bis U15"
+        one: "Mitgliedschaft bis U15"
+        other: "Mitgliedschaften bis U15"
 
       group/region_spieler/aktivmitglied_u19:
-        one: "Aktivmitgliedschaft U17-U19"
-        other: "Aktivmitgliedschaften U17-U19"
+        one: "Mitgliedschaft U17-U19"
+        other: "Mitgliedschaften U17-U19"
 
       group/region_spieler/lizenz:
         one: Lizenz
@@ -511,12 +511,12 @@ de:
         other: "Lizenzen Nachwuchs U17-U19"
 
       group/verein_spieler/aktivmitglied_u15:
-        one: "Aktivmitgliedschaft bis U15"
-        other: "Aktivmitgliedschaften bis U15"
+        one: "Mitgliedschaft bis U15"
+        other: "Mitgliedschaften bis U15"
 
       group/verein_spieler/aktivmitglied_u19:
-        one: "Aktivmitgliedschaft U17-U19"
-        other: "Aktivmitgliedschaften U17-U19"
+        one: "Mitgliedschaft U17-U19"
+        other: "Mitgliedschaften U17-U19"
 
       group/verein_spieler/lizenz:
         one: Lizenz
