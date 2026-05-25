@@ -252,20 +252,22 @@ fr:
       group/dachverband_spieler/junior_u15:
         one: "Licence relève jusqu'à U15"
         many: "Licences relève jusqu'à U15"
-        other: "Licence relève jusqu'à U15"
+        other: "Licences relève jusqu'à U15"
 
       group/dachverband_spieler/junior_u19:
         one: "Licence relève U17-U19"
         many: "Licences relève U17-U19"
-        other: "Licence relève U17-U19"
+        other: "Licences relève U17-U19"
 
       group/dachverband_spieler/aktivmitglied_u15:
-        one: "Mitgliedschaft Nachwuchs bis U15"
-        other: "Mitgliedschaften Nachwuchs bis U15"
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliations relève jusqu'à U15"
 
       group/dachverband_spieler/aktivmitglied_u19:
-        one: "Mitgliedschaft Nachwuchs U17-U19"
-        other: "Mitgliedschaften Nachwuchs U17-U19"
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliations relève U17-U19"
 
       group/dachverband_spieler/lizenz:
         one: Licence
@@ -434,20 +436,22 @@ fr:
       group/region_spieler/junior_u15:
         one: "Licence relève jusqu'à U15"
         many: "Licences relève jusqu'à U15"
-        other: "Licence relève jusqu'à U15"
+        other: "Licences relève jusqu'à U15"
 
       group/region_spieler/junior_u19:
         one: "Licence relève U17-U19"
         many: "Licences relève U17-U19"
-        other: "Licence relève U17-U19"
+        other: "Licences relève U17-U19"
 
       group/region_spieler/aktivmitglied_u15:
-        one: "Mitgliedschaft Nachwuchs bis U15"
-        other: "Mitgliedschaften Nachwuchs bis U15"
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliations relève jusqu'à U15"
 
       group/region_spieler/aktivmitglied_u19:
-        one: "Mitgliedschaft Nachwuchs U17-U19"
-        other: "Mitgliedschaften Nachwuchs U17-U19"
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliations relève U17-U19"
 
       group/region_spieler/lizenz:
         one: Licence
@@ -592,20 +596,22 @@ fr:
       group/verein_spieler/junior_u15:
         one: "Licence relève jusqu'à U15"
         many: "Licences relève jusqu'à U15"
-        other: "Licence relève jusqu'à U15"
+        other: "Licences relève jusqu'à U15"
 
       group/verein_spieler/junior_u19:
         one: "Licence relève U17-U19"
         many: "Licences relève U17-U19"
-        other: "Licence relève U17-U19"
+        other: "Licences relève U17-U19"
 
       group/verein_spieler/aktivmitglied_u15:
-        one: "Mitgliedschaft Nachwuchs bis U15"
-        other: "Mitgliedschaften Nachwuchs bis U15"
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliations relève jusqu'à U15"
 
       group/verein_spieler/aktivmitglied_u19:
-        one: "Mitgliedschaft Nachwuchs U17-U19"
-        other: "Mitgliedschaften Nachwuchs U17-U19"
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliations relève U17-U19"
 
       group/verein_spieler/lizenz:
         one: Licence
