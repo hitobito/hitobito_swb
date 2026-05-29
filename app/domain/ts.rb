@@ -32,7 +32,9 @@ module Ts
     ["Vereinigungsspieler", "0DA65EB5-A0F9-4020-A89F-9A678B8193A9"],
     ["Junior Lizenz Plus (U19)", "8BC7ACFC-1615-45DA-BE1C-AE3521E1DF0A"],
     ["Lizenz Plus", "7D47DF1C-70FE-48DB-94C0-D91F32A5FF1B"],
-    ["Lizenz NO ranking", "2F469D0A-6ACC-4B53-9CC8-B1B74F3B8D07"]
+    ["Lizenz NO ranking", "2F469D0A-6ACC-4B53-9CC8-B1B74F3B8D07"],
+    ["Aktivmitgliedschaft bis U15", "46BFE950-48DA-4E8B-9B50-EAAA3112C98B"],
+    ["Aktivmitgliedschaft U17-U19", "20A1DA62-8A57-4B3A-BB8F-49D49224250D"]
   ]
 
   ROLE_MAPPINGS = ROLE_CODE_MAPPING.flat_map do |name, code|
