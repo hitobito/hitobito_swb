@@ -36,7 +36,7 @@ module HitobitoSwb
       PeopleController.prepend TsModelController
       RolesController.prepend TsModelController
       RolesController.prepend Swb::RolesController
-      RoleListsController.prepend Swb::RoleListsController
+      Role::List.prepend Swb::Role::List
 
       PersonDecorator.prepend Swb::PersonDecorator
 
@@ -63,6 +63,7 @@ module HitobitoSwb
 
       GroupsController.permitted_attrs += [:founded_on, :yearly_budget]
       PeopleController.prepend Swb::PeopleController
+      RoleListsController.include WithCurrentAdmin
       JsonApi::EventsController.prepend Swb::JsonApi::EventsController
 
       # Navigation
