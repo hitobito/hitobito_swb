@@ -51,7 +51,7 @@ describe "people/_fields.html.haml" do
   end
 
   it "renders asterix for street label" do
-    expect(dom).to have_css "label[for='person_street'].required", text: "Adresse"
+    expect(dom).to have_css "label[for='person_street'].required", text: "Strasse"
   end
 
   it "renders asterix for zip_town label" do
