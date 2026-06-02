@@ -11,6 +11,9 @@ describe RoleListsController do
   let(:group) { groups(:bc_bern) }
   let(:tomorrow) { Time.zone.tomorrow }
 
+  let(:write_jobs) { Delayed::Job.where("handler ilike '%Ts::WriteJob%'") }
+  let(:delete_jobs) { Delayed::Job.where("handler ilike '%Ts::RoleDestroyJob%'") }
+
   before { sign_in(people(:admin)) }
 
   describe "POST#create" do
@@ -27,15 +30,16 @@ describe RoleListsController do
       expect(flash[:notice]).to be_present
     end
 
-    it "prevents creation of ts managed role" do
+    it "allows creation of ts managed role" do
       expect do
         post :create,
           params: {group_id: group.id, ids: person.id,
                    role: {type: Group::Verein::Interclub.sti_name, group_id: group.id}}
-      end.not_to change { group.roles.count }
+      end.to change { group.roles.count }
+        .and change { write_jobs.count }.by(1)
 
       expect(response).to redirect_to group_people_path(group)
-      expect(flash[:alert]).to eq "Wird für Tournament Software Rollen aktuell nicht unterstützt."
+      expect(flash[:notice]).to eq "Eine Rolle wurde erstellt"
     end
   end
 
@@ -60,7 +64,7 @@ describe RoleListsController do
       expect(flash[:notice]).to be_present
     end
 
-    it "prevents changing ts managed role" do
+    it "allows changing ts managed role" do
       role = Fabricate(Group::Verein::Interclub.sti_name, group: group,
         ts_code: Faker::Internet.uuid)
       expect do
@@ -73,28 +77,10 @@ describe RoleListsController do
             group_id: group.id
           }
         }
-      end.not_to change { role.reload.type }
+      end.to change { delete_jobs.count }.by(1)
 
       expect(response).to redirect_to group_people_path(group)
-      expect(flash[:alert]).to eq "Wird für Tournament Software Rollen aktuell nicht unterstützt."
-    end
-
-    it "prevents changing to a ts managed role" do
-      role = Fabricate(Group::Verein::Ausbildung.sti_name, group: group)
-      expect do
-        put :update, params: {
-          group_id: group.id,
-          ids: role.person_id,
-          role: {
-            types: {"Group::Verein::Ausbildung" => "1"},
-            type: Group::Verein::Interclub.sti_name,
-            group_id: group.id
-          }
-        }
-      end.not_to change { role.reload.type }
-
-      expect(response).to redirect_to group_people_path(group)
-      expect(flash[:alert]).to eq "Wird für Tournament Software Rollen aktuell nicht unterstützt."
+      expect(flash[:notice]).to eq "Eine Rolle wurde verschoben"
     end
   end
 
@@ -111,16 +97,17 @@ describe RoleListsController do
       expect(flash[:notice]).to be_present
     end
 
-    it "prevents deletion of ts managed role" do
+    it "allows deletion of ts managed role" do
       role = Fabricate(Group::Verein::Interclub.sti_name, group: group)
       expect do
         delete :destroy,
           params: {group_id: group.id, ids: role.person_id,
                    role: {types: {"Group::Verein::Interclub" => "1"}}}
-      end.not_to change { group.roles.count }
+      end.to change { group.roles.count }.by(-1)
+        .and change { delete_jobs.count }.by(1)
 
       expect(response).to redirect_to group_people_path(group)
-      expect(flash[:alert]).to eq "Wird für Tournament Software Rollen aktuell nicht unterstützt."
+      expect(flash[:notice]).to eq "Eine Rolle wurde entfernt"
     end
   end
 end
