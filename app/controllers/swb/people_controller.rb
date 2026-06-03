@@ -9,6 +9,8 @@ module Swb::PeopleController
   extend ActiveSupport::Concern
 
   prepended do
+    include WithCurrentAdmin
+
     self.permitted_attrs += [
       :ts_gender, :nationality, :international_player_id,
       :emergency_contact, :advertising, :newsletter

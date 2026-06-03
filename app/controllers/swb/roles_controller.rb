@@ -4,11 +4,13 @@
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
-#
+
 module Swb::RolesController
   extend ActiveSupport::Concern
 
   prepended do
+    include WithCurrentAdmin
+
     helper_method :force_start_on_today?
     before_render_new :populate_person_phone_numbers
     before_action :set_admin
@@ -57,6 +59,4 @@ module Swb::RolesController
   end
 
   def force_start_on_today?(role) = role.ts_managed? && !Current.admin
-
-  def set_admin = Current.admin = current_ability.user_context.admin || current_user.root?
 end

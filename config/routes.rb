@@ -26,6 +26,9 @@ Rails.application.routes.draw do
           end
         end
       end
+      resources :roles, only: [] do
+        resource :player_transfer, only: [:new, :create]
+      end
     end
 
     get "list_tournaments" => "event/lists#tournaments", :as => :list_tournaments
