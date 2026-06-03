@@ -53,3 +53,18 @@ member:
   gender: m
   ts_gender: m
   nationality: DE
+
+player:
+  first_name: John
+  last_name: Player
+  email: player@hitobito.example.com
+  primary_group: bc_bern_spieler
+  street: Scharf am Netz
+  housenumber: 5
+  zip_code: 3005
+  town: Bern
+  country: CH
+  birthday: 1992-3-12
+  gender: f
+  ts_gender: f
+  nationality: DE
