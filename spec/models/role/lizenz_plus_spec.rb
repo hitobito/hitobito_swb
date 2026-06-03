@@ -61,4 +61,39 @@ describe Role::LizenzPlus do
       expect(type.new).to be_kind_of(Role::LizenzPlus)
     end
   end
+
+  describe "#destroy" do
+    before do
+      model.save
+      model.update!(created_at: 1.year.ago)
+    end
+
+    it "cannot update end_on" do
+      expect do
+        model.update!(end_on: 1.day.ago)
+      end.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it "cannot destroy" do
+      expect do
+        model.destroy
+      end.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    context "as admin" do
+      before { Current.admin = true }
+
+      it "can update end_on" do
+        expect do
+          model.update!(end_on: 1.day.ago)
+        end.not_to raise_error
+      end
+
+      it "can destroy" do
+        expect do
+          model.destroy
+        end.not_to raise_error
+      end
+    end
+  end
 end

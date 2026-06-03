@@ -18,3 +18,8 @@ member:
   person: member
   group: root_vs
   type: Group::DachverbandVorstand::Mitglied
+
+player:
+  person: player
+  group: bc_bern_spieler
+  type: Group::VereinSpieler::Aktivmitglied
