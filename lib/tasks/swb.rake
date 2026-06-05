@@ -80,6 +80,13 @@ namespace :swb do
     SwbImport::Runner.new.import_mitglieder_without_roles
   end
 
+  namespace :roles do
+    desc "Schedules jobs to migrate Junioren roles from csv (#194)"
+    task migrate_junioren: :environment do
+      RoleChange::Runner.new.run
+    end
+  end
+
   namespace :ts do
     desc "Person Info"
     task :person, [:ts_code] => [:environment] do |_t, args|
