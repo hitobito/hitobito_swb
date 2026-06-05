@@ -17,6 +17,7 @@ module HitobitoSwb
       #{config.root}/app/abilities
       #{config.root}/app/domain
       #{config.root}/app/jobs
+      #{config.root}/lib/tasks/one_off
     ]
 
     config.to_prepare do # rubocop:todo Metrics/BlockLength
