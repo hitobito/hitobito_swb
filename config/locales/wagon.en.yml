@@ -4,6 +4,14 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 en:
+  activemodel:
+    errors:
+      models:
+        player_transfer:
+          new_role_invalid: "Neue Rolle ist nicht gültig (%{details})"
+    attributes:
+      player_transfer:
+        target_id: Zielverein
   activerecord:
     errors:
       models:
@@ -670,6 +678,16 @@ en:
       caption_advertising: Ich möchte Dienstleistungs-Angebote erhalten
     tabs:
       colleagues: "Mitarbeiter:innen"
+
+  player_transfers:
+    failure_only_admin_can_transfer_lizenz_plus: Nur Administratoren im Dachverband dürfen Lizenz Plus Spieler transferieren.
+    new:
+      submit_label: Transfer durchführen
+    create:
+      success: "Transfer von %{source} zu %{target} wurde durchgeführt."
+
+  roles:
+    player_transfer_title: Spielertransfer
 
   role_lists:
     unsupported_for_ts_role: Wird für Tournament Software Rollen aktuell nicht unterstützt.
