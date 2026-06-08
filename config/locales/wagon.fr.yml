@@ -8,10 +8,10 @@ fr:
     errors:
       models:
         player_transfer:
-          new_role_invalid: "Neue Rolle ist nicht gültig (%{details})"
+          new_role_invalid: "Le nouveau rôle n’est pas valable.%{details}"
     attributes:
       player_transfer:
-        target_id: Zielverein
+        target_id: Club de destination
   activerecord:
     errors:
       models:
@@ -802,7 +802,7 @@ fr:
       colleagues: "Collaborateur.trice.s"
 
   player_transfers:
-    failure_only_admin_can_transfer_lizenz_plus: Nur Administratoren im Dachverband dürfen Lizenz Plus Spieler transferieren.
+    failure_only_admin_can_transfer_lizenz_plus: Seuls les administrateurs de l’association faîtière sont autorisés à transférer des joueurs avec une Licence Plus.
     new:
       submit_label: Transfer durchführen
     create:
