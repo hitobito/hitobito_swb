@@ -8,7 +8,7 @@ fr:
     errors:
       models:
         player_transfer:
-          new_role_invalid: "Le nouveau rôle n’est pas valable.%{details}"
+          new_role_invalid: "Le nouveau rôle n’est pas valable (%{details})"
     attributes:
       player_transfer:
         target_id: Club de destination
