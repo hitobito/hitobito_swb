@@ -804,12 +804,12 @@ fr:
   player_transfers:
     failure_only_admin_can_transfer_lizenz_plus: Seuls les administrateurs de l’association faîtière sont autorisés à transférer des joueurs avec une Licence Plus.
     new:
-      submit_label: Transfer durchführen
+      submit_label: Effectuer le transfert
     create:
-      success: "Transfer von %{source} zu %{target} wurde durchgeführt."
+      success: "Le transfert de %{source} vers %{target} a été effectué."
 
   roles:
-    player_transfer_title: Spielertransfer
+    player_transfer_title: Transfert de joueur
 
   role_lists:
     unsupported_for_ts_role: Les rôles ne sont actuellement pas pris en charge pour Tournament Software.
