@@ -4,6 +4,14 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 fr:
+  activemodel:
+    errors:
+      models:
+        player_transfer:
+          new_role_invalid: "Le nouveau rôle n’est pas valable (%{details})"
+    attributes:
+      player_transfer:
+        target_id: Club de destination
   activerecord:
     errors:
       models:
@@ -250,14 +258,24 @@ fr:
         other: Membre passif
 
       group/dachverband_spieler/junior_u15:
-        one: "Junior.e (jusqu'à U15)"
-        many: "Junior.e.s (jusqu'à U15)"
-        other: "Junior.e.s (jusqu'à U15)"
+        one: "Licence relève jusqu'à U15"
+        many: "Licences relève jusqu'à U15"
+        other: "Licences relève jusqu'à U15"
 
       group/dachverband_spieler/junior_u19:
-        one: "Junior.e (U17-U19)"
-        many: "Junior.e.s (U17-U19)"
-        other: "Junior.e.s (U17-U19)"
+        one: "Licence relève U17-U19"
+        many: "Licences relève U17-U19"
+        other: "Licences relève U17-U19"
+
+      group/dachverband_spieler/aktivmitglied_u15:
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliations relève jusqu'à U15"
+
+      group/dachverband_spieler/aktivmitglied_u19:
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliations relève U17-U19"
 
       group/dachverband_spieler/lizenz:
         one: Licence
@@ -424,14 +442,24 @@ fr:
         other: Membre passif
 
       group/region_spieler/junior_u15:
-        one: "Junior.e (jusqu'à U15)"
-        many: "Junior.e.s (jusqu'à U15)"
-        other: "Junior.e.s (jusqu'à U15)"
+        one: "Licence relève jusqu'à U15"
+        many: "Licences relève jusqu'à U15"
+        other: "Licences relève jusqu'à U15"
 
       group/region_spieler/junior_u19:
-        one: "Junior.e (U17-U19)"
-        many: "Junior.e.s (U17-U19)"
-        other: "Junior.e.s (U17-U19)"
+        one: "Licence relève U17-U19"
+        many: "Licences relève U17-U19"
+        other: "Licences relève U17-U19"
+
+      group/region_spieler/aktivmitglied_u15:
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliations relève jusqu'à U15"
+
+      group/region_spieler/aktivmitglied_u19:
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliations relève U17-U19"
 
       group/region_spieler/lizenz:
         one: Licence
@@ -574,14 +602,24 @@ fr:
         other: Membre passif
 
       group/verein_spieler/junior_u15:
-        one: "Junior.e (jusqu'à U15)"
-        many: "Junior.e.s (jusqu'à U15)"
-        other: "Junior.e.s (jusqu'à U15)"
+        one: "Licence relève jusqu'à U15"
+        many: "Licences relève jusqu'à U15"
+        other: "Licences relève jusqu'à U15"
 
       group/verein_spieler/junior_u19:
-        one: "Junior.e (U17-U19)"
-        many: "Junior.e.s (U17-U19)"
-        other: "Junior.e.s (U17-U19)"
+        one: "Licence relève U17-U19"
+        many: "Licences relève U17-U19"
+        other: "Licences relève U17-U19"
+
+      group/verein_spieler/aktivmitglied_u15:
+        one: "Affiliation relève jusqu'à U15"
+        many: "Affiliations relève jusqu'à U15"
+        other: "Affiliations relève jusqu'à U15"
+
+      group/verein_spieler/aktivmitglied_u19:
+        one: "Affiliation relève U17-U19"
+        many: "Affiliations relève U17-U19"
+        other: "Affiliations relève U17-U19"
 
       group/verein_spieler/lizenz:
         one: Licence
@@ -594,9 +632,9 @@ fr:
         other: Joueur.se.s d'une union
 
       group/verein_spieler/lizenz_plus_junior:
-        one: "Licence Plus junior.e (U19)"
-        many: "Licences Plus junior.e.s (U19)"
-        other: "Licences Plus junior.e.s (U19)"
+        one: "Licence Plus relève U19"
+        many: "Licences Plus relève U19"
+        other: "Licence Plus relève U19"
 
       group/verein_spieler/lizenz_plus:
         one: Licence Plus
@@ -650,17 +688,21 @@ fr:
         other: Intervenant.e.s
 
       period_invoice_template/region_item:
-        one: Grundbeitrag Region
-        other: Grundbeiträge Region
+        one: Cotisation de base de région
+        many: Cotisations de base de région
+        other: Cotisation de base de région
       period_invoice_template/verein_item:
-        one: Grundbeitrag Verein
-        other: Grundbeiträge Verein
+        one: Cotisation de base de club
+        many: Cotisations de base de club
+        other: Cotisation de base de club
       period_invoice_template/verein_reduced_item:
-        one: Grundbeitrag Verein reduziert
-        other: Grundbeiträge Verein reduziert
+        one: Cotisation de base réduite de club
+        many: Cotisations de base réduite de club
+        other: Cotisation de base réduite de club
       period_invoice_template/team_item:
-        one: Teambeitrag
-        other: Teambeiträge
+        one: Cotisation d'équipe
+        many: Cotisations d'équipe
+        other: Cotisation d'équipe
 
       salutation:
         available:
@@ -758,6 +800,16 @@ fr:
       caption_advertising: Je souhaite recevoir des offres de partenaires.
     tabs:
       colleagues: "Collaborateur.trice.s"
+
+  player_transfers:
+    failure_only_admin_can_transfer_lizenz_plus: Seuls les administrateurs de l’association faîtière sont autorisés à transférer des joueurs avec une Licence Plus.
+    new:
+      submit_label: Effectuer le transfert
+    create:
+      success: "Le transfert de %{source} vers %{target} a été effectué."
+
+  roles:
+    player_transfer_title: Transfert de joueur
 
   role_lists:
     unsupported_for_ts_role: Les rôles ne sont actuellement pas pris en charge pour Tournament Software.

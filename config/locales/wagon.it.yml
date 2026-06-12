@@ -4,6 +4,14 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 it:
+  activemodel:
+    errors:
+      models:
+        player_transfer:
+          new_role_invalid: "Neue Rolle ist nicht gültig (%{details})"
+    attributes:
+      player_transfer:
+        target_id: Zielverein
   activerecord:
     errors:
       models:
@@ -212,12 +220,20 @@ it:
         other: Passivmitglieder
 
       group/dachverband_spieler/junior_u15:
-        one: "Junior:in (bis U15)"
-        other: "Junior:innen (bis U15)"
+        one: "Lizenz Nachwuchs bis U15"
+        other: "Lizenzen Nachwuchs bis U15"
 
       group/dachverband_spieler/junior_u19:
-        one: "Junior:in (U17-U19)"
-        other: "Junior:innen (U17-U19)"
+        one: "Lizenz Nachwuchs U17-U19"
+        other: "Lizenzen Nachwuchs U17-U19"
+
+      group/dachverband_spieler/aktivmitglied_u15:
+        one: "Mitgliedschaft Nachwuchs bis U15"
+        other: "Mitgliedschaften Nachwuchs bis U15"
+
+      group/dachverband_spieler/aktivmitglied_u19:
+        one: "Mitgliedschaft Nachwuchs U17-U19"
+        other: "Mitgliedschaften Nachwuchs U17-U19"
 
       group/dachverband_spieler/lizenz:
         one: Lizenz
@@ -352,12 +368,20 @@ it:
         other: Passivmitglieder
 
       group/region_spieler/junior_u15:
-        one: "Junior:in (bis U15)"
-        other: "Junior:innen (bis U15)"
+        one: "Lizenz Nachwuchs bis U15"
+        other: "Lizenzen Nachwuchs bis U15"
 
       group/region_spieler/junior_u19:
-        one: "Junior:in (U17-U19)"
-        other: "Junior:innen (U17-U19)"
+        one: "Lizenz Nachwuchs U17-U19"
+        other: "Lizenzen Nachwuchs U17-U19"
+
+      group/region_spieler/aktivmitglied_u15:
+        one: "Mitgliedschaft Nachwuchs bis U15"
+        other: "Mitgliedschaften Nachwuchs bis U15"
+
+      group/region_spieler/aktivmitglied_u19:
+        one: "Mitgliedschaft Nachwuchs U17-U19"
+        other: "Mitgliedschaften Nachwuchs U17-U19"
 
       group/region_spieler/lizenz:
         one: Lizenz
@@ -476,12 +500,20 @@ it:
         other: Passivmitglieder
 
       group/verein_spieler/junior_u15:
-        one: "Junior:in (bis U15)"
-        other: "Junior:innen (bis U15)"
+        one: "Lizenz Nachwuchs bis U15"
+        other: "Lizenzen Nachwuchs bis U15"
 
       group/verein_spieler/junior_u19:
-        one: "Junior:in (U17-U19)"
-        other: "Junior:innen (U17-U19)"
+        one: "Lizenz Nachwuchs U17-U19"
+        other: "Lizenzen Nachwuchs U17-U19"
+
+      group/verein_spieler/aktivmitglied_u15:
+        one: "Mitgliedschaft Nachwuchs bis U15"
+        other: "Mitgliedschaften Nachwuchs bis U15"
+
+      group/verein_spieler/aktivmitglied_u19:
+        one: "Mitgliedschaft Nachwuchs U17-U19"
+        other: "Mitgliedschaften Nachwuchs U17-U19"
 
       group/verein_spieler/lizenz:
         one: Lizenz
@@ -492,8 +524,8 @@ it:
         other: Vereinigungsspieler:innen
 
       group/verein_spieler/lizenz_plus_junior:
-        one: "Lizenz Plus Junior:innen (U19)"
-        other: "Lizenzen Plus Junior:innen (U19)"
+        one: "Lizenz Plus Nachwuchs (U19)"
+        other: "Lizenzen Plus Nachwuchs (U19)"
 
       group/verein_spieler/lizenz_plus:
         one: Lizenz Plus
@@ -646,6 +678,16 @@ it:
       caption_advertising: Ich möchte Dienstleistungs-Angebote erhalten
     tabs:
       colleagues: "Mitarbeiter:innen"
+
+  player_transfers:
+    failure_only_admin_can_transfer_lizenz_plus: Nur Administratoren im Dachverband dürfen Lizenz Plus Spieler transferieren.
+    new:
+      submit_label: Transfer durchführen
+    create:
+      success: "Transfer von %{source} zu %{target} wurde durchgeführt."
+
+  roles:
+    player_transfer_title: Spielertransfer
 
   role_lists:
     unsupported_for_ts_role: Wird für Tournament Software Rollen aktuell nicht unterstützt.
