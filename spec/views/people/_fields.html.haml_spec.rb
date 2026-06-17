@@ -29,14 +29,14 @@ describe "people/_fields.html.haml" do
     it "is hidden when gender is not blank" do
       person.gender = "m"
       expect(dom).to have_css "label", text: "Geschlecht"
-      expect(dom).to have_css "div[data-form-field-toggle-target=toggle].hidden"
+      expect(dom).to have_css "div[data-field-visibility-target=container].hidden"
       expect(dom).to have_css ".hidden label", text: "Geschlecht Spielbetrieb"
     end
 
     it "is visible when gender is blank" do
       person.gender = ""
       expect(dom).to have_css "label", text: "Geschlecht"
-      expect(dom).to have_css "div[data-form-field-toggle-target=toggle]:not(.hidden)"
+      expect(dom).to have_css "div[data-field-visibility-target=container]:not(.hidden)"
       expect(dom).to have_css "input[name='person[gender]']", count: 3
       expect(dom).to have_css "input[name='person[ts_gender]']", count: 2
     end

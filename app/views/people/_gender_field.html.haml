@@ -4,13 +4,14 @@
 -#  https://github.com/hitobito/hitobito_swb.
 
 = field_set_tag do
-  %div{data: { controller: 'form-field-toggle', 'form-field-toggle-hide-on-value': Person::GENDERS}}
+  %div{data: { controller: 'field-visibility', 'field-visibility-observed-field-id-value': 'person_gender_radio_group', 'field-visibility-show-when-value': ''}}
     %div
       = f.labeled(:gender, mark_as_required: true) do
-        - (Person::GENDERS + ['']).each do |key|
-          = f.inline_radio_button(:gender, key, entry.gender_label(key), true, data: { action: 'input->form-field-toggle#toggle'})
+        %div{id: 'person_gender_radio_group'}
+          - (Person::GENDERS + ['']).each do |key|
+            = f.inline_radio_button(:gender, key, entry.gender_label(key), true)
 
-    %div{data: { 'form-field-toggle-target': 'toggle' }, class: entry.gender.blank? ? "" : "hidden"}
+    %div{data: { 'field-visibility-target': 'container' }, class: entry.gender.blank? ? "" : "hidden"}
       = f.labeled(:ts_gender) do
         - (Person::GENDERS).each do |key|
           = f.inline_radio_button(:ts_gender, key, entry.gender_label(key))
