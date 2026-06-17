@@ -31,7 +31,7 @@ describe "event/participation_contact_datas/_fields.html.haml" do
 
   it "renders ts_gender" do
     expect(dom).to have_css "label", text: "Geschlecht"
-    expect(dom).to have_css "div[data-form-field-toggle-target=toggle]:not(.hidden)"
+    expect(dom).to have_css "div[data-field-visibility-target=container]:not(.hidden)"
     expect(dom).to have_css "label", text: "Geschlecht Spielbetrieb"
   end
 
