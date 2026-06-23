@@ -8,11 +8,11 @@
 require "spec_helper"
 
 describe SearchStrategies::PersonSearch do
-  describe "#search_fulltext" do
+  describe "#search" do
     let(:user) { people(:admin) }
 
     it "finds accessible person by id" do
-      result = search_class(user.id.to_s).search_fulltext
+      result = search_class(user.id.to_s).search
 
       expect(result).to include(user)
     end
