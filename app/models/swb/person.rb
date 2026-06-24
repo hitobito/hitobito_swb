@@ -9,8 +9,6 @@ module Swb::Person
   extend ActiveSupport::Concern
 
   prepended do
-    Person::SEARCHABLE_ATTRS << :id
-
     self.ts_entity = Ts::Entity::OrganizationPerson
 
     self.ts_mapping = {
