@@ -55,27 +55,44 @@ describe Group do
       expect(ts_model).to have_attributes(number: 32)
     end
 
-    it "maps additional attributes if present" do
-      group.id = 1
-      group.email = "group@example.com"
-      group.housenumber = "1a"
-      group.street = "Langestrasse"
-      group.zip_code = 8000
-      group.town = "Zürich"
-      group.country = "CH"
-      group.contact = person
-      group.social_accounts.build(label: "website", name: "www.example.com")
+    context "additional attributes" do
+      before do
+        group.id = 1
+        group.email = "group@example.com"
+        group.housenumber = "1a"
+        group.street = "Langestrasse"
+        group.zip_code = 8000
+        group.town = "Zürich"
+        group.country = "CH"
+        group.contact = person
+        group.social_accounts.build(label: "website", name: "www.example.com")
+      end
 
-      expect(ts_model).to have_attributes(
-        number: 1,
-        contact: "A Leader",
-        address: "Auf der Donnen 36",
-        postal_code: "3318",
-        city: "Judydorf",
-        country: "SUI",
-        email: "group@example.com",
-        website: "www.example.com"
-      )
+      it "maps additional attributes if present" do
+        expect(ts_model).to have_attributes(
+          number: 1,
+          contact: "A Leader",
+          address: "Auf der Donnen 36",
+          postal_code: "3318",
+          city: "Judydorf",
+          country: "SUI",
+          email: "group@example.com",
+          website: "www.example.com"
+        )
+      end
+
+      it "maps the group address if no contact is present" do
+        group.contact = nil
+
+        expect(ts_model).to have_attributes(
+          number: 1,
+          contact: :not_defined,
+          address: "Langestrasse 1a",
+          postal_code: "8000",
+          city: "Zürich",
+          country: "SUI"
+        )
+      end
     end
   end
 end

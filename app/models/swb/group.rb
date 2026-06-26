@@ -21,14 +21,13 @@ module Swb::Group
       code: :ts_code,
       number: -> { ts_club_number || id },
       parent_code: :parent_ts_code,
-      contact: -> { contact&.to_s || :not_defined },
-      address: :address,
-      postal_code: :zip_code,
-      city: :town,
+      contact: :ts_contact,
+      address: :ts_address,
+      postal_code: :ts_zip_code,
+      city: :ts_town,
+      country: :ts_country,
       email: :email,
-      country: -> { Ts::COUNTRIES[country.to_s] if country },
       website: -> { social_accounts.index_by(&:label)["website"]&.name }
-
     }
 
     delegate :ts_code, to: :parent, prefix: true, allow_nil: true
@@ -41,4 +40,15 @@ module Swb::Group
   def ts_managed? = super && [Group::Region, Group::Verein, Group::Center].any? { |type|
     is_a?(type)
   }
+
+  %i[address zip_code town].each do |attr|
+    define_method(:"ts_#{attr}") { contact&.send(attr)&.to_s || send(attr)&.to_s }
+  end
+
+  def ts_country
+    country = contact&.country || self.country
+    Ts::COUNTRIES[country.to_s] if country
+  end
+
+  def ts_contact = contact&.to_s || :not_defined
 end
