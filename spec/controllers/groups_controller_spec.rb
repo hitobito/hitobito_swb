@@ -81,4 +81,25 @@ describe GroupsController do
       end
     end
   end
+
+  describe "settings" do
+    let(:group) { groups(:bc_bern_spieler) }
+
+    render_views
+
+    it "renders admin link" do
+      get :show, params: {id: group.id}
+      expect(response.body).to have_link "Einstellungen"
+    end
+
+    context "as player" do
+      before { sign_in(people(:player)) }
+
+      it "hides admin link" do
+        get :show, params: {id: group.id}
+        expect(response.body).to have_link "Turniere"
+        expect(response.body).not_to have_link "Einstellungen"
+      end
+    end
+  end
 end
