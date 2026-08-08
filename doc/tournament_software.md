@@ -74,10 +74,10 @@ Aktualisieren von einer Resource erfolgt über PUT auf dem Resource Endpoint (au
 
 Hitobito überträgt gewisse Datenänderungen nach TS. Aktuell werden primär Persondaten und Rollen übertragen.
 
-Dazu inkludieren die Models das `TsModel` Module und konfigurieren es entsprechend (siehe zb [Person](./app/models/swb/person.rb))
+Dazu inkludieren die Models das `TsModel` Module und konfigurieren es entsprechend (siehe zb [Person](../../app/models/swb/person.rb))
 
-Der Sync selbst wird dann via Jobs durchgeführt (siehe [./app/jobs/ts/](./app/jobs/ts/)) welche via Controller Actions
-(siehe [./app/controllers/concerns/ts_model.rb](./app/controllers/concerns/ts_model.rb)) gescheduled werden.
+Der Sync selbst wird dann via Jobs durchgeführt (siehe [TS Jobs](../../app/jobs/ts/)) welche via Controller Actions
+(siehe [Ts Model Controller Concern](../../app/controllers/concerns/ts_model.rb)) gescheduled werden.
 
 
 ## Besonderheiten
