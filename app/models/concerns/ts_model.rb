@@ -39,9 +39,12 @@ module TsModel
       .to_h.compact_blank
   end
 
-  # rubocop:todo Layout/LineLength
-  def responds_to_ts_code? = respond_to?(:ts_code) # might not be set (e.g reduced people select for index)
-  # rubocop:enable Layout/LineLength
+  def contact_account_value(relation_name, label)
+    send(relation_name).find { |account| account.label == label.to_s }&.value
+  end
+
+  # might not be set (e.g reduced people select for index)
+  def responds_to_ts_code? = respond_to?(:ts_code)
 
   def read_ts_value(from) = from.is_a?(Proc) ? instance_exec(&from) : send(from)
 
