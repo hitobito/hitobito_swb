@@ -24,9 +24,9 @@ module Swb::Person
       date_of_birth: -> { "#{birthday}T00:00:00" if birthday },
       nationality: -> { Ts::COUNTRIES[nationality.to_s.upcase] if nationality },
       country: -> { Ts::COUNTRIES[country.to_s.upcase] if country },
-      phone: -> { contactable_value(:phone_numbers, :landline) },
-      mobile: -> { contactable_value(:phone_numbers, :mobile) },
-      website: -> { contactable_value(:social_accounts, :webseite) }
+      phone: -> { contact_account_value(:phone_numbers, :landline) },
+      mobile: -> { contact_account_value(:phone_numbers, :mobile) },
+      website: -> { contact_account_value(:social_accounts, :Webseite) }
     }
 
     alias_method :member_id, :id
@@ -58,10 +58,6 @@ module Swb::Person
       Ts::WriteJob.new(to_global_id, :put).enqueue! if ts_managed?
     end
   end
-
-  def contactable_value(rel, label) = send(rel).find { |c|
-    send(rel).model.translate_label(label) == c.label
-  }&.value
 
   def reset_ts_gender = self.ts_gender = gender
 

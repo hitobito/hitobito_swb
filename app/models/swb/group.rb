@@ -27,7 +27,7 @@ module Swb::Group
       city: :ts_town,
       country: :ts_country,
       email: :email,
-      website: -> { social_accounts.index_by(&:label)["website"]&.name }
+      website: -> { contact_account_value(:social_accounts, :Webseite) }
     }
 
     delegate :ts_code, to: :parent, prefix: true, allow_nil: true

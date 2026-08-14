@@ -9,7 +9,7 @@ module TsModelController
   extend ActiveSupport::Concern
 
   prepended do
-    delegate :ts_managed?, :ts_params_changed?, to: :entry
+    delegate :ts_managed?, to: :entry
 
     after_create :enqueue_ts_post, if: :ts_managed?
     around_action :track_ts_model_changes, only: [:update]  # rubocop:disable Rails/LexicallyScopedActionFilter
