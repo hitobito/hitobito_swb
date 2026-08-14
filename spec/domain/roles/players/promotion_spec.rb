@@ -168,14 +168,14 @@ describe Roles::Players::Promotion do
         .from(%w[Group::VereinSpieler::AktivmitgliedU15])
         .to(%w[Group::VereinSpieler::AktivmitgliedU19])
     end
-    it "promotes AktivmitgliedU19 to Lizenz" do
+    it "promotes AktivmitgliedU19 to Passivmitglied" do
       person = create_spieler(Group::VereinSpieler::AktivmitgliedU19, groups(:bc_thun_spieler),
         birthday: 19.years.ago.end_of_year)
       expect do
         described_class.new(Role::Player::JuniorU19).run
       end.to change { person.reload.roles.map(&:type) }
         .from(%w[Group::VereinSpieler::AktivmitgliedU19])
-        .to(%w[Group::VereinSpieler::Lizenz])
+        .to(%w[Group::VereinSpieler::Passivmitglied])
     end
   end
 end
