@@ -39,8 +39,8 @@ module TsModel
       .to_h.compact_blank
   end
 
-  def contact_account_value(relation_name, label)
-    send(relation_name).find { |account| account.label == label.to_s }&.value
+  def contact_account_value(relation_name, key)
+    send(relation_name).find { |account| account.category&.key == key.to_s }&.value
   end
 
   # might not be set (e.g reduced people select for index)

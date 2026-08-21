@@ -26,7 +26,7 @@ module Swb::Person
       country: -> { Ts::COUNTRIES[country.to_s.upcase] if country },
       phone: -> { contact_account_value(:phone_numbers, :landline) },
       mobile: -> { contact_account_value(:phone_numbers, :mobile) },
-      website: -> { contact_account_value(:social_accounts, :Webseite) }
+      website: -> { contact_account_value(:social_accounts, :website) }
     }
 
     alias_method :member_id, :id
