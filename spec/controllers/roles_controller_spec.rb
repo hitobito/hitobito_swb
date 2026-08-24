@@ -14,6 +14,13 @@ describe RolesController do
   let(:person) { people(:leader) }
 
   describe "changing player roles" do
+    around do |example|
+      # roles can only be updated in an open phase
+      travel_to(Time.zone.parse("2025-08-12 14:00:00")) do
+        example.run
+      end
+    end
+
     let(:gs) { groups(:root_gs) }
     let(:tomorrow) { Time.zone.tomorrow }
 
@@ -45,10 +52,8 @@ describe RolesController do
         before { sign_in(vereins_admin.person) }
 
         it "hides start_on field" do
-          travel_to(Time.zone.parse("2025-08-12 14:00:00")) do
-            get :edit, params: {group_id: group.id, id: role.id}
-            expect(dom).not_to have_field("Von")
-          end
+          get :edit, params: {group_id: group.id, id: role.id}
+          expect(dom).not_to have_field("Von")
         end
 
         context "on normal role" do
@@ -63,13 +68,6 @@ describe RolesController do
     end
 
     describe "PUT#update" do
-      around do |example|
-        # roles can only be updated in an open phase
-        travel_to(Time.zone.parse("2025-08-12 14:00:00")) do
-          example.run
-        end
-      end
-
       context "as admin" do
         before { sign_in(people(:admin)) }
 
