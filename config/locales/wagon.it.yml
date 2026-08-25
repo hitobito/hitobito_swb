@@ -592,10 +592,6 @@ it:
     attributes:
       event:
         external_link: Externer Link
-      contact_account:
-        predefined_labels:
-          landline: Festnetz
-          mobile: Mobil
       event/role:
         remove_participant_role: "Allfällige Teilnehmer:innen-Rolle entfernen"
       group:

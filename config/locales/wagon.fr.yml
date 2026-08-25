@@ -714,10 +714,6 @@ fr:
     attributes:
       event:
         external_link: Lien externe
-      contact_account:
-        predefined_labels:
-          landline: Téléphone fixe
-          mobile: Téléphone portable
       event/role:
         remove_participant_role: "Supprimer le rôle de participant.e"
       group:

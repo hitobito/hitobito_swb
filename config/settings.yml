@@ -21,11 +21,6 @@ application:
   # non UI languages for assigning to person#language
   # additional_languages:
   #   en: Englisch
-phone_number:
-  predefined_labels:
-    - --
-    - mobile
-    - landline
 people:
   public_profile:
 
