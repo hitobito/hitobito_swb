@@ -183,8 +183,10 @@ describe RolesController do
                 nationality: "CH",
                 language: "fr",
                 gender: "m",
-                phone_numbers_attributes: {"0" => {translated_label: "Mobil", number: "0781234567",
-                                                   public: false}}
+                phone_numbers_attributes: {"0" => {
+                  category_id: contact_account_categories(:phone_number_person_mobile).id,
+                  number: "0781234567", public: false
+                }}
               }
             }
           }

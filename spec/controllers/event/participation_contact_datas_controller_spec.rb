@@ -19,11 +19,13 @@ describe Event::ParticipationContactDatasController do
     it "creates person" do
       course.update_columns(required_contact_attrs: [])
 
+      category_id = contact_account_categories(:phone_number_person_mobile).id
+
       patch :update, params: {
         group_id: group.id,
         event_id: course.id,
         event_participation_contact_data: Fabricate.build(:person).attributes.merge(
-          phone_numbers_attributes: {"1" => {translated_label: :mobile, number: "0771234567"}}
+          phone_numbers_attributes: {"1" => {category_id:, number: "0771234567"}}
         ),
         event_role: {
           type: "Event::Role::Participant"

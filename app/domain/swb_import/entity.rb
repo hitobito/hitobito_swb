@@ -5,6 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
+# rubocop:todo Metrics/ModuleLength
 module SwbImport
   Entity = Class.new(Struct) do
     class_attribute :mappings, :non_assignable_attrs, :model_class, :ident_keys
@@ -45,6 +46,16 @@ module SwbImport
         yield model if block_given?
       end
     end
+
+    # Categories are immutable reference data once seeded, so memoizing avoids
+    # re-querying for every single row of a (potentially large) CSV import.
+    def self.category_id(contact_account_type, contactable_type, key)
+      @category_ids ||= {}
+      @category_ids[[contact_account_type, contactable_type, key]] ||=
+        ContactAccountCategory.for(contact_account_type, contactable_type).where(key: key).pick(:id)
+    end
+
+    def category_id(...) = self.class.category_id(...)
   end
 
   Region = Entity.new(*REGION_MAPPINGS.map(&:second), keyword_init: true) do
@@ -55,15 +66,25 @@ module SwbImport
 
     def self.root_id = @root_id ||= Group.root.id
 
+    # rubocop:todo Metrics/AbcSize
     def build
       super do |model|
         model.parent_id = self.class.root_id
-        model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone,
-          phone2].any?(&:present?)
-        model.phone_numbers.build(label: :mobile, number: mobile) if mobile
-        model.social_accounts.build(label: :website, name: website) if website
+        if [phone, phone2].any?(&:present?)
+          model.phone_numbers.build(category_id: category_id("PhoneNumber", "Group", "office"),
+            number: phone || phone2)
+        end
+        if mobile
+          model.phone_numbers.build(category_id: category_id("PhoneNumber", "Group", "mobile"),
+            number: mobile)
+        end
+        if website
+          model.social_accounts.build(category_id: category_id("SocialAccount", "Group", "website"),
+            name: website)
+        end
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
     def to_s(details: false) = ["#{status} #{model} (#{model.short_name})",
       (full_error_messages if details)].compact_blank.join(": ")
@@ -87,10 +108,18 @@ module SwbImport
         # rubocop:todo Layout/LineLength
         model.parent = model.is_a?(Group::Verein) ? Group::Region.find_by(short_name: parent_number) : self.class.root
         # rubocop:enable Layout/LineLength
-        model.phone_numbers.build(label: :landline, number: phone || phone2) if [phone,
-          phone2].any?(&:present?)
-        model.phone_numbers.build(label: :mobile, number: mobile) if mobile
-        model.social_accounts.build(label: :website, name: website) if website
+        if [phone, phone2].any?(&:present?)
+          model.phone_numbers.build(category_id: category_id("PhoneNumber", "Group", "office"),
+            number: phone || phone2)
+        end
+        if mobile
+          model.phone_numbers.build(category_id: category_id("PhoneNumber", "Group", "mobile"),
+            number: mobile)
+        end
+        if website
+          model.social_accounts.build(category_id: category_id("SocialAccount", "Group", "website"),
+            name: website)
+        end
       end
     end
     # rubocop:enable Metrics/AbcSize
@@ -164,8 +193,16 @@ module SwbImport
 
     def build
       super do |model|
-        model.phone_numbers.find_or_initialize_by(label: :mobile, number: mobile) if mobile
-        model.phone_numbers.find_or_initialize_by(label: :landline, number: phone) if phone
+        if mobile
+          model.phone_numbers.find_or_initialize_by(
+            category_id: category_id("PhoneNumber", "Person", "mobile"), number: mobile
+          )
+        end
+        if phone
+          model.phone_numbers.find_or_initialize_by(
+            category_id: category_id("PhoneNumber", "Person", "landline"), number: phone
+          )
+        end
       end
     end
 
@@ -246,3 +283,4 @@ module SwbImport
   end
   # rubocop:enable Metrics/BlockLength
 end
+# rubocop:enable Metrics/ModuleLength
