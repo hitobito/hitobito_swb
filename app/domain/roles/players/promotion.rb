@@ -54,6 +54,8 @@ module Roles::Players
       years = Time.zone.now.year - role.person.birthday.year
       type = if Role::Player::JuniorU19.year_range.include?(years)
         role.type.gsub("U15", "U19").demodulize
+      elsif /AktivmitgliedU/.match?(role.type)
+        "Passivmitglied"
       else
         "Lizenz"
       end
