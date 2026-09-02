@@ -3,7 +3,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
+class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0] # rubocop:disable Rails/ReversibleMigrationMethodDefinition
   # Class stub used because BillingPeriod has been removed from the codebase in the meantime
   class BillingPeriod < ActiveRecord::Base
   end
@@ -29,7 +29,7 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
       "fixed_fees.roles.lizenz_plus": "Lizenzen Plus",
       "fixed_fees.roles.lizenz_no_raking": "Lizenzen NO ranking",
       "fixed_fees.roles.lizenz_plus_junior": "Lizenzen Plus Junior:innen (U19)",
-      "fixed_fees.roles.vereinigung": "Vereinigungsspieler:innen",
+      "fixed_fees.roles.vereinigung": "Vereinigungsspieler:innen"
     },
     fr: {
       "fixed_fees.regions.fee": "Cotisation de club",
@@ -51,11 +51,11 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
       "fixed_fees.roles.lizenz_plus": "Licences Plus",
       "fixed_fees.roles.lizenz_no_raking": "Licences NO ranking",
       "fixed_fees.roles.lizenz_plus_junior": "Licences plus junior.e.s (U19)",
-      "fixed_fees.roles.vereinigung": "Joueur.se.s d'une union",
-    },
+      "fixed_fees.roles.vereinigung": "Joueur.se.s d'une union"
+    }
   }
 
-  def up
+  def up # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
     say_with_time "migrating region items" do
       in_each_billing_period do |base_scope, year|
         base_scope
@@ -74,8 +74,8 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
         end
       end
     end
-    
-    say_with_time "migrating verein items" do
+
+    say_with_time "migrating verein items" do # rubocop:disable Metrics/BlockLength
       in_each_billing_period do |base_scope, year|
         base_scope
           .where(type: "InvoiceItem::FixedFee")
@@ -92,7 +92,6 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
           )
           update_item_translations(ids, "fixed_fees.teams.grundbeitrag_elite")
         end
-
 
         base_scope
           .where(type: "InvoiceItem::FixedFee")
@@ -111,7 +110,7 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
         end
       end
     end
-    
+
     say_with_time "migrating team items" do
       league_mapping = {
         team_nla: ["NLA"],
@@ -155,12 +154,12 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
         lizenz_plus: "Group::VereinSpieler::LizenzPlus",
         lizenz_no_raking: "Group::VereinSpieler::LizenzNoRanking",
         lizenz_plus_junior: "Group::VereinSpieler::LizenzPlusJunior",
-        vereinigung: "Group::VereinSpieler::Vereinigungsspieler",
+        vereinigung: "Group::VereinSpieler::Vereinigungsspieler"
       }
       role_type_mapping.keys.each do |role_item_type|
         in_each_billing_period do |base_scope, year|
           base_scope.where(type: "InvoiceItem::Roles").joins(:translations)
-            .where(invoice_item_translations: { name: role_item_type })
+            .where(invoice_item_translations: {name: role_item_type})
             .tap do |scope|
             ids = scope.pluck(:id)
             scope.update_all(
@@ -181,7 +180,7 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
 
   def in_each_billing_period
     BillingPeriod.order(:created_at).all.each do |billing_period|
-      year = billing_period.name.include?('25') ? 2025 : 2026
+      year = billing_period.name.include?("25") ? 2025 : 2026
 
       invoice_item_join_sql = ApplicationRecord.sanitize_sql(
         ["LEFT JOIN billed_models ON billed_models.invoice_item_id = invoice_items.id " \
@@ -200,11 +199,11 @@ class MigrateFixedFeeInvoiceItems < ActiveRecord::Migration[8.0]
 
   def update_item_translations(ids, key)
     InvoiceItem::Translation.where(invoice_item_id: ids, locale: :de).update_all(name:
-      TRANSLATIONS[:de][key.to_sym]
-    )
-    InvoiceItem::Translation.create_with(locale: :fr, name: TRANSLATIONS[:fr][key.to_sym]).insert_all(
-      InvoiceItem::Translation.where(invoice_item_id: ids, locale: :de)
-        .pluck(:invoice_item_id).map{|invoice_item_id| { invoice_item_id: }}
-    )
+      TRANSLATIONS[:de][key.to_sym])
+    InvoiceItem::Translation.create_with(locale: :fr,
+      name: TRANSLATIONS[:fr][key.to_sym]).insert_all(
+        InvoiceItem::Translation.where(invoice_item_id: ids, locale: :de)
+          .pluck(:invoice_item_id).map { |invoice_item_id| {invoice_item_id:} }
+      )
   end
 end

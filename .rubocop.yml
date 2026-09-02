@@ -6,7 +6,6 @@ AllCops:
   Exclude:
     - Rakefile
     - Gemfile
-    - db/**/*
     - config/**/*
     - bin/**/*
     - tmp/**/*
