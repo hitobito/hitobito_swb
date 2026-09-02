@@ -14,7 +14,7 @@ class AddBillingPeriods < ActiveRecord::Migration[7.1]
       t.index :active, unique: true, where: "(active = true)"
     end
 
-    create_table(:billed_models) do |t|
+    create_table(:billed_models) do |t| # rubocop:disable Rails/CreateTableWithTimestamps
       t.belongs_to :billing_period
       t.belongs_to :model, polymorphic: true
       t.belongs_to :invoice_item
