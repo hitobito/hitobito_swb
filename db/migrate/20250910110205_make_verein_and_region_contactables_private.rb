@@ -6,7 +6,6 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 class MakeVereinAndRegionContactablesPrivate < ActiveRecord::Migration[7.1] # rubocop:disable Rails/ReversibleMigrationMethodDefinition
-
   def up
     change_contactable_public_flag(Group::Verein, Group::Region, public: false)
   end
@@ -15,9 +14,10 @@ class MakeVereinAndRegionContactablesPrivate < ActiveRecord::Migration[7.1] # ru
 
   def change_contactable_public_flag(*group_types, public:)
     contactable_types = [AdditionalEmail, SocialAccount, PhoneNumber]
+    contactable_ids = Group.where(type: group_types.map(&:sti_name)).select(:id)
     contactable_types.each do |contactable_type|
       contactable_type
-        .where(contactable_type: Group.sti_name, contactable_id: Group.where(type: group_types.map(&:sti_name)).select(:id))
+        .where(contactable_type: Group.sti_name, contactable_id: contactable_ids)
         .update_all(public:)
     end
   end

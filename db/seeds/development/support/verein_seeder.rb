@@ -20,7 +20,8 @@ class VereinSeeder
       verein_prefix = name.gsub(/(BC|SC)\s/, "")
       team_name = [verein_prefix, league].join(" ")
 
-      Team.seed_once(:name, group_id: verein.id, name: team_name, league: league, year: Time.zone.today.year)
+      Team.seed_once(:name, group_id: verein.id, name: team_name, league: league,
+        year: Time.zone.today.year)
     end
   end
 
