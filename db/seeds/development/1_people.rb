@@ -28,7 +28,8 @@ class SwbPersonSeeder < PersonSeeder
     super.tap do |attrs|
       attrs[:birthday] = birthday_for(attrs[:birthday], role_type)
       attrs[:ts_gender] = attrs[:gender]
-      attrs[:nationality] = Faker::Boolean.boolean(true_ratio: 0.9) ? "CH" : ["DE", "AT", "FR"].sample 
+      attrs[:nationality] =
+        Faker::Boolean.boolean(true_ratio: 0.9) ? "CH" : ["DE", "AT", "FR"].sample
     end
   end
 
@@ -37,7 +38,7 @@ class SwbPersonSeeder < PersonSeeder
     from = role_type.year_range.begin || 10
     to = role_type.year_range.end || 99
 
-    Faker::Date.in_date_period(year: Date.today.year - (from..to).to_a.sample)
+    Faker::Date.in_date_period(year: Time.zone.today.year - (from..to).to_a.sample)
   end
 end
 

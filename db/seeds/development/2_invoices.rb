@@ -69,7 +69,7 @@ PeriodInvoiceTemplate::TeamItem.seed({
   cost_center: "3000",
   dynamic_cost_parameters: {
     unit_cost: "1000.00",
-    leagues: ["NLA"],
+    leagues: ["NLA"]
   },
   period_invoice_template_id: teams.id
 }).first.update!(name: "NLA", name_fr: "LNA")
@@ -78,7 +78,7 @@ PeriodInvoiceTemplate::TeamItem.seed({
   cost_center: "3000",
   dynamic_cost_parameters: {
     unit_cost: "800.00",
-    leagues: ["NLB"],
+    leagues: ["NLB"]
   },
   period_invoice_template_id: teams.id
 }).first.update!(name: "NLB", name_fr: "LNB")
@@ -87,7 +87,7 @@ PeriodInvoiceTemplate::TeamItem.seed({
   cost_center: "3000",
   dynamic_cost_parameters: {
     unit_cost: "600.00",
-    leagues: ["1. Liga"],
+    leagues: ["1. Liga"]
   },
   period_invoice_template_id: teams.id
 }).first.update!(name: "1. Liga", name_fr: "1ère ligue")
@@ -96,7 +96,7 @@ PeriodInvoiceTemplate::TeamItem.seed({
   cost_center: "3000",
   dynamic_cost_parameters: {
     unit_cost: "500.00",
-    leagues: ["2. Liga"],
+    leagues: ["2. Liga"]
   },
   period_invoice_template_id: teams.id
 }).first.update!(name: "2. Liga", name_fr: "2e ligue")
@@ -105,7 +105,7 @@ PeriodInvoiceTemplate::TeamItem.seed({
   cost_center: "3000",
   dynamic_cost_parameters: {
     unit_cost: "250.00",
-    leagues: ["3. Liga"],
+    leagues: ["3. Liga"]
   },
   period_invoice_template_id: teams.id
 }).first.update!(name: "3. Liga", name_fr: "3e ligue")
@@ -114,7 +114,7 @@ PeriodInvoiceTemplate::TeamItem.seed({
   cost_center: "3000",
   dynamic_cost_parameters: {
     unit_cost: "250.00",
-    leagues: ["4. Liga"],
+    leagues: ["4. Liga"]
   },
   period_invoice_template_id: teams.id
 }).first.update!(name: "4. Liga", name_fr: "4e ligue")
@@ -123,16 +123,16 @@ PeriodInvoiceTemplate::TeamItem.seed({
   cost_center: "3000",
   dynamic_cost_parameters: {
     unit_cost: "20.00",
-    leagues: ["Junioren", "Senioren", "NL - 5. Liga"],
+    leagues: ["Junioren", "Senioren", "NL - 5. Liga"]
   },
   period_invoice_template_id: teams.id
-}).first.update!(name: "Junioren, Senioren und 5. Liga Teams", name_fr: "Equipes juniores, séniores et 5e ligue")
+}).first.update!(name: "Junioren, Senioren und 5. Liga Teams", name_fr: "Equipes juniores, séniores et 5e ligue") # rubocop:disable Layout/LineLength
 PeriodInvoiceTemplate::TeamItem.seed({
   account: "CH56 0483 5035 4099 6000 0",
   cost_center: "3000",
   dynamic_cost_parameters: {
     unit_cost: "300.00",
-    leagues: ["Vereinigung"],
+    leagues: ["Vereinigung"]
   },
   period_invoice_template_id: teams.id
 }).first.update!(name: "Vereinigung", name_fr: "Union")
@@ -154,7 +154,7 @@ PeriodInvoiceTemplate::RoleCountItem.seed({
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "30.00",
-    role_types: ["Group::VereinSpieler::Aktivmitglied"],
+    role_types: ["Group::VereinSpieler::Aktivmitglied"]
   },
   period_invoice_template_id: roles.id
 }).first.update!(name: "Aktivmitglieder", name_fr: "Membres actifs")
@@ -163,7 +163,7 @@ PeriodInvoiceTemplate::RoleCountItem.seed({
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "0.00",
-    role_types: ["Group::VereinSpieler::Passivmitglied"],
+    role_types: ["Group::VereinSpieler::Passivmitglied"]
   },
   period_invoice_template_id: roles.id
 }).first.update!(name: "Passivmitglieder", name_fr: "Membres passif")
@@ -172,7 +172,7 @@ PeriodInvoiceTemplate::RoleCountItem.seed({
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "20.00",
-    role_types: ["Group::VereinSpieler::JuniorU15"],
+    role_types: ["Group::VereinSpieler::JuniorU15"]
   },
   period_invoice_template_id: roles.id
 }).first.update!(name: "Junior:innen (bis U15)", name_fr: "Junior.e.s (jusqu'à U15)")
@@ -181,7 +181,7 @@ PeriodInvoiceTemplate::RoleCountItem.seed({
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "40.00",
-    role_types: ["Group::VereinSpieler::JuniorU19"],
+    role_types: ["Group::VereinSpieler::JuniorU19"]
   },
   period_invoice_template_id: roles.id
 }).first.update!(name: "Junior:innen (U17-U19)", name_fr: "Junior.e.s (U17-U19)")
@@ -190,7 +190,7 @@ PeriodInvoiceTemplate::RoleCountItem.seed({
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "120.00",
-    role_types: ["Group::VereinSpieler::Lizenz"],
+    role_types: ["Group::VereinSpieler::Lizenz"]
   },
   period_invoice_template_id: roles.id
 }).first.update!(name: "Lizenzen", name_fr: "Licences")
@@ -199,7 +199,7 @@ PeriodInvoiceTemplate::RoleCountItem.seed({
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "50.00",
-    role_types: ["Group::VereinSpieler::LizenzPlus"],
+    role_types: ["Group::VereinSpieler::LizenzPlus"]
   },
   period_invoice_template_id: roles.id
 }).first.update!(name: "Lizenzen Plus", name_fr: "Licences Plus")
@@ -208,7 +208,7 @@ PeriodInvoiceTemplate::RoleCountItem.seed({
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "120.00",
-    role_types: ["Group::VereinSpieler::LizenzNoRanking"],
+    role_types: ["Group::VereinSpieler::LizenzNoRanking"]
   },
   period_invoice_template_id: roles.id
 }).first.update!(name: "Lizenzen NO ranking", name_fr: "Lizenzen NO ranking")
@@ -217,16 +217,16 @@ PeriodInvoiceTemplate::RoleCountItem.seed({
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "20.00",
-    role_types: ["Group::VereinSpieler::LizenzPlusJunior"],
+    role_types: ["Group::VereinSpieler::LizenzPlusJunior"]
   },
   period_invoice_template_id: roles.id
-}).first.update!(name: "Lizenzen Plus Junior:innen (U19)", name_fr: "Licences plus junior.e.s (U19)")
+}).first.update!(name: "Lizenzen Plus Junior:innen (U19)", name_fr: "Licences plus junior.e.s (U19)") # rubocop:disable Layout/LineLength
 PeriodInvoiceTemplate::RoleCountItem.seed({
   account: "CH56 0483 5035 4099 6000 0",
   cost_center: "3003",
   dynamic_cost_parameters: {
     unit_cost: "0.00",
-    role_types: ["Group::VereinSpieler::Vereinigungsspieler"],
+    role_types: ["Group::VereinSpieler::Vereinigungsspieler"]
   },
   period_invoice_template_id: roles.id
 }).first.update!(name: "Vereinigungsspieler:innen", name_fr: "Joueur.se.s d'une union")
