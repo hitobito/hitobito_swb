@@ -1,6 +1,7 @@
 ## Version unreleased
 
 * Beim TS sync wird das Feld `number` mit `ts_club_number` befüllt (#161)
+* Rechnungsadresse und -email der Verantwortlichen Finanzen werden auf Verein/Region migriert (#208)
 
 ## Version 2.7.0
 
