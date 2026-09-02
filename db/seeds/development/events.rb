@@ -5,7 +5,6 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-
 require HitobitoSwb::Wagon.root.join("db", "seeds", "development", "support", "swb_event_seeder")
 
 srand(42)

@@ -5,7 +5,7 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
 
-class UpdatePeopleNationality < ActiveRecord::Migration[7.1]
+class UpdatePeopleNationality < ActiveRecord::Migration[7.1] # rubocop:disable Rails/ReversibleMigrationMethodDefinition
   def up
     iso3166_ioc_country_mapping.each do |iso, ioc|
       next if iso.blank?
@@ -18,7 +18,7 @@ class UpdatePeopleNationality < ActiveRecord::Migration[7.1]
 
   def iso3166_ioc_country_mapping
     Person
-      .pluck('distinct(nationality)')
+      .pluck("distinct(nationality)")
       .compact
       .select { |c| c == Country.new(c).name }
       .map { |c| [SwbImport::Parser.new(nil, nil).send(:parse_country, c), c] }
