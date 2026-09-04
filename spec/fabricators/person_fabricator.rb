@@ -19,7 +19,10 @@ Fabricator(:person, from: :core_person) do
   zip_code { |attrs| Faker::Number.number(digits: (%w[AT CH].include?(attrs[:country]) ? 4 : 5)) }
   nationality { |attrs| attrs[:country] }
   after_build {
-    phone_numbers.build(label: %w[landline mobile].sample,
-      number: Faker::Base.numerify("+41 77 ### ## ##"))
+    key = %w[landline mobile].sample
+    phone_numbers.build(
+      category_id: ActiveRecord::FixtureSet.identify(:"phone_number_person_#{key}"),
+      number: Faker::Base.numerify("+41 77 ### ## ##")
+    )
   }
 end

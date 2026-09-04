@@ -37,9 +37,10 @@ describe Person do
       person.country = "ch"
       person.nationality = "de"
 
-      # phone numbers use predefined labels, others a free text (see settings.yml in core an wagon)
-      person.social_accounts.build(name: "www.example.com", label: "Webseite")
-      person.phone_numbers.build(number: "+41 79 123 45 67", label: :mobile)
+      person.social_accounts.build(name: "www.example.com",
+        category: contact_account_categories(:social_account_person_website))
+      person.phone_numbers.build(number: "+41 79 123 45 67",
+        category: contact_account_categories(:phone_number_person_mobile))
 
       expect(ts_model).to have_attributes(
         gender_id: 2,

@@ -65,7 +65,8 @@ describe Group do
         group.town = "Zürich"
         group.country = "CH"
         group.contact = person
-        group.social_accounts.build(label: "Webseite", name: "www.example.com")
+        group.social_accounts.build(name: "www.example.com",
+          category: contact_account_categories(:social_account_group_website))
       end
 
       it "maps additional attributes if present" do
