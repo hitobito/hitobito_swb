@@ -18,10 +18,15 @@ module Ts::ApiSpecHelper
     let(:code) { Faker::Internet.uuid }
   end
 
-  def stub_api_request(method, path, request_body: nil, response_body: nil, status: 200)
-    stub_request(method, url + path)
+  def stub_api_request(method, path, request_body: nil, response_body: nil, status: 200, exception: nil)
+    request = stub_request(method, url + path)
       .with(headers: headers, body: request_body)
-      .to_return(status:, body: response_body)
+
+    if exception
+      request.to_raise(exception)
+    else
+      request.to_return(status:, body: response_body)
+    end
   end
 
   def sucessfull_response_body(*entities)

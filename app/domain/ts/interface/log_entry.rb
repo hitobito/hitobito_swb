@@ -29,29 +29,36 @@ class Ts::Interface::LogEntry
     @model = model
     @operation = operation
     @exception = exception
-    @method = operation.request.method
-    @state = operation.success? ? :success : :failed
+    @method = operation&.request&.method
+    @state = operation&.success? ? :success : :failed
   end
 
   def create!
     HitobitoLogEntry.create!(
       subject: model,
       category: :ts,
-      level: operation.success? ? :info : :error,
-      payload: operation.to_h,
-      message: [exception_info,
-        sprintf(MESSAGES.dig(method, state) % message_info)].compact_blank.join(" - ")
+      level: (state == :success) ? :info : :error,
+      payload: operation&.to_h,
+      message: [exception_info, message_text].compact_blank.join(" - ")
     )
   end
 
-  def message_info
+  def message_info # rubocop:disable Metrics/CyclomaticComplexity
     {
       model: model.class.name, to_s: model.to_s, id: model.id, ts_code: model.ts_code,
-      error_code: operation.response.error.code, error_message: operation.response.error.message
+      error_code:, error_message:
     }.compact_blank
   end
 
+  def message_text
+    sprintf(MESSAGES.dig(method, state) % message_info) if operation&.response
+  end
+
+  def error_code = operation&.response&.error&.code
+
+  def error_message = operation&.response&.error&.message
+
   def exception_info
-    "#{exception} (#{exception.backtrace.first})" if @exception
+    "#{exception.class} - #{exception} (#{exception.backtrace.first})" if @exception
   end
 end

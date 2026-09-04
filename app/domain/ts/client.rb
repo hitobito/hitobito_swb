@@ -65,7 +65,8 @@ class Ts::Client
       raise Error.new(sprintf(UNEXPECTED_STATUS_CODE % response.code), operation)
     end
   rescue RestClient::Exception => e
-    raise Error.new(e.message, Operation.new(request:, response: Response.new(entity, e.response)))
+    response = Response.new(entity, e.response) if e.response
+    raise Error.new(e.message, Operation.new(request:, response:))
   end
 
   def build_url(code = nil) = (base_path + [code]).compact_blank.join("/")

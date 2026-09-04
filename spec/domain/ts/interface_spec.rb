@@ -108,6 +108,18 @@ describe Ts::Interface, :tests_ts_api do
       expect(latest_log.payload.dig("response", "code")).to eq 500
       expect(latest_log.payload.dig("response", "xml")).to eq error_response_body
     end
+
+    it "SSL communication error" do
+      stub_api_request(:post, "/Group", request_body: model.ts_model.to_xml,
+        exception: OpenSSL::SSL::SSLError.new("SSL_connect returned=1 errno=0 state=error: certificate verify failed"))
+      expect do
+        interface.post
+      end.to change { model.ts_logs.count }.by(1)
+      expect(latest_log.payload).to be_present
+      expect(latest_log.level).to eq "error"
+      expect(latest_log.message).to include "Ts::Client::Error"
+      expect(latest_log.message).to include "SSL_connect returned=1 errno=0 state=error: certificate verify failed"
+    end
   end
 
   describe "nesting" do

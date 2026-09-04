@@ -55,9 +55,9 @@ class Ts::Interface
 
     operation
   rescue Ts::Client::Error => e
-    LogEntry.new(model, e.operation).create!
+    LogEntry.new(model, e.operation, e).create!
   rescue StandardError => e
-    LogEntry.new(model, operation, e).create!
+    LogEntry.new(model, nil, e).create!
   end
 
   def mock_request(method, *args)
