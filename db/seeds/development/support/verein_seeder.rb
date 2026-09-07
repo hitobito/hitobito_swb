@@ -14,13 +14,13 @@ class VereinSeeder
   end
 
   def seed
-    result = Group::Verein.seed_once(:name, parent_id:, name:)
+    result = Group::Verein.seed(:name, parent_id:, name:)
     verein = result.first
     league_sample.each do |league|
       verein_prefix = name.gsub(/(BC|SC)\s/, "")
       team_name = [verein_prefix, league].join(" ")
 
-      Team.seed_once(:name, group_id: verein.id, name: team_name, league: league, year: Time.zone.today.year)
+      Team.seed(:name, group_id: verein.id, name: team_name, league: league, year: Time.zone.today.year)
     end
   end
 

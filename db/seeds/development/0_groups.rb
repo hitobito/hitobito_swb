@@ -11,7 +11,7 @@ root = Group.roots.first
 
 # Regionen mit ein paar Vereinen
 #
-result = Group::Region.seed_once(:name,
+result = Group::Region.seed(:name,
   parent_id: root.id,
   name: "Badminton Regionalverband Bern",
   short_name: "BRB")
@@ -26,8 +26,8 @@ brb = result.first
 ].each do |name|
   VereinSeeder.new(parent_id: brb.id, name:).seed
 end
-
-result = Group::Region.seed_once(:name,
+#
+result = Group::Region.seed(:name,
   parent_id: root.id,
   name: "Badminton Verband Nordwestschweiz",
   short_name: "BVN")
@@ -46,11 +46,11 @@ end
 
 # Center
 
-Group::Center.seed_once(:name, parent_id: root.id, name: "1001 Freizeit AG")
-Group::Center.seed_once(:name, parent_id: root.id, name: "Aarsports GmbH")
-Group::Center.seed_once(:name, parent_id: root.id, name: "Tivoli Sportcenter Worblaufen")
+Group::Center.seed(:name, parent_id: root.id, name: "1001 Freizeit AG")
+Group::Center.seed(:name, parent_id: root.id, name: "Aarsports GmbH")
+Group::Center.seed(:name, parent_id: root.id, name: "Tivoli Sportcenter Worblaufen")
 
-Group::CenterUnaffilliated.seed_once(:name, parent_id: root.id, name: "CIS Sportcenter")
-Group::CenterUnaffilliated.seed_once(:name, parent_id: root.id, name: "Gesundheitspark Thalwil")
+Group::CenterUnaffilliated.seed(:name, parent_id: root.id, name: "CIS Sportcenter")
+Group::CenterUnaffilliated.seed(:name, parent_id: root.id, name: "Gesundheitspark Thalwil")
 
 Group.rebuild!
