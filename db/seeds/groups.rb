@@ -7,7 +7,13 @@
 #
 
 def seed_contact_account(contact_account_type, key, **attrs)
-  contact_account_type.seed_once(:contactable_id, :contactable_type, attrs.keys.first, { contactable_id: Group.root.id, contactable_type: "Group" }.merge(attrs))
+  category = ContactAccountCategory.for(contact_account_type, "Group").find_by(key:)
+  contact_account_type.seed_once(
+    :contactable_id,
+    :contactable_type,
+    attrs.keys.first,
+    { contactable_id: Group.root.id, contactable_type: "Group" }.merge(attrs).merge(category_id: category.id)
+  )
 end
 
 Group::Dachverband.seed_once(:parent_id, name: "Swiss Badminton", street: "Talgut-Zentrum", housenumber: 27, zip_code: 3063, town: "Ittigen", country: "CH", email: "info@swiss-badminton.ch", ts_code: "B8EA3AEF-07B0-4981-90F3-2E6A62AF9823")
