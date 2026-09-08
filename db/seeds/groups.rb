@@ -7,7 +7,7 @@
 #
 
 def seed_contact_account(contact_account_type, key, **attrs)
-  category = ContactAccountCategory.for(contact_account_type, "Group").find_by(key:)
+  category = ContactAccountCategory.for(contact_account_type.to_s, "Group").find_by(key:)
   contact_account_type.seed_once(
     :contactable_id,
     :contactable_type,
