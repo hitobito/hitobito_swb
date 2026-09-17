@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2025-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -11,6 +11,7 @@ class Role::Player < ::Role
 
   validate :only_one_player_role_per_group, unless: :destroys?
   validate :only_one_player_role_globally, if: :unique_across_layers, unless: :destroys?
+  validate :assert_birthday_present, unless: :destroying_role?
   validate :within_year_range, unless: :destroying_role?
 
   self.permissions = []
@@ -36,8 +37,14 @@ class Role::Player < ::Role
     end
   end
 
+  def assert_birthday_present
+    errors.add(:person, :birthday_required) if person.birthday.blank?
+  end
+
   # rubocop:todo Metrics/AbcSize
   def within_year_range # rubocop:todo Metrics/CyclomaticComplexity # rubocop:todo Metrics/AbcSize
+    return if person.birthday.blank?
+
     min_date = Date.new(Time.zone.now.year - year_range.end) if year_range.end
     max_date = Date.new(Time.zone.now.year - year_range.begin).end_of_year if year_range.begin
 
