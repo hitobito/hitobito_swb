@@ -34,8 +34,15 @@ module Roles::Players
     rescue => exception
       create_log_entry(role, level: :error,
         message: "Failed to promote #{role} for (#{role.person})")
-      Airbrake.notify(exception, parameters: role.attributes)
-      Sentry.capture_exception(exception, logger: "delayed_job")
+      unless duplicate_role_error?(exception)
+        Airbrake.notify(exception, parameters: role.attributes)
+        Sentry.capture_exception(exception, logger: "delayed_job")
+      end
+    end
+
+    def duplicate_role_error?(exception)
+      exception.is_a?(ActiveRecord::RecordInvalid) &&
+        exception.record.errors.of_kind?(:person, :already_player_in_group)
     end
 
     def destroy_expired(role)
