@@ -37,6 +37,7 @@ fr:
               too_old: est trop vieux
               already_player_of_that_type: a déjà un rôle de joueur.euse dans ce groupe
               already_player_in_group: A déjà un rôle de joueur.euse dans ce groupe
+              birthday_required: muss ein Geburtsdatum haben
 
     models:
       event/external_training:

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -75,6 +75,16 @@ describe Person do
       # rubocop:todo Layout/LineLength
       expect(person.errors.full_messages).to eq ["Geburtstag ist nicht gültig für aktuelle Spieler Rollen"]
       # rubocop:enable Layout/LineLength
+    end
+
+    it "does not raise when birthday is cleared while a player role exists" do
+      person.birthday = 13.years.ago
+      person.save!
+      Fabricate(Group::VereinSpieler::JuniorU15.sti_name, group: groups(:bc_bern_spieler), person:)
+      person.birthday = nil
+      expect { person.valid? }.not_to raise_error
+      expect(person).not_to be_valid
+      expect(person.errors[:birthday]).to be_present
     end
   end
 

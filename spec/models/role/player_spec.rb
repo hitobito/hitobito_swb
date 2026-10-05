@@ -76,6 +76,12 @@ describe Role::Player do
         role.save!
         expect(role.update!(end_on: 3.days.from_now)).to eq true
       end
+
+      it "is invalid if person has no birthday" do
+        person.update_columns(birthday: nil)
+        expect(role).not_to be_valid
+        expect(role.errors.full_messages).to eq ["Person muss ein Geburtsdatum haben"]
+      end
     end
   end
 
