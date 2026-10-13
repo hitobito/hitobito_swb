@@ -220,12 +220,19 @@ describe PeriodInvoiceTemplatesController, js: true do
 
     yield
 
-    # Do this last, because it reloads the invoice items from the server.
-    # Depending on the speed of the server, either the old or the new form
-    # contents could be present in the page after this selection. In the UI,
-    # we have no easy way of seeing this change happen, and so capybara's
-    # built in waiting cannot be used here.
-    select recipient_group_type, from: "Rechnungsempfänger" if recipient_group_type
+    select_recipient_group_type(recipient_group_type) if recipient_group_type
+  end
+
+  # Selecting the recipient group type triggers a (debounced) autosubmit which reloads the
+  # invoice items turbo frame from the server. If the form is submitted before that reload
+  # has finished, the two requests race each other and the flash message may get lost.
+  # There is no visible change in the UI, so we mark the old frame contents and wait until
+  # they have been replaced.
+  def select_recipient_group_type(type)
+    page.execute_script("document.getElementById('items_fields').dataset.stale = 'true'")
+    select type, from: "Rechnungsempfänger"
+    expect(page).to have_css("#items_fields:not([data-stale])")
+    expect(page).to have_no_css("turbo-frame#period_invoice_template_items[busy]")
   end
 
   def add_item(type, name_de: nil, name_fr: nil, unit_cost: nil, vat_rate: nil, cost_center: nil,
