@@ -37,6 +37,7 @@ it:
               too_old: ist zu alt
               already_player_of_that_type: hat bereits eine Spielerrolle dieses Typs
               already_player_in_group: hat bereits eine Spielerrolle in dieser Gruppe
+              birthday_required: muss ein Geburtsdatum haben
 
     models:
       event/external_training:
@@ -592,10 +593,6 @@ it:
     attributes:
       event:
         external_link: Externer Link
-      contact_account:
-        predefined_labels:
-          landline: Festnetz
-          mobile: Mobil
       event/role:
         remove_participant_role: "Allfällige Teilnehmer:innen-Rolle entfernen"
       group:
