@@ -11,6 +11,9 @@ require_relative "../../db/migrate/20260902120000_migrate_finance_role_address_t
 describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
   subject(:migration) { described_class.new.tap { |m| m.verbose = false } }
 
+  let(:address_category) { contact_account_categories(:additional_address_group_invoices) }
+  let(:email_category) { contact_account_categories(:additional_email_group_invoices) }
+
   def create_person_with(type, group)
     Fabricate(:person).tap { |person| Fabricate(type, group:, person:) }
   end
@@ -24,8 +27,7 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
 
       migration.up
 
-      address = verein.additional_addresses.find_by(invoices: true)
-      expect(address.label).to eq "Rechnungsadresse"
+      address = verein.additional_addresses.find_by(category: address_category)
       expect(address.uses_contactable_name).to eq false
       expect(address.organization).to eq false
       expect(address.first_name).to eq person.first_name
@@ -36,8 +38,7 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
       expect(address.town).to eq person.town
       expect(address.country).to eq person.country
 
-      email = verein.additional_emails.find_by(invoices: true)
-      expect(email.label).to eq "Rechnungsadresse"
+      email = verein.additional_emails.find_by(category: email_category)
       expect(email.email).to eq person.email
     end
 
@@ -48,20 +49,20 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
 
       migration.up
 
-      expect(verein.additional_emails.find_by(invoices: true).email).to eq older_person.email
-      expect(verein.additional_addresses.find_by(invoices: true).street).to eq older_person.street
+      expect(verein.additional_emails.find_by(category: email_category).email).to eq older_person.email
+      expect(verein.additional_addresses.find_by(category: address_category).street).to eq older_person.street
     end
 
     it "does not create anything when there is no finance role" do
       migration.up
 
-      expect(verein.additional_addresses.where(invoices: true)).to be_empty
-      expect(verein.additional_emails.where(invoices: true)).to be_empty
+      expect(verein.additional_addresses.where(category: address_category)).to be_empty
+      expect(verein.additional_emails.where(category: email_category)).to be_empty
     end
 
     it "does not overwrite an already configured invoice address" do
       existing = verein.additional_addresses.create!(
-        label: "Rechnungsadresse", invoices: true, uses_contactable_name: false,
+        category: address_category, uses_contactable_name: false,
         first_name: "Existing", last_name: "Person",
         street: "Altstrasse", zip_code: "1000", town: "Bern", country: "CH"
       )
@@ -69,20 +70,20 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
 
       migration.up
 
-      expect(verein.additional_addresses.where(invoices: true).count).to eq 1
-      expect(verein.additional_addresses.find_by(invoices: true)).to eq existing
+      expect(verein.additional_addresses.where(category: address_category).count).to eq 1
+      expect(verein.additional_addresses.find_by(category: address_category)).to eq existing
     end
 
     it "does not overwrite an already configured invoice email" do
       existing = verein.additional_emails.create!(
-        label: "Rechnungsadresse", invoices: true, email: "old@example.com"
+        category: email_category, email: "old@example.com"
       )
       create_person_with(Group::VereinVorstand::Finanzen.sti_name, vorstand)
 
       migration.up
 
-      expect(verein.additional_emails.where(invoices: true).count).to eq 1
-      expect(verein.additional_emails.find_by(invoices: true)).to eq existing
+      expect(verein.additional_emails.where(category: email_category).count).to eq 1
+      expect(verein.additional_emails.find_by(category: email_category)).to eq existing
     end
 
     it "skips the address when the finance person has an incomplete address, but still migrates the email" do
@@ -91,8 +92,8 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
 
       migration.up
 
-      expect(verein.additional_addresses.where(invoices: true)).to be_empty
-      expect(verein.additional_emails.find_by(invoices: true).email).to eq person.email
+      expect(verein.additional_addresses.where(category: address_category)).to be_empty
+      expect(verein.additional_emails.find_by(category: email_category).email).to eq person.email
     end
 
     it "skips the email when the finance person has no email, but still migrates the address" do
@@ -101,8 +102,8 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
 
       migration.up
 
-      expect(verein.additional_emails.where(invoices: true)).to be_empty
-      expect(verein.additional_addresses.find_by(invoices: true).first_name).to eq person.first_name
+      expect(verein.additional_emails.where(category: email_category)).to be_empty
+      expect(verein.additional_addresses.find_by(category: address_category).first_name).to eq person.first_name
     end
 
     it "does not migrate a deleted Verein" do
@@ -121,8 +122,8 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
 
       migration.up
 
-      expect(verein.additional_addresses.where(invoices: true)).to be_empty
-      expect(verein.additional_emails.where(invoices: true)).to be_empty
+      expect(verein.additional_addresses.where(category: address_category)).to be_empty
+      expect(verein.additional_emails.where(category: email_category)).to be_empty
     end
   end
 
@@ -135,15 +136,15 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
 
       migration.up
 
-      expect(region.additional_addresses.find_by(invoices: true).first_name).to eq person.first_name
-      expect(region.additional_emails.find_by(invoices: true).email).to eq person.email
+      expect(region.additional_addresses.find_by(category: address_category).first_name).to eq person.first_name
+      expect(region.additional_emails.find_by(category: email_category).email).to eq person.email
     end
 
     it "does not create anything when there is no finance role" do
       migration.up
 
-      expect(region.additional_addresses.where(invoices: true)).to be_empty
-      expect(region.additional_emails.where(invoices: true)).to be_empty
+      expect(region.additional_addresses.where(category: address_category)).to be_empty
+      expect(region.additional_emails.where(category: email_category)).to be_empty
     end
   end
 end
