@@ -21,8 +21,6 @@ application:
   # non UI languages for assigning to person#language
   # additional_languages:
   #   en: Englisch
-additional_address:
-  enabled: true
 people:
   public_profile:
 
