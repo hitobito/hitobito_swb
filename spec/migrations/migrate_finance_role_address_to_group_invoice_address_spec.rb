@@ -42,6 +42,15 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
       expect(email.email).to eq person.email
     end
 
+    # https://github.com/hitobito/hitobito_swb/issues/118
+    it "keeps the invoice email private like all contact data of Verein/Region" do
+      create_person_with(Group::VereinVorstand::Finanzen.sti_name, vorstand)
+
+      migration.up
+
+      expect(verein.additional_emails.find_by(category: email_category).public).to eq false
+    end
+
     it "uses the earliest created finance role when there are several" do
       older_person = create_person_with(Group::VereinVorstand::Finanzen.sti_name, vorstand)
       vorstand.roles.find_by(person: older_person).update_column(:created_at, 2.days.ago) # rubocop:disable Rails/SkipsModelValidations

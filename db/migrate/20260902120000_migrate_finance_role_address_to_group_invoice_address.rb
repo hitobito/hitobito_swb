@@ -96,7 +96,9 @@ class MigrateFinanceRoleAddressToGroupInvoiceAddress < ActiveRecord::Migration[8
       contactable_type: Group.sti_name,
       contactable_id: group_id,
       category_id: invoice_category_id(AdditionalEmail),
-      email: person.email
+      email: person.email,
+      # contact data of Verein/Region is private, see https://github.com/hitobito/hitobito_swb/issues/118
+      public: false
     }
   end
 
