@@ -17,7 +17,10 @@ describe RoleListsController do
   before { sign_in(people(:admin)) }
 
   describe "POST#create" do
-    let(:person) { people(:admin) }
+    let!(:person) do
+      Fabricate(Group::Verein::Ausbildung.sti_name, group: group,
+        person: Fabricate(:person, ts_code: Faker::Internet.uuid)).person
+    end
 
     it "allows creation of normal role" do
       expect do
