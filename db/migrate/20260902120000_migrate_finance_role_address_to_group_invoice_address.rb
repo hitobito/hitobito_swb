@@ -61,7 +61,15 @@ class MigrateFinanceRoleAddressToGroupInvoiceAddress < ActiveRecord::Migration[8
   end
 
   def invoice_contact_group_ids(klass)
-    klass.where(contactable_type: Group.sti_name, invoices: true).pluck(:contactable_id).to_set
+    klass.joins(:category).merge(ContactAccountCategory.used_for_invoices)
+      .where(contactable_type: Group.sti_name).pluck(:contactable_id).to_set
+  end
+
+  def invoice_category_id(klass)
+    @invoice_category_ids ||= {}
+    @invoice_category_ids[klass] ||= ContactAccountCategory.used_for_invoices
+      .where(contact_account_type: klass.sti_name, contactable_type: Group.sti_name)
+      .order(:position).first!.id
   end
 
   def address_attributes(group_id, person)
@@ -72,8 +80,7 @@ class MigrateFinanceRoleAddressToGroupInvoiceAddress < ActiveRecord::Migration[8
       .merge(
         contactable_type: Group.sti_name,
         contactable_id: group_id,
-        label: "Rechnungsadresse",
-        invoices: true,
+        category_id: invoice_category_id(AdditionalAddress),
         uses_contactable_name: false,
         first_name: person.first_name,
         last_name: person.last_name,
@@ -88,8 +95,7 @@ class MigrateFinanceRoleAddressToGroupInvoiceAddress < ActiveRecord::Migration[8
     {
       contactable_type: Group.sti_name,
       contactable_id: group_id,
-      label: "Rechnungsadresse",
-      invoices: true,
+      category_id: invoice_category_id(AdditionalEmail),
       email: person.email
     }
   end
