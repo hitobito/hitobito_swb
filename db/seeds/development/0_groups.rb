@@ -26,7 +26,6 @@ brb = result.first
 ].each do |name|
   VereinSeeder.new(parent_id: brb.id, name:).seed
 end
-#
 result = Group::Region.seed(:name,
   parent_id: root.id,
   name: "Badminton Verband Nordwestschweiz",
