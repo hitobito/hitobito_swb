@@ -38,6 +38,7 @@ module HitobitoSwb
       RolesController.prepend TsModelController
       RolesController.prepend Swb::RolesController
       Role::List.prepend Swb::Role::List
+      Import::PersonImporter.prepend Swb::Import::PersonImporter
 
       PersonDecorator.prepend Swb::PersonDecorator
 
