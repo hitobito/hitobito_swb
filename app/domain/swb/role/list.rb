@@ -13,14 +13,7 @@ module Swb::Role::List
   def role_create(role)
     rescued do
       super.tap do |success|
-        next unless success && role.ts_managed?
-
-        if role.person.ts_code.present?
-          Ts::WriteJob.new(role.to_global_id, :post).enqueue!
-        else
-          Ts::WriteJob.new(role.person.to_global_id, :post).enqueue!
-          Ts::WriteJob.new(role.to_global_id, :post).enqueue!(run_at: 15.seconds.from_now)
-        end
+        Ts::WriteJob.enqueue_role_post(role) if success && role.ts_managed?
       end
     end
   end

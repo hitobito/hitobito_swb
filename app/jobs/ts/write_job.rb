@@ -10,6 +10,15 @@ class Ts::WriteJob < BaseJob
 
   attr_reader :gid, :operation
 
+  def self.enqueue_role_post(role)
+    if role.person.ts_code.present?
+      new(role.to_global_id, :post).enqueue!
+    else
+      new(role.person.to_global_id, :post).enqueue!
+      new(role.to_global_id, :post).enqueue!(run_at: 15.seconds.from_now)
+    end
+  end
+
   def initialize(gid, operation)
     @gid = gid
     @operation = operation
