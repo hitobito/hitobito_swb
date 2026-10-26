@@ -36,6 +36,14 @@ Die Phasen sind in `config/settings.yml` unter `roles.phases` konfiguriert. Admi
 
 Spielertransfers in einen anderen Verein werden nur in Phase 1 angeboten.
 
+Für Tests im Browser kann die Phase in `config/settings/development.yml` des Wagons überschrieben
+werden (nicht versioniert), z.B. für Phase 3:
+
+    roles:
+      phases:
+        reduced: 16 Aug - 30 Sep
+        restricted: 1 Oct - 14 Jun
+
 
 ## Upgrades
 
