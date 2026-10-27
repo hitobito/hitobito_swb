@@ -7,6 +7,7 @@ of Swiss Badminton.
 
 - Imports via CSV files [Import](./doc/import.md)
 - Updates certain Person, Groups and Roles to [TournamentSoftware](./doc/tournament_software.md)
+- Restricts player role changes by season phase [Player roles](./doc/player_roles.md)
 
 ## SWB Organization Hierarchy
 
