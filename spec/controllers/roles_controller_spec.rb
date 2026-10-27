@@ -397,4 +397,43 @@ describe RolesController do
       end
     end
   end
+
+  describe "moving player role to another group" do
+    let(:spieler) { groups(:bc_bern_spieler) }
+    let(:vorstand) { groups(:bc_bern_vorstand) }
+    let(:junior) { people(:member).tap { |p| p.update_columns(birthday: 16.years.ago.to_date) } }
+
+    before do
+      sign_in(Fabricate(Group::VereinVorstand::Administrator.sti_name, group: vorstand).person)
+    end
+
+    def move(role)
+      put :update, params: {group_id: spieler.id, id: role.id,
+                            role: {group_id: vorstand.id, type: Group::VereinVorstand::Mitglied.sti_name}}
+    end
+
+    def player_role(type, person = people(:member))
+      Fabricate(Group::VereinSpieler.const_get(type).sti_name, group: spieler, person:)
+    end
+
+    it "is denied in reduced phase" do
+      travel_to(Date.new(2026, 10, 1)) do
+        expect { move(player_role(:Lizenz)) }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
+    it "is denied for membership in restricted phase" do
+      travel_to(Date.new(2026, 3, 1)) do
+        expect { move(player_role(:AktivmitgliedU19, junior)) }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
+    it "is allowed in open phase" do
+      travel_to(Date.new(2026, 7, 1)) do
+        move(player_role(:Lizenz))
+        expect(people(:member).roles.where(group: vorstand).pluck(:type))
+          .to include(Group::VereinVorstand::Mitglied.sti_name)
+      end
+    end
+  end
 end

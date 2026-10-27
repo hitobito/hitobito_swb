@@ -73,3 +73,5 @@ in derselben Gruppe: `first_role?` (keine bestehende Rolle), `same_type?`, `upgr
 
 Ein Typwechsel im Rollenformular besteht in hitobito aus zwei Prüfungen: `update?` auf der bestehenden und `create?`
 auf der neuen Rolle. Ist der gewählte Typ nicht erlaubt, wird nichts geändert.
+Wechselt eine Spielerrolle dabei die Gruppe, endet sie in ihrer Gruppe, deshalb braucht es zusätzlich
+`destroy?` auf der bestehenden Rolle.

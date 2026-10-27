@@ -30,6 +30,7 @@ module Swb::RolesController
   end
 
   def create_new_role_and_destroy_old_role
+    authorize!(:destroy, entry) if entry.is_a?(Role::Player) && @group.id != entry.group_id
     super.tap do |success|
       next unless success
       @role_change = true
