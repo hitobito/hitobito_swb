@@ -141,6 +141,30 @@ describe RolesController do
       expect { update(role, type: membership.sti_name) }.to raise_error(CanCan::AccessDenied)
     end
 
+    describe "label of membership" do
+      let!(:role) { Fabricate(membership.sti_name, person: junior, group:, label: "Alt") }
+
+      it "is ignored when saving without type change" do
+        update(role, type: membership.sti_name, label: "Neu")
+        expect(response).to redirect_to(group_person_path(group, junior))
+        expect(role.reload.label).to eq "Alt"
+      end
+
+      it "is kept on upgrade" do
+        update(role, type: licence.sti_name)
+        expect(junior.roles.find_by(type: licence.sti_name).label).to eq "Alt"
+      end
+
+      context "as admin" do
+        let(:user) { people(:admin) }
+
+        it "is saved" do
+          update(role, type: membership.sti_name, label: "Neu")
+          expect(role.reload.label).to eq "Neu"
+        end
+      end
+    end
+
     describe "GET#edit" do
       render_views
       let(:dom) { Capybara::Node::Simple.new(response.body) }
@@ -149,6 +173,32 @@ describe RolesController do
         role = Fabricate(membership.sti_name, person: junior, group:)
         get :edit, params: {group_id: group.id, id: role.id}
         expect(dom).to have_select("role_type", with_options: [licence.model_name.human])
+      end
+
+      it "hides label for membership" do
+        role = Fabricate(membership.sti_name, person: junior, group:)
+        get :edit, params: {group_id: group.id, id: role.id}
+        expect(dom).not_to have_field("role_label")
+      end
+
+      context "as admin" do
+        let(:user) { people(:admin) }
+
+        it "shows label for membership" do
+          role = Fabricate(membership.sti_name, person: junior, group:)
+          get :edit, params: {group_id: group.id, id: role.id}
+          expect(dom).to have_field("role_label")
+        end
+      end
+    end
+
+    describe "GET#new" do
+      render_views
+      let(:dom) { Capybara::Node::Simple.new(response.body) }
+
+      it "shows label for new membership" do
+        get :new, params: {group_id: group.id, role: {type: membership.sti_name, person_id: junior.id}}
+        expect(dom).to have_field("role_label")
       end
     end
   end

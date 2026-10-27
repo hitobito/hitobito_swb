@@ -27,6 +27,10 @@ describe Roles::Players::Phases::Reduced do
     expect(check.destroy?).to be_falsey
   end
 
+  it "does not restrict editing to the type" do
+    expect(check.only_type_editable?).to eq false
+  end
+
   it "allows create of same type" do
     expect(described_class.new(Group::RegionSpieler::Lizenz.new(person:, group:)).create?).to be_truthy
   end

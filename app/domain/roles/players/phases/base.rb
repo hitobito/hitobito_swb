@@ -22,6 +22,8 @@ module Roles::Players::Phases
 
     def destroy? = false
 
+    def only_type_editable? = false
+
     private
 
     attr_reader :checker

@@ -13,5 +13,7 @@ module Roles::Players::Phases
     def create? = checker.junior? && (checker.first_role? || checker.same_type? || checker.upgrade?)
 
     def update? = checker.junior? && checker.upgradeable?
+
+    def only_type_editable? = true
   end
 end

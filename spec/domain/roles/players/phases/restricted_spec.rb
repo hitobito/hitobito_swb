@@ -27,6 +27,10 @@ describe Roles::Players::Phases::Restricted do
     expect(check.destroy?).to be_falsey
   end
 
+  it "restricts editing to the type" do
+    expect(check.only_type_editable?).to eq true
+  end
+
   context "junior" do
     let(:person) { people(:member).tap { |p| p.update_columns(birthday: 16.years.ago.to_date) } }
 

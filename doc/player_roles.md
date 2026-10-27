@@ -75,3 +75,7 @@ Ein Typwechsel im Rollenformular besteht in hitobito aus zwei Prüfungen: `updat
 auf der neuen Rolle. Ist der gewählte Typ nicht erlaubt, wird nichts geändert.
 Wechselt eine Spielerrolle dabei die Gruppe, endet sie in ihrer Gruppe, deshalb braucht es zusätzlich
 `destroy?` auf der bestehenden Rolle.
+
+In Phase 3 darf ausser dem Typ nichts geändert werden (`only_type_editable?`). `Swb::RolesController`
+blendet dafür für Nicht-Admins die Bezeichnung aus, ignoriert sie beim Speichern und übernimmt sie bei einem Upgrade auf die neue Rolle.
+Das Enddatum ist ohne Löschrecht gesperrt.
