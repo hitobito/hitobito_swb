@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -11,7 +11,7 @@ module Swb::RolesController
   prepended do
     include WithCurrentAdmin
 
-    helper_method :force_start_on_today?
+    helper_method :force_start_on_today?, :role_label_editable?
     before_render_new :populate_person_phone_numbers
     before_action :set_admin
     after_destroy :enqueue_ts_delete, if: -> { entry.ts_code }
@@ -26,10 +26,12 @@ module Swb::RolesController
   def build_new_type
     super.tap do |role|
       role.start_on = Time.zone.today if force_start_on_today?(role)
+      role.label = entry.label unless role_label_editable?(entry)
     end
   end
 
   def create_new_role_and_destroy_old_role
+    authorize!(:destroy, entry) if entry.is_a?(Role::Player) && @group.id != entry.group_id
     super.tap do |success|
       next unless success
       @role_change = true
@@ -59,4 +61,14 @@ module Swb::RolesController
   end
 
   def force_start_on_today?(role) = role.ts_managed? && !Current.admin
+
+  def role_label_editable?(role)
+    return true if role.new_record? || !role.is_a?(Role::Player) || Current.admin
+
+    !Roles::Players::Phases.active(role)&.only_type_editable?
+  end
+
+  def permitted_attrs(role_type = entry.class)
+    role_label_editable?(entry) ? super : super - [:label]
+  end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -109,6 +109,96 @@ describe RolesController do
           expect(person.roles.with_inactive.find_by(type: "Group::VereinSpieler::Aktivmitglied").end_on).to eq Time.zone.yesterday
           # rubocop:enable Layout/LineLength
         end
+      end
+    end
+  end
+
+  describe "junior roles in restricted phase" do
+    around { |example| travel_to(Date.new(2026, 3, 1)) { example.run } }
+
+    let(:junior) { people(:member).tap { |p| p.update_columns(birthday: 16.years.ago.to_date) } }
+    let(:membership) { Group::VereinSpieler::AktivmitgliedU19 }
+    let(:licence) { Group::VereinSpieler::JuniorU19 }
+
+    let(:user) {
+      Fabricate(Group::VereinVorstand::Administrator.sti_name, group: groups(:bc_bern_vorstand)).person
+    }
+
+    before { sign_in(user) }
+
+    def update(role, **attrs)
+      put :update, params: {group_id: group.id, id: role.id, role: attrs}
+    end
+
+    it "upgrades membership to licence" do
+      role = Fabricate(membership.sti_name, person: junior, group:)
+      update(role, type: licence.sti_name)
+      expect(junior.roles.where(group:).pluck(:type)).to eq [licence.sti_name]
+    end
+
+    it "denies downgrading licence to membership" do
+      role = Fabricate(licence.sti_name, person: junior, group:)
+      expect { update(role, type: membership.sti_name) }.to raise_error(CanCan::AccessDenied)
+    end
+
+    describe "label of membership" do
+      let!(:role) { Fabricate(membership.sti_name, person: junior, group:, label: "Alt") }
+
+      it "is ignored when saving without type change" do
+        update(role, type: membership.sti_name, label: "Neu")
+        expect(response).to redirect_to(group_person_path(group, junior))
+        expect(role.reload.label).to eq "Alt"
+      end
+
+      it "is kept on upgrade" do
+        update(role, type: licence.sti_name)
+        expect(junior.roles.find_by(type: licence.sti_name).label).to eq "Alt"
+      end
+
+      context "as admin" do
+        let(:user) { people(:admin) }
+
+        it "is saved" do
+          update(role, type: membership.sti_name, label: "Neu")
+          expect(role.reload.label).to eq "Neu"
+        end
+      end
+    end
+
+    describe "GET#edit" do
+      render_views
+      let(:dom) { Capybara::Node::Simple.new(response.body) }
+
+      it "offers licence for membership" do
+        role = Fabricate(membership.sti_name, person: junior, group:)
+        get :edit, params: {group_id: group.id, id: role.id}
+        expect(dom).to have_select("role_type", with_options: [licence.model_name.human])
+      end
+
+      it "hides label for membership" do
+        role = Fabricate(membership.sti_name, person: junior, group:)
+        get :edit, params: {group_id: group.id, id: role.id}
+        expect(dom).not_to have_field("role_label")
+      end
+
+      context "as admin" do
+        let(:user) { people(:admin) }
+
+        it "shows label for membership" do
+          role = Fabricate(membership.sti_name, person: junior, group:)
+          get :edit, params: {group_id: group.id, id: role.id}
+          expect(dom).to have_field("role_label")
+        end
+      end
+    end
+
+    describe "GET#new" do
+      render_views
+      let(:dom) { Capybara::Node::Simple.new(response.body) }
+
+      it "shows label for new membership" do
+        get :new, params: {group_id: group.id, role: {type: membership.sti_name, person_id: junior.id}}
+        expect(dom).to have_field("role_label")
       end
     end
   end
@@ -354,6 +444,45 @@ describe RolesController do
           end.to change { Role.count }.by(-1)
             .and change { delete_jobs.count }
         end
+      end
+    end
+  end
+
+  describe "moving player role to another group" do
+    let(:spieler) { groups(:bc_bern_spieler) }
+    let(:vorstand) { groups(:bc_bern_vorstand) }
+    let(:junior) { people(:member).tap { |p| p.update_columns(birthday: 16.years.ago.to_date) } }
+
+    before do
+      sign_in(Fabricate(Group::VereinVorstand::Administrator.sti_name, group: vorstand).person)
+    end
+
+    def move(role)
+      put :update, params: {group_id: spieler.id, id: role.id,
+                            role: {group_id: vorstand.id, type: Group::VereinVorstand::Mitglied.sti_name}}
+    end
+
+    def player_role(type, person = people(:member))
+      Fabricate(Group::VereinSpieler.const_get(type).sti_name, group: spieler, person:)
+    end
+
+    it "is denied in reduced phase" do
+      travel_to(Date.new(2026, 10, 1)) do
+        expect { move(player_role(:Lizenz)) }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
+    it "is denied for membership in restricted phase" do
+      travel_to(Date.new(2026, 3, 1)) do
+        expect { move(player_role(:AktivmitgliedU19, junior)) }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
+    it "is allowed in open phase" do
+      travel_to(Date.new(2026, 7, 1)) do
+        move(player_role(:Lizenz))
+        expect(people(:member).roles.where(group: vorstand).pluck(:type))
+          .to include(Group::VereinVorstand::Mitglied.sti_name)
       end
     end
   end

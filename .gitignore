@@ -21,6 +21,7 @@ Gemfile.local*
 spec/coverage
 spec/reports
 config/tournament_software.yml
+config/settings/*.yml
 brakeman-output.tabs
 rubocop-results.xml
 coverage

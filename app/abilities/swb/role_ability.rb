@@ -25,7 +25,9 @@ module Swb::RoleAbility
   end
 
   def if_update_in_active_phase?
-    generally_allowed? || active_phase.update?
+    return true if generally_allowed?
+
+    subject.new_record? ? active_phase.create? : active_phase.update?
   end
 
   private

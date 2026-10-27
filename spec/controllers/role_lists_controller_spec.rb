@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -43,6 +43,49 @@ describe RoleListsController do
 
       expect(response).to redirect_to group_people_path(group)
       expect(flash[:notice]).to eq "Eine Rolle wurde erstellt"
+    end
+  end
+
+  describe "POST#create of player roles" do
+    let(:spieler) { groups(:bc_bern_spieler) }
+    let(:licence) { Group::VereinSpieler::JuniorU19 }
+    let(:holder) { junior_in_verein }
+    let(:newcomer) { junior_in_verein }
+
+    def junior_in_verein
+      person = Fabricate(:person, birthday: 16.years.ago.to_date)
+      Fabricate(Group::Verein::Ausbildung.sti_name, group:, person:)
+      person
+    end
+
+    before do
+      Fabricate(licence.sti_name, group: spieler, person: holder)
+      sign_in(Fabricate(Group::VereinVorstand::Administrator.sti_name,
+        group: groups(:bc_bern_vorstand)).person)
+    end
+
+    shared_examples "bulk assignment with an existing holder" do
+      it "creates role for people without it even if others already hold it" do
+        expect do
+          post :create, params: {group_id: group.id, ids: [holder.id, newcomer.id].join(","),
+                                 role: {type: licence.sti_name, group_id: spieler.id}}
+        end.to change { newcomer.roles.where(group: spieler, type: licence.sti_name).count }.by(1)
+
+        expect(flash[:notice]).to eq "Eine Rolle wurde erstellt"
+        expect(flash[:alert]).to eq "Eine Rolle konnte nicht erstellt werden"
+      end
+    end
+
+    context "in reduced phase" do
+      around { |example| travel_to(Date.new(2026, 10, 1)) { example.run } }
+
+      it_behaves_like "bulk assignment with an existing holder"
+    end
+
+    context "in restricted phase" do
+      around { |example| travel_to(Date.new(2026, 3, 1)) { example.run } }
+
+      it_behaves_like "bulk assignment with an existing holder"
     end
   end
 

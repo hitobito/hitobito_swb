@@ -37,6 +37,11 @@ describe RoleAbility do
         expect(ability).to be_able_to(:update, player_role)
       end
 
+      it "calls phase_checker for create during update of new role" do
+        expect(phase).to receive(:create?).once.and_return(true)
+        expect(ability).to be_able_to(:update, Group::RegionSpieler::JuniorU15.new(person:, group:))
+      end
+
       it "calls phase_checker during destroy" do
         expect(phase).to receive(:destroy?).once.and_return(true)
         expect(ability).to be_able_to(:destroy, player_role)
