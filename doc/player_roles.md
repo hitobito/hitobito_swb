@@ -32,7 +32,7 @@ Die Phasen sind in `config/settings.yml` unter `roles.phases` konfiguriert. Admi
 |---|---|---|---|---|
 | 1 Open | 15.6.–15.8. | ja | ja | ja |
 | 2 Reduced | 16.8.–31.1. | erste Rolle in der Gruppe oder Upgrade | ja, Typwechsel nur als Upgrade | nur Passivmitglied |
-| 3 Restricted | 1.1.–14.6. | nur Junioren: erste Rolle oder Upgrade | nein | nur Passivmitglied |
+| 3 Restricted | 1.1.–14.6. | nur Junioren: erste Rolle oder Upgrade | nur Junioren mit möglichem Upgrade | nur Passivmitglied |
 
 Spielertransfers in einen anderen Verein werden nur in Phase 1 angeboten.
 
@@ -68,8 +68,8 @@ erlaubt sind.
 Passivmitglieder darf `Swb::RoleAbility` unabhängig von `destroy?` in jeder Phase löschen.
 
 `Roles::Players::Checker` vergleicht den Typ der geprüften Rolle mit der bestehenden Spielerrolle der Person
-in derselben Gruppe: `first_role?` (keine bestehende Rolle), `same_type?`, `upgrade?` (laut `upgrades`) und
-`junior?`.
+in derselben Gruppe: `first_role?` (keine bestehende Rolle), `same_type?`, `upgrade?` (laut `upgrades`),
+`upgradeable?` (der Typ hat Upgrades) und `junior?`.
 
 Ein Typwechsel im Rollenformular besteht in hitobito aus zwei Prüfungen: `update?` auf der bestehenden und `create?`
 auf der neuen Rolle. Ist der gewählte Typ nicht erlaubt, wird nichts geändert.

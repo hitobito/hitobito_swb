@@ -6,10 +6,12 @@
 #  https://github.com/hitobito/hitobito_swb.
 
 module Roles::Players::Phases
-  # During phase_3, nothing besides the creation of certain roles is allowed,
-  # no upgrades/downgrades, no deletions. Only junior roles can be created
+  # During phase_3, only junior roles can be created or upgraded.
+  # No downgrades, no deletions.
   class Restricted < Base
     # same_type? lets bulk assignment fail per person by validation instead of aborting
     def create? = checker.junior? && (checker.first_role? || checker.same_type? || checker.upgrade?)
+
+    def update? = checker.junior? && checker.upgradeable?
   end
 end

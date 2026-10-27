@@ -35,6 +35,8 @@ module Roles::Players
 
     def upgrade? = upgrades.fetch(current_type, []).include?(type)
 
+    def upgradeable? = upgrades.fetch(type, []).any?
+
     private
 
     def demodulize(role) = role&.type&.demodulize

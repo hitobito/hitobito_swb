@@ -56,5 +56,26 @@ describe Roles::Players::Phases::Restricted do
         expect(check.create?).to be_falsey
       end
     end
+
+    describe "update of membership" do
+      let!(:player_role) { Fabricate(Group::RegionSpieler::AktivmitgliedU19.sti_name, group:, person:) }
+
+      it "allows opening the edit form" do
+        expect(check.update?).to be_truthy
+      end
+
+      it "allows create of same type" do
+        candidate = Group::RegionSpieler::AktivmitgliedU19.new(person:, group:)
+        expect(described_class.new(candidate).create?).to be_truthy
+      end
+    end
+
+    describe "update of licence" do
+      let!(:player_role) { Fabricate(Group::RegionSpieler::JuniorU19.sti_name, group:, person:) }
+
+      it "does not allow opening the edit form" do
+        expect(check.update?).to be_falsey
+      end
+    end
   end
 end

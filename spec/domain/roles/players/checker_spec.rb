@@ -62,6 +62,16 @@ describe Roles::Players::Checker do
         expect(check("JuniorU19")).to be_upgrade
       end
     end
+
+    describe "#upgradeable?" do
+      it "is true for membership" do
+        expect(described_class.new(existing("AktivmitgliedU19"))).to be_upgradeable
+      end
+
+      it "is false for licence" do
+        expect(described_class.new(existing("JuniorU19"))).not_to be_upgradeable
+      end
+    end
   end
 
   describe "#new?" do
