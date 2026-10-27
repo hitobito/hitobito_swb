@@ -2,6 +2,7 @@
 
 * Beim TS sync wird das Feld `number` mit `ts_club_number` befüllt (#161)
 * Rechnungsadresse und -email der Verantwortlichen Finanzen werden auf Verein/Region migriert (#208)
+* Mitgliedschaft Nachwuchs kann in allen Phasen zu Lizenz Nachwuchs umgewandelt werden (#226)
 * Passivmitglieder können in allen Phasen beendet werden (#224)
 
 ## Version 2.7.0

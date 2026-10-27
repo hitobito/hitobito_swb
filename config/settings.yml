@@ -70,3 +70,7 @@ roles:
       - Vereinigungsspieler
       LizenzNoRanking:
       - Vereinigungsspieler
+      AktivmitgliedU15:
+      - JuniorU15
+      AktivmitgliedU19:
+      - JuniorU19

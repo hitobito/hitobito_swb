@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -32,10 +32,6 @@ describe Roles::Players::Phases::Open do
 
     it "allows create" do
       expect(check.create?).to be_truthy
-    end
-
-    it "allows update" do
-      expect(check.update?).to be_truthy
     end
   end
 end

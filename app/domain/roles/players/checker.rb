@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -25,25 +25,19 @@ module Roles::Players
       @upgrades = Settings.roles.phases.upgrades.to_h.stringify_keys
     end
 
-    def junior?
-      JUNIOR_TYPES.include?(type)
-    end
+    def junior? = JUNIOR_TYPES.include?(type)
 
-    def upgrade?
-      same_type? ? true : upgrades.fetch(current_type, []).include?(type)
-    end
+    def new? = role.new_record?
 
-    def new_and_only?
-      new? && current_type.blank?
-    end
-
-    def new?
-      @role.new_record?
-    end
-
-    private
+    def first_role? = new? && current_type.blank?
 
     def same_type? = type == current_type
+
+    def upgrade? = upgrades.fetch(current_type, []).include?(type)
+
+    def upgradeable? = upgrades.fetch(type, []).any?
+
+    private
 
     def demodulize(role) = role&.type&.demodulize
   end
