@@ -45,6 +45,25 @@ describe Roles::Players::Checker do
     end
   end
 
+  context "junior" do
+    let(:person) { people(:member).tap { |p| p.update_columns(birthday: 16.years.ago.to_date) } }
+
+    def existing(type) = Fabricate(Group::VereinSpieler.const_get(type).sti_name, person:, group:)
+
+    describe "#upgrade?" do
+      it "is true from membership to licence up to U15" do
+        person.update_columns(birthday: 12.years.ago.to_date)
+        existing("AktivmitgliedU15")
+        expect(check("JuniorU15")).to be_upgrade
+      end
+
+      it "is true from membership to licence U17-U19" do
+        existing("AktivmitgliedU19")
+        expect(check("JuniorU19")).to be_upgrade
+      end
+    end
+  end
+
   describe "#new?" do
     it "is true for new role" do
       expect(check("JuniorU15")).to be_new

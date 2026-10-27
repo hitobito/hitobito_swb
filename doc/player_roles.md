@@ -47,6 +47,7 @@ oder durch Admins möglich.
 |---|---|
 | Passivmitglied | Aktivmitglied, Lizenz |
 | Aktivmitglied | Lizenz |
+| Mitgliedschaft Nachwuchs (U15 / U19) | Lizenz Nachwuchs derselben Altersklasse |
 | Lizenz, Lizenz Plus, Lizenz Plus Nachwuchs, Lizenz NO ranking | Vereinigungsspieler:in |
 
 
