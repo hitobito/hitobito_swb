@@ -81,6 +81,12 @@ describe RoleListsController do
 
       it_behaves_like "bulk assignment with an existing holder"
     end
+
+    context "in restricted phase" do
+      around { |example| travel_to(Date.new(2026, 3, 1)) { example.run } }
+
+      it_behaves_like "bulk assignment with an existing holder"
+    end
   end
 
   describe "PUT#update" do

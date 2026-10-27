@@ -32,14 +32,14 @@ Die Phasen sind in `config/settings.yml` unter `roles.phases` konfiguriert. Admi
 |---|---|---|---|---|
 | 1 Open | 15.6.–15.8. | ja | ja | ja |
 | 2 Reduced | 16.8.–31.1. | erste Rolle in der Gruppe oder Upgrade | ja, Typwechsel nur als Upgrade | nur Passivmitglied |
-| 3 Restricted | 1.1.–14.6. | nur Junioren | nein | nur Passivmitglied |
+| 3 Restricted | 1.1.–14.6. | nur Junioren: erste Rolle oder Upgrade | nein | nur Passivmitglied |
 
 Spielertransfers in einen anderen Verein werden nur in Phase 1 angeboten.
 
 
 ## Upgrades
 
-`roles.phases.upgrades` legt fest, in welche Typen eine Rolle in Phase 2 gewechselt werden darf.
+`roles.phases.upgrades` legt fest, in welche Typen eine Rolle in Phase 2 und 3 gewechselt werden darf.
 Ein Wechsel in den gleichen Typ gilt immer als erlaubt. Alles andere ist ein Downgrade und nur in Phase 1
 oder durch Admins möglich.
 

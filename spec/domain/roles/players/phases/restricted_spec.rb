@@ -28,19 +28,33 @@ describe Roles::Players::Phases::Restricted do
   end
 
   context "junior" do
-    let(:role) { Group::RegionSpieler::JuniorU15.new(person:, group:) }
+    let(:person) { people(:member).tap { |p| p.update_columns(birthday: 16.years.ago.to_date) } }
 
-    it "allows create" do
-      expect(check.create?).to be_truthy
+    describe "first player role in group" do
+      let!(:player_role) { nil }
+      let(:role) { Group::RegionSpieler::JuniorU19.new(person:, group:) }
+
+      it "allows create" do
+        expect(check.create?).to be_truthy
+      end
     end
-  end
 
-  describe "upgrade" do
-    let(:role) { Group::RegionSpieler::JuniorU15.new(person:, group:) }
+    describe "upgrade from membership to licence" do
+      let!(:player_role) { Fabricate(Group::RegionSpieler::AktivmitgliedU19.sti_name, group:, person:) }
+      let(:role) { Group::RegionSpieler::JuniorU19.new(person:, group:) }
 
-    it "allows create for junior role" do
-      player_role.destroy! # player should not have current_role
-      expect(check.create?).to be_truthy
+      it "allows create" do
+        expect(check.create?).to be_truthy
+      end
+    end
+
+    describe "downgrade from licence to membership" do
+      let!(:player_role) { Fabricate(Group::RegionSpieler::JuniorU19.sti_name, group:, person:) }
+      let(:role) { Group::RegionSpieler::AktivmitgliedU19.new(person:, group:) }
+
+      it "does not allow create" do
+        expect(check.create?).to be_falsey
+      end
     end
   end
 end

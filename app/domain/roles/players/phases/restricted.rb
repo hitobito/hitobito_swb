@@ -9,6 +9,7 @@ module Roles::Players::Phases
   # During phase_3, nothing besides the creation of certain roles is allowed,
   # no upgrades/downgrades, no deletions. Only junior roles can be created
   class Restricted < Base
-    def create? = checker.new? && checker.junior?
+    # same_type? lets bulk assignment fail per person by validation instead of aborting
+    def create? = checker.junior? && (checker.first_role? || checker.same_type? || checker.upgrade?)
   end
 end
