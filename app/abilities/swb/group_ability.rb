@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -19,6 +19,12 @@ module Swb::GroupAbility
       permission(:any)
         .may(:read)
         .if_player_in_hierarchy_or_root_or_any_role
+
+      general(:index_deleted_people).if_layer_and_below_full_on_root
+    end
+
+    def if_layer_and_below_full_on_root
+      user_context.permission_layer_ids(:layer_and_below_full).include?(Group.root_id)
     end
 
     def if_player_in_hierarchy_or_root_or_any_role
