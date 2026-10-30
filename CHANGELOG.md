@@ -4,6 +4,7 @@
 * Rechnungsadresse und -email der Verantwortlichen Finanzen werden auf Verein/Region migriert (#208)
 * Mitgliedschaft Nachwuchs kann in allen Phasen zu Lizenz Nachwuchs umgewandelt werden (#226)
 * Passivmitglieder können in allen Phasen beendet werden (#224)
+* Die Gruppe "Ohne Rollen" wird nur noch für berechtige Personen vom Dachverband angezeigt (#204)
 
 ## Version 2.7.0
 
