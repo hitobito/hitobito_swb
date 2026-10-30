@@ -21,7 +21,6 @@ describe Event::Tournament do
       :maximum_participants,
       :contact_id,
       :description,
-      :plain_text_description,
       :location,
       :application_opening_at,
       :application_closing_at,
