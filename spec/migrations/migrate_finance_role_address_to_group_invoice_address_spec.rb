@@ -37,6 +37,7 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
       expect(address.zip_code).to eq person.zip_code
       expect(address.town).to eq person.town
       expect(address.country).to eq person.country
+      expect(address.organization_name).to eq verein.name
 
       email = verein.additional_emails.find_by(category: email_category)
       expect(email.email).to eq person.email
