@@ -29,7 +29,8 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
 
       address = verein.additional_addresses.find_by(category: address_category)
       expect(address.uses_contactable_name).to eq false
-      expect(address.organization).to eq false
+      expect(address.organization).to eq true
+      expect(address.organization_name).to eq verein.name
       expect(address.first_name).to eq person.first_name
       expect(address.last_name).to eq person.last_name
       expect(address.street).to eq person.street
@@ -37,7 +38,6 @@ describe MigrateFinanceRoleAddressToGroupInvoiceAddress do
       expect(address.zip_code).to eq person.zip_code
       expect(address.town).to eq person.town
       expect(address.country).to eq person.country
-      expect(address.organization_name).to eq verein.name
 
       email = verein.additional_emails.find_by(category: email_category)
       expect(email.email).to eq person.email
