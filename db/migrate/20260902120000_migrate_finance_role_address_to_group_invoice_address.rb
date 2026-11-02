@@ -84,7 +84,7 @@ class MigrateFinanceRoleAddressToGroupInvoiceAddress < ActiveRecord::Migration[8
         uses_contactable_name: false,
         first_name: person.first_name,
         last_name: person.last_name,
-        organization: person.company,
+        organization: true,
         organization_name: target_groups[group_id]
       )
   end
