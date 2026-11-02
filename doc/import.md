@@ -43,6 +43,19 @@ Dabei werden Personen, Gruppen und Rollen angelegt, siehe auch:
 Siehe dazu `lib/task.swb.rake` und `app/domain/swb_import`
 
 
+## Teams
+
+Die Teams werden pro Saison mittels folgendem Rake task neu exportiert.
+
+    $> rake swb:import_teams
+
+Dabei werden alle bestehenden Teams ersetzt, da die Rechnungspositionen für
+Teams und Vereine alle vorhandenen Teams verrechnen. Schlägt eine Zeile fehl
+(z.B. unbekannte Clubnumber oder Liga), bleiben die bestehenden Teams
+unverändert, die Details stehen in `log/teams-*/`.
+
+Die XSL Datei für das CSV liefert Swiss Badminton (Exportiert aus TS)
+
 ## Gruppen Struktur
 
 Die Gruppenstruktur in hitobito entspricht nicht 1:1 der Struktur in

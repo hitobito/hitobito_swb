@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -23,20 +23,8 @@ namespace :swb do
     sh "in2csv 'data/250907_Export_INACTIVE_Members_SB.xlsx' > tmp/mitglieder_without_roles.csv"
   end
 
-  file "tmp/teams_eli.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
-    sh "in2csv --sheet Teams_Eli data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_eli.csv"
-  end
-
-  file "tmp/teams_jun.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
-    sh "in2csv --sheet Teams_Jun data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_jun.csv"
-  end
-
-  file "tmp/teams_sen.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
-    sh "in2csv --sheet Teams_Sen data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_sen.csv"
-  end
-
-  file "tmp/teams_ver.csv" => ["data/Export_Equipe_Hitobito_2025-2026.xlsx"] do
-    sh "in2csv --sheet Vereinigung data/Export_Equipe_Hitobito_2025-2026.xlsx  > tmp/teams_ver.csv"
+  file "tmp/teams.csv" => ["data/Export_Equipe_Hitobito_2026-2027_v4.xlsx"] do
+    sh "in2csv --sheet Tout data/Export_Equipe_Hitobito_2026-2027_v4.xlsx > tmp/teams.csv"
   end
 
   desc "Imports and pushes local DB to INT"
@@ -51,10 +39,7 @@ namespace :swb do
     "tmp/mitglieder_without_roles.csv",
     "tmp/regions.csv",
     "tmp/clubs.csv",
-    "tmp/teams_eli.csv",
-    "tmp/teams_jun.csv",
-    "tmp/teams_sen.csv",
-    "tmp/teams_ver.csv"
+    "tmp/teams.csv"
   ]
 
   desc "Imports Groups, People and Roles"
@@ -67,13 +52,10 @@ namespace :swb do
     SwbImport::Pusher.new.push
   end
 
-  desc "Imports Teams for current year"
-  task import_teams: ["tmp/teams_eli.csv", "tmp/teams_jun.csv", "tmp/teams_sen.csv",
-    "tmp/teams_ver.csv", :environment] do
-    SwbImport::Importer.new(SwbImport::Team, :teams_eli).run
-    SwbImport::Importer.new(SwbImport::TeamJun, :teams_jun).run
-    SwbImport::Importer.new(SwbImport::TeamSen, :teams_sen).run
-    SwbImport::Importer.new(SwbImport::Team, :teams_ver).run
+  desc "Replaces all Teams with those of the current season"
+  task import_teams: ["tmp/teams.csv", :environment] do
+    log_dir = Pathname("log/teams-#{Time.zone.now.strftime("%m-%d-%H_%M_%S")}").tap(&:mkpath)
+    SwbImport::TeamsReplacement.new(log_dir:).run
   end
 
   task import_mitglieder_without_roles: ["tmp/mitglieder_without_roles.csv", :environment] do
