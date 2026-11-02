@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -30,6 +30,37 @@ describe Group do
       group.yearly_budget = ".."
       expect(group).not_to be_valid
       expect(group).to have(1).error_on(:yearly_budget)
+    end
+
+    it "rejects ts_club_number of another group" do
+      groups(:bc_bern).update!(ts_club_number: 42)
+      group.ts_club_number = 42
+      expect(group).not_to be_valid
+      expect(group).to have(1).error_on(:ts_club_number)
+    end
+  end
+
+  describe "ts_club_number on create" do
+    let(:brb) { groups(:brb) }
+
+    it "is set to id for verein" do
+      group = Fabricate(Group::Verein.sti_name, parent: brb)
+      expect(group.reload.ts_club_number).to eq group.id
+    end
+
+    it "is set to id for center" do
+      group = Fabricate(Group::Center.sti_name, parent: groups(:root))
+      expect(group.reload.ts_club_number).to eq group.id
+    end
+
+    it "keeps given value" do
+      group = Fabricate(Group::Verein.sti_name, parent: brb, ts_club_number: 4711)
+      expect(group.reload.ts_club_number).to eq 4711
+    end
+
+    it "is not set for groups without ts_club_number" do
+      group = Fabricate(Group::Region.sti_name, parent: groups(:root))
+      expect(group.reload.ts_club_number).to be_nil
     end
   end
 

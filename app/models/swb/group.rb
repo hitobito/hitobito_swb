@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#  Copyright (c) 2012-2025, Swiss Badminton. This file is part of
+#  Copyright (c) 2012-2026, Swiss Badminton. This file is part of
 #  hitobito_swb and licensed under the Affero General Public License version 3
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_swb.
@@ -35,6 +35,9 @@ module Swb::Group
     has_many :teams, dependent: :destroy
 
     validates :yearly_budget, inclusion: {in: Group::Budget.list.map(&:to_s)}, allow_blank: true
+    validates :ts_club_number, uniqueness: true, allow_nil: true
+
+    after_create :assign_ts_club_number, if: :assign_ts_club_number?
   end
 
   def ts_managed? = super && [Group::Region, Group::Verein, Group::Center].any? { |type|
@@ -51,4 +54,10 @@ module Swb::Group
   end
 
   def ts_contact = contact&.to_s || :not_defined
+
+  private
+
+  def assign_ts_club_number? = attr_used?(:ts_club_number) && ts_club_number.nil?
+
+  def assign_ts_club_number = update_column(:ts_club_number, id)
 end
