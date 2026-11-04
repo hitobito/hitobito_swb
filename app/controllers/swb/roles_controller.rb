@@ -11,7 +11,7 @@ module Swb::RolesController
   prepended do
     include WithCurrentAdmin
 
-    helper_method :force_start_on_today?, :role_label_editable?
+    helper_method :force_start_on_today?
     before_render_new :populate_person_phone_numbers
     before_action :set_admin
     after_destroy :enqueue_ts_delete, if: -> { entry.ts_code }
@@ -26,7 +26,7 @@ module Swb::RolesController
   def build_new_type
     super.tap do |role|
       role.start_on = Time.zone.today if force_start_on_today?(role)
-      role.label = entry.label unless role_label_editable?(entry)
+      role.label = entry.label unless entry.label_editable?
     end
   end
 
@@ -62,13 +62,7 @@ module Swb::RolesController
 
   def force_start_on_today?(role) = role.ts_managed? && !Current.admin
 
-  def role_label_editable?(role)
-    return true if role.new_record? || !role.is_a?(Role::Player) || Current.admin
-
-    !Roles::Players::Phases.active(role)&.only_type_editable?
-  end
-
   def permitted_attrs(role_type = entry.class)
-    role_label_editable?(entry) ? super : super - [:label]
+    entry.label_editable? ? super : super - [:label]
   end
 end

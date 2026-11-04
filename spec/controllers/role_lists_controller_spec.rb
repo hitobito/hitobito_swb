@@ -16,6 +16,18 @@ describe RoleListsController do
 
   before { sign_in(people(:admin)) }
 
+  describe "GET#new" do
+    render_views
+
+    it "renders label field" do
+      person = Fabricate(Group::Verein::Ausbildung.sti_name, group: group).person
+      get :new, xhr: true, format: :js, params: {group_id: group.id, ids: person.id}
+
+      expect(response).to be_successful
+      expect(response.body).to include("role_label")
+    end
+  end
+
   describe "POST#create" do
     let!(:person) do
       Fabricate(Group::Verein::Ausbildung.sti_name, group: group,
