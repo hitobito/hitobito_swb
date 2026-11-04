@@ -46,6 +46,12 @@ module Swb::Role
 
   def ts_managed? = super && self.class.model_name.ts_role
 
+  def label_editable?
+    return true if new_record? || !is_a?(Role::Player) || Current.admin
+
+    !Roles::Players::Phases.active(self)&.only_type_editable?
+  end
+
   private
 
   def ts_interface = @ts_interface ||= Ts::Interface.new(self, nesting: person.ts_model)
