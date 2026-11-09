@@ -57,7 +57,7 @@ describe Roles::Players::Promotion do
         expect(log.category).to eq "promotion"
         expect(log.level).to eq "info"
         expect(log.message).to start_with "Promoted Lizenz Nachwuchs bis U15"
-        expect { role.reload }.to raise_error(ActiveRecord::RecordNotFound)
+        expect(role.reload.end_on).to eq Date.current.yesterday
       end
 
       it "promotes to Lizenz if outside of U19 year range" do

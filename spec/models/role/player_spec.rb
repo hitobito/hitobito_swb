@@ -110,6 +110,7 @@ describe Role::Player do
         it "still allows destroying person born on #{min_date - 1.day}" do
           expect(role).to be_valid
           person.update_columns(birthday: min_date - 1.day)
+          Current.admin = role.is_a?(Role::LizenzPlus)
           expect { role.destroy! }.to change { Role.count }.by(-1)
         end
       else
