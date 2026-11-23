@@ -32,9 +32,13 @@ module Swb::GroupAbility
     end
 
     def if_player_in_hierarchy_or_any_role
-      return if_any_role unless user.roles.all? { |r| r.is_a?(Role::Player) }
+      return if_any_role unless only_player_roles?
 
-      user.groups_hierarchy_ids[1..].include?(subject.layer_group_id)
+      (user.groups_hierarchy_ids - [Group.root_id]).include?(subject.layer_group_id)
+    end
+
+    def only_player_roles?
+      user.roles.present? && user.roles.all?(Role::Player)
     end
   end
 end
