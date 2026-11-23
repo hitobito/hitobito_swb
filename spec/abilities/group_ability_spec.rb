@@ -46,6 +46,18 @@ describe GroupAbility do
     end
   end
 
+  context "without roles" do
+    let(:ability) { Ability.new(Fabricate(:person)) }
+
+    it "may read root" do
+      expect(ability).to be_able_to(:read, groups(:root))
+    end
+
+    it "may not read region" do
+      expect(ability).not_to be_able_to(:read, groups(:brb))
+    end
+  end
+
   describe "index_deleted_people" do
     let(:role) { Fabricate(role_type.sti_name, person: Fabricate(:person), group:) }
 
