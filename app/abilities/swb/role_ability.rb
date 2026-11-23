@@ -38,7 +38,7 @@ module Swb::RoleAbility
 
   def player? = subject.is_a?(Role::Player)
 
-  def passivmitglied? = subject.type.demodulize == "Passivmitglied"
+  def passivmitglied? = subject.class.name.demodulize == "Passivmitglied"
 
   def admin? = user_context.admin
 

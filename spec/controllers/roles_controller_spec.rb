@@ -109,6 +109,17 @@ describe RolesController do
           expect(person.roles.with_inactive.find_by(type: "Group::VereinSpieler::Aktivmitglied").end_on).to eq Time.zone.yesterday
           # rubocop:enable Layout/LineLength
         end
+
+        context "without type" do
+          render_views
+
+          it "renders edit with error" do
+            put :update, params: {group_id: group.id, id: role.id, role: {type: ""}}
+
+            expect(response).to have_http_status(:unprocessable_content)
+            expect(assigns(:role)).to have(1).error_on(:type)
+          end
+        end
       end
     end
   end
